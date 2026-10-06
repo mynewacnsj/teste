@@ -19,9 +19,7 @@
 @font-face{font-family:Barlow;font-style:normal;font-weight:500;font-display:swap;src:url(./fonts/barlow-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:Barlow;font-style:normal;font-weight:600;font-display:swap;src:url(./fonts/barlow-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 html,body{margin:0;background:#0c0c0d}
-html{scrollbar-gutter:stable;scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-[id]{scroll-margin-top:72px}
+html{scrollbar-gutter:stable}
 x-dc{display:none!important}
 </style>
 <!-- React local (sem CDN) e runtime minificado; defer = não bloqueia o HTML. -->
@@ -170,7 +168,7 @@ a:hover{color:#f6bc4d}
 </style>
 </helmet>
 
-<div id="top" data-av-root="1" style="position:relative;width:100%;min-height:min(100svh, calc(72svh + 34vw));padding-top:clamp(72px,9vh,104px);box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden;background:#0c0c0d;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+<div data-av-root="1" style="position:relative;width:100%;min-height:min(100svh, calc(72svh + 34vw));padding-top:clamp(72px,9vh,104px);box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden;background:#0c0c0d;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
 
   <div data-av-sentinel="1" style="position:absolute;top:60px;left:0;width:1px;height:1px;pointer-events:none"></div>
 
@@ -212,19 +210,19 @@ a:hover{color:#f6bc4d}
       <div data-av-hatch="1" style="position:absolute;inset:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
     </div>
     <div data-av-bar="1" style="position:relative;height:clamp(72px,9vh,104px);transition:height .45s cubic-bezier(.22,.61,.36,1);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px">
-    <a href="#top" aria-label="Contractor Society — inicio" style="display:flex;flex-direction:column;gap:4px;line-height:1;text-decoration:none">
+    <a href="#" aria-label="Contractor Society — inicio" style="display:flex;flex-direction:column;gap:4px;line-height:1;text-decoration:none">
       <span style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(15px,min(1.25vw,2.1vh),19px);letter-spacing:.12em;color:#f4f1ea;text-transform:uppercase">Contractor</span>
       <span style="font-family:Archivo,sans-serif;font-weight:600;font-size:clamp(9.5px,.8vw,11px);letter-spacing:.62em;color:#e9a227;text-transform:uppercase">Society</span>
     </a>
 
     <sc-if value="{{ showDesktopNav }}" hint-placeholder-val="{{ true }}">
       <nav style="display:flex;align-items:center;gap:clamp(20px,2.6vw,44px)">
-        <a href="#servicios" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Servicios</a>
-        <a href="#resultados" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Resultados</a>
-        <a href="#proceso" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Proceso</a>
-        <a href="#nosotros" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Nosotros</a>
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Servicios</a>
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Resultados</a>
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Proceso</a>
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Nosotros</a>
         <sc-if value="{{ showNavCta }}" hint-placeholder-val="{{ true }}">
-          <a href="#agendar" style="font-family:Archivo,sans-serif;font-size:clamp(12px,.95vw,14px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#f4f1ea;border:1px solid rgba(244,241,234,.32);padding:clamp(10px,1vw,13px) clamp(18px,1.9vw,26px);border-radius:2px;backdrop-filter:blur(6px);background:rgba(12,12,13,.18)" style-hover="color:#0c0c0d;background:#f4f1ea;border-color:#f4f1ea">Agendar llamada</a>
+          <a href="#" style="font-family:Archivo,sans-serif;font-size:clamp(12px,.95vw,14px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#f4f1ea;border:1px solid rgba(244,241,234,.32);padding:clamp(10px,1vw,13px) clamp(18px,1.9vw,26px);border-radius:2px;backdrop-filter:blur(6px);background:rgba(12,12,13,.18)" style-hover="color:#0c0c0d;background:#f4f1ea;border-color:#f4f1ea">Agendar llamada</a>
         </sc-if>
       </nav>
     </sc-if>
@@ -240,11 +238,11 @@ a:hover{color:#f6bc4d}
 
   <div style="position:relative;z-index:3;overflow:hidden;transition:max-height .42s cubic-bezier(.22,.61,.36,1),opacity .3s ease;max-height:0px;opacity:0;pointer-events:none" data-av-menu="1">
     <div style="padding:22px 0 28px;box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;flex-direction:column;gap:2px;border-top:1px solid rgba(244,241,234,.12);transition:transform .42s cubic-bezier(.22,.61,.36,1);transform:translateY(-14px)" data-av-menu-inner="1">
-      <a href="#servicios" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Servicios</a>
-      <a href="#resultados" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Resultados</a>
-      <a href="#proceso" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Proceso</a>
-      <a href="#nosotros" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Nosotros</a>
-      <a href="#agendar" style="display:block;margin-top:22px;text-align:center;font-family:Archivo,sans-serif;font-size:14px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#0c0c0d;background:#e9a227;padding:17px 20px;border-radius:2px" style-hover="background:#f6bc4d;color:#0c0c0d">Agendar llamada</a>
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Servicios</a>
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Resultados</a>
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Proceso</a>
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Nosotros</a>
+      <a href="#" style="display:block;margin-top:22px;text-align:center;font-family:Archivo,sans-serif;font-size:14px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#0c0c0d;background:#e9a227;padding:17px 20px;border-radius:2px" style-hover="background:#f6bc4d;color:#0c0c0d">Agendar llamada</a>
     </div>
   </div>
   </header>
@@ -265,7 +263,7 @@ a:hover{color:#f6bc4d}
       <p style="margin:clamp(20px,3vh,34px) 0 0;max-width:min(100%,660px);font-size:clamp(15.5px,min(1.3vw,2.3vh),23px);line-height:1.55;font-weight:400;color:rgba(244,241,234,.74);text-wrap:pretty">Generamos y calificamos prospectos de remodelación de alto ticket, para que tu equipo solo hable con quien ya está listo para firmar.</p>
 
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(18px,2.2vw,30px);margin-top:clamp(28px,4.5vh,52px)">
-        <a href="#agendar" style="display:inline-flex;align-items:center;justify-content:center;gap:14px;background:#e9a227;color:#0c0c0d;font-family:Archivo,sans-serif;font-size:clamp(13px,min(1vw,1.75vh),17px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:clamp(15px,min(1.5vw,2.5vh),22px) clamp(24px,2.7vw,44px);border-radius:2px;box-shadow:0 18px 44px -18px rgba(233,162,39,.75)" style-hover="background:#f6bc4d;color:#0c0c0d">Agendar diagnóstico gratis<span style="font-size:1.15em;line-height:1">→</span></a>
+        <a href="#" style="display:inline-flex;align-items:center;justify-content:center;gap:14px;background:#e9a227;color:#0c0c0d;font-family:Archivo,sans-serif;font-size:clamp(13px,min(1vw,1.75vh),17px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:clamp(15px,min(1.5vw,2.5vh),22px) clamp(24px,2.7vw,44px);border-radius:2px;box-shadow:0 18px 44px -18px rgba(233,162,39,.75)" style-hover="background:#f6bc4d;color:#0c0c0d">Agendar diagnóstico gratis<span style="font-size:1.15em;line-height:1">→</span></a>
       </div>
 
       <sc-if value="{{ showTrustBar }}" hint-placeholder-val="{{ true }}">
@@ -365,7 +363,7 @@ a:hover{color:#f6bc4d}
           <p class="av-sv-desc" data-av-sv="desc">Campañas segmentadas por código postal, tipo de proyecto y presupuesto. Cada lead es solo tuyo y llega filtrado: sabes qué quiere hacer y cuánto piensa invertir antes de llamarlo.</p>
           <div class="av-sv-foot">
             <span class="av-sv-feat" data-av-sv="feat">Leads exclusivos y calificados</span>
-            <a href="#agendar" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+            <a href="#" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
           </div>
         </div>
       </article>
@@ -381,7 +379,7 @@ a:hover{color:#f6bc4d}
           <p class="av-sv-desc" data-av-sv="desc">Convertimos tus obras en contenido: antes y después, recorridos en video y testimonios de clientes. Tu perfil trabaja como portafolio y el cliente ya confía en ti antes de llamarte.</p>
           <div class="av-sv-foot">
             <span class="av-sv-feat" data-av-sv="feat">Plan de contenido mensual</span>
-            <a href="#agendar" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+            <a href="#" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
           </div>
         </div>
       </article>
@@ -397,7 +395,7 @@ a:hover{color:#f6bc4d}
           <p class="av-sv-desc" data-av-sv="desc">Presupuestos con tu logo, alcance detallado, materiales y fotos del proyecto. Un estimate claro y profesional transmite seriedad, justifica tu precio y te ayuda a cerrar trabajos más grandes.</p>
           <div class="av-sv-foot">
             <span class="av-sv-feat" data-av-sv="feat">Listos para enviar y firmar</span>
-            <a href="#agendar" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+            <a href="#" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
           </div>
         </div>
       </article>
@@ -413,7 +411,7 @@ a:hover{color:#f6bc4d}
           <p class="av-sv-desc" data-av-sv="desc">Optimizamos tu sitio web y tu perfil de Google Business para que aparezcas cuando tus clientes le pregunten a la IA por un contratista de confianza en su ciudad.</p>
           <div class="av-sv-foot">
             <span class="av-sv-feat" data-av-sv="feat">Antes que tu competencia</span>
-            <a href="#agendar" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+            <a href="#" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
           </div>
         </div>
       </article>
@@ -429,7 +427,7 @@ a:hover{color:#f6bc4d}
           <p class="av-sv-desc" data-av-sv="desc">Anuncios, redes y búsquedas en IA terminan en el mismo lugar: tu sitio web. Lo diseñamos para que cargue rápido en el celular, muestre tus mejores obras y reseñas, y convierta visitas en pedidos de estimate con los datos del proyecto.</p>
           <div class="av-sv-foot">
             <span class="av-sv-feat" data-av-sv="feat">Optimizado para Google e IA</span>
-            <a href="#agendar" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+            <a href="#" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
           </div>
         </div>
       </article>
@@ -914,9 +912,6 @@ class Component extends DCLogic {
     };
     this._onKey = (e) => { if (e.key === 'Escape' && this.state.video) this._closeVideo(); };
     document.addEventListener('keydown', this._onKey);
-    // Menu mobile: tocar num link fecha o menu (a rolagem até a âncora segue normal).
-    this._onMenuLink = (e) => { if (this.state.menuOpen && e.target && e.target.closest && e.target.closest('[data-av-menu] a')) { this.setState({ menuOpen: false }); this._repaint(); } };
-    document.addEventListener('click', this._onMenuLink);
     // Pré-aquece o popup no toque/clique (pointerdown chega ~100 ms antes do click) e no foco por teclado.
     this._onPrime = (e) => { const b = e.target && e.target.closest && e.target.closest('.av-reel-hit'); if (b) this._primeVideo(b); };
     document.addEventListener('pointerdown', this._onPrime, { passive: true, capture: true });
@@ -939,7 +934,6 @@ class Component extends DCLogic {
   componentWillUnmount() {
     this._unmounted = true;
     if (this._onKey) document.removeEventListener('keydown', this._onKey);
-    if (this._onMenuLink) document.removeEventListener('click', this._onMenuLink);
     if (this._onPrime) { document.removeEventListener('pointerdown', this._onPrime, true); document.removeEventListener('focusin', this._onPrime, true); }
     clearTimeout(this._primeT);
     clearTimeout(this._videoTimer);
