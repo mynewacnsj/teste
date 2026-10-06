@@ -115,15 +115,6 @@ a:hover{color:#f6bc4d}
 .av-sv-cta:hover svg{transform:translateX(3px)}
 .av-sv-cta:focus-visible{outline:2px solid #e9a227;outline-offset:3px}
 @media (min-width:760px){.av-sv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-/* Card 05 (Sitios web) fecha a grade em largura total: imagem à esquerda, texto à direita (≥900px). */
-@media (min-width:760px){.av-sv-card--wide{grid-column:1 / -1}}
-@media (min-width:900px){
-  .av-sv-card--wide{flex-direction:row}
-  .av-sv-card--wide .av-sv-media{flex:0 0 56%;aspect-ratio:3 / 2}
-  .av-sv-card--wide .av-sv-body{justify-content:center;padding:clamp(28px,3.2vw,52px)}
-  .av-sv-card--wide .av-sv-title{font-size:clamp(28px,2.6vw,38px)}
-  .av-sv-card--wide .av-sv-desc{flex:0 0 auto}
-}
 
 /* Popup do vídeo — moldura 9:16 centrada (nunca tela cheia). A abertura e o fechamento são animados
    em JS (Web Animations), não aqui: o card clicado cresce da posição dele no carrossel até a moldura
@@ -402,22 +393,6 @@ a:hover{color:#f6bc4d}
           <p class="av-sv-desc" data-av-sv="desc">Optimizamos tu sitio web y tu perfil de Google Business para que aparezcas cuando tus clientes le pregunten a la IA por un contratista de confianza en su ciudad.</p>
           <div class="av-sv-foot">
             <span class="av-sv-feat" data-av-sv="feat">Antes que tu competencia</span>
-            <a href="#" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
-          </div>
-        </div>
-      </article>
-      <article class="av-sv-card av-sv-card--wide" data-av-sv-card="05">
-        <div class="av-sv-media">
-          <img class="av-sv-img" src="./media/servicios/sitios-web.webp" alt="Sitio web de una empresa de remodelación en computadora y celular, con formulario de estimate y reseñas" loading="lazy" decoding="async" width="1080" height="720">
-          <span class="av-sv-num">05</span>
-          <span class="av-sv-chip" data-av-sv="chip">Español · English</span>
-        </div>
-        <div class="av-sv-body">
-          <p class="av-sv-tag" data-av-sv="tag">La base de tu marketing</p>
-          <h3 class="av-sv-title" data-av-sv="title">Sitios web</h3>
-          <p class="av-sv-desc" data-av-sv="desc">Anuncios, redes y búsquedas en IA terminan en el mismo lugar: tu sitio web. Lo diseñamos para el celular, con tus mejores obras, tus reseñas y un formulario de estimate que califica cada solicitud. Es la cara profesional de tu empresa.</p>
-          <div class="av-sv-foot">
-            <span class="av-sv-feat" data-av-sv="feat">Optimizado para Google y la IA</span>
             <a href="#" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
           </div>
         </div>
