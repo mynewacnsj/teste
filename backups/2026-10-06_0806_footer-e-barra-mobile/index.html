@@ -783,90 +783,6 @@ select.av-ag-input{padding-right:44px;cursor:pointer;background:#fff url("data:i
   .av-ns-c,.av-ct-s::after,.av-ct-n,.av-ct-arw,.av-ct-new,.av-ct-det,.av-ag-wash,.av-fq-plus,.av-ag-step,.av-ag-prog i{transition:none!important}
   .av-fq-i[open] .av-fq-a,.av-ag-form[data-step="3"] .av-ag-ok,.av-ag-tile input:checked + .av-ag-tile-v .av-ag-dot{animation:none!important}
 }
-
-/* ===== Footer — fecha a página; o wordmark gigante encosta na borda de baixo ===== */
-.av-ft{position:relative;isolation:isolate;overflow:hidden;background:#0c0c0d;color:#f4f1ea;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased;border-top:1px solid rgba(255,255,255,.08);padding-top:clamp(64px,7vw,112px)}
-.av-ft-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.av-ft-in{position:relative;z-index:2;width:var(--av-c);margin:0 auto;container-type:inline-size}
-.av-ft-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px}
-.av-ft-brand,.av-ft-contact{grid-column:1 / -1}
-@media (min-width:760px){
-  .av-ft-grid{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--av-g)}
-  .av-ft-contact{grid-column:auto}
-}
-@media (min-width:900px){
-  .av-ft-grid{grid-template-columns:repeat(12,minmax(0,1fr))}
-  .av-ft-brand{grid-column:1 / 5}
-  .av-ft-nav{grid-column:5 / 7}
-  .av-ft-svc{grid-column:7 / 10}
-  .av-ft-contact{grid-column:10 / 13}
-}
-.av-ft-logo{display:inline-flex;flex-direction:column;gap:4px;line-height:1;text-decoration:none}
-.av-ft-logo span:first-child{font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(15px,min(1.25vw,2.1vh),19px);letter-spacing:.12em;text-transform:uppercase;color:#f4f1ea}
-.av-ft-logo span:last-child{font-family:Archivo,sans-serif;font-weight:600;font-size:clamp(9.5px,.8vw,11px);letter-spacing:.62em;text-transform:uppercase;color:#e9a227}
-.av-ft-logo:focus-visible{outline:2px solid #e9a227;outline-offset:4px}
-.av-ft-tag{margin:18px 0 0;max-width:320px;font-size:16px;line-height:1.6;color:rgba(244,241,234,.7)}
-.av-ft-cta{display:inline-flex;align-items:center;gap:10px;min-height:44px;box-sizing:border-box;margin-top:24px;padding:0 20px;border:1px solid rgba(244,241,234,.32);border-radius:2px;font-family:Archivo,sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#f4f1ea;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
-.av-ft-cta svg{display:block;width:12px;height:12px}
-.av-ft-cta:hover{background:#f4f1ea;border-color:#f4f1ea;color:#0c0c0d}
-.av-ft-cta:focus-visible{outline:2px solid #e9a227;outline-offset:3px}
-.av-ft-h{margin:0 0 18px;font-family:Archivo,sans-serif;font-weight:600;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#e9a227}
-.av-ft-col ul{margin:0;padding:0;list-style:none}
-.av-ft-links a{display:inline-block;padding:11px 0;font-size:15.5px;line-height:1.35;color:rgba(244,241,234,.72);transition:color .2s ease,transform .2s ease}
-@media (min-width:760px){.av-ft-links a{padding:7px 0}}
-.av-ft-links a:hover{color:#fff;transform:translateX(2px)}
-.av-ft-links a:focus-visible,.av-ft-cl a:focus-visible,.av-ft-legal a:focus-visible,.av-ft-soc:focus-visible{outline:2px solid #e9a227;outline-offset:2px}
-.av-ft-cl{display:grid;gap:10px}
-.av-ft-cl li{display:flex;align-items:flex-start;gap:10px;min-width:0;font-size:15px;line-height:1.5;color:rgba(244,241,234,.72)}
-.av-ft-cl svg{display:block;flex:0 0 auto;width:16px;height:16px;margin-top:3px;color:#f4f1ea;opacity:.45}
-.av-ft-cl a{display:inline-block;margin:-10px 0;padding:10px 0;color:rgba(244,241,234,.72);overflow-wrap:anywhere;transition:color .2s ease}
-.av-ft-cl a:hover{color:#fff}
-.av-ft-trust{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:40px;padding-top:24px;border-top:1px solid rgba(244,241,234,.08)}
-.av-ft-soc{display:grid;place-items:center;width:36px;height:36px;box-sizing:border-box;border:1px solid rgba(244,241,234,.16);border-radius:2px;color:#f4f1ea;transition:border-color .2s ease}
-.av-ft-soc:hover{border-color:#e9a227;color:#f4f1ea}
-.av-ft-soc svg{display:block;width:16px;height:16px}
-.av-ft-seal{height:32px;opacity:.7}
-.av-ft-legal{margin-top:clamp(48px,5vw,72px);padding:22px 0;border-top:1px solid rgba(244,241,234,.08);font-size:12.5px;line-height:1.6;color:rgba(244,241,234,.5)}
-.av-ft-legal p{margin:0}
-.av-ft-disc{margin-top:8px!important}
-.av-ft-disc span{display:block}
-.av-ft-legal a{color:rgba(244,241,234,.5);text-decoration:none;text-underline-offset:3px}
-.av-ft-legal a:hover{color:#f4f1ea;text-decoration:underline}
-@media (min-width:900px){
-  .av-ft-legal{display:flex;justify-content:space-between;gap:24px}
-  .av-ft-disc{max-width:560px;margin-top:0!important;text-align:right}
-}
-/* Wordmark: tamanho base em cqw (sem CLS); o _fitWordmark ajusta a largura exata pelo ResizeObserver do .av-ft-in. */
-.av-ft-mark{position:relative;z-index:1;height:.74em;margin-top:clamp(32px,5vw,72px);overflow:hidden;font-family:Archivo,sans-serif;font-weight:800;font-size:15.6cqw;line-height:.8;letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;user-select:none;pointer-events:none}
-@media (min-width:760px){.av-ft-mark{font-size:8.7cqw}}
-@media (max-width:759px){
-  .av-ft-mark{height:1.54em}
-  .av-ft-m1,.av-ft-m2{display:block;width:max-content}
-}
-.av-ft-mark-t{display:block;transform:translateY(6%);transition:transform 1.1s var(--av-ease),opacity 1.1s var(--av-ease)}
-/* Gatilho na faixa legal logo acima: o wordmark encosta na borda de baixo e cairia na margem -8% do observer. */
-html.av-js .av-ft-legal:not([data-in]) + .av-ft-mark .av-ft-mark-t{opacity:0;transform:translateY(24%)}
-.av-ft-m1{color:rgba(244,241,234,.05)}
-.av-ft-m2{color:rgba(233,162,39,.07)}
-
-/* ===== Barra fixa mobile (<900px, o mesmo ponto do hambúrguer). Visibilidade só por IntersectionObserver. ===== */
-.av-mb{position:fixed;left:0;right:0;bottom:0;z-index:35;isolation:isolate;box-sizing:border-box;padding:10px 16px calc(10px + env(safe-area-inset-bottom, 0px));background:#0c0c0d;border-top:1px solid rgba(244,241,234,.12);transform:translate3d(0,calc(100% + 12px),0);opacity:0;visibility:hidden;pointer-events:none;transition:transform .22s var(--av-exit),opacity .22s ease,visibility 0s linear .22s}
-.av-mb[data-show="1"]{transform:none;opacity:1;visibility:visible;pointer-events:auto;transition:transform .36s cubic-bezier(.2,.8,.2,1),opacity .25s ease,visibility 0s}
-@media (min-width:900px){.av-mb{display:none}}
-.av-mb-in{position:relative;z-index:1;display:flex;gap:10px;max-width:560px;margin:0 auto}
-.av-mb-cta{display:flex;flex:1 1 auto;align-items:center;justify-content:center;gap:10px;min-height:48px;box-sizing:border-box;padding:0 16px;background:#e9a227;color:#0c0c0d;border-radius:2px;font-family:Archivo,sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;transition:background-color .2s ease,transform .15s ease;-webkit-tap-highlight-color:transparent}
-.av-mb-cta:hover,.av-mb-cta:active{background:#f6bc4d;color:#0c0c0d}
-.av-mb-cta:active{transform:scale(.98)}
-.av-mb-cta .av-arw{color:#0c0c0d}
-.av-mb-wa{display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;box-sizing:border-box;border:1px solid rgba(244,241,234,.24);border-radius:2px;color:#f4f1ea;-webkit-tap-highlight-color:transparent}
-.av-mb-wa:hover{color:#f4f1ea;border-color:#e9a227}
-.av-mb-wa svg{display:block;width:22px;height:22px}
-.av-mb-cta:focus-visible,.av-mb-wa:focus-visible{outline:2px solid #e9a227;outline-offset:2px}
-@media (prefers-reduced-motion:reduce){
-  .av-mb{transform:none;transition:opacity .16s ease,visibility 0s linear .16s}
-  .av-mb[data-show="1"]{transition:opacity .16s ease,visibility 0s}
-  .av-ft-mark-t{transition:none}
-}
 </style>
 </helmet>
 
@@ -1527,73 +1443,6 @@ html.av-js .av-ft-legal:not([data-in]) + .av-ft-mark .av-ft-mark-t{opacity:0;tra
   </div>
 </section>
 
-<footer class="av-ft">
-  <div class="av-ft-bg" aria-hidden="true">
-    <div data-av-grain="1" style="position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat"></div>
-    <div data-av-hatch="1" style="position:absolute;inset:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
-  </div>
-  <div class="av-ft-in">
-    <div class="av-ft-grid">
-      <div class="av-ft-brand">
-        <a href="#top" class="av-ft-logo" aria-label="Contractor Society — inicio"><span>Contractor</span><span>Society</span></a>
-        <p class="av-ft-tag">Marketing para contratistas de remodelación en EE. UU. En español, de principio a fin.</p>
-        <a href="#agendar" class="av-ft-cta">Agendar llamada<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
-      </div>
-      <nav class="av-ft-col av-ft-nav" aria-labelledby="ft-nav-h">
-        <h3 class="av-ft-h" id="ft-nav-h">Navegación</h3>
-        <ul class="av-ft-links">
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#resultados">Resultados</a></li>
-          <li><a href="#proceso">Proceso</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#preguntas">Preguntas</a></li>
-        </ul>
-      </nav>
-      <nav class="av-ft-col av-ft-svc" aria-labelledby="ft-svc-h">
-        <h3 class="av-ft-h" id="ft-svc-h">Servicios</h3>
-        <ul class="av-ft-links">
-          <li><a href="#meta-ads">Meta Ads</a></li>
-          <li><a href="#social-media">Social Media</a></li>
-          <li><a href="#estimates">Estimates personalizados</a></li>
-          <li><a href="#seo-ia">SEO para IA</a></li>
-          <li><a href="#sitios-web">Sitios web</a></li>
-        </ul>
-      </nav>
-      <div class="av-ft-col av-ft-contact">
-        <h3 class="av-ft-h">Contacto</h3>
-        <ul class="av-ft-cl">
-          <sc-if value="{{ hasWhatsapp }}" hint-placeholder-val="{{ true }}"><li data-av-tbd="WhatsApp (CFG.whatsapp)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4a9.6 9.6 0 0 0-8.3 14.5L2.4 21.6l4.8-1.3A9.6 9.6 0 1 0 12 2.4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><path d="M8.7 7.3c.2-.4.5-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.2.3 0 .6.5.9 1.6 2 2.6 2.5.3.2.5.1.6 0l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.4.4 0 .6-.2 1.2-.6 1.5-.5.4-1.2.7-1.9.6-1-.1-2.6-.7-4-2-1.6-1.4-2.5-3-2.7-4-.2-.9.1-1.6.4-1.9z" fill="currentColor"></path></svg><span class="sr">WhatsApp: </span><a href="{{ waHref }}" target="_blank" rel="noopener">{{ waDisplay }}</a></li></sc-if>
-          <sc-if value="{{ hasPhone }}" hint-placeholder-val="{{ true }}"><li data-av-tbd="Teléfono (CFG.phoneDisplay / phoneHref)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 3.5h3.2l1.6 4.3-2.1 1.4a11 11 0 0 0 6.9 6.9l1.4-2.1 4.3 1.6v3.2a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 3.2 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg><span class="sr">Teléfono: </span><a href="{{ telHref }}">{{ phoneDisplay }}</a></li></sc-if>
-          <sc-if value="{{ hasEmail }}" hint-placeholder-val="{{ true }}"><li data-av-tbd="Correo (CFG.email)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"></rect><path d="M3.8 6.5l8.2 6.2 8.2-6.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg><span class="sr">Correo: </span><a href="{{ mailHref }}">{{ email }}</a></li></sc-if>
-          <li data-av-tbd="Horario (CFG.horario)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.6"></circle><path d="M12 7.4V12l3.2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg><span>{{ horario }}</span></li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h9v7H8.5L5 16.4v-2.9H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><path d="M15.5 9.5H20v7h-1v2.6l-3-2.6h-4.5v-1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg><span>Atendemos en español e inglés</span></li>
-          <li data-av-tbd="Estados atendidos (CFG.estados)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6.6-6.2 6.6-11.2a6.6 6.6 0 0 0-13.2 0C5.4 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.6"></path><circle cx="12" cy="9.8" r="2.3" fill="none" stroke="currentColor" stroke-width="1.6"></circle></svg><span>{{ estados }}</span></li>
-          <li data-av-tbd="Razón social y estado (CFG.llc)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h8.5L19 8v12.5H6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><path d="M14 3.8V8.5h4.6M9 12.5h7M9 16h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg><span>{{ llc }}</span></li>
-        </ul>
-      </div>
-    </div>
-    <sc-if value="{{ showTrust }}" hint-placeholder-val="{{ false }}">
-      <div class="av-ft-trust">
-        <sc-for list="{{ redes }}" as="rd"><a class="av-ft-soc" href="{{ rd.url }}" target="_blank" rel="noopener" aria-label="{{ rd.label }}"><sc-if value="{{ rd.ig }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"></rect><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"></circle><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"></circle></svg></sc-if><sc-if value="{{ rd.fb }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.6-1.5h1.5V4.3c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.2v3h2.5V21" fill="currentColor"></path></svg></sc-if><sc-if value="{{ rd.yt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.8" y="5.5" width="18.4" height="13" rx="3.4" fill="none" stroke="currentColor" stroke-width="1.6"></rect><path d="M10.2 9.2v5.6l4.8-2.8z" fill="currentColor"></path></svg></sc-if><sc-if value="{{ rd.tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.3 3.3 0 1 1-3.3-3.3M14 3.5c.4 2.6 2.2 4.3 4.8 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg></sc-if><sc-if value="{{ rd.gg }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12.2c0-.6 0-1.1-.1-1.7H12v3.3h4.5a3.9 3.9 0 0 1-1.7 2.5v2h2.7c1.6-1.4 2.5-3.6 2.5-6.1zM12 20.2c2.3 0 4.2-.8 5.5-2.1l-2.7-2c-.7.5-1.7.8-2.8.8-2.2 0-4-1.5-4.7-3.4H4.6v2.1A8.2 8.2 0 0 0 12 20.2zM7.3 13.5a4.9 4.9 0 0 1 0-3.1V8.3H4.6a8.2 8.2 0 0 0 0 7.3zM12 6.9c1.2 0 2.3.4 3.2 1.2l2.4-2.4A8.2 8.2 0 0 0 4.6 8.3l2.7 2.1C8 8.4 9.8 6.9 12 6.9z" fill="currentColor"></path></svg></sc-if></a></sc-for>
-        <sc-for list="{{ seals }}" as="sl"><span class="av-seal av-ft-seal" role="img" aria-label="{{ sl.alt }}" style="{{ sl.style }}"></span></sc-for>
-      </div>
-    </sc-if>
-    <div class="av-ft-legal" data-av-rv="none">
-      <p class="av-ft-copy">© 2026 Contractor Society LLC · <a href="./privacidad.html">Política de privacidad</a> · <a href="./terminos.html">Términos</a></p>
-      <p class="av-ft-disc"><span>Los resultados varían según zona, ticket, inversión y capacidad de cierre.</span><span>Este sitio no forma parte de Meta Platforms, Inc. ni está respaldado por Meta.</span></p>
-    </div>
-    <div class="av-ft-mark" aria-hidden="true"><span class="av-ft-mark-t"><span class="av-ft-m1">Contractor</span> <span class="av-ft-m2">Society</span></span></div>
-  </div>
-</footer>
-
-<div class="av-mb" data-av-mbar="1" role="region" aria-label="Agendar diagnóstico">
-  <span class="av-tex-d" aria-hidden="true"></span>
-  <div class="av-mb-in">
-    <a href="#agendar" class="av-mb-cta">Agendar diagnóstico<svg class="av-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
-    <sc-if value="{{ hasWhatsapp }}" hint-placeholder-val="{{ true }}"><a class="av-mb-wa" href="{{ waHref }}" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4a9.6 9.6 0 0 0-8.3 14.5L2.4 21.6l4.8-1.3A9.6 9.6 0 1 0 12 2.4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><path d="M8.7 7.3c.2-.4.5-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.2.3 0 .6.5.9 1.6 2 2.6 2.5.3.2.5.1.6 0l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.4.4 0 .6-.2 1.2-.6 1.5-.5.4-1.2.7-1.9.6-1-.1-2.6-.7-4-2-1.6-1.4-2.5-3-2.7-4-.2-.9.1-1.6.4-1.9z" fill="currentColor"></path></svg></a></sc-if>
-  </div>
-</div>
-
 <div data-av-vmodal="1" class="av-vmodal" data-state="{{ videoState }}" role="dialog" aria-modal="true" aria-label="Video" aria-hidden="{{ videoHidden }}">
   <div data-av-vveil="1" class="av-vmodal-veil" onClick="{{ closeVideo }}">
     <div class="av-vmodal-grain"></div>
@@ -1758,9 +1607,6 @@ class Component extends DCLogic {
       if (this._mountReveal) this._mountReveal();
       if (this._syncForm) this._syncForm();
       if (this._mountTeamPhoto) this._mountTeamPhoto();
-      if (this._mountMbar) this._mountMbar();
-      if (this._syncMbar) this._syncMbar();
-      if (this._mountWordmark) this._mountWordmark();
     };
 
     // A re-render can remount an sc-if branch and restore its static style,
@@ -2443,62 +2289,6 @@ class Component extends DCLogic {
     };
     document.addEventListener('focusin', this._onCalFocus);
 
-    // ---- Barra fixa mobile: aparece depois do hero e some ao chegar no #agendar (e no footer). Só IO;
-    // as flags ficam na instância (sem setState) e o resultado vai direto no DOM.
-    this._mb = { heroOut: false, atAg: false };
-    this._mountMbar = () => {
-      if (this._mbHeroIO || typeof IntersectionObserver === 'undefined') return;
-      const hero = q('[data-av-root]'), ag = document.getElementById('agendar');
-      if (!hero || !ag) return;
-      this._mbHeroIO = new IntersectionObserver(es => { this._mb.heroOut = !es[es.length - 1].isIntersecting; this._syncMbar(); }, { threshold: 0 });
-      this._mbHeroIO.observe(hero);
-      this._mbAgIO = new IntersectionObserver(es => { const en = es[es.length - 1]; this._mb.atAg = en.isIntersecting || en.boundingClientRect.top < 0; this._syncMbar(); }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
-      this._mbAgIO.observe(ag);
-    };
-    this._syncMbar = () => {
-      const el = q('[data-av-mbar]');
-      if (!el) return;
-      const st = this.state;
-      const show = st.w < 900 && this._mb.heroOut && !this._mb.atAg && !st.video && !this._vpending && !st.cal && !st.menuOpen;
-      const v = show ? '1' : '0';
-      if (el.getAttribute('data-show') === v) return;
-      el.setAttribute('data-show', v);
-      el.setAttribute('aria-hidden', show ? 'false' : 'true');
-      if (show) el.removeAttribute('inert'); else el.setAttribute('inert', '');
-    };
-
-    // ---- Wordmark do footer: ocupa a largura exata do container (medida no próprio .av-ft-in, nunca innerWidth).
-    // No mobile são 2 linhas e a 2ª ganha letter-spacing para igualar a largura da 1ª (eco do logo).
-    this._fitWordmark = () => {
-      const box = q('.av-ft-in'), mark = q('.av-ft-mark');
-      const m1 = mark && mark.querySelector('.av-ft-m1'), m2 = mark && mark.querySelector('.av-ft-m2');
-      if (!box || !mark || !m1 || !m2) return;
-      const W = box.clientWidth;
-      if (!W) return;
-      const two = getComputedStyle(m2).display === 'block';
-      m2.style.letterSpacing = '';
-      mark.style.fontSize = '';
-      const fs = parseFloat(getComputedStyle(mark).fontSize) || 0;
-      const r1 = m1.getBoundingClientRect(), r2 = m2.getBoundingClientRect();
-      const w = two ? r1.width : (r2.right - r1.left);
-      if (!fs || !w) return;
-      const nf = Math.floor(fs * W / w * 100) / 100;
-      mark.style.fontSize = nf + 'px';
-      if (two) {
-        const w1 = m1.getBoundingClientRect().width, w2 = m2.getBoundingClientRect().width;
-        const n = (m2.textContent || '').length;
-        if (n > 1) m2.style.letterSpacing = (-0.04 * nf + (w1 - w2) / (n - 1)).toFixed(2) + 'px';
-      }
-    };
-    this._mountWordmark = () => {
-      if (this._wmRO || typeof ResizeObserver === 'undefined') return;
-      const box = q('.av-ft-in');
-      if (!box) return;
-      this._wmRO = new ResizeObserver(() => { const w = box.clientWidth; if (w === this._wmW) return; this._wmW = w; this._fitWordmark(); });
-      this._wmRO.observe(box);
-      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this._fitWordmark());
-    };
-
     this._onKey = (e) => { if (e.key !== 'Escape') return; if (this.state.cal) this._closeCal(); else if (this.state.video) this._closeVideo(); };
     document.addEventListener('keydown', this._onKey);
     // Menu mobile: tocar num link fecha o menu (a rolagem até a âncora segue normal).
@@ -2561,9 +2351,6 @@ class Component extends DCLogic {
     if (this._onFormBlur) document.removeEventListener('focusout', this._onFormBlur);
     if (this._onCalFocus) document.removeEventListener('focusin', this._onCalFocus);
     if (this._focusIO) this._focusIO.disconnect();
-    if (this._mbHeroIO) this._mbHeroIO.disconnect();
-    if (this._mbAgIO) this._mbAgIO.disconnect();
-    if (this._wmRO) this._wmRO.disconnect();
     clearTimeout(this._calTimer);
     if (this.state.cal) document.documentElement.style.overflow = '';
     if (this._onPrime) { document.removeEventListener('pointerdown', this._onPrime, true); document.removeEventListener('focusin', this._onPrime, true); }
@@ -2646,18 +2433,6 @@ class Component extends DCLogic {
       waLeadHref: this._leadWa || waShort,
       failHref: CFG.whatsapp ? (this._leadWa || waShort) : (this._leadMail || ('mailto:' + CFG.email)),
       failLabel: CFG.whatsapp ? 'Enviar por WhatsApp' : 'Enviar por correo',
-      waDisplay: (() => { const d = String(CFG.whatsapp || ''); return d.length === 11 && d[0] === '1' ? '+1 (' + d.slice(1, 4) + ') ' + d.slice(4, 7) + '-' + d.slice(7) : '+' + d; })(),
-      hasPhone: !!CFG.phoneHref,
-      telHref: 'tel:' + CFG.phoneHref,
-      phoneDisplay: CFG.phoneDisplay,
-      hasEmail: !!CFG.email,
-      mailHref: 'mailto:' + CFG.email,
-      email: CFG.email,
-      horario: CFG.horario,
-      estados: CFG.estados,
-      llc: CFG.llc,
-      showTrust: (this.props.showTrust ?? false) && ((CFG.redes || []).length + this._seals.length) > 0,
-      redes: this._redes || (this._redes = (CFG.redes || []).map(r => ({ url: r.url, label: ({ instagram: 'Instagram', facebook: 'Facebook', youtube: 'YouTube', tiktok: 'TikTok', google: 'Google' })[r.red] || r.red, ig: r.red === 'instagram', fb: r.red === 'facebook', yt: r.red === 'youtube', tt: r.red === 'tiktok', gg: r.red === 'google' }))),
       calState: this.state.cal ? 'open' : 'closed',
       calHidden: this.state.cal ? 'false' : 'true',
       ejemplo: this.props.datosDeEjemplo ?? true,
