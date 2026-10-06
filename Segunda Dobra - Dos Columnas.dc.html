@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#12100d}
+a{color:#e9a227;text-decoration:none}
+a:hover{color:#f6bc4d}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(255,255,255,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#e9a227;color:#12100d;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 Barlow,system-ui,sans-serif;color:rgba(244,241,234,.9)}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(244,241,234,.12);color:#f4f1ea;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 Barlow,system-ui,sans-serif;color:rgba(244,241,234,.5)}
+.dv-card{max-width:100%;border:1px solid rgba(244,241,234,.1);border-radius:6px;box-shadow:0 24px 60px -30px rgba(0,0,0,.9);overflow:hidden}
+.dv-opt:target .dv-oid{background:#e9a227;color:#12100d}
+.dv-next{margin:26px 0 0;font:12px/1.5 Barlow,system-ui,sans-serif;color:rgba(244,241,234,.45)}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t5">
+<div class="dv-thd"><a class="dv-tid" href="#t5">5</a><span class="dv-tname">Mobile — pórtico compacto: objeto fechado, pilares gruesos</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="5a">
+<div class="dv-olabel"><a class="dv-oid" href="#5a">5a</a>Mobile · 390 — desktop sigue en <a class="dv-oid" href="#3a">3a</a></div>
+<div class="dv-card">
+
+<div style="position:relative;width:390px;background:#0c0c0d;overflow:hidden;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(108deg,rgba(233,162,39,0) 4%,rgba(233,162,39,.05) 18%,rgba(233,162,39,.115) 30%,rgba(233,162,39,.03) 46%,rgba(233,162,39,0) 62%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(64% 34% at 6% 1%,rgba(233,162,39,.15) 0%,rgba(233,162,39,0) 62%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.075;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.13;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+
+  <div style="position:relative;z-index:2;padding:64px 0 68px">
+
+    <div style="padding:0 22px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <div style="width:30px;height:2px;background:#e9a227"></div>
+        <span style="font-family:Archivo,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
+      </div>
+      <h2 style="margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:22px;line-height:1.16;letter-spacing:-.028em;color:#ffffff;text-wrap:pretty">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
+      <p style="margin:16px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo.</p>
+    </div>
+
+    <div style="position:relative;width:270px;height:282px;margin:46px auto 48px">
+
+      <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+        <div data-av-portal5="1" aria-hidden="true" style="position:absolute;inset:0;opacity:.52;pointer-events:none">
+
+          <div style="position:absolute;top:0;left:0;width:270px;height:46px;overflow:hidden;background:linear-gradient(100deg,#191815 0%,#3d3930 15%,#7a7466 40%,#514c40 68%,#26251f 88%,#151412 100%)">
+            <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.09) 0px,rgba(255,255,255,.09) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.55) 0px,rgba(0,0,0,.55) 1.3px,rgba(0,0,0,0) 1.5px),radial-gradient(circle at 14% 82%,rgba(255,255,255,.05) 0px,rgba(255,255,255,.05) 1.6px,rgba(0,0,0,0) 1.9px);background-size:9px 9px,15px 15px,27px 27px"></div>
+            <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 16%,rgba(0,0,0,0) 54%,rgba(0,0,0,.62) 100%)"></div>
+          </div>
+          <div style="position:absolute;top:46px;left:0;width:270px;height:8px;background:linear-gradient(180deg,#0c0b0a 0%,#151412 55%,#080807 100%)"></div>
+
+          <div style="position:absolute;top:54px;left:0;width:96px;height:14px;overflow:hidden;background:linear-gradient(100deg,#22211c 0%,#403c33 18%,#726c5d 46%,#484438 74%,#1e1d19 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 44%,rgba(0,0,0,0) 100%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.32) 0%,rgba(233,162,39,.08) 16%,rgba(0,0,0,0) 38%)"></div>
+          </div>
+          <div style="position:absolute;top:68px;bottom:44px;left:4px;width:88px;overflow:hidden;background:linear-gradient(90deg,#4a463a 0%,#ada58f 7%,#8d8672 18%,#655f4f 36%,#434034 56%,#2b2a22 76%,#1a1915 92%,#121110 100%);clip-path:polygon(4% 0,96% 0,97.4% 26%,95.6% 52%,97.6% 79%,100% 100%,0 100%,2.4% 79%,4.4% 52%,2.6% 26%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.2) 0%,rgba(255,214,132,.85) 6%,rgba(233,162,39,.46) 15%,rgba(233,162,39,.16) 30%,rgba(233,162,39,.02) 48%,rgba(0,0,0,0) 64%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0) 48%,rgba(0,0,0,.4) 80%,rgba(0,0,0,.7) 100%)"></div>
+            <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.09) 0px,rgba(255,255,255,.09) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.5) 0px,rgba(0,0,0,.5) 1.3px,rgba(0,0,0,0) 1.5px),radial-gradient(circle at 16% 80%,rgba(0,0,0,.4) 0px,rgba(0,0,0,.4) 1.7px,rgba(0,0,0,0) 2px);background-size:9px 9px,15px 15px,31px 29px"></div>
+            <div style="position:absolute;inset:0;opacity:.6;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.055) 1px,rgba(255,255,255,.055) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 66px)"></div>
+            <div style="position:absolute;top:22%;left:26%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.8),rgba(0,0,0,.45) 62%,rgba(255,255,255,.16) 100%)"></div>
+            <div style="position:absolute;top:70%;left:26%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.8),rgba(0,0,0,.45) 62%,rgba(255,255,255,.16) 100%)"></div>
+            <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.28) 7%,rgba(0,0,0,0) 18%,rgba(0,0,0,0) 86%,rgba(0,0,0,.55) 100%)"></div>
+          </div>
+          <div style="position:absolute;bottom:32px;left:0;width:96px;height:12px;overflow:hidden;background:linear-gradient(100deg,#201f1a 0%,#3c3830 18%,#6d6759 46%,#454136 74%,#1c1b17 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,.5) 100%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.3) 0%,rgba(233,162,39,.07) 17%,rgba(0,0,0,0) 40%)"></div>
+          </div>
+
+          <div style="position:absolute;top:54px;left:174px;width:96px;height:14px;overflow:hidden;background:linear-gradient(100deg,#1e1d19 0%,#3a362e 18%,#6a6456 46%,#423e34 74%,#1b1a16 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 44%,rgba(0,0,0,0) 100%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.3) 0%,rgba(233,162,39,.07) 16%,rgba(0,0,0,0) 38%)"></div>
+          </div>
+          <div style="position:absolute;top:68px;bottom:44px;left:178px;width:88px;overflow:hidden;background:linear-gradient(90deg,#3e3b31 0%,#948d78 7%,#767059 19%,#524d3f 38%,#37342b 58%,#242320 78%,#171613 93%,#101010 100%);clip-path:polygon(4% 0,96% 0,97.4% 26%,95.6% 52%,97.6% 79%,100% 100%,0 100%,2.4% 79%,4.4% 52%,2.6% 26%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.16) 0%,rgba(255,205,110,.72) 6%,rgba(233,162,39,.36) 16%,rgba(233,162,39,.1) 32%,rgba(0,0,0,0) 52%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0) 42%,rgba(0,0,0,.45) 76%,rgba(0,0,0,.75) 100%)"></div>
+            <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.08) 0px,rgba(255,255,255,.08) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.5) 0px,rgba(0,0,0,.5) 1.3px,rgba(0,0,0,0) 1.5px),radial-gradient(circle at 16% 80%,rgba(0,0,0,.4) 0px,rgba(0,0,0,.4) 1.7px,rgba(0,0,0,0) 2px);background-size:9px 9px,15px 15px,31px 29px"></div>
+            <div style="position:absolute;inset:0;opacity:.6;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.05) 1px,rgba(255,255,255,.05) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 66px)"></div>
+            <div style="position:absolute;top:38%;left:24%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.8),rgba(0,0,0,.45) 62%,rgba(255,255,255,.14) 100%)"></div>
+            <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.28) 7%,rgba(0,0,0,0) 18%,rgba(0,0,0,0) 86%,rgba(0,0,0,.55) 100%)"></div>
+          </div>
+          <div style="position:absolute;bottom:32px;left:174px;width:96px;height:12px;overflow:hidden;background:linear-gradient(100deg,#1e1d18 0%,#38352c 18%,#666055 46%,#423e34 74%,#1a1915 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.055) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,.5) 100%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.28) 0%,rgba(233,162,39,.06) 17%,rgba(0,0,0,0) 40%)"></div>
+          </div>
+
+          <div style="position:absolute;bottom:0;left:0;width:270px;height:32px;overflow:hidden;background:linear-gradient(100deg,#171614 0%,#37342c 16%,#786f5f 42%,#4a463b 68%,#232219 88%,#131211 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(255,255,255,.08) 14%,rgba(255,255,255,0) 36%,rgba(0,0,0,.5) 100%)"></div>
+            <div style="position:absolute;top:0;left:0;width:110px;height:14px;background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 100%)"></div>
+            <div style="position:absolute;top:0;left:168px;width:110px;height:14px;background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 100%)"></div>
+            <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.08) 0px,rgba(255,255,255,.08) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.5) 0px,rgba(0,0,0,.5) 1.3px,rgba(0,0,0,0) 1.5px)"></div>
+            <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+          </div>
+
+        </div>
+      </sc-if>
+
+      <div aria-hidden="true" style="position:absolute;top:0;left:0;width:270px;height:2px;z-index:4;background:linear-gradient(90deg,#ffd684 0%,#f6bc4d 26%,#e9a227 66%,rgba(233,162,39,.45) 100%);box-shadow:0 1px 0 rgba(0,0,0,.85),0 0 16px rgba(233,162,39,.45)"></div>
+      <div style="position:absolute;top:2px;left:0;width:270px;height:44px;z-index:4;display:flex;align-items:center;justify-content:center;padding:0 18px;box-sizing:border-box">
+        <span style="display:flex;flex-direction:column;align-items:center;gap:3px;font-family:Archivo,sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;line-height:1.5;text-align:center;text-transform:uppercase;color:#f4f1ea"><span>Agenda llena · Alto ticket</span><span>Sin pelear por precio</span></span>
+      </div>
+
+      <div aria-hidden="true" style="position:absolute;left:-60px;right:-60px;top:-40px;bottom:-40px;z-index:1;pointer-events:none;background:linear-gradient(108deg,rgba(233,162,39,0) 6%,rgba(233,162,39,.16) 24%,rgba(233,162,39,.05) 42%,rgba(233,162,39,0) 60%)"></div>
+      <div aria-hidden="true" style="position:absolute;left:-60px;right:-60px;top:-40px;bottom:-40px;z-index:5;pointer-events:none;opacity:.6;-webkit-mask-image:linear-gradient(108deg,rgba(0,0,0,0) 6%,rgba(0,0,0,1) 24%,rgba(0,0,0,.45) 42%,rgba(0,0,0,0) 60%);mask-image:linear-gradient(108deg,rgba(0,0,0,0) 6%,rgba(0,0,0,1) 24%,rgba(0,0,0,.45) 42%,rgba(0,0,0,0) 60%);background-image:radial-gradient(circle at 22% 32%,rgba(255,228,170,.85) 0px,rgba(255,228,170,.85) 1px,rgba(0,0,0,0) 1.4px),radial-gradient(circle at 64% 71%,rgba(255,228,170,.55) 0px,rgba(255,228,170,.55) .8px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 86% 18%,rgba(255,228,170,.4) 0px,rgba(255,228,170,.4) 1.3px,rgba(0,0,0,0) 1.8px);background-size:43px 49px,27px 29px,71px 63px"></div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:32px;padding:0 22px">
+      <div style="position:relative;padding-left:20px">
+        <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+        <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">01 — Demanda</div>
+        <h3 style="margin:11px 0 0;font-family:Archivo,sans-serif;font-size:21px;font-weight:700;letter-spacing:-.022em;line-height:1.18;color:#ffffff">Que te encuentren primero.</h3>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Google, Meta y tu ficha local trabajando todo el año — no solo en temporada alta. Leads exclusivos tuyos, no compartidos con otros cinco contratistas.</p>
+      </div>
+      <div style="position:relative;padding-left:20px">
+        <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+        <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">02 — Filtro</div>
+        <h3 style="margin:11px 0 0;font-family:Archivo,sans-serif;font-size:21px;font-weight:700;letter-spacing:-.022em;line-height:1.18;color:#ffffff">Que hables solo con quien firma.</h3>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Presupuesto, fecha y dirección confirmados antes de que subas a la troca. Tu equipo deja de cotizar gratis.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:24px;margin-top:42px;padding:0 22px">
+      <sc-if value="{{ showTagline }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-family:Archivo,sans-serif;font-size:16px;font-weight:600;text-align:center;color:#e9a227">Si falta una columna, todo se cae.</p>
+      </sc-if>
+      <a href="#" style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;box-sizing:border-box;font-family:Archivo,sans-serif;font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#e9a227;border:1px solid rgba(233,162,39,.55);padding:18px 20px;border-radius:2px;background:rgba(233,162,39,.04)" style-hover="background:#e9a227;color:#0c0c0d;border-color:#e9a227">Ver cómo funciona<span style="font-size:1.15em;line-height:1">→</span></a>
+    </div>
+
+  </div>
+
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:6;pointer-events:none;background:radial-gradient(96% 54% at 50% 42%,rgba(0,0,0,0) 30%,rgba(0,0,0,.44) 74%,rgba(0,0,0,.74) 100%)"></div>
+</div>
+
+</div>
+</div>
+
+</div>
+<p class="dv-next">Probar: “pilares aún más gruesos en <a class="dv-oid" href="#5a">5a</a>” · “pórtico más alto” · “más contraste entre lado iluminado y sombra”</p>
+</section>
+
+<section class="dv-turn" id="t4">
+<div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">Mobile — pórtico habitado: se rola por dentro da estrutura</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="4a">
+<div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a>Mobile · 390 — desktop sigue en <a class="dv-oid" href="#3a">3a</a></div>
+<div class="dv-card">
+
+<div style="position:relative;width:390px;background:#0c0c0d;overflow:hidden;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(108deg,rgba(233,162,39,0) 4%,rgba(233,162,39,.05) 18%,rgba(233,162,39,.115) 30%,rgba(233,162,39,.03) 46%,rgba(233,162,39,0) 62%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(64% 34% at 6% 1%,rgba(233,162,39,.15) 0%,rgba(233,162,39,0) 62%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.075;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.13;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+
+  <div style="position:relative;z-index:2;padding:64px 0 68px">
+
+    <div style="padding:0 22px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <div style="width:30px;height:2px;background:#e9a227"></div>
+        <span style="font-family:Archivo,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
+      </div>
+      <h2 style="margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:22px;line-height:1.16;letter-spacing:-.028em;color:#ffffff;text-wrap:pretty">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
+      <p style="margin:16px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo.</p>
+    </div>
+
+    <div style="position:relative;width:390px;margin-top:40px;padding:98px 52px 62px;box-sizing:border-box">
+
+      <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+        <div data-av-portal="1" aria-hidden="true" style="position:absolute;inset:0;opacity:.34;pointer-events:none">
+
+          <div style="position:absolute;top:0;left:0;right:0;height:62px;overflow:hidden;background:linear-gradient(100deg,#171614 0%,#38352c 16%,#6b6556 40%,#4b473c 66%,#232219 88%,#141311 100%)">
+            <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.09) 0px,rgba(255,255,255,.09) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.55) 0px,rgba(0,0,0,.55) 1.3px,rgba(0,0,0,0) 1.5px),radial-gradient(circle at 14% 82%,rgba(255,255,255,.05) 0px,rgba(255,255,255,.05) 1.6px,rgba(0,0,0,0) 1.9px);background-size:9px 9px,15px 15px,27px 27px"></div>
+            <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 14%,rgba(0,0,0,0) 52%,rgba(0,0,0,.6) 100%)"></div>
+          </div>
+          <div style="position:absolute;top:62px;left:0;right:0;height:10px;background:linear-gradient(180deg,#0b0b0a 0%,#141311 60%,#080808 100%)"></div>
+
+          <div style="position:absolute;top:72px;bottom:36px;left:-16px;width:54px;overflow:hidden;background:linear-gradient(90deg,#141311 0%,#2b2924 20%,#9b9484 33%,#6b6556 47%,#403c32 70%,#232219 88%,#151412 100%);clip-path:polygon(0 0,84% 0,86.5% 22%,84.6% 44%,87% 68%,100% 100%,0 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0) 14%,rgba(233,162,39,.18) 25%,rgba(255,205,110,.95) 31%,rgba(233,162,39,.5) 41%,rgba(233,162,39,.1) 62%,rgba(0,0,0,0) 82%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0) 52%,rgba(0,0,0,.45) 82%,rgba(0,0,0,.7) 100%)"></div>
+            <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.08) 0px,rgba(255,255,255,.08) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.5) 0px,rgba(0,0,0,.5) 1.3px,rgba(0,0,0,0) 1.5px)"></div>
+            <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.05) 1px,rgba(255,255,255,.05) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 94px)"></div>
+            <div style="position:absolute;top:14%;left:52%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.8),rgba(0,0,0,.45) 62%,rgba(255,255,255,.14) 100%)"></div>
+            <div style="position:absolute;top:56%;left:52%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.8),rgba(0,0,0,.45) 62%,rgba(255,255,255,.14) 100%)"></div>
+            <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 6%,rgba(0,0,0,0) 16%,rgba(0,0,0,0) 88%,rgba(0,0,0,.5) 100%)"></div>
+          </div>
+
+          <div style="position:absolute;top:72px;bottom:36px;right:-16px;width:54px;overflow:hidden;background:linear-gradient(90deg,#9b9484 0%,#7d7767 11%,#57523f 31%,#3a372e 56%,#26251f 80%,#161512 100%);clip-path:polygon(16% 0,100% 0,100% 100%,0 100%,13% 68%,15.4% 44%,13.5% 22%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,.95) 0%,rgba(233,162,39,.62) 8%,rgba(233,162,39,.16) 26%,rgba(0,0,0,0) 52%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0) 46%,rgba(0,0,0,.42) 78%,rgba(0,0,0,.68) 100%)"></div>
+            <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.08) 0px,rgba(255,255,255,.08) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.5) 0px,rgba(0,0,0,.5) 1.3px,rgba(0,0,0,0) 1.5px)"></div>
+            <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.05) 1px,rgba(255,255,255,.05) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 94px)"></div>
+            <div style="position:absolute;top:30%;left:34%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.8),rgba(0,0,0,.45) 62%,rgba(255,255,255,.14) 100%)"></div>
+            <div style="position:absolute;top:72%;left:34%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.8),rgba(0,0,0,.45) 62%,rgba(255,255,255,.14) 100%)"></div>
+            <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 6%,rgba(0,0,0,0) 16%,rgba(0,0,0,0) 88%,rgba(0,0,0,.5) 100%)"></div>
+          </div>
+
+          <div style="position:absolute;bottom:0;left:0;right:0;height:36px;overflow:hidden;background:linear-gradient(100deg,#151412 0%,#34312a 16%,#7a7466 42%,#4a463b 68%,#242320 88%,#131211 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.7) 0%,rgba(255,255,255,.09) 12%,rgba(255,255,255,0) 34%,rgba(0,0,0,.45) 100%)"></div>
+            <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.08) 0px,rgba(255,255,255,.08) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.5) 0px,rgba(0,0,0,.5) 1.3px,rgba(0,0,0,0) 1.5px)"></div>
+            <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+          </div>
+
+        </div>
+      </sc-if>
+
+      <div aria-hidden="true" style="position:absolute;left:26px;right:26px;top:72px;bottom:36px;pointer-events:none;background:radial-gradient(76% 60% at 50% 50%,rgba(8,8,9,.62) 0%,rgba(8,8,9,.3) 60%,rgba(8,8,9,0) 100%)"></div>
+      <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(108deg,rgba(233,162,39,0) 2%,rgba(233,162,39,.14) 20%,rgba(233,162,39,.05) 38%,rgba(233,162,39,0) 56%)"></div>
+      <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.55;-webkit-mask-image:linear-gradient(108deg,rgba(0,0,0,0) 4%,rgba(0,0,0,1) 22%,rgba(0,0,0,.45) 40%,rgba(0,0,0,0) 58%);mask-image:linear-gradient(108deg,rgba(0,0,0,0) 4%,rgba(0,0,0,1) 22%,rgba(0,0,0,.45) 40%,rgba(0,0,0,0) 58%);background-image:radial-gradient(circle at 22% 32%,rgba(255,228,170,.85) 0px,rgba(255,228,170,.85) 1px,rgba(0,0,0,0) 1.4px),radial-gradient(circle at 64% 71%,rgba(255,228,170,.55) 0px,rgba(255,228,170,.55) .8px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 86% 18%,rgba(255,228,170,.4) 0px,rgba(255,228,170,.4) 1.3px,rgba(0,0,0,0) 1.8px);background-size:47px 53px,29px 31px,73px 67px"></div>
+
+      <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:2px;z-index:4;background:linear-gradient(90deg,#f6bc4d 0%,#f6bc4d 34%,#e9a227 72%,rgba(233,162,39,.5) 100%);box-shadow:0 1px 0 rgba(0,0,0,.85),0 0 18px rgba(233,162,39,.4)"></div>
+      <div style="position:absolute;top:2px;left:0;right:0;height:60px;z-index:4;display:flex;align-items:center;justify-content:center;padding:0 42px;box-sizing:border-box">
+        <span style="font-family:Archivo,sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;line-height:1.9;text-align:center;text-transform:uppercase;color:#f4f1ea">Agenda llena · Trabajos de alto ticket · Sin pelear por precio</span>
+      </div>
+
+      <div style="position:relative;z-index:3;display:flex;flex-direction:column;gap:34px">
+        <div style="position:relative;padding-left:16px">
+          <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+          <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">01 — Demanda</div>
+          <h3 style="margin:11px 0 0;font-family:Archivo,sans-serif;font-size:20px;font-weight:700;letter-spacing:-.022em;line-height:1.18;color:#ffffff">Que te encuentren primero.</h3>
+          <p style="margin:10px 0 0;font-size:14.5px;line-height:1.6;color:rgba(244,241,234,.74);text-wrap:pretty">Google, Meta y tu ficha local trabajando todo el año — no solo en temporada alta. Leads exclusivos tuyos, no compartidos con otros cinco contratistas.</p>
+        </div>
+        <div style="position:relative;padding-left:16px">
+          <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+          <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">02 — Filtro</div>
+          <h3 style="margin:11px 0 0;font-family:Archivo,sans-serif;font-size:20px;font-weight:700;letter-spacing:-.022em;line-height:1.18;color:#ffffff">Que hables solo con quien firma.</h3>
+          <p style="margin:10px 0 0;font-size:14.5px;line-height:1.6;color:rgba(244,241,234,.74);text-wrap:pretty">Presupuesto, fecha y dirección confirmados antes de que subas a la troca. Tu equipo deja de cotizar gratis.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:24px;margin-top:40px;padding:0 22px">
+      <sc-if value="{{ showTagline }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-family:Archivo,sans-serif;font-size:16px;font-weight:600;text-align:center;color:#e9a227">Si falta una columna, todo se cae.</p>
+      </sc-if>
+      <a href="#" style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;box-sizing:border-box;font-family:Archivo,sans-serif;font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#e9a227;border:1px solid rgba(233,162,39,.55);padding:18px 20px;border-radius:2px;background:rgba(233,162,39,.04)" style-hover="background:#e9a227;color:#0c0c0d;border-color:#e9a227">Ver cómo funciona<span style="font-size:1.15em;line-height:1">→</span></a>
+    </div>
+
+  </div>
+
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:5;pointer-events:none;background:radial-gradient(112% 82% at 50% 44%,rgba(0,0,0,0) 34%,rgba(0,0,0,.5) 78%,rgba(0,0,0,.78) 100%)"></div>
+</div>
+
+</div>
+</div>
+
+</div>
+<p class="dv-next">Probar: “pilares más anchos en <a class="dv-oid" href="#4a">4a</a>” · “más polvo en el haz de luz” · “llevar este pórtico habitado al desktop”</p>
+</section>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Acabamento — pilares mais presentes, pórtico no mobile</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Desktop · 1440</div>
+<div class="dv-card">
+
+<div style="position:relative;width:1440px;background:#0c0c0d;overflow:hidden;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(72deg,rgba(233,162,39,0) 28%,rgba(233,162,39,.03) 41%,rgba(233,162,39,.08) 51%,rgba(233,162,39,.02) 62%,rgba(233,162,39,0) 74%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(64% 48% at 86% 2%,rgba(233,162,39,.12) 0%,rgba(233,162,39,0) 58%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.1;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(124% 96% at 50% 44%,rgba(0,0,0,0) 42%,rgba(0,0,0,.6) 100%)"></div>
+
+  <div style="position:relative;z-index:2;width:1152px;margin:0 auto;padding:96px 0 88px">
+
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px">
+        <div style="width:42px;height:2px;background:#e9a227"></div>
+        <span style="font-family:Archivo,sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
+      </div>
+      <h2 style="margin:0;max-width:1152px;font-family:Archivo,sans-serif;font-weight:800;font-size:39px;line-height:1.08;letter-spacing:-.04em;color:#ffffff">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
+      <p style="margin:24px 0 0;max-width:720px;font-size:18px;line-height:1.62;color:rgba(244,241,234,.72);text-wrap:pretty">Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo.</p>
+    </div>
+
+    <div style="position:relative;width:1000px;margin:56px auto 0">
+      <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:3px;z-index:3;background:linear-gradient(90deg,rgba(233,162,39,.3) 0%,#e9a227 15%,#f6bc4d 50%,#e9a227 85%,rgba(233,162,39,.26) 100%);box-shadow:0 1px 0 rgba(0,0,0,.85),0 0 22px rgba(233,162,39,.45)"></div>
+      <div style="position:relative;height:74px;overflow:hidden;background:linear-gradient(100deg,#090909 0%,#101010 22%,#17171a 48%,#111111 74%,#070707 100%);box-shadow:0 26px 54px -28px rgba(0,0,0,1);display:flex;align-items:center;justify-content:center">
+        <div aria-hidden="true" style="position:absolute;inset:0;opacity:.85;background-image:radial-gradient(circle at 32% 42%,rgba(255,255,255,.04) 0px,rgba(255,255,255,.04) .9px,rgba(0,0,0,0) 1.1px),radial-gradient(circle at 68% 66%,rgba(0,0,0,.6) 0px,rgba(0,0,0,.6) 1.1px,rgba(0,0,0,0) 1.3px),radial-gradient(circle at 15% 80%,rgba(255,255,255,.025) 0px,rgba(255,255,255,.025) 1.4px,rgba(0,0,0,0) 1.6px);background-size:9px 9px,14px 14px,23px 23px"></div>
+        <div aria-hidden="true" style="position:absolute;inset:0;opacity:.14;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+        <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 14%,rgba(0,0,0,0) 56%,rgba(0,0,0,.6) 100%)"></div>
+        <span style="position:relative;font-family:Archivo,sans-serif;font-size:13.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#f4f1ea;white-space:nowrap">Agenda llena · Trabajos de alto ticket · Sin pelear por precio</span>
+      </div>
+    </div>
+
+    <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:96px">
+
+      <div style="position:relative;padding:74px 0;box-sizing:border-box">
+        <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+          <div data-av-pillar="1" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:180px;opacity:.28;pointer-events:none">
+            <div style="position:absolute;top:0;left:-16px;width:212px;height:23px;overflow:hidden;background:linear-gradient(100deg,#2a2924 0%,#403d34 12%,#57533f 34%,#8b8574 52%,#565244 74%,#302f28 90%,#22211c 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 42%,rgba(0,0,0,0) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,1) 1.4%,rgba(233,162,39,.85) 4%,rgba(233,162,39,.22) 15%,rgba(233,162,39,0) 34%)"></div>
+            </div>
+            <div style="position:absolute;top:23px;bottom:32px;left:0;width:180px;overflow:hidden;background:linear-gradient(100deg,#26251f 0%,#3b3830 12%,#474338 34%,#8b8574 54%,#514d41 76%,#2c2b24 92%,#1e1d19 100%);clip-path:polygon(3.4% 0,96.6% 0,97.4% 21%,96.2% 47%,97.6% 73%,100% 100%,0 100%,2.3% 73%,3.4% 47%,2.2% 21%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,1) 1.6%,rgba(233,162,39,.98) 3.4%,rgba(233,162,39,.68) 9%,rgba(233,162,39,.24) 24%,rgba(233,162,39,.04) 44%,rgba(233,162,39,.16) 80%,rgba(233,162,39,0) 100%)"></div>
+              <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) .9px,rgba(0,0,0,0) 1.1px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px),radial-gradient(circle at 12% 78%,rgba(255,255,255,.035) 0px,rgba(255,255,255,.035) 1.5px,rgba(0,0,0,0) 1.7px)"></div>
+              <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.055) 1px,rgba(255,255,255,.055) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 116px)"></div>
+              <div style="position:absolute;inset:0;opacity:.4;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0px,rgba(0,0,0,0) 3px,rgba(255,255,255,.05) 7px,rgba(0,0,0,0) 12px)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.3) 9%,rgba(0,0,0,0) 24%)"></div>
+              <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+              <div style="position:absolute;top:26%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+              <div style="position:absolute;top:74%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:-19px;width:218px;height:32px;overflow:hidden;background:linear-gradient(100deg,#24231e 0%,#38352d 12%,#434036 34%,#6d6858 52%,#4b4739 74%,#2a2923 90%,#1c1b17 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.4) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,.96) 1.4%,rgba(233,162,39,.78) 4.5%,rgba(233,162,39,.18) 16%,rgba(233,162,39,0) 36%)"></div>
+            </div>
+          </div>
+        </sc-if>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:15px;width:430px;max-width:100%;margin:0 auto;text-wrap:pretty">
+          <div style="font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">01 — Demanda</div>
+          <h3 style="margin:0;width:100%;text-align:left;font-family:Archivo,sans-serif;font-size:29px;font-weight:700;letter-spacing:-.022em;line-height:1.14;color:#ffffff">Que te encuentren primero.</h3>
+          <p style="margin:0;width:100%;text-align:left;font-size:17px;line-height:1.62;color:rgba(244,241,234,.72);text-wrap:pretty">Google, Meta y tu ficha local trabajando todo el año — no solo en temporada alta. Leads exclusivos tuyos, no compartidos con otros cinco contratistas.</p>
+        </div>
+      </div>
+
+      <div style="position:relative;padding:74px 0;box-sizing:border-box">
+        <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+          <div data-av-pillar="1" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:180px;opacity:.28;pointer-events:none">
+            <div style="position:absolute;top:0;left:-16px;width:212px;height:23px;overflow:hidden;background:linear-gradient(100deg,#2a2924 0%,#403d34 12%,#57533f 34%,#8b8574 52%,#565244 74%,#302f28 90%,#22211c 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 42%,rgba(0,0,0,0) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,1) 1.4%,rgba(233,162,39,.85) 4%,rgba(233,162,39,.22) 15%,rgba(233,162,39,0) 34%)"></div>
+            </div>
+            <div style="position:absolute;top:23px;bottom:32px;left:0;width:180px;overflow:hidden;background:linear-gradient(100deg,#26251f 0%,#3b3830 12%,#474338 34%,#8b8574 54%,#514d41 76%,#2c2b24 92%,#1e1d19 100%);clip-path:polygon(3.4% 0,96.6% 0,97.4% 21%,96.2% 47%,97.6% 73%,100% 100%,0 100%,2.3% 73%,3.4% 47%,2.2% 21%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,1) 1.6%,rgba(233,162,39,.98) 3.4%,rgba(233,162,39,.68) 9%,rgba(233,162,39,.24) 24%,rgba(233,162,39,.04) 44%,rgba(233,162,39,.16) 80%,rgba(233,162,39,0) 100%)"></div>
+              <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) .9px,rgba(0,0,0,0) 1.1px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px),radial-gradient(circle at 12% 78%,rgba(255,255,255,.035) 0px,rgba(255,255,255,.035) 1.5px,rgba(0,0,0,0) 1.7px)"></div>
+              <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.055) 1px,rgba(255,255,255,.055) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 116px)"></div>
+              <div style="position:absolute;inset:0;opacity:.4;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0px,rgba(0,0,0,0) 3px,rgba(255,255,255,.05) 7px,rgba(0,0,0,0) 12px)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.3) 9%,rgba(0,0,0,0) 24%)"></div>
+              <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+              <div style="position:absolute;top:26%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+              <div style="position:absolute;top:74%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:-19px;width:218px;height:32px;overflow:hidden;background:linear-gradient(100deg,#24231e 0%,#38352d 12%,#434036 34%,#6d6858 52%,#4b4739 74%,#2a2923 90%,#1c1b17 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.4) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,.96) 1.4%,rgba(233,162,39,.78) 4.5%,rgba(233,162,39,.18) 16%,rgba(233,162,39,0) 36%)"></div>
+            </div>
+          </div>
+        </sc-if>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:15px;width:430px;max-width:100%;margin:0 auto;text-wrap:pretty">
+          <div style="font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">02 — Filtro</div>
+          <h3 style="margin:0;width:100%;text-align:left;font-family:Archivo,sans-serif;font-size:29px;font-weight:700;letter-spacing:-.022em;line-height:1.14;color:#ffffff">Que hables solo con quien firma.</h3>
+          <p style="margin:0;width:100%;text-align:left;font-size:17px;line-height:1.62;color:rgba(244,241,234,.72);text-wrap:pretty">Presupuesto, fecha y dirección confirmados antes de que subas a la troca. Tu equipo deja de cotizar gratis.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div aria-hidden="true" style="width:1000px;margin:0 auto;height:14px;border-top:1px solid rgba(244,241,234,.1);background:linear-gradient(180deg,rgba(150,145,132,.11) 0%,rgba(150,145,132,.015) 100%)"></div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:30px;margin-top:46px">
+      <sc-if value="{{ showTagline }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-family:Archivo,sans-serif;font-size:18px;font-weight:600;letter-spacing:.01em;color:#e9a227">Si falta una columna, todo se cae.</p>
+      </sc-if>
+      <a href="#" style="display:inline-flex;align-items:center;gap:14px;font-family:Archivo,sans-serif;font-size:14px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#0c0c0d;background:#e9a227;padding:20px 44px;border-radius:2px;box-shadow:0 8px 16px -14px rgba(233,162,39,.35)" style-hover="background:#f6bc4d;color:#0c0c0d">Ver cómo funciona<span style="font-size:1.15em;line-height:1">→</span></a>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</div>
+
+<div class="dv-opt" id="3b">
+<div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>Mobile · 390</div>
+<div class="dv-card">
+
+<div style="position:relative;width:390px;background:#0c0c0d;overflow:hidden;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(72deg,rgba(233,162,39,0) 24%,rgba(233,162,39,.03) 39%,rgba(233,162,39,.075) 51%,rgba(233,162,39,.02) 63%,rgba(233,162,39,0) 76%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(72% 36% at 90% 2%,rgba(233,162,39,.11) 0%,rgba(233,162,39,0) 60%)"></div>
+  <div data-av-ghost="1" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:206px;opacity:.07;filter:blur(22px);pointer-events:none;background:linear-gradient(100deg,rgba(12,12,13,0) 0%,#4a4639 16%,#8f897a 48%,#4a4639 82%,rgba(12,12,13,0) 100%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.075;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.13;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 92% at 50% 46%,rgba(0,0,0,0) 50%,rgba(0,0,0,.5) 100%)"></div>
+
+  <div style="position:relative;z-index:2;padding:64px 0 70px">
+
+    <div style="padding:0 22px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <div style="width:30px;height:2px;background:#e9a227"></div>
+        <span style="font-family:Archivo,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
+      </div>
+      <h2 style="margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:22px;line-height:1.16;letter-spacing:-.028em;color:#ffffff;text-wrap:pretty">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
+      <p style="margin:16px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo.</p>
+    </div>
+
+    <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+      <div data-av-portico="1" aria-hidden="true" style="position:relative;width:240px;height:200px;margin:42px auto 46px;opacity:.4;pointer-events:none">
+        <div style="position:absolute;top:0;left:0;width:240px;height:3px;z-index:3;background:linear-gradient(90deg,rgba(233,162,39,.3) 0%,#e9a227 14%,#f6bc4d 50%,#e9a227 86%,rgba(233,162,39,.26) 100%);box-shadow:0 1px 0 rgba(0,0,0,.85),0 0 16px rgba(233,162,39,.5)"></div>
+        <div style="position:absolute;top:0;left:0;width:240px;height:24px;overflow:hidden;background:linear-gradient(100deg,#0d0d0c 0%,#161614 24%,#201f1c 52%,#161614 78%,#0b0b0a 100%)">
+          <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.07) 0px,rgba(255,255,255,.07) .9px,rgba(0,0,0,0) 1.1px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px)"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,0) 16%,rgba(0,0,0,0) 54%,rgba(0,0,0,.6) 100%)"></div>
+        </div>
+          <div style="position:absolute;top:24px;left:24px;width:52px;height:13px;overflow:hidden;background:linear-gradient(100deg,#2c2b24 0%,#413d34 14%,#645f4f 36%,#8a8474 56%,#565244 78%,#302f27 92%,#22211c 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 46%,rgba(0,0,0,0) 100%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+          </div>
+          <div style="position:absolute;top:37px;bottom:24px;left:32px;width:36px;overflow:hidden;background:linear-gradient(100deg,#2a2922 0%,#3d3a31 12%,#5c5747 34%,#8f897a 56%,#524e40 78%,#2d2c24 92%,#1f1e19 100%);clip-path:polygon(4% 0,96% 0,97.6% 26%,95.8% 54%,97.4% 79%,100% 100%,0 100%,2.6% 79%,4.2% 54%,2.4% 26%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+            <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.07) 0px,rgba(255,255,255,.07) .9px,rgba(0,0,0,0) 1.1px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px)"></div>
+            <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.05) 1px,rgba(255,255,255,.05) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 62px)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.25) 10%,rgba(0,0,0,0) 26%)"></div>
+            <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+          </div>
+          <div style="position:absolute;bottom:0;left:20px;width:60px;height:24px;overflow:hidden;background:linear-gradient(100deg,#26251f 0%,#3a362d 14%,#5c5747 36%,#807a6a 56%,#4c483b 78%,#2b2a23 92%,#1d1c18 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.07) 0%,rgba(0,0,0,0) 32%,rgba(0,0,0,.42) 100%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+          </div>
+          <div style="position:absolute;top:24px;left:164px;width:52px;height:13px;overflow:hidden;background:linear-gradient(100deg,#2c2b24 0%,#413d34 14%,#645f4f 36%,#8a8474 56%,#565244 78%,#302f27 92%,#22211c 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 46%,rgba(0,0,0,0) 100%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+          </div>
+          <div style="position:absolute;top:37px;bottom:24px;left:172px;width:36px;overflow:hidden;background:linear-gradient(100deg,#2a2922 0%,#3d3a31 12%,#5c5747 34%,#8f897a 56%,#524e40 78%,#2d2c24 92%,#1f1e19 100%);clip-path:polygon(4% 0,96% 0,97.6% 26%,95.8% 54%,97.4% 79%,100% 100%,0 100%,2.6% 79%,4.2% 54%,2.4% 26%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+            <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.07) 0px,rgba(255,255,255,.07) .9px,rgba(0,0,0,0) 1.1px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px)"></div>
+            <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.05) 1px,rgba(255,255,255,.05) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 62px)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.25) 10%,rgba(0,0,0,0) 26%)"></div>
+            <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+          </div>
+          <div style="position:absolute;bottom:0;left:160px;width:60px;height:24px;overflow:hidden;background:linear-gradient(100deg,#26251f 0%,#3a362d 14%,#5c5747 36%,#807a6a 56%,#4c483b 78%,#2b2a23 92%,#1d1c18 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.07) 0%,rgba(0,0,0,0) 32%,rgba(0,0,0,.42) 100%)"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+          </div>
+        <div style="position:absolute;bottom:0;left:0;width:240px;height:1px;background:rgba(244,241,234,.18)"></div>
+      </div>
+    </sc-if>
+
+    <div style="display:flex;flex-direction:column;gap:32px;padding:0 22px">
+      <div style="position:relative;padding-left:20px">
+        <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+        <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">01 — Demanda</div>
+        <h3 style="margin:11px 0 0;font-family:Archivo,sans-serif;font-size:21px;font-weight:700;letter-spacing:-.022em;line-height:1.18;color:#ffffff">Que te encuentren primero.</h3>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Google, Meta y tu ficha local trabajando todo el año — no solo en temporada alta. Leads exclusivos tuyos, no compartidos con otros cinco contratistas.</p>
+      </div>
+      <div style="position:relative;padding-left:20px">
+        <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+        <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">02 — Filtro</div>
+        <h3 style="margin:11px 0 0;font-family:Archivo,sans-serif;font-size:21px;font-weight:700;letter-spacing:-.022em;line-height:1.18;color:#ffffff">Que hables solo con quien firma.</h3>
+        <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Presupuesto, fecha y dirección confirmados antes de que subas a la troca. Tu equipo deja de cotizar gratis.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:22px;margin-top:44px;padding:0 22px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:9px;font-family:Archivo,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(233,162,39,.78);text-align:center">
+        <span>Agenda llena</span>
+        <span>Trabajos de alto ticket</span>
+        <span>Sin pelear por precio</span>
+      </div>
+      <sc-if value="{{ showTagline }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-family:Archivo,sans-serif;font-size:16px;font-weight:600;text-align:center;color:#e9a227">Si falta una columna, todo se cae.</p>
+      </sc-if>
+      <a href="#" style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;box-sizing:border-box;margin-top:6px;font-family:Archivo,sans-serif;font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#e9a227;border:1px solid rgba(233,162,39,.55);padding:18px 20px;border-radius:2px;background:rgba(233,162,39,.04)" style-hover="background:#e9a227;color:#0c0c0d;border-color:#e9a227">Ver cómo funciona<span style="font-size:1.15em;line-height:1">→</span></a>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<p class="dv-next">Probar: “pórtico más grande en <a class="dv-oid" href="#3b">3b</a>” · “pilares aún más presentes en <a class="dv-oid" href="#3a">3a</a>” · “probar el pórtico también en desktop, como remate”</p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Refino — dintel de concreto, pilares encurtados, âmbar só no CTA</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Desktop · 1440</div>
+<div class="dv-card">
+
+<div style="position:relative;width:1440px;background:#0c0c0d;overflow:hidden;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(72deg,rgba(233,162,39,0) 28%,rgba(233,162,39,.03) 41%,rgba(233,162,39,.08) 51%,rgba(233,162,39,.02) 62%,rgba(233,162,39,0) 74%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(64% 48% at 86% 2%,rgba(233,162,39,.12) 0%,rgba(233,162,39,0) 58%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.1;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(124% 96% at 50% 44%,rgba(0,0,0,0) 42%,rgba(0,0,0,.6) 100%)"></div>
+
+  <div style="position:relative;z-index:2;width:1152px;margin:0 auto;padding:96px 0 88px">
+
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px">
+        <div style="width:42px;height:2px;background:#e9a227"></div>
+        <span style="font-family:Archivo,sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
+      </div>
+      <h2 style="margin:0;max-width:1152px;font-family:Archivo,sans-serif;font-weight:800;font-size:39px;line-height:1.08;letter-spacing:-.04em;color:#ffffff">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
+      <p style="margin:24px 0 0;max-width:720px;font-size:18px;line-height:1.62;color:rgba(244,241,234,.72);text-wrap:pretty">Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo.</p>
+    </div>
+
+    <div style="position:relative;width:1000px;margin:56px auto 0">
+      <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:3px;z-index:3;background:linear-gradient(90deg,rgba(233,162,39,.3) 0%,#e9a227 15%,#f6bc4d 50%,#e9a227 85%,rgba(233,162,39,.26) 100%);box-shadow:0 1px 0 rgba(0,0,0,.85),0 0 22px rgba(233,162,39,.45)"></div>
+      <div style="position:relative;height:74px;overflow:hidden;background:linear-gradient(100deg,#090909 0%,#101010 22%,#17171a 48%,#111111 74%,#070707 100%);box-shadow:0 26px 54px -28px rgba(0,0,0,1);display:flex;align-items:center;justify-content:center">
+        <div aria-hidden="true" style="position:absolute;inset:0;opacity:.85;background-image:radial-gradient(circle at 32% 42%,rgba(255,255,255,.04) 0px,rgba(255,255,255,.04) .9px,rgba(0,0,0,0) 1.1px),radial-gradient(circle at 68% 66%,rgba(0,0,0,.6) 0px,rgba(0,0,0,.6) 1.1px,rgba(0,0,0,0) 1.3px),radial-gradient(circle at 15% 80%,rgba(255,255,255,.025) 0px,rgba(255,255,255,.025) 1.4px,rgba(0,0,0,0) 1.6px);background-size:9px 9px,14px 14px,23px 23px"></div>
+        <div aria-hidden="true" style="position:absolute;inset:0;opacity:.14;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+        <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 14%,rgba(0,0,0,0) 56%,rgba(0,0,0,.6) 100%)"></div>
+        <span style="position:relative;font-family:Archivo,sans-serif;font-size:13.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#f4f1ea;white-space:nowrap">Agenda llena · Trabajos de alto ticket · Sin pelear por precio</span>
+      </div>
+    </div>
+
+    <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:96px">
+
+      <div style="position:relative;padding:74px 0;box-sizing:border-box">
+        <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+          <div data-av-pillar="1" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:180px;opacity:.22;pointer-events:none">
+            <div style="position:absolute;top:0;left:-16px;width:212px;height:23px;overflow:hidden;background:linear-gradient(100deg,#2a2924 0%,#403d34 12%,#4a4639 34%,#6b6659 52%,#565244 74%,#302f28 90%,#22211c 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 42%,rgba(0,0,0,0) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.6) 0%,rgba(233,162,39,.08) 12%,rgba(233,162,39,0) 30%)"></div>
+            </div>
+            <div style="position:absolute;top:23px;bottom:32px;left:0;width:180px;overflow:hidden;background:linear-gradient(100deg,#26251f 0%,#3b3830 12%,#474338 34%,#6b6659 54%,#514d41 76%,#2c2b24 92%,#1e1d19 100%);clip-path:polygon(3.4% 0,96.6% 0,97.4% 21%,96.2% 47%,97.6% 73%,100% 100%,0 100%,2.3% 73%,3.4% 47%,2.2% 21%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.85) 0%,rgba(233,162,39,.32) 7%,rgba(233,162,39,.06) 20%,rgba(233,162,39,0) 44%,rgba(233,162,39,.1) 78%,rgba(233,162,39,0) 100%)"></div>
+              <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) .9px,rgba(0,0,0,0) 1.1px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px),radial-gradient(circle at 12% 78%,rgba(255,255,255,.035) 0px,rgba(255,255,255,.035) 1.5px,rgba(0,0,0,0) 1.7px)"></div>
+              <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.055) 1px,rgba(255,255,255,.055) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 116px)"></div>
+              <div style="position:absolute;inset:0;opacity:.4;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0px,rgba(0,0,0,0) 3px,rgba(255,255,255,.05) 7px,rgba(0,0,0,0) 12px)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.3) 9%,rgba(0,0,0,0) 24%)"></div>
+              <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+              <div style="position:absolute;top:26%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+              <div style="position:absolute;top:74%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:-19px;width:218px;height:32px;overflow:hidden;background:linear-gradient(100deg,#24231e 0%,#38352d 12%,#434036 34%,#5e5a4d 52%,#4b4739 74%,#2a2923 90%,#1c1b17 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.4) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.55) 0%,rgba(233,162,39,.07) 13%,rgba(233,162,39,0) 32%)"></div>
+            </div>
+          </div>
+        </sc-if>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:15px;max-width:430px;margin:0 auto">
+          <div style="font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">01 — Demanda</div>
+          <h3 style="margin:0;font-family:Archivo,sans-serif;font-size:29px;font-weight:700;letter-spacing:-.022em;line-height:1.14;color:#ffffff">Que te encuentren primero.</h3>
+          <p style="margin:0;font-size:17px;line-height:1.62;color:rgba(244,241,234,.72);text-wrap:pretty">Google, Meta y tu ficha local trabajando todo el año — no solo en temporada alta. Leads exclusivos tuyos, no compartidos con otros cinco contratistas.</p>
+        </div>
+      </div>
+
+      <div style="position:relative;padding:74px 0;box-sizing:border-box">
+        <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+          <div data-av-pillar="1" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:180px;opacity:.22;pointer-events:none">
+            <div style="position:absolute;top:0;left:-16px;width:212px;height:23px;overflow:hidden;background:linear-gradient(100deg,#2a2924 0%,#403d34 12%,#4a4639 34%,#6b6659 52%,#565244 74%,#302f28 90%,#22211c 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 42%,rgba(0,0,0,0) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.6) 0%,rgba(233,162,39,.08) 12%,rgba(233,162,39,0) 30%)"></div>
+            </div>
+            <div style="position:absolute;top:23px;bottom:32px;left:0;width:180px;overflow:hidden;background:linear-gradient(100deg,#26251f 0%,#3b3830 12%,#474338 34%,#6b6659 54%,#514d41 76%,#2c2b24 92%,#1e1d19 100%);clip-path:polygon(3.4% 0,96.6% 0,97.4% 21%,96.2% 47%,97.6% 73%,100% 100%,0 100%,2.3% 73%,3.4% 47%,2.2% 21%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.85) 0%,rgba(233,162,39,.32) 7%,rgba(233,162,39,.06) 20%,rgba(233,162,39,0) 44%,rgba(233,162,39,.1) 78%,rgba(233,162,39,0) 100%)"></div>
+              <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) .9px,rgba(0,0,0,0) 1.1px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px),radial-gradient(circle at 12% 78%,rgba(255,255,255,.035) 0px,rgba(255,255,255,.035) 1.5px,rgba(0,0,0,0) 1.7px)"></div>
+              <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.055) 1px,rgba(255,255,255,.055) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 116px)"></div>
+              <div style="position:absolute;inset:0;opacity:.4;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0px,rgba(0,0,0,0) 3px,rgba(255,255,255,.05) 7px,rgba(0,0,0,0) 12px)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.3) 9%,rgba(0,0,0,0) 24%)"></div>
+              <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+              <div style="position:absolute;top:26%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+              <div style="position:absolute;top:74%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:-19px;width:218px;height:32px;overflow:hidden;background:linear-gradient(100deg,#24231e 0%,#38352d 12%,#434036 34%,#5e5a4d 52%,#4b4739 74%,#2a2923 90%,#1c1b17 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.4) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,.55) 0%,rgba(233,162,39,.07) 13%,rgba(233,162,39,0) 32%)"></div>
+            </div>
+          </div>
+        </sc-if>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:15px;max-width:430px;margin:0 auto">
+          <div style="font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">02 — Filtro</div>
+          <h3 style="margin:0;font-family:Archivo,sans-serif;font-size:29px;font-weight:700;letter-spacing:-.022em;line-height:1.14;color:#ffffff">Que hables solo con quien firma.</h3>
+          <p style="margin:0;font-size:17px;line-height:1.62;color:rgba(244,241,234,.72);text-wrap:pretty">Presupuesto, fecha y dirección confirmados antes de que subas a la troca. Tu equipo deja de cotizar gratis.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div aria-hidden="true" style="width:1000px;margin:0 auto;height:14px;border-top:1px solid rgba(244,241,234,.1);background:linear-gradient(180deg,rgba(150,145,132,.11) 0%,rgba(150,145,132,.015) 100%)"></div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:30px;margin-top:46px">
+      <sc-if value="{{ showTagline }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-family:Archivo,sans-serif;font-size:18px;font-weight:600;letter-spacing:.01em;color:#e9a227">Si falta una columna, todo se cae.</p>
+      </sc-if>
+      <a href="#" style="display:inline-flex;align-items:center;gap:14px;font-family:Archivo,sans-serif;font-size:14px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#0c0c0d;background:#e9a227;padding:20px 44px;border-radius:2px;box-shadow:0 20px 46px -20px rgba(233,162,39,.75)" style-hover="background:#f6bc4d;color:#0c0c0d">Ver cómo funciona<span style="font-size:1.15em;line-height:1">→</span></a>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</div>
+
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Mobile · 390</div>
+<div class="dv-card">
+
+<div style="position:relative;width:390px;background:#0c0c0d;overflow:hidden;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(72deg,rgba(233,162,39,0) 24%,rgba(233,162,39,.03) 39%,rgba(233,162,39,.075) 51%,rgba(233,162,39,.02) 63%,rgba(233,162,39,0) 76%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(72% 36% at 90% 2%,rgba(233,162,39,.11) 0%,rgba(233,162,39,0) 60%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.075;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.13;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 92% at 50% 46%,rgba(0,0,0,0) 50%,rgba(0,0,0,.5) 100%)"></div>
+
+  <div style="position:relative;z-index:2;padding:64px 0 70px">
+
+    <div style="padding:0 22px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <div style="width:30px;height:2px;background:#e9a227"></div>
+        <span style="font-family:Archivo,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
+      </div>
+      <h2 style="margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:22px;line-height:1.16;letter-spacing:-.028em;color:#ffffff;text-wrap:pretty">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
+      <p style="margin:16px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo.</p>
+    </div>
+
+    <div style="position:relative;margin-top:38px;padding:22px 22px 68px">
+      <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+        <div data-av-pillarm="1" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:44px;opacity:.18;pointer-events:none">
+          <div style="position:absolute;top:0;left:-10px;width:64px;height:16px;overflow:hidden;background:linear-gradient(100deg,#2c2b25 0%,#413d33 22%,#7b7566 62%,#4a463b 84%,#24231e 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,0) 100%)"></div>
+          </div>
+          <div style="position:absolute;top:16px;bottom:26px;left:0;width:44px;overflow:hidden;background:linear-gradient(100deg,#292821 0%,#3b382e 18%,#5c5747 44%,#8f897a 68%,#57523f 88%,#292821 100%);clip-path:polygon(0 0,96.5% 0,98.4% 24%,97% 52%,98.6% 78%,100% 100%,0 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(233,162,39,0) 34%,rgba(233,162,39,.16) 66%,rgba(233,162,39,.62) 92%,rgba(246,188,77,.95) 100%)"></div>
+            <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) .9px,rgba(0,0,0,0) 1.1px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px)"></div>
+            <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.05) 1px,rgba(255,255,255,.05) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 104px)"></div>
+            <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+          </div>
+          <div style="position:absolute;bottom:0;left:-12px;width:68px;height:26px;overflow:hidden;background:linear-gradient(100deg,#26251f 0%,#3a362d 22%,#6f6a5b 60%,#454138 84%,#211f1b 100%)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.07) 0%,rgba(0,0,0,0) 34%,rgba(0,0,0,.4) 100%)"></div>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:32px">
+        <div style="position:relative;padding-left:22px">
+          <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+          <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">01 — Demanda</div>
+          <h3 style="margin:11px 0 0;font-family:Archivo,sans-serif;font-size:21px;font-weight:700;letter-spacing:-.022em;line-height:1.18;color:#ffffff">Que te encuentren primero.</h3>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Google, Meta y tu ficha local trabajando todo el año — no solo en temporada alta. Leads exclusivos tuyos, no compartidos con otros cinco contratistas.</p>
+        </div>
+        <div style="position:relative;padding-left:22px">
+          <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+          <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">02 — Filtro</div>
+          <h3 style="margin:11px 0 0;font-family:Archivo,sans-serif;font-size:21px;font-weight:700;letter-spacing:-.022em;line-height:1.18;color:#ffffff">Que hables solo con quien firma.</h3>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Presupuesto, fecha y dirección confirmados antes de que subas a la troca. Tu equipo deja de cotizar gratis.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:22px;padding:0 22px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:9px;font-family:Archivo,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(233,162,39,.78);text-align:center">
+        <span>Agenda llena</span>
+        <span>Trabajos de alto ticket</span>
+        <span>Sin pelear por precio</span>
+      </div>
+      <sc-if value="{{ showTagline }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-family:Archivo,sans-serif;font-size:16px;font-weight:600;text-align:center;color:#e9a227">Si falta una columna, todo se cae.</p>
+      </sc-if>
+      <a href="#" style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;box-sizing:border-box;margin-top:6px;font-family:Archivo,sans-serif;font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#0c0c0d;background:#e9a227;padding:19px 20px;border-radius:2px;box-shadow:0 18px 40px -20px rgba(233,162,39,.8)" style-hover="background:#f6bc4d;color:#0c0c0d">Ver cómo funciona<span style="font-size:1.15em;line-height:1">→</span></a>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<p class="dv-next">Probar: “pilares más visibles en <a class="dv-oid" href="#2a">2a</a>” · “dintel más alto y más ancho” · “en <a class="dv-oid" href="#2b">2b</a>, probar la opción B: dos pilares cortos”</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Segunda dobra — El Método · dos columnas sosteniendo la viga</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Desktop · 1440</div>
+<div class="dv-card">
+
+<div style="position:relative;width:1440px;background:#0c0c0d;overflow:hidden;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(72deg,rgba(233,162,39,0) 28%,rgba(233,162,39,.03) 41%,rgba(233,162,39,.085) 51%,rgba(233,162,39,.022) 62%,rgba(233,162,39,0) 74%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(64% 48% at 86% 2%,rgba(233,162,39,.13) 0%,rgba(233,162,39,0) 58%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.1;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(124% 96% at 50% 44%,rgba(0,0,0,0) 42%,rgba(0,0,0,.6) 100%)"></div>
+
+  <div style="position:relative;z-index:2;width:1152px;margin:0 auto;padding:118px 0 104px;box-sizing:content-box">
+
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:30px">
+        <div style="width:42px;height:2px;background:#e9a227"></div>
+        <span style="font-family:Archivo,sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
+      </div>
+      <h2 style="margin:0;max-width:1152px;font-family:Archivo,sans-serif;font-weight:800;font-size:39px;line-height:1.08;letter-spacing:-.04em;color:#ffffff">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
+      <p style="margin:26px 0 0;max-width:720px;font-size:18px;line-height:1.62;color:rgba(244,241,234,.72);text-wrap:pretty">Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo.</p>
+    </div>
+
+    <div style="margin-top:68px">
+      <div data-av-beam="1" style="position:relative;width:1020px;margin:0 auto;height:68px;background:#e9a227;border-radius:1px;box-shadow:0 30px 66px -34px rgba(233,162,39,.65);display:flex;align-items:center;justify-content:center;overflow:hidden">
+        <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,0) 30%,rgba(0,0,0,.05) 70%,rgba(0,0,0,.2) 100%)"></div>
+        <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.18;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+        <span data-av-beamtext="1" style="position:relative;font-family:Archivo,sans-serif;font-size:13.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#0c0c0d;white-space:nowrap">Agenda llena · Trabajos de alto ticket · Sin pelear por precio</span>
+      </div>
+      <div data-av-soffit="1" aria-hidden="true" style="width:990px;margin:0 auto;height:9px;background:linear-gradient(180deg,#a8730f 0%,#6d4a09 100%)"></div>
+    </div>
+
+    <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:96px">
+
+      <div style="position:relative;min-height:446px;display:flex;flex-direction:column;align-items:center;text-align:center;padding:88px 24px 0;box-sizing:border-box">
+        <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+          <div data-av-pillar="1" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:180px;opacity:.28;pointer-events:none">
+            <div style="position:absolute;top:0;left:-15px;width:210px;height:22px;background:linear-gradient(100deg,#33322d 0%,#4c4a44 14%,#706d64 36%,#8f8a7e 56%,#68655d 76%,#3c3a35 92%,#2a2925 100%);box-shadow:0 2px 0 rgba(0,0,0,.4)"></div>
+            <div style="position:absolute;top:22px;bottom:34px;left:0;width:180px;overflow:hidden;background:linear-gradient(100deg,#2d2c28 0%,#454340 14%,#69665e 36%,#888378 56%,#636057 76%,#393833 92%,#262521 100%);clip-path:polygon(3.5% 0,96.5% 0,100% 100%,0 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(233,162,39,0) 28%,rgba(233,162,39,.2) 54%,rgba(233,162,39,.4) 66%,rgba(233,162,39,.08) 84%,rgba(233,162,39,0) 96%)"></div>
+              <div style="position:absolute;inset:0;opacity:.6;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.42) 0px,rgba(0,0,0,.42) 1px,rgba(255,255,255,.05) 1px,rgba(255,255,255,.05) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 122px)"></div>
+              <div style="position:absolute;inset:0;opacity:.45;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0px,rgba(0,0,0,0) 3px,rgba(255,255,255,.05) 7px,rgba(0,0,0,0) 12px)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.68) 0%,rgba(0,0,0,.24) 11%,rgba(0,0,0,0) 26%)"></div>
+              <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+              <div style="position:absolute;top:19%;left:24%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.7),rgba(0,0,0,.4) 62%,rgba(255,255,255,.16) 100%)"></div>
+              <div style="position:absolute;top:52%;left:24%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.7),rgba(0,0,0,.4) 62%,rgba(255,255,255,.16) 100%)"></div>
+              <div style="position:absolute;top:85%;left:24%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.7),rgba(0,0,0,.4) 62%,rgba(255,255,255,.16) 100%)"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:-18px;width:216px;height:34px;background:linear-gradient(100deg,#2b2a26 0%,#43413c 14%,#645f57 36%,#7f7a6f 56%,#5c5951 76%,#353430 92%,#22211e 100%);box-shadow:0 -2px 0 rgba(0,0,0,.35)"></div>
+          </div>
+        </sc-if>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:15px;max-width:432px">
+          <div style="font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">01 — Demanda</div>
+          <h3 style="margin:0;font-family:Archivo,sans-serif;font-size:29px;font-weight:700;letter-spacing:-.022em;line-height:1.14;color:#ffffff">Que te encuentren primero.</h3>
+          <p style="margin:0;font-size:17px;line-height:1.62;color:rgba(244,241,234,.72);text-wrap:pretty">Google, Meta y tu ficha local trabajando todo el año — no solo en temporada alta. Leads exclusivos tuyos, no compartidos con otros cinco contratistas.</p>
+        </div>
+      </div>
+
+      <div style="position:relative;min-height:446px;display:flex;flex-direction:column;align-items:center;text-align:center;padding:88px 24px 0;box-sizing:border-box">
+        <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+          <div data-av-pillar="1" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:180px;opacity:.28;pointer-events:none">
+            <div style="position:absolute;top:0;left:-15px;width:210px;height:22px;background:linear-gradient(100deg,#33322d 0%,#4c4a44 14%,#706d64 36%,#8f8a7e 56%,#68655d 76%,#3c3a35 92%,#2a2925 100%);box-shadow:0 2px 0 rgba(0,0,0,.4)"></div>
+            <div style="position:absolute;top:22px;bottom:34px;left:0;width:180px;overflow:hidden;background:linear-gradient(100deg,#2d2c28 0%,#454340 14%,#69665e 36%,#888378 56%,#636057 76%,#393833 92%,#262521 100%);clip-path:polygon(3.5% 0,96.5% 0,100% 100%,0 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(233,162,39,0) 28%,rgba(233,162,39,.2) 54%,rgba(233,162,39,.4) 66%,rgba(233,162,39,.08) 84%,rgba(233,162,39,0) 96%)"></div>
+              <div style="position:absolute;inset:0;opacity:.6;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.42) 0px,rgba(0,0,0,.42) 1px,rgba(255,255,255,.05) 1px,rgba(255,255,255,.05) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 122px)"></div>
+              <div style="position:absolute;inset:0;opacity:.45;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0px,rgba(0,0,0,0) 3px,rgba(255,255,255,.05) 7px,rgba(0,0,0,0) 12px)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.68) 0%,rgba(0,0,0,.24) 11%,rgba(0,0,0,0) 26%)"></div>
+              <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+              <div style="position:absolute;top:19%;left:24%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.7),rgba(0,0,0,.4) 62%,rgba(255,255,255,.16) 100%)"></div>
+              <div style="position:absolute;top:52%;left:24%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.7),rgba(0,0,0,.4) 62%,rgba(255,255,255,.16) 100%)"></div>
+              <div style="position:absolute;top:85%;left:24%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.7),rgba(0,0,0,.4) 62%,rgba(255,255,255,.16) 100%)"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:-18px;width:216px;height:34px;background:linear-gradient(100deg,#2b2a26 0%,#43413c 14%,#645f57 36%,#7f7a6f 56%,#5c5951 76%,#353430 92%,#22211e 100%);box-shadow:0 -2px 0 rgba(0,0,0,.35)"></div>
+          </div>
+        </sc-if>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:15px;max-width:432px">
+          <div style="font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">02 — Filtro</div>
+          <h3 style="margin:0;font-family:Archivo,sans-serif;font-size:29px;font-weight:700;letter-spacing:-.022em;line-height:1.14;color:#ffffff">Que hables solo con quien firma.</h3>
+          <p style="margin:0;font-size:17px;line-height:1.62;color:rgba(244,241,234,.72);text-wrap:pretty">Presupuesto, fecha y dirección confirmados antes de que subas a la troca. Tu equipo deja de cotizar gratis.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div aria-hidden="true" style="width:1020px;margin:0 auto;height:15px;border-top:1px solid rgba(244,241,234,.17);background:linear-gradient(180deg,rgba(176,171,160,.24) 0%,rgba(176,171,160,.03) 100%)"></div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:34px;margin-top:52px">
+      <sc-if value="{{ showTagline }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-family:Archivo,sans-serif;font-size:18px;font-weight:600;letter-spacing:.01em;color:#e9a227">Si falta una columna, todo se cae.</p>
+      </sc-if>
+      <a href="#" style="display:inline-flex;align-items:center;gap:14px;font-family:Archivo,sans-serif;font-size:14px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#e9a227;border:1px solid rgba(233,162,39,.55);padding:19px 42px;border-radius:2px;background:rgba(233,162,39,.04)" style-hover="background:#e9a227;color:#0c0c0d;border-color:#e9a227">Ver cómo funciona<span style="font-size:1.15em;line-height:1">→</span></a>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Mobile · 390</div>
+<div class="dv-card">
+
+<div style="position:relative;width:390px;background:#0c0c0d;overflow:hidden;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(72deg,rgba(233,162,39,0) 24%,rgba(233,162,39,.03) 39%,rgba(233,162,39,.08) 51%,rgba(233,162,39,.022) 63%,rgba(233,162,39,0) 76%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(72% 36% at 90% 2%,rgba(233,162,39,.12) 0%,rgba(233,162,39,0) 60%)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.075;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.13;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 92% at 50% 46%,rgba(0,0,0,0) 50%,rgba(0,0,0,.45) 100%)"></div>
+
+  <div style="position:relative;z-index:2;padding:72px 0 78px">
+
+    <div style="padding:0 24px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
+        <div style="width:30px;height:2px;background:#e9a227"></div>
+        <span style="font-family:Archivo,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
+      </div>
+      <h2 style="margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:30px;line-height:1.1;letter-spacing:-.032em;color:#ffffff;text-wrap:pretty">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
+      <p style="margin:20px 0 0;font-size:16px;line-height:1.6;color:rgba(244,241,234,.72);text-wrap:pretty">Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo.</p>
+    </div>
+
+    <div style="margin-top:44px">
+      <div data-av-beam="1" style="position:relative;width:390px;padding:16px 22px;box-sizing:border-box;background:#e9a227;display:flex;align-items:center;justify-content:center;overflow:hidden">
+        <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,0) 34%,rgba(0,0,0,.05) 74%,rgba(0,0,0,.18) 100%)"></div>
+        <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:.18;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+        <span data-av-beamtext="1" style="position:relative;font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;line-height:1.8;text-align:center;text-transform:uppercase;color:#0c0c0d">Agenda llena · Trabajos de alto ticket · Sin pelear por precio</span>
+      </div>
+      <div data-av-soffit="1" aria-hidden="true" style="width:390px;height:7px;background:linear-gradient(180deg,#a8730f 0%,#6d4a09 100%)"></div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:34px;margin-top:44px;padding:0 24px">
+      <div style="position:relative;padding-left:22px">
+        <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+        <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">01 — Demanda</div>
+        <h3 style="margin:12px 0 0;font-family:Archivo,sans-serif;font-size:23px;font-weight:700;letter-spacing:-.022em;line-height:1.16;color:#ffffff">Que te encuentren primero.</h3>
+        <p style="margin:11px 0 0;font-size:15.5px;line-height:1.6;color:rgba(244,241,234,.72);text-wrap:pretty">Google, Meta y tu ficha local trabajando todo el año — no solo en temporada alta. Leads exclusivos tuyos, no compartidos con otros cinco contratistas.</p>
+      </div>
+      <div style="position:relative;padding-left:22px">
+        <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+        <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">02 — Filtro</div>
+        <h3 style="margin:12px 0 0;font-family:Archivo,sans-serif;font-size:23px;font-weight:700;letter-spacing:-.022em;line-height:1.16;color:#ffffff">Que hables solo con quien firma.</h3>
+        <p style="margin:11px 0 0;font-size:15.5px;line-height:1.6;color:rgba(244,241,234,.72);text-wrap:pretty">Presupuesto, fecha y dirección confirmados antes de que subas a la troca. Tu equipo deja de cotizar gratis.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:26px;margin-top:46px;padding:0 24px">
+      <sc-if value="{{ showTagline }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-family:Archivo,sans-serif;font-size:16px;font-weight:600;text-align:center;color:#e9a227">Si falta una columna, todo se cae.</p>
+      </sc-if>
+      <a href="#" style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;box-sizing:border-box;font-family:Archivo,sans-serif;font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#e9a227;border:1px solid rgba(233,162,39,.55);padding:18px 20px;border-radius:2px;background:rgba(233,162,39,.04)" style-hover="background:#e9a227;color:#0c0c0d;border-color:#e9a227">Ver cómo funciona<span style="font-size:1.15em;line-height:1">→</span></a>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<p class="dv-next">Probar: “baja la viga para debajo de las columnas en <a class="dv-oid" href="#1a">1a</a>” · “viga en concreto en vez de ámbar” · “pilares más altos y más marcados”</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showPillars&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Pilares&quot;},&quot;pillarOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.28,&quot;min&quot;:0.08,&quot;max&quot;:0.45,&quot;step&quot;:0.01,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Pilares&quot;},&quot;showTagline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Cierre&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    // This runtime does not patch css-property holes inside style="...", so every
+    // prop-driven visual is written straight to the DOM here.
+    this._paint = () => {
+      const op = this.props.pillarOpacity ?? 0.27;
+      // The compact mobile portico carries no text over it, so it can hold real presence.
+      document.querySelectorAll('[data-av-portal5]').forEach(n => {
+        n.style.opacity = String(Math.min(0.6, Math.round(op * 1.9 * 100) / 100));
+      });
+      // The inhabited mobile portal is architecture, not a watermark.
+      document.querySelectorAll('[data-av-portal]').forEach(n => {
+        n.style.opacity = String(Math.min(0.42, Math.round(op * 1.25 * 100) / 100));
+      });
+      // The mobile portico is an intentional emblem, not a watermark.
+      document.querySelectorAll('[data-av-portico]').forEach(n => {
+        n.style.opacity = String(Math.min(0.5, Math.round(op * 1.5 * 100) / 100));
+      });
+      const pillars = document.querySelectorAll('[data-av-pillar]');
+      pillars.forEach(n => { n.style.opacity = String(op); });
+      // The mobile pier sits directly under body copy — keep it lighter than the desktop pair.
+      document.querySelectorAll('[data-av-pillarm]').forEach(n => {
+        n.style.opacity = String(Math.round(op * 0.8 * 100) / 100);
+      });
+
+      return pillars.length > 0;
+    };
+
+    // A re-render can remount an sc-if branch and restore its static style.
+    this._repaint = () => { this._paint(); requestAnimationFrame(this._paint); };
+
+    this._tries = 0;
+    this._repaint();
+    this._poll = setInterval(() => {
+      this._tries += 1;
+      const ok = this._paint();
+      if ((ok && this._tries > 25) || this._tries > 140) { clearInterval(this._poll); this._poll = null; }
+    }, 110);
+  }
+
+  componentDidUpdate() { this._repaint(); }
+
+  componentWillUnmount() { if (this._poll) clearInterval(this._poll); }
+
+  renderVals() {
+    return {
+      showPillars: this.props.showPillars ?? true,
+      showTagline: this.props.showTagline ?? true,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

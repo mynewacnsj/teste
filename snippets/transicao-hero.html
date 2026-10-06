@@ -1,0 +1,35 @@
+<!-- Elemento de transição hero -> segunda dobra (entalhe mascarado de 92px).
+     Removido da Landing em 28/07/2026 a pedido, guardado aqui para não perdermos a lógica.
+
+     Como recolocar:
+     1. Colar os dois <sc-if> abaixo como PRIMEIROS filhos do <section> da segunda dobra.
+     2. Voltar o wrapper de luz da seção para  top:-92px  (hoje está  inset:0 ),
+        para que a lavagem âmbar/grão atravesse o entalhe com a mesma origem de repetição.
+     3. Reduzir o padding-top da seção — o entalhe já entrega parte do respiro.
+
+     Regras que este elemento carrega:
+     - margin-top:-92px  sobrepõe a faixa ao final do hero sem somar altura à seção.
+     - overflow:hidden é obrigatório: a mask recorta a PINTURA, não o overflow rolável;
+       sem ele as camadas de 3000px esticam o scroll da página.
+     - As maiúsculas do SVG em data URI vão percent-codificadas (view%42ox / preserve%41spect%52atio)
+       e o data URI não pode conter ";" — o compilador reescreve camelCase e o parser de estilo
+       divide em ";".
+-->
+  <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+    <div aria-hidden="true" style="position:relative;z-index:1;pointer-events:none;width:100%;height:92px;margin-top:-92px;overflow:hidden;background-color:#0c0c0d;-webkit-mask-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 view%42ox=%220 0 1440 150%22 preserve%41spect%52atio=%22none%22><path d=%22M0,151 V104 H286 C320,104 337,93 350,74 L375,38 C388,19 405,10 435,10 H1005 C1035,10 1052,19 1065,38 L1090,74 C1103,93 1120,104 1154,104 H1440 V151 Z%22 fill=%22%23000%22/></svg>');mask-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 view%42ox=%220 0 1440 150%22 preserve%41spect%52atio=%22none%22><path d=%22M0,151 V104 H286 C320,104 337,93 350,74 L375,38 C388,19 405,10 435,10 H1005 C1035,10 1052,19 1065,38 L1090,74 C1103,93 1120,104 1154,104 H1440 V151 Z%22 fill=%22%23000%22/></svg>');-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat">
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:linear-gradient(72deg,rgba(233,162,39,0) 28%,rgba(233,162,39,.03) 41%,rgba(233,162,39,.085) 51%,rgba(233,162,39,.022) 62%,rgba(233,162,39,0) 74%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:radial-gradient(52% 20% at 84% 0%,rgba(233,162,39,.16) 0%,rgba(233,162,39,0) 60%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:linear-gradient(180deg,rgba(233,162,39,.055) 0%,rgba(233,162,39,.018) 9%,rgba(233,162,39,0) 20%)"></div>
+      <div data-av-grain="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.1;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+      <div data-av-hatch="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}">
+    <div aria-hidden="true" style="position:relative;z-index:1;pointer-events:none;width:100%;height:92px;margin-top:-92px;overflow:hidden;background-color:#0c0c0d;-webkit-mask-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 view%42ox=%220 0 390 150%22 preserve%41spect%52atio=%22none%22><path d=%22M0,151 V104 H38 C57,104 66,99 73,89 L87,72 C94,62 103,58 120,58 H270 C287,58 296,62 303,72 L317,89 C324,99 333,104 352,104 H390 V151 Z%22 fill=%22%23000%22/></svg>');mask-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 view%42ox=%220 0 390 150%22 preserve%41spect%52atio=%22none%22><path d=%22M0,151 V104 H38 C57,104 66,99 73,89 L87,72 C94,62 103,58 120,58 H270 C287,58 296,62 303,72 L317,89 C324,99 333,104 352,104 H390 V151 Z%22 fill=%22%23000%22/></svg>');-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat">
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:linear-gradient(72deg,rgba(233,162,39,0) 28%,rgba(233,162,39,.03) 41%,rgba(233,162,39,.085) 51%,rgba(233,162,39,.022) 62%,rgba(233,162,39,0) 74%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:radial-gradient(52% 20% at 84% 0%,rgba(233,162,39,.16) 0%,rgba(233,162,39,0) 60%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:linear-gradient(180deg,rgba(233,162,39,.055) 0%,rgba(233,162,39,.018) 9%,rgba(233,162,39,0) 20%)"></div>
+      <div data-av-grain="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.1;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+      <div data-av-hatch="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+    </div>
+  </sc-if>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0;background:#0c0c0d}
+a{color:#e9a227;text-decoration:none}
+a:hover{color:#f6bc4d}
+</style>
+</helmet>
+
+<div data-av-root="1" style="position:relative;width:100%;min-height:min(100svh, calc(64svh + 34vw));padding-top:clamp(72px,9vh,104px);box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden;background:#0c0c0d;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div data-av-sentinel="1" style="position:absolute;top:60px;left:0;width:1px;height:1px;pointer-events:none"></div>
+
+  <div style="position:absolute;inset:0;background:#0c0c0d">
+    <img src="./uploads/Gemini_Generated_Image_xtdjbextdjbextdj.png" alt="Collage de obra: contratista clavando, herramientas, casa terminada y camioneta al atardecer" style="width:100%;height:100%;object-fit:cover;object-position:68% 50%;display:block">
+  </div>
+
+  <sc-if value="{{ scrimSoft }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(10,10,11,.88) 0%,rgba(10,10,11,.72) 26%,rgba(10,10,11,.32) 50%,rgba(10,10,11,0) 70%)"></div>
+  </sc-if>
+  <sc-if value="{{ scrimMedium }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(10,10,11,.95) 0%,rgba(10,10,11,.88) 24%,rgba(10,10,11,.55) 46%,rgba(10,10,11,.12) 66%,rgba(10,10,11,0) 78%)"></div>
+  </sc-if>
+  <sc-if value="{{ scrimHeavy }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(8,8,9,.97) 0%,rgba(8,8,9,.94) 32%,rgba(8,8,9,.74) 54%,rgba(8,8,9,.34) 74%,rgba(8,8,9,.12) 100%)"></div>
+  </sc-if>
+
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,11,.62) 0%,rgba(10,10,11,.14) 16%,rgba(10,10,11,0) 30%,rgba(10,10,11,.34) 62%,rgba(10,10,11,.74) 80%,rgba(12,12,13,.95) 93%,rgba(12,12,13,1) 100%)"></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 78% 40%,rgba(233,162,39,.16) 0%,rgba(233,162,39,0) 55%)"></div>
+
+  <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,11,.78) 0%,rgba(10,10,11,.6) 35%,rgba(10,10,11,.72) 70%,rgba(12,12,13,1) 100%)"></div>
+  </sc-if>
+
+  <div data-av-grain="1" style="position:absolute;inset:0;pointer-events:none;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+  <div data-av-hatch="1" style="position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 105% at 50% 48%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
+
+  <header style="position:fixed;top:0;left:0;right:0;z-index:40">
+    <div style="position:absolute;inset:0;pointer-events:none;background:rgba(12,12,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(244,241,234,.12);box-shadow:0 18px 40px -30px rgba(0,0,0,.95);overflow:hidden;transition:opacity .45s ease;opacity:0" data-av-chrome="1">
+      <div data-av-grain="1" style="position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+      <div data-av-hatch="1" style="position:absolute;inset:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+    </div>
+    <div data-av-bar="1" style="position:relative;height:clamp(72px,9vh,104px);transition:height .45s cubic-bezier(.22,.61,.36,1);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <div style="display:flex;align-items:center;gap:clamp(10px,1vw,14px)">
+      <div style="width:clamp(36px,3vw,44px);height:clamp(36px,3vw,44px);border-radius:3px;background:#e9a227;display:flex;align-items:center;justify-content:center;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(17px,1.5vw,21px);color:#0c0c0d;letter-spacing:-.02em">◆</div>
+      <div style="display:flex;flex-direction:column;gap:3px">
+        <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(14px,min(1.15vw,2vh),17px);letter-spacing:.14em;color:#f4f1ea;text-transform:uppercase">Logotipo</div>
+        <div style="font-family:Barlow,sans-serif;font-size:clamp(9px,.78vw,10.5px);letter-spacing:.34em;color:rgba(244,241,234,.45);text-transform:uppercase">Agencia</div>
+      </div>
+    </div>
+
+    <sc-if value="{{ showDesktopNav }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:clamp(20px,2.6vw,44px)">
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Servicios</a>
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Resultados</a>
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Proceso</a>
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Nosotros</a>
+        <sc-if value="{{ showNavCta }}" hint-placeholder-val="{{ true }}">
+          <a href="#" style="font-family:Archivo,sans-serif;font-size:clamp(12px,.95vw,14px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#f4f1ea;border:1px solid rgba(244,241,234,.32);padding:clamp(10px,1vw,13px) clamp(18px,1.9vw,26px);border-radius:2px;backdrop-filter:blur(6px);background:rgba(12,12,13,.18)" style-hover="color:#0c0c0d;background:#f4f1ea;border-color:#f4f1ea">Agendar llamada</a>
+        </sc-if>
+      </nav>
+    </sc-if>
+
+    <sc-if value="{{ showBurger }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="Menú" aria-expanded="{{ menuOpen }}" style="position:relative;width:42px;height:42px;flex:0 0 auto;background:#e9a227;border:none;border-radius:3px;cursor:pointer;padding:0;box-shadow:0 10px 22px -14px rgba(233,162,39,.9);transition:background .25s ease" style-hover="background:#f6bc4d">
+        <span style="position:absolute;left:12px;top:20px;display:block;width:18px;height:2px;border-radius:2px;background:#0c0c0d;transition:transform .32s cubic-bezier(.22,.61,.36,1);transform:translateY(-5.5px)" data-av-bar1="1"></span>
+        <span style="position:absolute;left:12px;top:20px;display:block;width:18px;height:2px;border-radius:2px;background:#0c0c0d;transition:opacity .2s ease;opacity:1" data-av-bar2="1"></span>
+        <span style="position:absolute;left:12px;top:20px;display:block;width:18px;height:2px;border-radius:2px;background:#0c0c0d;transition:transform .32s cubic-bezier(.22,.61,.36,1);transform:translateY(5.5px)" data-av-bar3="1"></span>
+      </button>
+    </sc-if>
+    </div>
+
+  <div style="position:relative;z-index:3;overflow:hidden;transition:max-height .42s cubic-bezier(.22,.61,.36,1),opacity .3s ease;max-height:0px;opacity:0;pointer-events:none" data-av-menu="1">
+    <div style="padding:22px 0 28px;box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;flex-direction:column;gap:2px;border-top:1px solid rgba(244,241,234,.12);transition:transform .42s cubic-bezier(.22,.61,.36,1);transform:translateY(-14px)" data-av-menu-inner="1">
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Servicios</a>
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Resultados</a>
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Proceso</a>
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Nosotros</a>
+      <a href="#" style="display:block;margin-top:22px;text-align:center;font-family:Archivo,sans-serif;font-size:14px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#0c0c0d;background:#e9a227;padding:17px 20px;border-radius:2px" style-hover="background:#f6bc4d;color:#0c0c0d">Agendar llamada</a>
+    </div>
+  </div>
+  </header>
+
+  <div style="position:relative;z-index:2;flex:1 1 auto;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;align-items:center;gap:clamp(24px,3vw,64px);padding:clamp(28px,5vh,64px) 0 clamp(20px,3vh,40px);box-sizing:border-box">
+
+    <sc-if value="{{ showRail }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:0 0 34px;align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;pointer-events:none">
+        <div style="width:1px;flex:1 1 auto;max-height:180px;background:linear-gradient(180deg,rgba(244,241,234,0),rgba(244,241,234,.28))"></div>
+        <div style="writing-mode:vertical-rl;font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:rgba(244,241,234,.42);white-space:nowrap">Est. 2016</div>
+        <div style="width:1px;flex:1 1 auto;max-height:180px;background:linear-gradient(180deg,rgba(244,241,234,.28),rgba(244,241,234,0))"></div>
+      </div>
+    </sc-if>
+
+    <main style="flex:1 1 auto;min-width:0;max-width:min(100%,1060px)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:clamp(20px,3vh,34px)">
+        <div style="width:clamp(28px,3vw,44px);height:2px;background:#e9a227;flex:0 0 auto"></div>
+        <span style="font-family:Archivo,sans-serif;font-size:clamp(10px,min(.9vw,1.6vh),11.5px);font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#e9a227">AGENCIA DE MARKETING</span>
+        <span aria-label="Estados Unidos" role="img" style="position:relative;display:block;flex:0 0 auto;margin-left:-6px;width:clamp(22px,min(2vw,3.4vh),27px);aspect-ratio:19 / 10;border-radius:1.5px;overflow:hidden;box-shadow:0 0 0 1px rgba(244,241,234,.22),0 2px 8px -3px rgba(0,0,0,.8);background-image:repeating-linear-gradient(180deg,#b22234 0 15.3846%,#f4f1ea 15.3846% 30.7692%)">
+          <span style="position:absolute;top:0;left:0;width:40%;height:53.85%;background-color:#3c3b6e;background-image:radial-gradient(circle,rgba(255,255,255,.92) 0.7px,rgba(255,255,255,0) 0.8px),radial-gradient(circle,rgba(255,255,255,.92) 0.7px,rgba(255,255,255,0) 0.8px);background-size:2.6px 2.6px,2.6px 2.6px;background-position:0 0,1.3px 1.3px"></span>
+        </span>
+      </div>
+
+      <h1 style="margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:min(6.9vw,6.6vh,84px);line-height:1.04;letter-spacing:-.035em;color:#f4f1ea;white-space:nowrap">Nº 1 en Marketing para<br>Remodeling/Construction<br><span style="color: rgb(233, 162, 39);">en Estados Unidos.</span></h1>
+
+      <p style="margin:clamp(20px,3vh,34px) 0 0;max-width:min(100%,660px);font-size:clamp(15.5px,min(1.3vw,2.3vh),23px);line-height:1.55;font-weight:400;color:rgba(244,241,234,.74);text-wrap:pretty">Generamos y calificamos prospectos de remodelación de alto ticket, para que tu equipo solo hable con quien ya está listo para firmar.</p>
+
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(18px,2.2vw,30px);margin-top:clamp(28px,4.5vh,52px)">
+        <a href="#" style="display:inline-flex;align-items:center;justify-content:center;gap:14px;background:#e9a227;color:#0c0c0d;font-family:Archivo,sans-serif;font-size:clamp(13px,min(1vw,1.75vh),17px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:clamp(15px,min(1.5vw,2.5vh),22px) clamp(24px,2.7vw,44px);border-radius:2px;box-shadow:0 18px 44px -18px rgba(233,162,39,.75)" style-hover="background:#f6bc4d;color:#0c0c0d">Agendar diagnóstico gratis<span style="font-size:1.15em;line-height:1">→</span></a>
+        <a href="#" style="font-size:clamp(14px,min(1.05vw,1.85vh),15.5px);font-weight:500;letter-spacing:.03em;color:rgba(244,241,234,.72);border-bottom:1px solid rgba(244,241,234,.26);padding-bottom:4px" style-hover="color:#f4f1ea;border-color:#e9a227">Ver casos de éxito</a>
+      </div>
+
+      <sc-if value="{{ showTrustBar }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2.4vw,40px);margin-top:clamp(34px,6vh,76px);padding-top:clamp(22px,3vh,34px);border-top:1px solid rgba(244,241,234,.14);max-width:860px">
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="font-family:Archivo,sans-serif;font-size:clamp(23px,min(2.2vw,3.9vh),38px);font-weight:700;letter-spacing:-.02em;color:#f4f1ea">+180</div>
+            <div style="font-size:clamp(10.5px,.95vw,14px);letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.8)">Contratistas</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="font-family:Archivo,sans-serif;font-size:clamp(23px,min(2.2vw,3.9vh),38px);font-weight:700;letter-spacing:-.02em;color:#f4f1ea">$42M</div>
+            <div style="font-size:clamp(10.5px,.95vw,14px);letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.8)">En contratos cerrados</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="font-family:Archivo,sans-serif;font-size:clamp(23px,min(2.2vw,3.9vh),38px);font-weight:700;letter-spacing:-.02em;color:#f4f1ea">24 h</div>
+            <div style="font-size:clamp(10.5px,.95vw,14px);letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.8)">Tiempo de respuesta</div>
+          </div>
+        </div>
+      </sc-if>
+    </main>
+  </div>
+
+  <div style="position:relative;z-index:2;flex:0 0 auto;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:0 0 clamp(18px, 4vw - 12px, 64px);pointer-events:none">
+    <sc-if value="{{ scrollCueOn }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:13px">
+        <div style="width:9px;height:9px;border-radius:50%;background:#e9a227;flex:0 0 auto"></div>
+        <span style="font-size:clamp(9px,min(.78vw,1.25vh),12px);letter-spacing:.34em;text-transform:uppercase;color:rgba(244,241,234,.78)">Desliza</span>
+      </div>
+    </sc-if>
+    <sc-if value="{{ showRegionNote }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:18px;margin-left:auto">
+        <span style="font-size:clamp(9px,min(.78vw,1.25vh),12px);letter-spacing:.36em;text-transform:uppercase;color:rgba(244,241,234,.85);text-shadow:0 1px 10px rgba(10,10,11,.85)">NÚMERO 1 EN ESTADO UNIDOS</span>
+        <div style="width:64px;height:1px;background:rgba(244,241,234,.3)"></div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+
+
+<section style="position:relative;display:flow-root;width:100%;background:#0c0c0d;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+    <div style="position:absolute;inset:0;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.12) 8%,rgba(0,0,0,.45) 20%,rgba(0,0,0,1) 42%);mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.12) 8%,rgba(0,0,0,.45) 20%,rgba(0,0,0,1) 42%)">
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:linear-gradient(72deg,rgba(233,162,39,0) 28%,rgba(233,162,39,.03) 41%,rgba(233,162,39,.085) 51%,rgba(233,162,39,.022) 62%,rgba(233,162,39,0) 74%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:radial-gradient(56% 34% at 84% 6%,rgba(233,162,39,.15) 0%,rgba(233,162,39,0) 64%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:linear-gradient(180deg,rgba(233,162,39,.04) 0%,rgba(233,162,39,.015) 14%,rgba(233,162,39,0) 28%)"></div>
+    </div>
+    <div data-av-grain="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.1;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+    <div data-av-hatch="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+  </div>
+
+  <div style="position:relative;z-index:3;padding:clamp(28px,4vw,92px) 0 clamp(60px,5.6vw,116px);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto">
+
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:clamp(20px,2.4vw,28px)">
+        <div style="width:clamp(30px,3vw,56px);height:2px;background:#e9a227"></div>
+        <span style="font-family:Archivo,sans-serif;font-size:clamp(10.5px,.85vw,14px);font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
+      </div>
+      <h2 style="margin:0;max-width:min(100%,1680px);font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(22px,min(2.75vw,4.8vh),54px);line-height:1.12;letter-spacing:-.035em;color:#ffffff;text-wrap:pretty">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
+      <p style="margin:clamp(16px,2vw,24px) 0 0;max-width:min(100%,clamp(660px,50vw,900px));font-size:clamp(15px,min(1.25vw,2.2vh),24px);line-height:1.62;color:rgba(244,241,234,.7);text-wrap:pretty">Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo.</p>
+    </div>
+
+    <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div style="position:relative;width:min(100%,clamp(1000px,70vw,1500px));margin:clamp(30px,3.2vw,58px) auto 0">
+          <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:3px;z-index:3;background:linear-gradient(90deg,rgba(233,162,39,.3) 0%,#e9a227 15%,#f6bc4d 50%,#e9a227 85%,rgba(233,162,39,.26) 100%);box-shadow:0 1px 0 rgba(0,0,0,.85),0 0 22px rgba(233,162,39,.45)"></div>
+          <div style="position:relative;height:clamp(64px,4.4vw,88px);overflow:hidden;background:linear-gradient(100deg,#090909 0%,#101010 22%,#17171a 48%,#111111 74%,#070707 100%);box-shadow:0 26px 54px -28px rgba(0,0,0,1);display:flex;align-items:center;justify-content:center">
+            <div aria-hidden="true" style="position:absolute;inset:0;opacity:.85;background-image:radial-gradient(circle at 32% 42%,rgba(255,255,255,.04) 0px,rgba(255,255,255,.04) .9px,rgba(0,0,0,0) 1.1px),radial-gradient(circle at 68% 66%,rgba(0,0,0,.6) 0px,rgba(0,0,0,.6) 1.1px,rgba(0,0,0,0) 1.3px),radial-gradient(circle at 15% 80%,rgba(255,255,255,.025) 0px,rgba(255,255,255,.025) 1.4px,rgba(0,0,0,0) 1.6px);background-size:9px 9px,14px 14px,23px 23px"></div>
+            <div aria-hidden="true" style="position:absolute;inset:0;opacity:.14;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+            <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 14%,rgba(0,0,0,0) 56%,rgba(0,0,0,.6) 100%)"></div>
+            <span style="position:relative;font-family:Archivo,sans-serif;font-size:clamp(11px,1.05vw,17px);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#f4f1ea;white-space:nowrap">Agenda llena · Trabajos de alto ticket · Sin pelear por precio</span>
+          </div>
+        </div>
+
+        <div style="position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6.6vw,150px)">
+        <sc-if value="{{ arrowsWide }}" hint-placeholder-val="{{ false }}">
+          <div data-av-arrows="1" aria-hidden="true" style="position:absolute;inset:0;z-index:4;pointer-events:none">
+            <svg data-av-arrow="1" data-av-clip="inset(0 100% 0 0)" data-av-delay="0s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;left:calc(-12.5% + 6px);top:50%;margin-top:-152px;overflow:visible"><path d="M 6.4 13.1 C 22 14.6, 33.5 17.2, 41.9 21.2 C 54.5 27.2, 65.6 33.4, 73.6 41.2 C 84.2 51.4, 91.4 61.2, 95.2 70.4 C 99.8 79.8, 103.6 87.9, 106.7 94.7 L 117.4 95.2 L 114.6 119.2 L 91.4 108.6 L 101.3 97.4 C 98.1 90.2, 94.2 82.1, 88.8 73.6 C 82.2 63.4, 74.8 54.2, 66.4 46.8 C 57.2 38.9, 46.4 31.4, 38.1 26.8 C 28.3 21.4, 16.2 18.1, 5.4 16.9 C 2.4 16.5, 2.2 13.4, 6.4 13.1 Z" style="fill:#e9a227"></path></svg>
+            <svg data-av-arrow="1" data-av-clip="inset(0 0 0 100%)" data-av-delay=".14s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;right:calc(-12.5% + 6px);top:50%;margin-top:-122px;overflow:visible"><path d="M 144.2 9.2 C 129.4 11.8, 117.6 15.4, 108.4 20.6 C 96.4 28.2, 85.8 36, 77.2 45 C 67.4 55.8, 60.6 65.6, 55.6 74.6 C 51.4 83.4, 47.6 91, 44.8 97.4 L 33.6 97 L 37.4 120.6 L 60.6 108.2 L 49.6 99.4 C 52.6 92.2, 56.2 84.4, 61.4 76.2 C 68.4 65.6, 75.8 56.2, 84.4 48.4 C 94.4 39.8, 105.6 32.2, 114.4 27.2 C 124.6 21.4, 135.2 17.2, 145 15.4 C 148.2 14.8, 148 9.6, 144.2 9.2 Z" style="fill:#e9a227"></path></svg>
+          </div>
+        </sc-if>
+        <div style="position:relative;min-width:0;padding:clamp(58px,4.2vw,86px) 0;box-sizing:border-box">
+          <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+          <div data-av-pillar="1" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:clamp(120px,12.5vw,250px);opacity:.28;pointer-events:none">
+            <div style="position:absolute;top:0;left:-8.9%;width:117.8%;height:clamp(23px,1.7vw,32px);overflow:hidden;background:linear-gradient(100deg,#2a2924 0%,#403d34 12%,#484438 34%,#8b8574 52%,#565244 74%,#302f28 90%,#22211c 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 42%,rgba(0,0,0,0) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,1) 1.4%,rgba(233,162,39,.85) 4%,rgba(233,162,39,.22) 15%,rgba(233,162,39,0) 34%)"></div>
+            </div>
+            <div style="position:absolute;top:clamp(23px,1.7vw,32px);bottom:clamp(32px,2.4vw,45px);left:0;width:100%;overflow:hidden;background:linear-gradient(100deg,#26251f 0%,#3b3830 12%,#474338 34%,#8b8574 54%,#434036 76%,#2c2b24 92%,#1e1d19 100%);clip-path:polygon(3.4% 0,96.6% 0,97.4% 21%,96.2% 47%,97.6% 73%,100% 100%,0 100%,2.3% 73%,3.4% 47%,2.2% 21%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,1) 1.6%,rgba(233,162,39,.98) 3.4%,rgba(233,162,39,.68) 9%,rgba(233,162,39,.24) 24%,rgba(233,162,39,.04) 44%,rgba(233,162,39,.16) 80%,rgba(233,162,39,0) 100%)"></div>
+              <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.07) 0px,rgba(255,255,255,.07) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px),radial-gradient(circle at 12% 78%,rgba(255,255,255,.035) 0px,rgba(255,255,255,.035) 1.5px,rgba(0,0,0,0) 1.7px)"></div>
+              <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.055) 1px,rgba(255,255,255,.055) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 116px)"></div>
+              <div style="position:absolute;inset:0;opacity:.4;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0px,rgba(0,0,0,0) 3px,rgba(255,255,255,.05) 7px,rgba(0,0,0,0) 12px)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.3) 9%,rgba(0,0,0,0) 24%)"></div>
+              <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+              <div style="position:absolute;top:26%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+              <div style="position:absolute;top:74%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:-10.6%;width:121.1%;height:clamp(32px,2.4vw,45px);overflow:hidden;background:linear-gradient(100deg,#24231e 0%,#38352d 12%,#413d33 34%,#6d6858 52%,#4b4739 74%,#2a2923 90%,#1c1b17 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.4) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,.96) 1.4%,rgba(233,162,39,.78) 4.5%,rgba(233,162,39,.18) 16%,rgba(233,162,39,0) 36%)"></div>
+            </div>
+          </div>
+          </sc-if>
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:clamp(15px,1.2vw,22px);width:100%;max-width:clamp(430px,30vw,580px);margin:0 auto">
+            <div style="font-family:Archivo,sans-serif;font-size:clamp(12px,.85vw,15px);font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">01 — Demanda</div>
+            <h3 style="margin:0;width:100%;text-align:left;font-family:Archivo,sans-serif;font-size:clamp(22px,min(2vw,3.4vh),38px);font-weight:700;letter-spacing:-.022em;line-height:1.14;color:#ffffff">Que te encuentren primero.</h3>
+            <p style="margin:0;width:100%;text-align:left;font-size:clamp(15px,min(1.2vw,2.1vh),22px);line-height:1.62;color:rgba(244,241,234,.72);text-wrap:pretty">Google, Meta y tu ficha local trabajando todo el año — no solo en temporada alta. Leads exclusivos tuyos, no compartidos con otros cinco contratistas.</p>
+          </div>
+        </div>
+        <div style="position:relative;min-width:0;padding:clamp(58px,4.2vw,86px) 0;box-sizing:border-box">
+          <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+          <div data-av-pillar="1" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:clamp(120px,12.5vw,250px);opacity:.28;pointer-events:none">
+            <div style="position:absolute;top:0;left:-8.9%;width:117.8%;height:clamp(23px,1.7vw,32px);overflow:hidden;background:linear-gradient(100deg,#2a2924 0%,#403d34 12%,#484438 34%,#8b8574 52%,#565244 74%,#302f28 90%,#22211c 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 42%,rgba(0,0,0,0) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,1) 1.4%,rgba(233,162,39,.85) 4%,rgba(233,162,39,.22) 15%,rgba(233,162,39,0) 34%)"></div>
+            </div>
+            <div style="position:absolute;top:clamp(23px,1.7vw,32px);bottom:clamp(32px,2.4vw,45px);left:0;width:100%;overflow:hidden;background:linear-gradient(100deg,#26251f 0%,#3b3830 12%,#474338 34%,#8b8574 54%,#434036 76%,#2c2b24 92%,#1e1d19 100%);clip-path:polygon(3.4% 0,96.6% 0,97.4% 21%,96.2% 47%,97.6% 73%,100% 100%,0 100%,2.3% 73%,3.4% 47%,2.2% 21%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,1) 1.6%,rgba(233,162,39,.98) 3.4%,rgba(233,162,39,.68) 9%,rgba(233,162,39,.24) 24%,rgba(233,162,39,.04) 44%,rgba(233,162,39,.16) 80%,rgba(233,162,39,0) 100%)"></div>
+              <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.07) 0px,rgba(255,255,255,.07) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px),radial-gradient(circle at 12% 78%,rgba(255,255,255,.035) 0px,rgba(255,255,255,.035) 1.5px,rgba(0,0,0,0) 1.7px)"></div>
+              <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.055) 1px,rgba(255,255,255,.055) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 116px)"></div>
+              <div style="position:absolute;inset:0;opacity:.4;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0px,rgba(0,0,0,0) 3px,rgba(255,255,255,.05) 7px,rgba(0,0,0,0) 12px)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.3) 9%,rgba(0,0,0,0) 24%)"></div>
+              <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+              <div style="position:absolute;top:26%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+              <div style="position:absolute;top:74%;left:23%;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(0,0,0,.75),rgba(0,0,0,.42) 62%,rgba(255,255,255,.14) 100%)"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:-10.6%;width:121.1%;height:clamp(32px,2.4vw,45px);overflow:hidden;background:linear-gradient(100deg,#24231e 0%,#38352d 12%,#413d33 34%,#6d6858 52%,#4b4739 74%,#2a2923 90%,#1c1b17 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.4) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,205,110,1) 0%,rgba(246,188,77,.96) 1.4%,rgba(233,162,39,.78) 4.5%,rgba(233,162,39,.18) 16%,rgba(233,162,39,0) 36%)"></div>
+            </div>
+          </div>
+          </sc-if>
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:clamp(15px,1.2vw,22px);width:100%;max-width:clamp(430px,30vw,580px);margin:0 auto">
+            <div style="font-family:Archivo,sans-serif;font-size:clamp(12px,.85vw,15px);font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">02 — Filtro</div>
+            <h3 style="margin:0;width:100%;text-align:left;font-family:Archivo,sans-serif;font-size:clamp(22px,min(2vw,3.4vh),38px);font-weight:700;letter-spacing:-.022em;line-height:1.14;color:#ffffff">Que hables solo con quien firma.</h3>
+            <p style="margin:0;width:100%;text-align:left;font-size:clamp(15px,min(1.2vw,2.1vh),22px);line-height:1.62;color:rgba(244,241,234,.72);text-wrap:pretty">Presupuesto, fecha y dirección confirmados antes de que subas a la troca. Tu equipo deja de cotizar gratis.</p>
+          </div>
+        </div>
+        </div>
+
+        <div aria-hidden="true" style="width:min(100%,clamp(1000px,70vw,1500px));margin:0 auto;height:clamp(14px,1.1vw,20px);border-top:1px solid rgba(244,241,234,.1);background:linear-gradient(180deg,rgba(150,145,132,.11) 0%,rgba(150,145,132,.015) 100%)"></div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(22px,2vw,30px);margin-top:clamp(28px,2.8vw,40px)">
+          <sc-if value="{{ showTagline }}" hint-placeholder-val="{{ true }}">
+            <p style="margin:0;font-family:Archivo,sans-serif;font-size:clamp(16px,1.4vw,24px);font-weight:600;letter-spacing:.01em;color:#e9a227">Si falta una columna, todo se cae.</p>
+          </sc-if>
+          <a href="#" style="display:inline-flex;align-items:center;gap:14px;font-family:Archivo,sans-serif;font-size:clamp(13px,1.05vw,18px);font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#0c0c0d;background:#e9a227;padding:clamp(20px,1.5vw,28px) clamp(44px,3.4vw,68px);border-radius:2px;box-shadow:0 8px 16px -14px rgba(233,162,39,.35)" style-hover="background:#f6bc4d;color:#0c0c0d">Ver cómo funciona<span style="font-size:1.15em;line-height:1">→</span></a>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="position:relative;width:100%;min-height:200px;margin:42px 0 46px">
+        <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
+          <div data-av-portico="1" aria-hidden="true" style="position:relative;width:240px;height:200px;margin:0 auto;opacity:.4;pointer-events:none">
+            <div style="position:absolute;top:0;left:0;width:240px;height:3px;z-index:3;background:linear-gradient(90deg,rgba(233,162,39,.3) 0%,#e9a227 14%,#f6bc4d 50%,#e9a227 86%,rgba(233,162,39,.26) 100%);box-shadow:0 1px 0 rgba(0,0,0,.85),0 0 16px rgba(233,162,39,.5)"></div>
+            <div style="position:absolute;top:0;left:0;width:240px;height:24px;overflow:hidden;background:linear-gradient(100deg,#0d0d0c 0%,#161614 24%,#201f1c 52%,#161614 78%,#0b0b0a 100%)">
+              <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.07) 0px,rgba(255,255,255,.07) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px),radial-gradient(circle at 12% 78%,rgba(255,255,255,.035) 0px,rgba(255,255,255,.035) 1.5px,rgba(0,0,0,0) 1.7px)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,0) 16%,rgba(0,0,0,0) 54%,rgba(0,0,0,.6) 100%)"></div>
+            </div>
+            <div style="position:absolute;top:24px;left:24px;width:52px;height:13px;overflow:hidden;background:linear-gradient(100deg,#2a2924 0%,#403d34 12%,#484438 34%,#8b8574 52%,#565244 74%,#302f28 90%,#22211c 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 46%,rgba(0,0,0,0) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+            </div>
+            <div style="position:absolute;top:37px;bottom:24px;left:32px;width:36px;overflow:hidden;background:linear-gradient(100deg,#26251f 0%,#3b3830 12%,#474338 34%,#8b8574 54%,#434036 76%,#2c2b24 92%,#1e1d19 100%);clip-path:polygon(4% 0,96% 0,97.6% 26%,95.8% 54%,97.4% 79%,100% 100%,0 100%,2.6% 79%,4.2% 54%,2.4% 26%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+              <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.07) 0px,rgba(255,255,255,.07) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px),radial-gradient(circle at 12% 78%,rgba(255,255,255,.035) 0px,rgba(255,255,255,.035) 1.5px,rgba(0,0,0,0) 1.7px)"></div>
+              <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.05) 1px,rgba(255,255,255,.05) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 62px)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.25) 10%,rgba(0,0,0,0) 26%)"></div>
+              <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:20px;width:60px;height:24px;overflow:hidden;background:linear-gradient(100deg,#24231e 0%,#38352d 12%,#413d33 34%,#6d6858 52%,#4b4739 74%,#2a2923 90%,#1c1b17 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.07) 0%,rgba(0,0,0,0) 32%,rgba(0,0,0,.42) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+            </div>
+            <div style="position:absolute;top:24px;left:164px;width:52px;height:13px;overflow:hidden;background:linear-gradient(100deg,#2a2924 0%,#403d34 12%,#484438 34%,#8b8574 52%,#565244 74%,#302f28 90%,#22211c 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 46%,rgba(0,0,0,0) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+            </div>
+            <div style="position:absolute;top:37px;bottom:24px;left:172px;width:36px;overflow:hidden;background:linear-gradient(100deg,#26251f 0%,#3b3830 12%,#474338 34%,#8b8574 54%,#434036 76%,#2c2b24 92%,#1e1d19 100%);clip-path:polygon(4% 0,96% 0,97.6% 26%,95.8% 54%,97.4% 79%,100% 100%,0 100%,2.6% 79%,4.2% 54%,2.4% 26%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+              <div style="position:absolute;inset:0;opacity:.95;background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.07) 0px,rgba(255,255,255,.07) 1px,rgba(0,0,0,0) 1.2px),radial-gradient(circle at 70% 64%,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1.2px,rgba(0,0,0,0) 1.4px),radial-gradient(circle at 12% 78%,rgba(255,255,255,.035) 0px,rgba(255,255,255,.035) 1.5px,rgba(0,0,0,0) 1.7px)"></div>
+              <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0px,rgba(0,0,0,.45) 1px,rgba(255,255,255,.05) 1px,rgba(255,255,255,.05) 2px,rgba(0,0,0,0) 2px,rgba(0,0,0,0) 62px)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.25) 10%,rgba(0,0,0,0) 26%)"></div>
+              <div style="position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:160px;width:60px;height:24px;overflow:hidden;background:linear-gradient(100deg,#24231e 0%,#38352d 12%,#413d33 34%,#6d6858 52%,#4b4739 74%,#2a2923 90%,#1c1b17 100%)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.07) 0%,rgba(0,0,0,0) 32%,rgba(0,0,0,.42) 100%)"></div>
+              <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,188,77,1) 0%,rgba(233,162,39,.9) 3%,rgba(233,162,39,.4) 12%,rgba(233,162,39,.08) 30%,rgba(233,162,39,0) 60%)"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:0;width:240px;height:1px;background:rgba(244,241,234,.18)"></div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showArrows }}" hint-placeholder-val="{{ true }}">
+          <div data-av-arrows="1" aria-hidden="true" style="position:absolute;z-index:4;top:-20px;height:240px;left:calc(-1 * clamp(20px, 5vw, 88px));right:calc(-1 * clamp(20px, 5vw, 88px));overflow:hidden;pointer-events:none">
+            <svg data-av-arrow="1" data-av-clip="inset(0 100% 0 0)" data-av-delay="0s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;left:-10px;top:6px;overflow:visible"><path d="M 6.4 13.1 C 22 14.6, 33.5 17.2, 41.9 21.2 C 54.5 27.2, 65.6 33.4, 73.6 41.2 C 84.2 51.4, 91.4 61.2, 95.2 70.4 C 99.8 79.8, 103.6 87.9, 106.7 94.7 L 117.4 95.2 L 114.6 119.2 L 91.4 108.6 L 101.3 97.4 C 98.1 90.2, 94.2 82.1, 88.8 73.6 C 82.2 63.4, 74.8 54.2, 66.4 46.8 C 57.2 38.9, 46.4 31.4, 38.1 26.8 C 28.3 21.4, 16.2 18.1, 5.4 16.9 C 2.4 16.5, 2.2 13.4, 6.4 13.1 Z" style="fill:#e9a227"></path></svg>
+            <svg data-av-arrow="1" data-av-clip="inset(0 0 0 100%)" data-av-delay=".14s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;right:-10px;top:14px;overflow:visible"><path d="M 144.2 9.2 C 129.4 11.8, 117.6 15.4, 108.4 20.6 C 96.4 28.2, 85.8 36, 77.2 45 C 67.4 55.8, 60.6 65.6, 55.6 74.6 C 51.4 83.4, 47.6 91, 44.8 97.4 L 33.6 97 L 37.4 120.6 L 60.6 108.2 L 49.6 99.4 C 52.6 92.2, 56.2 84.4, 61.4 76.2 C 68.4 65.6, 75.8 56.2, 84.4 48.4 C 94.4 39.8, 105.6 32.2, 114.4 27.2 C 124.6 21.4, 135.2 17.2, 145 15.4 C 148.2 14.8, 148 9.6, 144.2 9.2 Z" style="fill:#e9a227"></path></svg>
+          </div>
+        </sc-if>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:32px">
+        <div style="position:relative;padding-left:20px">
+          <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+          <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">01 — Demanda</div>
+          <h3 style="margin:11px 0 0;font-family:Archivo,sans-serif;font-size:21px;font-weight:700;letter-spacing:-.022em;line-height:1.18;color:#ffffff">Que te encuentren primero.</h3>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Google, Meta y tu ficha local trabajando todo el año — no solo en temporada alta. Leads exclusivos tuyos, no compartidos con otros cinco contratistas.</p>
+        </div>
+        <div style="position:relative;padding-left:20px">
+          <div aria-hidden="true" style="position:absolute;left:0;top:3px;bottom:3px;width:2px;background:linear-gradient(180deg,#e9a227 0%,rgba(233,162,39,.14) 100%)"></div>
+          <div style="font-family:Archivo,sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#e9a227">02 — Filtro</div>
+          <h3 style="margin:11px 0 0;font-family:Archivo,sans-serif;font-size:21px;font-weight:700;letter-spacing:-.022em;line-height:1.18;color:#ffffff">Que hables solo con quien firma.</h3>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:rgba(244,241,234,.7);text-wrap:pretty">Presupuesto, fecha y dirección confirmados antes de que subas a la troca. Tu equipo deja de cotizar gratis.</p>
+        </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:22px;margin-top:44px;padding-bottom:34px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:9px;font-family:Archivo,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(233,162,39,.78);text-align:center">
+            <span>Agenda llena</span>
+            <span>Trabajos de alto ticket</span>
+            <span>Sin pelear por precio</span>
+          </div>
+          <sc-if value="{{ showTagline }}" hint-placeholder-val="{{ true }}">
+            <p style="margin:0;font-family:Archivo,sans-serif;font-size:16px;font-weight:600;text-align:center;color:#e9a227">Si falta una columna, todo se cae.</p>
+          </sc-if>
+          <a href="#" style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;box-sizing:border-box;margin-top:6px;font-family:Archivo,sans-serif;font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#e9a227;border:1px solid rgba(233,162,39,.55);padding:18px 20px;border-radius:2px;background:rgba(233,162,39,.04)" style-hover="background:#e9a227;color:#0c0c0d;border-color:#e9a227">Ver cómo funciona<span style="font-size:1.15em;line-height:1">→</span></a>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;scrimIntensity&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;soft&quot;,&quot;medium&quot;,&quot;heavy&quot;],&quot;default&quot;:&quot;medium&quot;,&quot;tsType&quot;:&quot;'soft'|'medium'|'heavy'&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showScrollCue&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showNavCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Nav&quot;},&quot;showPillars&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;pillarOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.28,&quot;min&quot;:0.08,&quot;max&quot;:0.45,&quot;step&quot;:0.01,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;showTagline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;showArrows&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Setas (móvil)&quot;},&quot;arrowsAnimated&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Setas (móvil)&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, menuOpen: false, stuck: false };
+
+  componentDidMount() {
+    // Defined here, not as class fields: the DC transpiler does not initialize
+    // class-field arrow properties before mount.
+    this._measure = () => {
+      const el = this._rootEl;
+      // offsetWidth stays in CSS px under browser/page zoom; getBoundingClientRect does not.
+      const w = Math.round((el && (el.offsetWidth || el.getBoundingClientRect().width)) || window.innerWidth);
+      if (!w) return;
+      if (this.state.w !== w) this.setState({ w, menuOpen: w >= 900 ? false : this.state.menuOpen });
+      this._repaint();
+    };
+
+    // The template streams in after mount, so the nodes may not exist yet.
+    // Resolve them by attribute and retry until both observers are attached.
+    // This runtime patches whole-attribute holes but NOT css-property holes
+    // inside style="...", so every state-driven visual is applied to the DOM here.
+    this._paint = () => {
+      const st = this.state;
+      const q = (s) => document.querySelector(s);
+      const narrow = st.w < 760;
+      const open = st.menuOpen;
+
+      const chrome = q('[data-av-chrome]');
+      if (chrome) chrome.style.opacity = (st.stuck || open) ? '1' : '0';
+
+      const bar = q('[data-av-bar]');
+      if (bar) bar.style.height = st.stuck ? 'clamp(56px,7vh,74px)' : 'clamp(72px,9vh,104px)';
+
+      const menu = q('[data-av-menu]');
+      if (menu) {
+        menu.style.maxHeight = open ? '460px' : '0px';
+        menu.style.opacity = open ? '1' : '0';
+        menu.style.pointerEvents = open ? 'auto' : 'none';
+      }
+
+      const inner = q('[data-av-menu-inner]');
+      if (inner) inner.style.transform = open ? 'translateY(0)' : 'translateY(-14px)';
+
+      const b1 = q('[data-av-bar1]'), b2 = q('[data-av-bar2]'), b3 = q('[data-av-bar3]');
+      if (b1) b1.style.transform = open ? 'translateY(0) rotate(45deg)' : 'translateY(-5.5px)';
+      if (b2) b2.style.opacity = open ? '0' : '1';
+      if (b3) b3.style.transform = open ? 'translateY(0) rotate(-45deg)' : 'translateY(5.5px)';
+
+      document.querySelectorAll('[data-av-grain]').forEach(n => { n.style.opacity = narrow ? '0.075' : '0.115'; });
+      document.querySelectorAll('[data-av-hatch]').forEach(n => { n.style.opacity = narrow ? '0.13' : '0.2'; });
+      document.querySelectorAll('[data-av-tex]').forEach(n => { n.style.opacity = narrow ? '0.6' : '0.78'; });
+
+      const op = this.props.pillarOpacity ?? 0.28;
+      document.querySelectorAll('[data-av-pillar]').forEach(n => { n.style.opacity = String(op); });
+      document.querySelectorAll('[data-av-portico]').forEach(n => {
+        n.style.opacity = String(Math.min(0.5, Math.round(op * 1.5 * 100) / 100));
+      });
+
+      // Hand-drawn arrows: each path draws itself from the screen edge to the tip.
+      const animate = this.props.arrowsAnimated ?? true;
+      document.querySelectorAll('[data-av-arrow]').forEach(n => {
+        if (!animate) {
+          n.style.clipPath = 'none';
+          n.style.transition = 'none';
+          n._armed = false;
+          return;
+        }
+        if (n._armed) return;
+        n._armed = true;
+        n.style.clipPath = this._arrowsSeen ? 'inset(0 0 0 0)' : (n.getAttribute('data-av-clip') || 'inset(0 100% 0 0)');
+        n.style.transition = 'clip-path .62s cubic-bezier(.33,.8,.4,1) ' + (n.getAttribute('data-av-delay') || '0s');
+      });
+      if (animate && this._checkArrows) this._checkArrows();
+    };
+
+    // A re-render can remount an sc-if branch and restore its static style,
+    // so repaint again on the next frame.
+    this._repaint = () => {
+      this._paint();
+      requestAnimationFrame(this._paint);
+    };
+
+    this._tryAttach = () => {
+      this._tries = (this._tries || 0) + 1;
+
+      if (!this._ro && typeof ResizeObserver !== 'undefined') {
+        const r = document.querySelector('[data-av-root]');
+        if (r) {
+          this._rootEl = r;
+          this._ro = new ResizeObserver(this._measure);
+          this._ro.observe(r);
+          this._measure();
+        }
+      }
+
+      if (!this._io && typeof IntersectionObserver !== 'undefined') {
+        const sn = document.querySelector('[data-av-sentinel]');
+        if (sn) {
+          this._io = new IntersectionObserver(entries => {
+            const stuck = !entries[entries.length - 1].isIntersecting;
+            if (this.state.stuck !== stuck) { this.setState({ stuck }); this._repaint(); }
+          }, { threshold: 0 });
+          this._io.observe(sn);
+        }
+      }
+
+      const done = (this._ro || typeof ResizeObserver === 'undefined')
+        && (this._io || typeof IntersectionObserver === 'undefined');
+      if ((done || this._tries > 120) && this._poll) {
+        clearInterval(this._poll);
+        this._poll = null;
+      }
+    };
+
+    // Arrow draw-in: fires the first time the portico row reaches the lower viewport.
+    this._checkArrows = () => {
+      if (this._arrowsSeen) return;
+      const layer = document.querySelector('[data-av-arrows]');
+      if (!layer) return;
+      const r = layer.getBoundingClientRect();
+      const vh = window.innerHeight || 800;
+      if (r.bottom <= 0 || r.top >= vh * 0.86) return;
+      this._arrowsSeen = true;
+      document.querySelectorAll('[data-av-arrow]').forEach(n => { n.style.clipPath = 'inset(0 0 0 0)'; });
+    };
+
+    // Some embedding contexts swallow scroll events; this rAF loop stops for good
+    // the moment the arrows are revealed, so it costs nothing after that.
+    const armTick = () => {
+      if (this._arrowsSeen || this._unmounted) return;
+      this._checkArrows();
+      requestAnimationFrame(armTick);
+    };
+    requestAnimationFrame(armTick);
+    // rAF is throttled in some embeddings — same interval fallback the header uses.
+    this._armPoll = setInterval(() => {
+      if (this._arrowsSeen || this._unmounted) { clearInterval(this._armPoll); this._armPoll = null; return; }
+      this._checkArrows();
+    }, 180);
+
+    window.addEventListener('scroll', this._checkArrows, { passive: true });
+    document.addEventListener('scroll', this._checkArrows, { passive: true, capture: true });
+    window.addEventListener('resize', this._checkArrows, { passive: true });
+    window.addEventListener('resize', this._measure);
+    this._measure();
+    this._tryAttach();
+    this._repaint();
+    if (!this._poll) this._poll = setInterval(() => { this._tryAttach(); this._paint(); }, 100);
+  }
+
+  componentDidUpdate() {
+    // An sc-if remount hands back fresh nodes with their static styles restored.
+    if (this._repaint) this._repaint();
+    if (this._tryAttach) this._tryAttach();
+  }
+
+  componentWillUnmount() {
+    this._unmounted = true;
+    if (this._armPoll) clearInterval(this._armPoll);
+    if (this._checkArrows) {
+      window.removeEventListener('scroll', this._checkArrows);
+      document.removeEventListener('scroll', this._checkArrows, true);
+      window.removeEventListener('resize', this._checkArrows);
+    }
+    if (this._measure) window.removeEventListener('resize', this._measure);
+    if (this._poll) clearInterval(this._poll);
+    if (this._io) this._io.disconnect();
+    if (this._ro) this._ro.disconnect();
+  }
+
+  renderVals() {
+    const s = this.props.scrimIntensity ?? 'medium';
+    const w = this.state.w;
+    return {
+      scrimSoft: s === 'soft',
+      scrimMedium: s === 'medium',
+      scrimHeavy: s === 'heavy',
+      isNarrow: w < 760,
+      isWide: w >= 760,
+      showDesktopNav: w >= 900,
+      showBurger: w < 900,
+      showRail: w >= 1180,
+      showPillars: this.props.showPillars ?? true,
+      showArrows: (this.props.showArrows ?? true) && w < 760,
+      arrowsWide: (this.props.showArrows ?? true) && w >= 1360,
+      showTagline: this.props.showTagline ?? true,
+      showRegionNote: w >= 640,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => { this.setState({ menuOpen: !this.state.menuOpen }); this._repaint(); },
+      showTrustBar: this.props.showTrustBar ?? true,
+      showScrollCue: this.props.showScrollCue ?? true,
+      scrollCueOn: (this.props.showScrollCue ?? true) && w >= 760,
+      showNavCta: this.props.showNavCta ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
