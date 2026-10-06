@@ -124,13 +124,19 @@ Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`).
 
 - **6 vídeos Wistia** (lista `REEL` no script): `u3z5opwfg5`, `qtq97pqw42`, `85xxi41ehr`, `myhu1aftp6`,
   `j9kq9ph7rs`, `vwcc31ysmm`. Os posters vêm do próprio Wistia (`embed-ssl.wistia.com/deliveries/…?image_crop_resized=540x960`).
-- **Loop infinito sem pausa:** 3 grupos idênticos de 6 cards; cada grupo anima `translateX(0 → -100%)` da
+- **Cards = players Wistia reais.** Cada card tem um `<wistia-player>` criado por `_mountReel()` dentro de
+  `[data-av-reel-slot]` (fora do React; o template cru não pode ter `<wistia-player>`). Sem atributos extras:
+  a aparência vem da configuração no Wistia — plugin *video thumbnail* (prévia silenciosa em loop dos primeiros
+  5–7s), *click for sound*, play grande e cor `#e9a227`, sem barra/volume/tela cheia.
+  Uma camada transparente `.av-reel-hit` por cima captura o clique e abre o popup; o poster do Wistia
+  (`style="{{ it.bg }}"`) fica por baixo enquanto o player carrega.
+- **Loop infinito sem pausa:** 2 grupos idênticos de 6 cards; cada grupo anima `translateX(0 → -100%)` da
   própria largura (`@keyframes av-reel`), então a emenda é exata em pixel. Velocidade moderada:
   30s por volta no mobile (~36 px/s), 40s no desktop (~40 px/s). Não pausa no hover.
-- **Tamanho:** mobile = 2 vídeos por linha (`(100vw - 52px) / 2`, 169px em 390px); desktop = `clamp(200px,17vw,300px)`
-  com fade nas bordas. Cards 9:16, raio 4px, play âmbar centralizado.
-- **Acessibilidade:** só o 1º grupo é focável (`tabindex` 0 e `aria-label "Reproducir video N de 6"`);
-  as cópias têm `aria-hidden` e `tabindex=-1`. Com `prefers-reduced-motion` a faixa para e vira rolagem manual.
+- **Tamanho:** mobile = 2 vídeos por linha (`(100vw - 52px) / 2`, 169px em 390px); desktop =
+  `max(clamp(200px,17vw,300px), 100vw/6 - 20px)` (garante 1 grupo ≥ largura da tela), com fade nas bordas.
+- **Acessibilidade:** só o 1º grupo é focável (botões com `aria-label "Reproducir video N de 6"`);
+  a cópia tem `aria-hidden` e `tabindex=-1`. Com `prefers-reduced-motion` a faixa para e vira rolagem manual.
 - **Popup** (`[data-av-vmodal]`, fora da `<section>`): moldura 9:16 centrada (não é tela cheia),
   altura máx. `min(100svh - 152px, 880px)`, filete âmbar de 2px no topo, véu escuro com blur + grão + hachura,
   poster desfocado e spinner enquanto o player carrega.

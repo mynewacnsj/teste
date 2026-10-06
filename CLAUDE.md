@@ -55,7 +55,9 @@ O site não terá um único fundo: algumas dobras usam cores complementares, com
 ## Carrossel de vídeos (Wistia)
 
 - Fica no topo da segunda dobra; 6 vídeos em `REEL` no script do `index.html`.
-- Loop: 3 grupos iguais, cada um anima `translateX(-100%)` da própria largura. Não pausa.
+- Loop: 2 grupos iguais, cada um anima `translateX(-100%)` da própria largura. Não pausa.
+- Cards são `<wistia-player>` reais com a configuração do Wistia (prévia silenciosa + play padrão);
+  não force atributos nem desenhe play próprio. Clique (camada transparente) abre o popup.
 - Mobile: 2 vídeos por linha. Popup 9:16 (nunca tela cheia) com o `<wistia-player>` criado/destruído via JS.
 - Nunca use `src="{{ … }}"` em `<img>` no template: o HTML cru é parseado antes do React e o navegador
   baixa a URL literal. Use `style="{{ objeto }}"` com `backgroundImage`.
