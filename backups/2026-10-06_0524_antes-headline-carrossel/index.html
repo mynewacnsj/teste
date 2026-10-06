@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contractor Society — Marketing para contratistas de remodelación en EE. UU.</title>
+<meta name="description" content="Generamos y calificamos prospectos de remodelación de alto ticket para que tu equipo solo hable con quien ya está listo para firmar.">
+<meta name="theme-color" content="#0c0c0d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c0c0d'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Arial,sans-serif' font-weight='800' font-size='14' fill='%23e9a227'%3ECS%3C/text%3E%3C/svg%3E">
+<!-- Desempenho: a imagem do hero e as fontes começam a baixar antes de qualquer script.
+     As preloads da imagem usam o mesmo "media" das <source> do <picture> do hero. -->
+<link rel="preload" as="image" type="image/avif" imagesrcset="./media/hero/hero-m-650.avif 650w, ./media/hero/hero-m-1300.avif 1300w" imagesizes="100vw" media="(max-width: 759px) and (max-aspect-ratio: 3/4)" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" imagesrcset="./media/hero/hero-1280.avif 1280w, ./media/hero/hero-1920.avif 1920w, ./media/hero/hero-2752.avif 2752w" imagesizes="100vw" media="not all and (max-width: 759px) and (max-aspect-ratio: 3/4)" fetchpriority="high">
+<link rel="preload" href="./fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="./fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin="">
+<style>
+@font-face{font-family:Archivo;font-style:normal;font-weight:500 800;font-display:swap;src:url(./fonts/archivo-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Barlow;font-style:normal;font-weight:400;font-display:swap;src:url(./fonts/barlow-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Barlow;font-style:normal;font-weight:500;font-display:swap;src:url(./fonts/barlow-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Barlow;font-style:normal;font-weight:600;font-display:swap;src:url(./fonts/barlow-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+html,body{margin:0;background:#0c0c0d}
+x-dc{display:none!important}
+</style>
+<!-- React local (sem CDN) e runtime minificado; defer = não bloqueia o HTML. -->
+<script defer src="./vendor/react.production.min.js"></script>
+<script defer src="./vendor/react-dom.production.min.js"></script>
+<script defer src="./support.min.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<style>
+html,body{margin:0;padding:0;background:#0c0c0d}
+a{color:#e9a227;text-decoration:none}
+a:hover{color:#f6bc4d}
+
+/* Carrossel de vídeos — faixa infinita, rolamento contínuo para a esquerda.
+   Cada grupo traz os 6 vídeos e anda -100% da PRÓPRIA largura: com 2 grupos
+   a emenda é exata em pixel desde que 1 grupo >= largura da tela (garantido
+   pelo max() da largura do card no desktop). Cada card: poster WebP local, um
+   <video> nativo mudo em loop com a prévia curta (media/reel/) e o play; uma
+   camada transparente por cima captura o clique e abre o popup. */
+@keyframes av-reel{from{transform:translate3d(0,0,0)}to{transform:translate3d(-100%,0,0)}}
+:root{--av-reel-gap:12px;--av-reel-card:calc((100vw - 52px) / 2);--av-reel-dur:30s;--av-reel-fade:clamp(44px,13vw,260px)}
+.av-reel-wrap{position:relative}
+.av-reel{position:relative;width:100%;overflow:hidden;padding:6px 0}
+.av-reel-track{display:flex;width:max-content}
+.av-reel-group{display:flex;flex:0 0 auto;animation:av-reel var(--av-reel-dur) linear infinite;will-change:transform}
+.av-reel-card{position:relative;flex:0 0 auto;width:var(--av-reel-card);aspect-ratio:9/16;margin:0 var(--av-reel-gap) 0 0;border-radius:4px;overflow:hidden;background:#16171a}
+.av-reel-img{position:absolute;inset:0;display:block;background-color:#16171a;background-size:cover;background-position:50% 50%;background-repeat:no-repeat}
+.av-reel-slot{position:absolute;inset:0;z-index:1}
+.av-reel-slot video{display:block;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
+.av-reel-slot[data-on] video{opacity:1}
+.av-reel-play{position:absolute;left:50%;top:50%;z-index:2;width:clamp(64px,46%,124px);aspect-ratio:1.56;border-radius:2px;background:rgba(233,162,39,.72);display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);pointer-events:none;transition:background-color .25s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
+.av-reel-play svg{width:28%;height:auto;margin-left:6%;display:block}
+.av-reel-card:hover .av-reel-play{background:rgba(246,188,77,.9);transform:translate(-50%,-50%) scale(1.05)}
+.av-reel-hit{position:absolute;inset:0;z-index:3;width:100%;height:100%;margin:0;padding:0;border:0;border-radius:inherit;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.av-reel-hit:focus-visible{outline:2px solid #e9a227;outline-offset:-2px}
+/* Degradê das bordas: os cards se dissolvem no preto da própria seção. É máscara, não
+   camada pintada por cima, para a borda herdar exatamente o fundo (grão, hachura e o brilho
+   âmbar) sem emenda. Curva ease-out em várias paradas para não formar faixa. */
+.av-reel{-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,.03) calc(var(--av-reel-fade) * .1),rgba(0,0,0,.1) calc(var(--av-reel-fade) * .22),rgba(0,0,0,.24) calc(var(--av-reel-fade) * .36),rgba(0,0,0,.44) calc(var(--av-reel-fade) * .5),rgba(0,0,0,.65) calc(var(--av-reel-fade) * .64),rgba(0,0,0,.83) calc(var(--av-reel-fade) * .78),rgba(0,0,0,.95) calc(var(--av-reel-fade) * .9),#000 var(--av-reel-fade),#000 calc(100% - var(--av-reel-fade)),rgba(0,0,0,.95) calc(100% - var(--av-reel-fade) * .9),rgba(0,0,0,.83) calc(100% - var(--av-reel-fade) * .78),rgba(0,0,0,.65) calc(100% - var(--av-reel-fade) * .64),rgba(0,0,0,.44) calc(100% - var(--av-reel-fade) * .5),rgba(0,0,0,.24) calc(100% - var(--av-reel-fade) * .36),rgba(0,0,0,.1) calc(100% - var(--av-reel-fade) * .22),rgba(0,0,0,.03) calc(100% - var(--av-reel-fade) * .1),rgba(0,0,0,0) 100%);mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0,rgba(0,0,0,.03) calc(var(--av-reel-fade) * .1),rgba(0,0,0,.1) calc(var(--av-reel-fade) * .22),rgba(0,0,0,.24) calc(var(--av-reel-fade) * .36),rgba(0,0,0,.44) calc(var(--av-reel-fade) * .5),rgba(0,0,0,.65) calc(var(--av-reel-fade) * .64),rgba(0,0,0,.83) calc(var(--av-reel-fade) * .78),rgba(0,0,0,.95) calc(var(--av-reel-fade) * .9),#000 var(--av-reel-fade),#000 calc(100% - var(--av-reel-fade)),rgba(0,0,0,.95) calc(100% - var(--av-reel-fade) * .9),rgba(0,0,0,.83) calc(100% - var(--av-reel-fade) * .78),rgba(0,0,0,.65) calc(100% - var(--av-reel-fade) * .64),rgba(0,0,0,.44) calc(100% - var(--av-reel-fade) * .5),rgba(0,0,0,.24) calc(100% - var(--av-reel-fade) * .36),rgba(0,0,0,.1) calc(100% - var(--av-reel-fade) * .22),rgba(0,0,0,.03) calc(100% - var(--av-reel-fade) * .1),rgba(0,0,0,0) 100%)}
+@media (min-width:760px){
+  :root{--av-reel-gap:20px;--av-reel-card:max(clamp(200px,17vw,300px), calc(100vw / 6 - 20px));--av-reel-dur:40s}
+}
+@media (prefers-reduced-motion:reduce){
+  .av-reel{overflow-x:auto;scroll-snap-type:x mandatory}
+  .av-reel-group{animation:none}
+  .av-reel-group[aria-hidden="true"]{display:none}
+  .av-reel-card{scroll-snap-align:start}
+}
+
+/* Mobile: o texto do hero sobe (alinhado ao topo, não centralizado) e a altura do hero passa a
+   seguir o conteúdo, aproximando a segunda dobra. A caixa da imagem mantém a altura antiga
+   (a mesma fórmula do min-height do hero), assim como os véus/degradês por cima dela: a foto
+   fica com a mesma escala, enquadramento e escurecimento. Só a parte de baixo, já escura,
+   deixa de aparecer; um fade de 120px fecha o novo rodapé no #0c0c0d da seção. */
+@media (max-width:759px){
+  [data-av-root]{min-height:0 !important}
+  [data-av-heroimg],[data-av-herolayer]{bottom:auto !important;height:max(100%, min(100svh, calc(72svh + 34vw)))}
+  [data-av-herofade]{display:block !important;position:absolute;left:0;right:0;bottom:0;height:120px;pointer-events:none;background:linear-gradient(180deg,rgba(12,12,13,0) 0%,rgba(12,12,13,.55) 45%,rgba(12,12,13,.9) 78%,#0c0c0d 100%)}
+  [data-av-herobody]{align-items:flex-start !important;padding-top:clamp(36px,5.5vh,52px) !important;padding-bottom:16px !important}
+}
+
+/* Serviços — bloco dentro da segunda dobra (mesmo fundo escuro e efeitos de luz âmbar), logo após o
+   carrossel. Cards em cinza escuro #16171a com a textura escura (grão screen .13 + hachura .22). */
+.av-sv-inner{position:relative;z-index:3;box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;padding:clamp(64px,7vw,128px) 0 clamp(72px,8vw,150px);color:#f4f1ea}
+.av-sv-head{max-width:760px}
+.av-sv-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:clamp(16px,1.8vw,22px);font-family:Archivo,sans-serif;font-size:clamp(10.5px,.85vw,14px);font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227}
+.av-sv-eyebrow-line{display:block;width:clamp(30px,3vw,56px);height:2px;background:#e9a227}
+.av-sv-h2{margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(26px,min(3.1vw,5.4vh),54px);line-height:1.08;letter-spacing:-.035em;color:#ffffff;text-wrap:balance}
+.av-sv-accent{color:#e9a227}
+.av-sv-bar{width:64px;height:3px;margin:clamp(18px,2vw,26px) 0;background:#e9a227}
+.av-sv-sub{margin:0;max-width:660px;font-size:clamp(15.5px,min(1.2vw,2.1vh),19px);line-height:1.62;color:rgba(244,241,234,.7);text-wrap:pretty}
+.av-sv-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(16px,1.8vw,24px);margin-top:clamp(36px,4.2vw,68px)}
+.av-sv-card{position:relative;display:flex;flex-direction:column;min-width:0;background:#16171a;border:1px solid rgba(244,241,234,.09);border-radius:4px;overflow:hidden;isolation:isolate;transition:border-color .3s ease}
+.av-sv-card::before{content:"";position:absolute;inset:0;z-index:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat;pointer-events:none}
+.av-sv-card::after{content:"";position:absolute;inset:0;z-index:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px);pointer-events:none}
+.av-sv-card:hover{border-color:rgba(233,162,39,.45)}
+.av-sv-media{position:relative;z-index:1;aspect-ratio:3 / 2;background:#0c0c0d;overflow:hidden}
+.av-sv-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.av-sv-card:hover .av-sv-img{transform:scale(1.04)}
+.av-sv-num{position:absolute;top:0;left:0;z-index:1;padding:9px 22px 9px 16px;border-top:3px solid #e9a227;background:#0c0c0d;color:#f4f1ea;font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(18px,1.6vw,24px);line-height:1;letter-spacing:-.01em;clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.av-sv-chip{position:absolute;left:14px;bottom:14px;z-index:1;padding:6px 10px;border-radius:2px;background:rgba(12,12,13,.86);color:#f4f1ea;font-family:Barlow,sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.av-sv-body{position:relative;z-index:1;display:flex;flex:1 1 auto;flex-direction:column;padding:clamp(20px,2.3vw,32px)}
+.av-sv-tag{margin:0 0 10px;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#e9a227}
+.av-sv-title{margin:0 0 12px;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(24px,2.2vw,32px);line-height:1.05;letter-spacing:-.03em;color:#f4f1ea}
+.av-sv-desc{flex:1 1 auto;margin:0;font-size:clamp(15px,1.1vw,16.5px);line-height:1.6;color:rgba(244,241,234,.7)}
+.av-sv-foot{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(244,241,234,.12)}
+.av-sv-feat{font-family:Archivo,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,241,234,.55)}
+.av-sv-cta{display:inline-flex;align-items:center;gap:9px;font-family:Archivo,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#e9a227;transition:color .2s ease}
+.av-sv-cta svg{width:14px;height:14px;display:block;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.av-sv-cta:hover{color:#f6bc4d}
+.av-sv-cta:hover svg{transform:translateX(3px)}
+.av-sv-cta:focus-visible{outline:2px solid #e9a227;outline-offset:3px}
+@media (min-width:760px){.av-sv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Popup do vídeo — não é tela cheia: moldura 9:16 centrada sobre o véu escuro. */
+.av-vmodal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:clamp(64px,8vh,88px) 16px clamp(24px,5vh,56px);box-sizing:border-box;visibility:hidden;pointer-events:none}
+.av-vmodal[data-state="open"]{visibility:visible;pointer-events:auto}
+.av-vmodal-veil{position:absolute;inset:0;overflow:hidden;background:rgba(8,8,9,.86);-webkit-backdrop-filter:blur(12px) saturate(.8);backdrop-filter:blur(12px) saturate(.8);opacity:0;transition:opacity .34s ease}
+.av-vmodal[data-state="open"] .av-vmodal-veil{opacity:1}
+.av-vmodal-grain{position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat;pointer-events:none}
+.av-vmodal-hatch{position:absolute;inset:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px);pointer-events:none}
+.av-vmodal-frame{position:relative;z-index:1;width:min(100%,calc(min(100svh - 152px,880px) * .5625));aspect-ratio:9/16;border-radius:4px;overflow:hidden;background:#0c0c0d;box-shadow:0 0 0 1px rgba(244,241,234,.1),0 48px 120px -24px rgba(0,0,0,.9);opacity:0;transform:translateY(18px) scale(.965);transition:opacity .3s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.av-vmodal[data-state="open"] .av-vmodal-frame{opacity:1;transform:none}
+.av-vmodal-frame::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;z-index:4;background:#e9a227;box-shadow:0 0 18px rgba(233,162,39,.55);pointer-events:none}
+.av-vmodal-poster{position:absolute;inset:-12px;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;filter:blur(10px) brightness(.55)}
+.av-vmodal-spin{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:2px solid rgba(244,241,234,.18);border-top-color:#e9a227;animation:av-spin .8s linear infinite}
+@keyframes av-spin{to{transform:rotate(360deg)}}
+.av-vmodal-mount{position:absolute;inset:0;z-index:2}
+.av-vmodal-mount video{display:block;width:100%;height:100%;object-fit:contain;background:transparent}
+.av-vmodal-close{position:absolute;z-index:3;top:clamp(14px,2.4vh,24px);right:clamp(14px,2vw,28px);width:46px;height:46px;padding:0;border-radius:50%;border:1px solid rgba(244,241,234,.24);background:rgba(12,12,13,.55);color:#f4f1ea;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:scale(.9);transition:opacity .3s ease,transform .4s cubic-bezier(.2,.8,.2,1),border-color .2s ease,color .2s ease}
+.av-vmodal[data-state="open"] .av-vmodal-close{opacity:1;transform:none}
+.av-vmodal-close:hover{border-color:#e9a227;color:#e9a227}
+.av-vmodal-close:focus-visible{outline:2px solid #e9a227;outline-offset:3px}
+.av-vmodal-close svg{width:16px;height:16px;display:block}
+@media (prefers-reduced-motion:reduce){.av-vmodal-veil,.av-vmodal-frame,.av-vmodal-close{transition:none}}
+</style>
+</helmet>
+
+<div data-av-root="1" style="position:relative;width:100%;min-height:min(100svh, calc(72svh + 34vw));padding-top:clamp(72px,9vh,104px);box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden;background:#0c0c0d;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div data-av-sentinel="1" style="position:absolute;top:60px;left:0;width:1px;height:1px;pointer-events:none"></div>
+
+  <div data-av-heroimg="1" style="position:absolute;inset:0;background:#0c0c0d">
+    <picture>
+      <source type="image/avif" media="(max-width: 759px) and (max-aspect-ratio: 3/4)" srcset="./media/hero/hero-m-650.avif 650w, ./media/hero/hero-m-1300.avif 1300w" sizes="100vw">
+      <source type="image/webp" media="(max-width: 759px) and (max-aspect-ratio: 3/4)" srcset="./media/hero/hero-m-650.webp 650w, ./media/hero/hero-m-1300.webp 1300w" sizes="100vw">
+      <source type="image/avif" srcset="./media/hero/hero-1280.avif 1280w, ./media/hero/hero-1920.avif 1920w, ./media/hero/hero-2752.avif 2752w" sizes="100vw">
+      <source type="image/webp" srcset="./media/hero/hero-1280.webp 1280w, ./media/hero/hero-1920.webp 1920w, ./media/hero/hero-2752.webp 2752w" sizes="100vw">
+      <img src="./media/hero/hero-1920.webp" alt="Collage de obra: contratista clavando, herramientas, casa terminada y camioneta al atardecer" width="2752" height="1536" fetchpriority="high" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:68% 50%;display:block">
+    </picture>
+  </div>
+
+  <sc-if value="{{ scrimSoft }}" hint-placeholder-val="{{ false }}">
+    <div data-av-herolayer="1" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(10,10,11,.88) 0%,rgba(10,10,11,.72) 26%,rgba(10,10,11,.32) 50%,rgba(10,10,11,0) 70%)"></div>
+  </sc-if>
+  <sc-if value="{{ scrimMedium }}" hint-placeholder-val="{{ true }}">
+    <div data-av-herolayer="1" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(10,10,11,.95) 0%,rgba(10,10,11,.88) 24%,rgba(10,10,11,.55) 46%,rgba(10,10,11,.12) 66%,rgba(10,10,11,0) 78%)"></div>
+  </sc-if>
+  <sc-if value="{{ scrimHeavy }}" hint-placeholder-val="{{ false }}">
+    <div data-av-herolayer="1" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(8,8,9,.97) 0%,rgba(8,8,9,.94) 32%,rgba(8,8,9,.74) 54%,rgba(8,8,9,.34) 74%,rgba(8,8,9,.12) 100%)"></div>
+  </sc-if>
+
+  <div data-av-herolayer="1" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,11,.62) 0%,rgba(10,10,11,.14) 16%,rgba(10,10,11,0) 30%,rgba(10,10,11,.34) 62%,rgba(10,10,11,.74) 80%,rgba(12,12,13,.95) 93%,rgba(12,12,13,1) 100%)"></div>
+  <div data-av-herolayer="1" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 78% 40%,rgba(233,162,39,.16) 0%,rgba(233,162,39,0) 55%)"></div>
+
+  <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}">
+    <div data-av-herolayer="1" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,11,.78) 0%,rgba(10,10,11,.6) 35%,rgba(10,10,11,.72) 70%,rgba(12,12,13,1) 100%)"></div>
+  </sc-if>
+
+  <div data-av-herofade="1" aria-hidden="true" style="display:none"></div>
+  <div data-av-grain="1" style="position:absolute;inset:0;pointer-events:none;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat"></div>
+  <div data-av-hatch="1" style="position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+  <div data-av-herolayer="1" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 105% at 50% 48%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
+
+  <header style="position:fixed;top:0;left:0;right:0;z-index:40">
+    <div style="position:absolute;inset:0;pointer-events:none;background:rgba(12,12,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(244,241,234,.12);box-shadow:0 18px 40px -30px rgba(0,0,0,.95);overflow:hidden;transition:opacity .45s ease;opacity:0" data-av-chrome="1">
+      <div data-av-grain="1" style="position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat"></div>
+      <div data-av-hatch="1" style="position:absolute;inset:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+    </div>
+    <div data-av-bar="1" style="position:relative;height:clamp(72px,9vh,104px);transition:height .45s cubic-bezier(.22,.61,.36,1);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="#" aria-label="Contractor Society — inicio" style="display:flex;flex-direction:column;gap:4px;line-height:1;text-decoration:none">
+      <span style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(15px,min(1.25vw,2.1vh),19px);letter-spacing:.12em;color:#f4f1ea;text-transform:uppercase">Contractor</span>
+      <span style="font-family:Archivo,sans-serif;font-weight:600;font-size:clamp(9.5px,.8vw,11px);letter-spacing:.62em;color:#e9a227;text-transform:uppercase">Society</span>
+    </a>
+
+    <sc-if value="{{ showDesktopNav }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:clamp(20px,2.6vw,44px)">
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Servicios</a>
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Resultados</a>
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Proceso</a>
+        <a href="#" style="font-size:clamp(13px,min(1vw,1.8vh),15px);font-weight:500;letter-spacing:.02em;color:rgba(244,241,234,.82)" style-hover="color:#ffffff">Nosotros</a>
+        <sc-if value="{{ showNavCta }}" hint-placeholder-val="{{ true }}">
+          <a href="#" style="font-family:Archivo,sans-serif;font-size:clamp(12px,.95vw,14px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#f4f1ea;border:1px solid rgba(244,241,234,.32);padding:clamp(10px,1vw,13px) clamp(18px,1.9vw,26px);border-radius:2px;backdrop-filter:blur(6px);background:rgba(12,12,13,.18)" style-hover="color:#0c0c0d;background:#f4f1ea;border-color:#f4f1ea">Agendar llamada</a>
+        </sc-if>
+      </nav>
+    </sc-if>
+
+    <sc-if value="{{ showBurger }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="Menú" aria-expanded="{{ menuOpen }}" style="position:relative;width:42px;height:42px;flex:0 0 auto;background:#e9a227;border:none;border-radius:3px;cursor:pointer;padding:0;box-shadow:0 10px 22px -14px rgba(233,162,39,.9);transition:background .25s ease" style-hover="background:#f6bc4d">
+        <span style="position:absolute;left:12px;top:20px;display:block;width:18px;height:2px;border-radius:2px;background:#0c0c0d;transition:transform .32s cubic-bezier(.22,.61,.36,1);transform:translateY(-5.5px)" data-av-bar1="1"></span>
+        <span style="position:absolute;left:12px;top:20px;display:block;width:18px;height:2px;border-radius:2px;background:#0c0c0d;transition:opacity .2s ease;opacity:1" data-av-bar2="1"></span>
+        <span style="position:absolute;left:12px;top:20px;display:block;width:18px;height:2px;border-radius:2px;background:#0c0c0d;transition:transform .32s cubic-bezier(.22,.61,.36,1);transform:translateY(5.5px)" data-av-bar3="1"></span>
+      </button>
+    </sc-if>
+    </div>
+
+  <div style="position:relative;z-index:3;overflow:hidden;transition:max-height .42s cubic-bezier(.22,.61,.36,1),opacity .3s ease;max-height:0px;opacity:0;pointer-events:none" data-av-menu="1">
+    <div style="padding:22px 0 28px;box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;flex-direction:column;gap:2px;border-top:1px solid rgba(244,241,234,.12);transition:transform .42s cubic-bezier(.22,.61,.36,1);transform:translateY(-14px)" data-av-menu-inner="1">
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Servicios</a>
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Resultados</a>
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Proceso</a>
+      <a href="#" style="display:block;font-size:17px;font-weight:500;color:rgba(244,241,234,.88);padding:15px 0;border-bottom:1px solid rgba(244,241,234,.09)" style-hover="color:#e9a227">Nosotros</a>
+      <a href="#" style="display:block;margin-top:22px;text-align:center;font-family:Archivo,sans-serif;font-size:14px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#0c0c0d;background:#e9a227;padding:17px 20px;border-radius:2px" style-hover="background:#f6bc4d;color:#0c0c0d">Agendar llamada</a>
+    </div>
+  </div>
+  </header>
+
+  <div data-av-herobody="1" style="position:relative;z-index:2;flex:1 1 auto;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;align-items:center;gap:clamp(24px,3vw,64px);padding:clamp(28px,5vh,64px) 0 clamp(20px,3vh,40px);box-sizing:border-box">
+
+    <sc-if value="{{ showRail }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:0 0 34px;align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;pointer-events:none">
+        <div style="width:1px;flex:1 1 auto;max-height:180px;background:linear-gradient(180deg,rgba(244,241,234,0),rgba(244,241,234,.28))"></div>
+        <div style="writing-mode:vertical-rl;font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:rgba(244,241,234,.42);white-space:nowrap">Est. 2016</div>
+        <div style="width:1px;flex:1 1 auto;max-height:180px;background:linear-gradient(180deg,rgba(244,241,234,.28),rgba(244,241,234,0))"></div>
+      </div>
+    </sc-if>
+
+    <main style="flex:1 1 auto;min-width:0;max-width:min(100%,1060px)">
+      <h1 style="margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:min(6.9vw,6.6vh,84px);line-height:1.04;letter-spacing:-.035em;color:#f4f1ea;white-space:nowrap">Nº 1 en Marketing para<br>Remodeling/Construction<br><span style="color: rgb(233, 162, 39);">en Estados Unidos.</span></h1>
+
+      <p style="margin:clamp(20px,3vh,34px) 0 0;max-width:min(100%,660px);font-size:clamp(15.5px,min(1.3vw,2.3vh),23px);line-height:1.55;font-weight:400;color:rgba(244,241,234,.74);text-wrap:pretty">Generamos y calificamos prospectos de remodelación de alto ticket, para que tu equipo solo hable con quien ya está listo para firmar.</p>
+
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(18px,2.2vw,30px);margin-top:clamp(28px,4.5vh,52px)">
+        <a href="#" style="display:inline-flex;align-items:center;justify-content:center;gap:14px;background:#e9a227;color:#0c0c0d;font-family:Archivo,sans-serif;font-size:clamp(13px,min(1vw,1.75vh),17px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:clamp(15px,min(1.5vw,2.5vh),22px) clamp(24px,2.7vw,44px);border-radius:2px;box-shadow:0 18px 44px -18px rgba(233,162,39,.75)" style-hover="background:#f6bc4d;color:#0c0c0d">Agendar diagnóstico gratis<span style="font-size:1.15em;line-height:1">→</span></a>
+      </div>
+
+      <sc-if value="{{ showTrustBar }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2.4vw,40px);margin-top:clamp(34px,6vh,76px);padding-top:clamp(22px,3vh,34px);border-top:1px solid rgba(244,241,234,.14);max-width:860px">
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="font-family:Archivo,sans-serif;font-size:clamp(23px,min(2.2vw,3.9vh),38px);font-weight:700;letter-spacing:-.02em;color:#f4f1ea">+180</div>
+            <div style="font-size:clamp(10.5px,.95vw,14px);letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.8)">Contratistas</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="font-family:Archivo,sans-serif;font-size:clamp(23px,min(2.2vw,3.9vh),38px);font-weight:700;letter-spacing:-.02em;color:#f4f1ea">$42M</div>
+            <div style="font-size:clamp(10.5px,.95vw,14px);letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.8)">En contratos cerrados</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="font-family:Archivo,sans-serif;font-size:clamp(23px,min(2.2vw,3.9vh),38px);font-weight:700;letter-spacing:-.02em;color:#f4f1ea">24 h</div>
+            <div style="font-size:clamp(10.5px,.95vw,14px);letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.8)">Tiempo de respuesta</div>
+          </div>
+        </div>
+      </sc-if>
+    </main>
+  </div>
+
+  <div style="position:relative;z-index:2;flex:0 0 auto;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:0 0 clamp(18px, 4vw - 12px, 64px);pointer-events:none">
+    <sc-if value="{{ scrollCueOn }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:13px">
+        <div style="width:9px;height:9px;border-radius:50%;background:#e9a227;flex:0 0 auto"></div>
+        <span style="font-size:clamp(9px,min(.78vw,1.25vh),12px);letter-spacing:.34em;text-transform:uppercase;color:rgba(244,241,234,.78)">Desliza</span>
+      </div>
+    </sc-if>
+    <sc-if value="{{ showRegionNote }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:18px;margin-left:auto">
+        <span style="font-size:clamp(9px,min(.78vw,1.25vh),12px);letter-spacing:.36em;text-transform:uppercase;color:rgba(244,241,234,.85);text-shadow:0 1px 10px rgba(10,10,11,.85)">NÚMERO 1 EN ESTADO UNIDOS</span>
+        <div style="width:64px;height:1px;background:rgba(244,241,234,.3)"></div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+
+
+<section style="position:relative;display:flow-root;width:100%;background:#0c0c0d;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+    <div style="position:absolute;inset:0;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0px,rgba(0,0,0,.12) 72px,rgba(0,0,0,.45) 180px,rgba(0,0,0,1) 380px);mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0px,rgba(0,0,0,.12) 72px,rgba(0,0,0,.45) 180px,rgba(0,0,0,1) 380px)">
+      <div style="position:absolute;top:0;left:0;right:0;height:max(3000px,100%);background:linear-gradient(72deg,rgba(233,162,39,0) 28%,rgba(233,162,39,.03) 41%,rgba(233,162,39,.085) 51%,rgba(233,162,39,.022) 62%,rgba(233,162,39,0) 74%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:max(3000px,100%);background:radial-gradient(56% 34% at 84% 6%,rgba(233,162,39,.15) 0%,rgba(233,162,39,0) 64%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:max(3000px,100%);background:linear-gradient(180deg,rgba(233,162,39,.04) 0%,rgba(233,162,39,.015) 14%,rgba(233,162,39,0) 28%)"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:62%;background:radial-gradient(48% 42% at 8% 58%,rgba(233,162,39,.075) 0%,rgba(233,162,39,0) 70%)"></div>
+    </div>
+    <div data-av-grain="1" style="position:absolute;top:0;left:0;right:0;bottom:0;opacity:.1;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat"></div>
+    <div data-av-hatch="1" style="position:absolute;top:0;left:0;right:0;bottom:0;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+  </div>
+
+  <div style="position:relative;z-index:3;padding-top:clamp(40px,4.6vw,88px);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:clamp(20px,2.4vw,28px)">
+      <div style="width:clamp(30px,3vw,56px);height:2px;background:#e9a227"></div>
+      <span style="font-family:Archivo,sans-serif;font-size:clamp(10.5px,.85vw,14px);font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
+    </div>
+    <h2 style="margin:0;max-width:min(100%,1680px);font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(22px,min(2.75vw,4.8vh),54px);line-height:1.12;letter-spacing:-.035em;color:#ffffff;text-wrap:pretty">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
+  </div>
+
+  <div class="av-reel-wrap" style="z-index:3;margin-top:clamp(28px,3.4vw,56px)">
+  <div data-av-reel="1" class="av-reel" role="region" aria-roledescription="carrusel" aria-label="Videos">
+    <div class="av-reel-track">
+      <sc-for list="{{ reelGroups }}" as="g">
+        <div class="av-reel-group" aria-hidden="{{ g.hidden }}">
+          <sc-for list="{{ reelItems }}" as="it">
+            <div class="av-reel-card">
+              <span class="av-reel-img" style="{{ it.bg }}"></span>
+              <div class="av-reel-slot" data-av-reel-slot="{{ it.id }}"></div>
+              <span class="av-reel-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 2.6v18.8c0 .9 1 1.4 1.7.9l14.1-9.4c.6-.4.6-1.3 0-1.8L6.7 1.7C6 1.2 5 1.7 5 2.6z" fill="#0c0c0d" fill-opacity=".85"></path></svg></span>
+              <button type="button" class="av-reel-hit" onClick="{{ it.open }}" aria-label="{{ it.label }}" tabindex="{{ g.tab }}"></button>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </div>
+
+  <div id="servicios" data-av-servicios="1" class="av-sv-inner">
+    <header class="av-sv-head">
+      <div class="av-sv-eyebrow"><span class="av-sv-eyebrow-line"></span><span data-av-sv="eyebrow">Servicios</span></div>
+      <h2 class="av-sv-h2"><span data-av-sv="headline">Desde que te encuentran hasta que </span><span class="av-sv-accent" data-av-sv="accent">firman tu estimate.</span></h2>
+      <div class="av-sv-bar"></div>
+      <p class="av-sv-sub" data-av-sv="sub">Tú te enfocas en la obra. Nosotros atraemos al cliente correcto, le damos razones para confiar en ti y te ayudamos a cerrar el trabajo. Un solo equipo, especializado en contratistas de remodelación.</p>
+    </header>
+    <div class="av-sv-grid">
+      <article class="av-sv-card" data-av-sv-card="01">
+        <div class="av-sv-media">
+          <img class="av-sv-img" src="./media/servicios/meta-ads.webp" alt="Anuncio de la empresa de remodelación en Instagram con resultados de campaña, segmentación por zona y un lead calificado" loading="lazy" decoding="async" width="1080" height="720">
+          <span class="av-sv-num">01</span>
+          <span class="av-sv-chip" data-av-sv="chip">Facebook e Instagram</span>
+        </div>
+        <div class="av-sv-body">
+          <p class="av-sv-tag" data-av-sv="tag">Servicio principal · Leads</p>
+          <h3 class="av-sv-title" data-av-sv="title">Meta Ads</h3>
+          <p class="av-sv-desc" data-av-sv="desc">Campañas segmentadas por código postal, tipo de proyecto y presupuesto. Cada lead es solo tuyo y llega filtrado: sabes qué quiere hacer y cuánto piensa invertir antes de llamarlo.</p>
+          <div class="av-sv-foot">
+            <span class="av-sv-feat" data-av-sv="feat">Leads exclusivos y calificados</span>
+            <a href="#" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="av-sv-card" data-av-sv-card="02">
+        <div class="av-sv-media">
+          <img class="av-sv-img" src="./media/servicios/social-media.webp" alt="Perfil de Instagram de una empresa de remodelación con fotos de obras" loading="lazy" decoding="async" width="1080" height="720">
+          <span class="av-sv-num">02</span>
+          <span class="av-sv-chip" data-av-sv="chip">Contenido de obra</span>
+        </div>
+        <div class="av-sv-body">
+          <p class="av-sv-tag" data-av-sv="tag">Autoridad y confianza</p>
+          <h3 class="av-sv-title" data-av-sv="title">Social Media</h3>
+          <p class="av-sv-desc" data-av-sv="desc">Convertimos tus obras en contenido: antes y después, recorridos en video y testimonios de clientes. Tu perfil trabaja como portafolio y el cliente ya confía en ti antes de llamarte.</p>
+          <div class="av-sv-foot">
+            <span class="av-sv-feat" data-av-sv="feat">Plan de contenido mensual</span>
+            <a href="#" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="av-sv-card" data-av-sv-card="03">
+        <div class="av-sv-media">
+          <img class="av-sv-img" src="./media/servicios/estimates.webp" alt="Estimate de remodelación con la marca del contratista y conversación con la cliente aprobándolo" loading="lazy" decoding="async" width="1080" height="720">
+          <span class="av-sv-num">03</span>
+          <span class="av-sv-chip" data-av-sv="chip">Cotizaciones con tu marca</span>
+        </div>
+        <div class="av-sv-body">
+          <p class="av-sv-tag" data-av-sv="tag">Cierre de ventas</p>
+          <h3 class="av-sv-title" data-av-sv="title">Estimates personalizados</h3>
+          <p class="av-sv-desc" data-av-sv="desc">Presupuestos con tu logo, alcance detallado, materiales y fotos del proyecto. Un estimate claro y profesional transmite seriedad, justifica tu precio y te ayuda a cerrar trabajos más grandes.</p>
+          <div class="av-sv-foot">
+            <span class="av-sv-feat" data-av-sv="feat">Listos para enviar y firmar</span>
+            <a href="#" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="av-sv-card" data-av-sv-card="04">
+        <div class="av-sv-media">
+          <img class="av-sv-img" src="./media/servicios/seo-ia.webp" alt="Asistente de IA recomendando la empresa de remodelación como primera opción" loading="lazy" decoding="async" width="1080" height="720">
+          <span class="av-sv-num">04</span>
+          <span class="av-sv-chip" data-av-sv="chip">ChatGPT · Gemini · Google</span>
+        </div>
+        <div class="av-sv-body">
+          <p class="av-sv-tag" data-av-sv="tag">La nueva forma de buscar</p>
+          <h3 class="av-sv-title" data-av-sv="title">SEO para IA</h3>
+          <p class="av-sv-desc" data-av-sv="desc">Optimizamos tu sitio web y tu perfil de Google Business para que aparezcas cuando tus clientes le pregunten a la IA por un contratista de confianza en su ciudad.</p>
+          <div class="av-sv-foot">
+            <span class="av-sv-feat" data-av-sv="feat">Antes que tu competencia</span>
+            <a href="#" class="av-sv-cta"><span data-av-sv="cta">Agendar diagnóstico</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+</section>
+
+
+
+<div data-av-vmodal="1" class="av-vmodal" data-state="{{ videoState }}" role="dialog" aria-modal="true" aria-label="Video" aria-hidden="{{ videoHidden }}">
+  <div class="av-vmodal-veil" onClick="{{ closeVideo }}">
+    <div class="av-vmodal-grain"></div>
+    <div class="av-vmodal-hatch"></div>
+  </div>
+  <div data-av-vframe="1" class="av-vmodal-frame">
+    <div class="av-vmodal-poster" style="{{ videoPoster }}"></div>
+    <div class="av-vmodal-spin"></div>
+    <div data-av-vmount="1" class="av-vmodal-mount"></div>
+  </div>
+  <button type="button" data-av-vclose="1" class="av-vmodal-close" onClick="{{ closeVideo }}" aria-label="Cerrar video" tabindex="{{ videoTab }}">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+  </button>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;scrimIntensity&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;soft&quot;,&quot;medium&quot;,&quot;heavy&quot;],&quot;default&quot;:&quot;medium&quot;,&quot;tsType&quot;:&quot;'soft'|'medium'|'heavy'&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showScrollCue&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showNavCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Nav&quot;}}">
+// Vídeos do carrossel. Prévia (5–7s, 360p, muda) e poster ficam em media/reel/<id>.mp4|.webp;
+// o vídeo completo do popup vem direto do Wistia em MP4 (md = 540p p/ telas estreitas, hd = 720p).
+const REEL = [
+  { id: 'u3z5opwfg5', aspect: 0.5625, md: 'https://embed-ssl.wistia.com/deliveries/9fc95563e8cd5c94adc0e7974b76b5bb3c918e0c.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/1e37a691fb256ee3614d6a14d27dc3992d16c078.mp4' },
+  { id: 'qtq97pqw42', aspect: 0.5625, md: 'https://embed-ssl.wistia.com/deliveries/dd69fb9f0689ea8d2064b72616b0b62736d44000.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/dbe16f8ad5d32dc59768cea37cb4801b5d1f49a0.mp4' },
+  { id: '85xxi41ehr', aspect: 0.5625, md: 'https://embed-ssl.wistia.com/deliveries/ed7586b56a0815003f05f6222649050dbd35a7f7.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/55d20cb2e5408efab459a65bd94ee7c2f9ce33be.mp4' },
+  { id: 'myhu1aftp6', aspect: 0.5625, md: 'https://embed-ssl.wistia.com/deliveries/42a5b20b26fd14cbdc881517cddb1d62fac087d1.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/65a510672334ef7e89102e88d0fe9c349dac1b40.mp4' },
+  { id: 'j9kq9ph7rs', aspect: 0.566038, md: 'https://embed-ssl.wistia.com/deliveries/53ac99b170f65aed2cb3d2ab76f8bb61d5617bb9.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/6ffcc117ba6af6dc092753b9d897f64ee5176c89.mp4' },
+  { id: 'vwcc31ysmm', aspect: 0.5625, md: 'https://embed-ssl.wistia.com/deliveries/b75ad03b1594faac47813be103c04f16d052a3c7.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/8804365e85095a3d9884a84492685a561df94bfa.mp4' },
+];
+// Duas cópias da faixa: só a primeira é acessível; a segunda existe para o loop.
+const REEL_GROUPS = [{ hidden: 'false', tab: 0 }, { hidden: 'true', tab: -1 }];
+
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, menuOpen: false, stuck: false, video: null };
+
+  componentDidMount() {
+    // Defined here, not as class fields: the DC transpiler does not initialize
+    // class-field arrow properties before mount.
+    this._measure = () => {
+      const el = this._rootEl;
+      // offsetWidth stays in CSS px under browser/page zoom; getBoundingClientRect does not.
+      const w = Math.round((el && (el.offsetWidth || el.getBoundingClientRect().width)) || window.innerWidth);
+      if (!w) return;
+      if (this.state.w !== w) this.setState({ w, menuOpen: w >= 900 ? false : this.state.menuOpen });
+      this._repaint();
+    };
+
+    // The template streams in after mount, so the nodes may not exist yet.
+    // Resolve them by attribute and retry until both observers are attached.
+    // This runtime patches whole-attribute holes but NOT css-property holes
+    // inside style="...", so every state-driven visual is applied to the DOM here.
+    this._paint = () => {
+      const st = this.state;
+      const q = (s) => document.querySelector(s);
+      const narrow = st.w < 760;
+      const open = st.menuOpen;
+
+      const chrome = q('[data-av-chrome]');
+      if (chrome) chrome.style.opacity = (st.stuck || open) ? '1' : '0';
+
+      const bar = q('[data-av-bar]');
+      if (bar) bar.style.height = st.stuck ? 'clamp(56px,7vh,74px)' : 'clamp(72px,9vh,104px)';
+
+      const menu = q('[data-av-menu]');
+      if (menu) {
+        menu.style.maxHeight = open ? '460px' : '0px';
+        menu.style.opacity = open ? '1' : '0';
+        menu.style.pointerEvents = open ? 'auto' : 'none';
+      }
+
+      const inner = q('[data-av-menu-inner]');
+      if (inner) inner.style.transform = open ? 'translateY(0)' : 'translateY(-14px)';
+
+      const b1 = q('[data-av-bar1]'), b2 = q('[data-av-bar2]'), b3 = q('[data-av-bar3]');
+      if (b1) b1.style.transform = open ? 'translateY(0) rotate(45deg)' : 'translateY(-5.5px)';
+      if (b2) b2.style.opacity = open ? '0' : '1';
+      if (b3) b3.style.transform = open ? 'translateY(0) rotate(-45deg)' : 'translateY(5.5px)';
+
+      document.querySelectorAll('[data-av-grain]').forEach(n => { n.style.opacity = narrow ? '0.075' : '0.115'; });
+      document.querySelectorAll('[data-av-hatch]').forEach(n => { n.style.opacity = narrow ? '0.13' : '0.2'; });
+      document.querySelectorAll('[data-av-tex]').forEach(n => { n.style.opacity = narrow ? '0.6' : '0.78'; });
+
+
+      if (this._mountReel) this._mountReel();
+    };
+
+    // A re-render can remount an sc-if branch and restore its static style,
+    // so repaint again on the next frame.
+    this._repaint = () => {
+      this._paint();
+      requestAnimationFrame(this._paint);
+    };
+
+    this._tryAttach = () => {
+      this._tries = (this._tries || 0) + 1;
+
+      if (!this._ro && typeof ResizeObserver !== 'undefined') {
+        const r = document.querySelector('[data-av-root]');
+        if (r) {
+          this._rootEl = r;
+          this._ro = new ResizeObserver(this._measure);
+          this._ro.observe(r);
+          this._measure();
+        }
+      }
+
+      if (!this._io && typeof IntersectionObserver !== 'undefined') {
+        const sn = document.querySelector('[data-av-sentinel]');
+        if (sn) {
+          this._io = new IntersectionObserver(entries => {
+            const stuck = !entries[entries.length - 1].isIntersecting;
+            if (this.state.stuck !== stuck) { this.setState({ stuck }); this._repaint(); }
+          }, { threshold: 0 });
+          this._io.observe(sn);
+        }
+      }
+
+      const done = (this._ro || typeof ResizeObserver === 'undefined')
+        && (this._io || typeof IntersectionObserver === 'undefined');
+      if ((done || this._tries > 120) && this._poll) {
+        clearInterval(this._poll);
+        this._poll = null;
+      }
+    };
+
+    // Cards do carrossel: <video> nativo, mudo e em loop, com a prévia curta hospedada no site.
+    // Criado fora do React (o template cru não pode ter <video src="{{ }}">). O src só é ligado
+    // quando o card chega perto da tela e só os cards visíveis tocam; com reduced-motion ou
+    // economia de dados fica só o poster.
+    const calm = () => {
+      try { if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return true; } catch (e) {}
+      const c = navigator.connection;
+      return !!(c && c.saveData);
+    };
+    this._reelSeen = new Set();
+    this._reelPlay = (vid) => {
+      if (this.state.video || calm()) return;
+      if (!vid.getAttribute('src')) vid.setAttribute('src', vid.getAttribute('data-src'));
+      const r = vid.play();
+      if (r && r.catch) r.catch(() => {});
+    };
+    this._pauseReel = () => { document.querySelectorAll('[data-av-reel-slot] video').forEach(x => x.pause()); };
+    this._resumeReel = () => { this._reelSeen.forEach(x => this._reelPlay(x)); };
+    this._mountReel = () => {
+      if (!this._reelIO && typeof IntersectionObserver !== 'undefined') {
+        this._reelIO = new IntersectionObserver(entries => {
+          entries.forEach(en => {
+            const vid = en.target;
+            if (en.isIntersecting) { this._reelSeen.add(vid); this._reelPlay(vid); }
+            else { this._reelSeen.delete(vid); vid.pause(); }
+          });
+        }, { rootMargin: '0px 160px' });
+      }
+      document.querySelectorAll('[data-av-reel-slot]').forEach(slot => {
+        const id = slot.getAttribute('data-av-reel-slot');
+        if (!id || id.indexOf('{') !== -1) return;
+        const cur = slot.firstElementChild;
+        if (cur && cur.getAttribute('data-id') === id) return;
+        slot.textContent = '';
+        const vid = document.createElement('video');
+        vid.setAttribute('data-id', id);
+        vid.setAttribute('data-src', './media/reel/' + id + '.mp4');
+        vid.muted = true;
+        vid.defaultMuted = true;
+        vid.setAttribute('muted', '');
+        vid.loop = true;
+        vid.setAttribute('playsinline', '');
+        vid.setAttribute('preload', 'none');
+        vid.setAttribute('disablepictureinpicture', '');
+        vid.setAttribute('aria-hidden', 'true');
+        vid.tabIndex = -1;
+        vid.addEventListener('playing', () => slot.setAttribute('data-on', '1'));
+        slot.appendChild(vid);
+        if (this._reelIO) this._reelIO.observe(vid); else this._reelPlay(vid);
+      });
+    };
+
+    // Popup: <video> nativo com o MP4 do Wistia. É criado e recebe play() ainda dentro do
+    // clique, para contar como gesto do usuário e tocar com som (inclusive no iOS).
+    this._openVideo = (i, trigger) => {
+      const v = REEL[i];
+      const mount = document.querySelector('[data-av-vmount]');
+      if (!v || !mount) return;
+      this._videoTrigger = trigger || document.activeElement;
+      clearTimeout(this._videoTimer);
+      mount.textContent = '';
+      const frame = document.querySelector('[data-av-vframe]');
+      if (frame) frame.style.aspectRatio = String(v.aspect);
+      const vid = document.createElement('video');
+      vid.setAttribute('src', (this.state.w || window.innerWidth) < 760 ? v.md : v.hd);
+      vid.setAttribute('poster', './media/reel/' + v.id + '.webp');
+      vid.setAttribute('controls', '');
+      vid.setAttribute('playsinline', '');
+      vid.setAttribute('preload', 'auto');
+      vid.setAttribute('controlslist', 'nodownload');
+      mount.appendChild(vid);
+      const r = vid.play();
+      if (r && r.catch) r.catch(() => {});
+      this._pauseReel();
+      this.setState({ video: v.id });
+    };
+    this._closeVideo = () => { if (this.state.video) this.setState({ video: null }); };
+    this._syncVideo = () => {
+      const id = this.state.video;
+      if (id === this._shownVideo) return;
+      const root = document.documentElement;
+      if (id) {
+        this._shownVideo = id;
+        root.style.overflow = 'hidden';
+        requestAnimationFrame(() => { const c = document.querySelector('[data-av-vclose]'); if (c) c.focus({ preventScroll: true }); });
+        return;
+      }
+      this._shownVideo = null;
+      root.style.overflow = '';
+      const mount = document.querySelector('[data-av-vmount]');
+      const vid = mount && mount.querySelector('video');
+      if (vid) vid.pause();
+      // Espera o fade-out da moldura antes de soltar o vídeo (removeAttribute + load libera a rede).
+      this._videoTimer = setTimeout(() => {
+        if (this.state.video || !mount) return;
+        mount.querySelectorAll('video').forEach(x => { x.removeAttribute('src'); x.load(); });
+        mount.textContent = '';
+      }, 360);
+      const t = this._videoTrigger;
+      this._videoTrigger = null;
+      if (t && typeof t.focus === 'function') t.focus({ preventScroll: true });
+      this._resumeReel();
+    };
+    this._onKey = (e) => { if (e.key === 'Escape' && this.state.video) this._closeVideo(); };
+    document.addEventListener('keydown', this._onKey);
+
+    window.addEventListener('resize', this._measure);
+    this._measure();
+    this._tryAttach();
+    this._repaint();
+    if (!this._poll) this._poll = setInterval(() => { this._tryAttach(); this._paint(); }, 100);
+  }
+
+  componentDidUpdate() {
+    // An sc-if remount hands back fresh nodes with their static styles restored.
+    if (this._repaint) this._repaint();
+    if (this._tryAttach) this._tryAttach();
+    if (this._syncVideo) this._syncVideo();
+  }
+
+  componentWillUnmount() {
+    this._unmounted = true;
+    if (this._onKey) document.removeEventListener('keydown', this._onKey);
+    clearTimeout(this._videoTimer);
+    if (this._shownVideo) document.documentElement.style.overflow = '';
+    if (this._reelIO) this._reelIO.disconnect();
+    if (this._measure) window.removeEventListener('resize', this._measure);
+    if (this._poll) clearInterval(this._poll);
+    if (this._io) this._io.disconnect();
+    if (this._ro) this._ro.disconnect();
+  }
+
+  renderVals() {
+    const s = this.props.scrimIntensity ?? 'medium';
+    const w = this.state.w;
+    // Lista estável entre renders (os handlers resolvem _openVideo só no clique).
+    if (!this._reelItems) {
+      this._reelItems = REEL.map((v, i) => ({
+        id: v.id,
+        bg: { backgroundImage: 'url("./media/reel/' + v.id + '.webp")' },
+        label: 'Reproducir video ' + (i + 1) + ' de ' + REEL.length,
+        open: (e) => this._openVideo && this._openVideo(i, e && e.currentTarget),
+      }));
+    }
+    const vid = this.state.video;
+    const cur = vid ? REEL.find(x => x.id === vid) : null;
+    if (cur) this._lastThumb = './media/reel/' + cur.id + '.webp';
+    return {
+      reelGroups: REEL_GROUPS,
+      reelItems: this._reelItems,
+      videoState: vid ? 'open' : 'closed',
+      videoHidden: vid ? 'false' : 'true',
+      videoTab: vid ? 0 : -1,
+      videoPoster: this._lastThumb ? { backgroundImage: 'url("' + this._lastThumb + '")' } : {},
+      closeVideo: () => this._closeVideo && this._closeVideo(),
+      scrimSoft: s === 'soft',
+      scrimMedium: s === 'medium',
+      scrimHeavy: s === 'heavy',
+      isNarrow: w < 760,
+      isWide: w >= 760,
+      showDesktopNav: w >= 900,
+      showBurger: w < 900,
+      showRail: w >= 1180,
+      showRegionNote: w >= 640,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => { this.setState({ menuOpen: !this.state.menuOpen }); this._repaint(); },
+      showTrustBar: this.props.showTrustBar ?? true,
+      showScrollCue: this.props.showScrollCue ?? true,
+      scrollCueOn: (this.props.showScrollCue ?? true) && w >= 760,
+      showNavCta: this.props.showNavCta ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
