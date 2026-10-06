@@ -134,7 +134,10 @@ Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`).
   própria largura (`@keyframes av-reel`), então a emenda é exata em pixel. Velocidade moderada:
   30s por volta no mobile (~36 px/s), 40s no desktop (~40 px/s). Não pausa no hover.
 - **Tamanho:** mobile = 2 vídeos por linha (`(100vw - 52px) / 2`, 169px em 390px); desktop =
-  `max(clamp(200px,17vw,300px), 100vw/6 - 20px)` (garante 1 grupo ≥ largura da tela), com fade nas bordas.
+  `max(clamp(200px,17vw,300px), 100vw/6 - 20px)` (garante 1 grupo ≥ largura da tela). Cards sem sombra.
+- **Degradê das bordas:** `mask-image` horizontal no `.av-reel` (curva ease-out em 9 paradas, largura
+  `--av-reel-fade: clamp(44px,13vw,260px)`), mobile e desktop. É máscara e não camada pintada: os cards
+  se dissolvem no próprio fundo da seção (grão, hachura e brilho âmbar), sem emenda de cor.
 - **Acessibilidade:** só o 1º grupo é focável (botões com `aria-label "Reproducir video N de 6"`);
   a cópia tem `aria-hidden` e `tabindex=-1`. Com `prefers-reduced-motion` a faixa para e vira rolagem manual.
 - **Popup** (`[data-av-vmodal]`, fora da `<section>`): moldura 9:16 centrada (não é tela cheia),

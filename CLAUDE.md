@@ -58,6 +58,8 @@ O site não terá um único fundo: algumas dobras usam cores complementares, com
 - Loop: 2 grupos iguais, cada um anima `translateX(-100%)` da própria largura. Não pausa.
 - Cards são `<wistia-player>` reais com a configuração do Wistia (prévia silenciosa + play padrão);
   não force atributos nem desenhe play próprio. Clique (camada transparente) abre o popup.
+- Cards sem sombra. Bordas: degradê por `mask-image` no `.av-reel` (nunca camada opaca por cima — o
+  fundo da seção tem brilho âmbar e uma camada pintada cria emenda).
 - Mobile: 2 vídeos por linha. Popup 9:16 (nunca tela cheia) com o `<wistia-player>` criado/destruído via JS.
 - Nunca use `src="{{ … }}"` em `<img>` no template: o HTML cru é parseado antes do React e o navegador
   baixa a URL literal. Use `style="{{ objeto }}"` com `backgroundImage`.
