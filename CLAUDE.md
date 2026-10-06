@@ -5,7 +5,7 @@
 **Todo background sólido deste projeto recebe a textura da casa.** Duas camadas, sempre
 nesta ordem, como filhas absolutas do elemento que carrega a cor:
 
-1. **Grão** — `url(./grain.png)`, `background-size:256px 256px`, `background-repeat:repeat`
+1. **Grão** — `url(./grain.webp)` no `index.html` (`grain.png` só nos mockups), `background-size:256px 256px`, `background-repeat:repeat`
 2. **Hachura 135°** — `repeating-linear-gradient(135deg, <linha> 0px, <linha> 1px, transparent 1px, transparent 4px)`
 
 Ajuste por luminosidade do fundo:

@@ -54,6 +54,7 @@ python3 -m http.server 8000   # ou qualquer servidor estático
 - Imagem do hero em `media/hero/`: AVIF com WebP de reserva. Celular em retrato recebe um recorte vertical
   (`hero-m-650/1300`, ~29–95 KB) com o mesmo enquadramento do `object-position:68%`; telas largas recebem
   `hero-1280/1920/2752` (~35–131 KB). O PNG original de 6,9 MB fica só em `uploads/` como fonte.
+- Textura do index em `grain.webp` (41 KB, WebP q85 de `grain.png`, 102 KB); `grain.png` segue para os mockups.
 - Para trocar a imagem do hero: gerar as variantes a partir do original (ver `scripts/` no histórico do commit
   de desempenho) mantendo os mesmos nomes.
 

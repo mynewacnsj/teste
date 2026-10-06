@@ -94,7 +94,7 @@ a:hover{color:#f6bc4d}
 .av-sv-sub{margin:0;max-width:660px;font-size:clamp(15.5px,min(1.2vw,2.1vh),19px);line-height:1.62;color:rgba(244,241,234,.7);text-wrap:pretty}
 .av-sv-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(16px,1.8vw,24px);margin-top:clamp(36px,4.2vw,68px)}
 .av-sv-card{position:relative;display:flex;flex-direction:column;min-width:0;background:#16171a;border:1px solid rgba(244,241,234,.09);border-radius:4px;overflow:hidden;isolation:isolate;transition:border-color .3s ease}
-.av-sv-card::before{content:"";position:absolute;inset:0;z-index:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat;pointer-events:none}
+.av-sv-card::before{content:"";position:absolute;inset:0;z-index:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat;pointer-events:none}
 .av-sv-card::after{content:"";position:absolute;inset:0;z-index:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px);pointer-events:none}
 .av-sv-card:hover{border-color:rgba(233,162,39,.45)}
 .av-sv-media{position:relative;z-index:1;aspect-ratio:3 / 2;background:#0c0c0d;overflow:hidden}
@@ -120,7 +120,7 @@ a:hover{color:#f6bc4d}
 .av-vmodal[data-state="open"]{visibility:visible;pointer-events:auto}
 .av-vmodal-veil{position:absolute;inset:0;overflow:hidden;background:rgba(8,8,9,.86);-webkit-backdrop-filter:blur(12px) saturate(.8);backdrop-filter:blur(12px) saturate(.8);opacity:0;transition:opacity .34s ease}
 .av-vmodal[data-state="open"] .av-vmodal-veil{opacity:1}
-.av-vmodal-grain{position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat;pointer-events:none}
+.av-vmodal-grain{position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat;pointer-events:none}
 .av-vmodal-hatch{position:absolute;inset:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px);pointer-events:none}
 .av-vmodal-frame{position:relative;z-index:1;width:min(100%,calc(min(100svh - 152px,880px) * .5625));aspect-ratio:9/16;border-radius:4px;overflow:hidden;background:#0c0c0d;box-shadow:0 0 0 1px rgba(244,241,234,.1),0 48px 120px -24px rgba(0,0,0,.9);opacity:0;transform:translateY(18px) scale(.965);transition:opacity .3s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
 .av-vmodal[data-state="open"] .av-vmodal-frame{opacity:1;transform:none}
@@ -171,13 +171,13 @@ a:hover{color:#f6bc4d}
   </sc-if>
 
   <div data-av-herofade="1" aria-hidden="true" style="display:none"></div>
-  <div data-av-grain="1" style="position:absolute;inset:0;pointer-events:none;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+  <div data-av-grain="1" style="position:absolute;inset:0;pointer-events:none;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat"></div>
   <div data-av-hatch="1" style="position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
   <div data-av-herolayer="1" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 105% at 50% 48%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
 
   <header style="position:fixed;top:0;left:0;right:0;z-index:40">
     <div style="position:absolute;inset:0;pointer-events:none;background:rgba(12,12,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(244,241,234,.12);box-shadow:0 18px 40px -30px rgba(0,0,0,.95);overflow:hidden;transition:opacity .45s ease;opacity:0" data-av-chrome="1">
-      <div data-av-grain="1" style="position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+      <div data-av-grain="1" style="position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat"></div>
       <div data-av-hatch="1" style="position:absolute;inset:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
     </div>
     <div data-av-bar="1" style="position:relative;height:clamp(72px,9vh,104px);transition:height .45s cubic-bezier(.22,.61,.36,1);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px">
@@ -282,7 +282,7 @@ a:hover{color:#f6bc4d}
       <div style="position:absolute;top:0;left:0;right:0;height:max(3000px,100%);background:linear-gradient(180deg,rgba(233,162,39,.04) 0%,rgba(233,162,39,.015) 14%,rgba(233,162,39,0) 28%)"></div>
       <div style="position:absolute;left:0;right:0;bottom:0;height:62%;background:radial-gradient(48% 42% at 8% 58%,rgba(233,162,39,.075) 0%,rgba(233,162,39,0) 70%)"></div>
     </div>
-    <div data-av-grain="1" style="position:absolute;top:0;left:0;right:0;bottom:0;opacity:.1;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+    <div data-av-grain="1" style="position:absolute;top:0;left:0;right:0;bottom:0;opacity:.1;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat"></div>
     <div data-av-hatch="1" style="position:absolute;top:0;left:0;right:0;bottom:0;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
   </div>
 
