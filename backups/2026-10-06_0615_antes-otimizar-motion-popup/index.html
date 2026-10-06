@@ -126,31 +126,22 @@ a:hover{color:#f6bc4d}
 }
 
 /* Popup do vídeo — moldura 9:16 centrada (nunca tela cheia). A abertura e o fechamento são animados
-   em JS (Web Animations) SÓ com transform e opacity, que rodam no compositor da GPU e não dependem da
-   thread principal (fica liso em celular fraco). Sem backdrop-filter: o véu é um pouco mais escuro. o card clicado cresce da posição dele no carrossel até a moldura
+   em JS (Web Animations), não aqui: o card clicado cresce da posição dele no carrossel até a moldura
    (transição de elemento compartilhado), o véu escurece, o brilho âmbar acende, o filete se desenha e
    rótulo + fechar entram em sequência; ao fechar, o vídeo volta ao lugar exato do card.
    Este CSS só define o estado final. Com prefers-reduced-motion tudo vira um fade curto. */
 .av-vmodal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:clamp(56px,7vh,80px) 16px clamp(24px,5vh,56px);box-sizing:border-box;visibility:hidden;pointer-events:none}
 .av-vmodal[data-state="open"]{visibility:visible;pointer-events:auto}
-/* "prime": no toque (pointerdown), antes do clique, o popup fica pronto e invisível para o navegador já
-   rasterizar as camadas; assim o primeiro quadro da animação não engasga. */
-.av-vmodal[data-state="prime"]{visibility:visible}
-.av-vmodal[data-state="prime"],.av-vmodal[data-state="prime"] *{pointer-events:none!important}
-.av-vmodal[data-state="prime"] .av-vmodal-veil,.av-vmodal[data-state="prime"] .av-vmodal-stage,.av-vmodal[data-state="prime"] .av-vmodal-close{opacity:0;will-change:opacity,transform}
-.av-vmodal-veil{position:absolute;inset:0;overflow:hidden;background:rgba(8,8,9,.93)}
+.av-vmodal-veil{position:absolute;inset:0;overflow:hidden;background:rgba(8,8,9,.86);-webkit-backdrop-filter:blur(12px) saturate(.8);backdrop-filter:blur(12px) saturate(.8)}
 .av-vmodal-grain{position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat;pointer-events:none}
 .av-vmodal-hatch{position:absolute;inset:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px);pointer-events:none}
 .av-vmodal-stage{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;pointer-events:none}
 .av-vmodal-label{display:flex;align-items:center;gap:12px;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227;white-space:nowrap}
-.av-vmodal-label .ln{display:block;width:28px;height:2px;background:#e9a227}
-.av-vmodal-label .tx{display:flex;white-space:pre}
-.av-vmodal-label .ch{display:inline-block;white-space:pre}
-.av-vmodal-label b{display:inline-block;font-weight:600;letter-spacing:.2em;color:rgba(244,241,234,.75)}
+.av-vmodal-label::before{content:"";display:block;width:28px;height:2px;background:#e9a227}
+.av-vmodal-label b{font-weight:600;letter-spacing:.2em;color:rgba(244,241,234,.75)}
 .av-vmodal-wrap{position:relative;width:min(100%,calc(min(100svh - 190px,880px) * .5625))}
 .av-vmodal-glow{position:absolute;left:-40%;right:-40%;top:-18%;bottom:-18%;background:radial-gradient(50% 50% at 50% 50%,rgba(233,162,39,.26) 0%,rgba(233,162,39,.08) 45%,rgba(233,162,39,0) 72%);pointer-events:none}
-.av-vmodal-shadow{position:absolute;left:0;top:0;width:100%;height:100%;border-radius:4px;box-shadow:0 48px 120px -24px rgba(0,0,0,.9);transform-origin:0 0;pointer-events:none}
-.av-vmodal-frame{position:relative;width:100%;aspect-ratio:9/16;border-radius:4px;overflow:hidden;background:#0c0c0d;box-shadow:0 0 0 1px rgba(244,241,234,.1);transform-origin:0 0;pointer-events:auto}
+.av-vmodal-frame{position:relative;width:100%;aspect-ratio:9/16;border-radius:4px;overflow:hidden;background:#0c0c0d;box-shadow:0 0 0 1px rgba(244,241,234,.1),0 48px 120px -24px rgba(0,0,0,.9);transform-origin:0 0;pointer-events:auto}
 .av-vmodal-line{position:absolute;left:0;right:0;top:0;height:2px;z-index:4;background:#e9a227;box-shadow:0 0 18px rgba(233,162,39,.55);transform-origin:0 50%;pointer-events:none}
 .av-vmodal-mount{position:absolute;inset:0;z-index:2}
 .av-vmodal-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
@@ -334,7 +325,7 @@ a:hover{color:#f6bc4d}
               <span class="av-reel-img" style="{{ it.bg }}"></span>
               <div class="av-reel-slot" data-av-reel-slot="{{ it.id }}"></div>
               <span class="av-reel-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 2.6v18.8c0 .9 1 1.4 1.7.9l14.1-9.4c.6-.4.6-1.3 0-1.8L6.7 1.7C6 1.2 5 1.7 5 2.6z" fill="#0c0c0d" fill-opacity=".85"></path></svg></span>
-              <button type="button" class="av-reel-hit" data-av-i="{{ it.n }}" onClick="{{ it.open }}" aria-label="{{ it.label }}" tabindex="{{ g.tab }}"></button>
+              <button type="button" class="av-reel-hit" onClick="{{ it.open }}" aria-label="{{ it.label }}" tabindex="{{ g.tab }}"></button>
             </div>
           </sc-for>
         </div>
@@ -447,7 +438,6 @@ a:hover{color:#f6bc4d}
     <div data-av-vlabel="1" class="av-vmodal-label"></div>
     <div data-av-vwrap="1" class="av-vmodal-wrap">
       <div data-av-vglow="1" class="av-vmodal-glow"></div>
-      <div data-av-vshadow="1" class="av-vmodal-shadow"></div>
       <div data-av-vframe="1" class="av-vmodal-frame">
         <div data-av-vmount="1" class="av-vmodal-mount"></div>
         <div data-av-vspin="1" class="av-vmodal-spin"></div>
@@ -622,15 +612,12 @@ class Component extends DCLogic {
 
     // Popup: <video> nativo com o MP4 do Wistia. É criado e recebe play() ainda dentro do
     // clique, para contar como gesto do usuário e tocar com som (inclusive no iOS).
-    // Animação (Web Animations API) — SÓ transform e opacity, para rodar no compositor da GPU,
-    // independente da thread principal (liso também em celulares fracos):
-    //  abrir  — o card clicado cresce até a moldura (FLIP); a sombra é uma camada à parte que
-    //           acompanha o mesmo transform e só muda de opacidade; o véu escurece, o brilho acende,
-    //           o filete se desenha, o rótulo "fecha o espaçamento" (cada letra desliza — mesmo efeito
-    //           do letter-spacing, sem relayout) e o × entra.
-    //  fechar — controles saem, filete recolhe, o vídeo encolhe de volta ao card e se dissolve nele.
-    // Pesos fora do caminho do 1º quadro: leituras de layout antes de qualquer escrita, React/pausas
-    // depois do 1º quadro, e o popup "pré-aquecido" no toque (prime) para as camadas já estarem prontas.
+    // Animação (Web Animations API; a moldura também anima sombra e raio, e o rótulo, o espaçamento):
+    //  abrir  — o card clicado cresce até a moldura (FLIP), o véu escurece, o brilho âmbar acende,
+    //           o filete se desenha da esquerda e rótulo + fechar entram; o vídeo surge em fade
+    //           quando começa a tocar (até lá fica o quadro atual da prévia do card).
+    //  fechar — controles saem, filete recolhe, o vídeo encolhe de volta ao card e o véu some.
+    // O carrossel fica congelado enquanto isso, então o retorno pousa no lugar exato do card.
     const EASE_OUT = 'cubic-bezier(.16,1,.3,1)';
     const reduced = () => { try { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { return false; } };
     const pad = (n) => (n < 10 ? '0' : '') + n;
@@ -649,10 +636,19 @@ class Component extends DCLogic {
       return (r.width > 0 && r.right > 0 && r.left < window.innerWidth && r.bottom > 0 && r.top < window.innerHeight) ? r : null;
     };
     // Transform que leva a moldura (retângulo "to") a ocupar o retângulo "from" — origem 0 0.
-    const flipT = (from, to) => 'translate(' + (from.left - to.left) + 'px,' + (from.top - to.top) + 'px) scale(' + (from.width / to.width) + ',' + (from.height / to.height) + ')';
-    // Opacidade aparente do card no degradê das bordas do carrossel (mask-image do .av-reel).
-    const edgeAlpha = (r, rr) => {
-      if (!r || !rr) return 1;
+    const flip = (from, to) => {
+      const sx = from.width / to.width, sy = from.height / to.height;
+      return { transform: 'translate(' + (from.left - to.left) + 'px,' + (from.top - to.top) + 'px) scale(' + sx + ',' + sy + ')', radius: (4 / ((sx + sy) / 2)).toFixed(2) + 'px' };
+    };
+    const SHADOW = '0 0 0 1px rgba(244,241,234,.1),0 48px 120px -24px rgba(0,0,0,.9)';
+    const NO_SHADOW = '0 0 0 1px rgba(244,241,234,0),0 0 0 0 rgba(0,0,0,0)';
+
+    // Opacidade aparente do card no degradê das bordas do carrossel (mask-image do .av-reel),
+    // para a moldura nascer/pousar com a mesma transparência e não "acender" na borda.
+    const edgeAlpha = (r) => {
+      const re = q('[data-av-reel]');
+      if (!re || !r) return 1;
+      const rr = re.getBoundingClientRect();
       const fade = Math.min(260, Math.max(44, window.innerWidth * .13));
       const cx = r.left + r.width / 2;
       const t = Math.max(0, Math.min(1, Math.min(cx - rr.left, rr.right - cx) / fade));
@@ -663,59 +659,27 @@ class Component extends DCLogic {
       const cs = getComputedStyle(el);
       return { opacity: cs.opacity, transform: cs.transform === 'none' ? 'none' : cs.transform };
     };
-    const els = () => ({
-      mod: q('[data-av-vmodal]'), mount: q('[data-av-vmount]'), frame: q('[data-av-vframe]'), shadow: q('[data-av-vshadow]'),
-      veil: q('[data-av-vveil]'), glow: q('[data-av-vglow]'), line: q('[data-av-vline]'),
-      label: q('[data-av-vlabel]'), spin: q('[data-av-vspin]'), close: q('[data-av-vclose]')
-    });
-    const LABEL = 'Clientes reales';
-    const TRACK = 0.25 * 11; // .55em → .3em de letter-spacing, em px (fonte de 11px)
-
-    // Pré-aquecimento no toque: deixa o popup montado, invisível e sem eventos, com a proporção do
-    // vídeo já aplicada — o navegador rasteriza véu/brilho/moldura antes do clique terminar.
-    this._primeVideo = (btn) => {
-      if (this.state.video || this._vbusy || this._vpending) return;
-      const v = REEL[+(btn && btn.getAttribute('data-av-i'))];
-      const { mod, frame } = els();
-      if (!v || !mod || !frame) return;
-      frame.style.aspectRatio = String(v.aspect);
-      if (mod.getAttribute('data-state') === 'closed') mod.setAttribute('data-state', 'prime');
-      clearTimeout(this._primeT);
-      this._primeT = setTimeout(() => { if (mod.getAttribute('data-state') === 'prime') mod.setAttribute('data-state', 'closed'); }, 1500);
-    };
 
     this._openVideo = (i, trigger) => {
-      if (this.state.video || this._vbusy || this._vpending) return;
+      if (this.state.video || this._vbusy) return;
       const v = REEL[i];
-      const E = els();
-      const { mod, mount, frame, shadow, veil, glow, line, label, spin, close } = E;
+      const mod = q('[data-av-vmodal]'), mount = q('[data-av-vmount]'), frame = q('[data-av-vframe]');
       if (!v || !mod || !mount || !frame) return;
-      clearTimeout(this._primeT);
+      const veil = q('[data-av-vveil]'), glow = q('[data-av-vglow]'), line = q('[data-av-vline]');
+      const label = q('[data-av-vlabel]'), spin = q('[data-av-vspin]'), close = q('[data-av-vclose]');
       this._videoTrigger = trigger || document.activeElement;
       this._vopenAt = performance.now();
-      this._vpending = v.id;
       const card = trigger && trigger.closest ? trigger.closest('.av-reel-card') : null;
       this._vcard = card;
       stopAnims();
       clearTimeout(this._videoTimer);
       clearTimeout(this._spinT);
-      const motion = !reduced();
-
-      // ---- 1) LEITURAS (layout uma vez só)
-      if (frame.style.aspectRatio !== String(v.aspect)) frame.style.aspectRatio = String(v.aspect);
-      const reelEl = q('[data-av-reel]');
-      const from = onScreen(card);
-      const to = frame.getBoundingClientRect();
-      const alpha = from ? edgeAlpha(from, reelEl && reelEl.getBoundingClientRect()) : 1;
-      const pb = from && card.querySelector('.av-reel-play');
-      const pr = pb && pb.getBoundingClientRect();
-      const pbBg = pb && getComputedStyle(pb).backgroundColor;
-      const cv = card && card.querySelector('video');
-
-      // ---- 2) ESCRITAS
       mount.textContent = '';
+      frame.style.aspectRatio = String(v.aspect);
+
       // Pôster = o quadro que o card está mostrando agora (troca invisível); senão, o 1º quadro.
       let poster = null;
+      const cv = card && card.querySelector('video');
       if (cv && cv.readyState >= 2 && cv.videoWidth) {
         try {
           poster = document.createElement('canvas');
@@ -726,7 +690,6 @@ class Component extends DCLogic {
       if (!poster) {
         poster = document.createElement('img');
         poster.alt = '';
-        poster.decoding = 'async';
         poster.src = './media/reel/' + v.id + '.webp';
       }
       poster.className = 'av-vmodal-poster';
@@ -751,39 +714,34 @@ class Component extends DCLogic {
       const r = vid.play();
       if (r && r.catch) r.catch(() => { if (!this._vbusy && vid.isConnected) reveal(); });
       this._spinT = setTimeout(() => { if (!vid.hasAttribute('data-on') && spin) spin.setAttribute('data-on', ''); }, 900);
-      setTimeout(() => { vid.style.pointerEvents = ''; }, motion ? 800 : 220);
+      setTimeout(() => { vid.style.pointerEvents = ''; }, reduced() ? 220 : 800);
 
-      // Rótulo letra a letra (cada letra vira um alvo de transform).
-      let chars = [], ln = null, num = null;
-      if (label) {
-        label.textContent = '';
-        ln = document.createElement('span'); ln.className = 'ln';
-        const tx = document.createElement('span'); tx.className = 'tx';
-        for (const c of LABEL) { const sp = document.createElement('span'); sp.className = 'ch'; sp.textContent = c; tx.appendChild(sp); chars.push(sp); }
-        num = document.createElement('b'); num.textContent = pad(i + 1) + ' / ' + pad(REEL.length);
-        label.appendChild(ln); label.appendChild(tx); label.appendChild(document.createTextNode(' ')); label.appendChild(num);
-      }
+      if (label) label.innerHTML = 'Clientes reales <b>' + pad(i + 1) + ' / ' + pad(REEL.length) + '</b>';
+      const reel = q('[data-av-reel]');
+      if (reel) reel.setAttribute('data-paused', '');
+      this._pauseReel();
 
+      const to = frame.getBoundingClientRect();
+      const from = onScreen(card);
       mod.setAttribute('data-state', 'open');
       mod.setAttribute('aria-hidden', 'false');
-      // O card "sai" do carrossel: a moldura nasce exatamente em cima dele.
-      if (card) { card.style.transition = 'none'; card.style.opacity = '0'; }
 
-      // ---- 3) ANIMAÇÕES (todas transform/opacity)
-      if (line) line.style.transformOrigin = '';
-      if (!motion) {
+      if (reduced()) {
         [veil, glow, frame, label, close].forEach(el => anim(el, [{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' }));
-        if (shadow) anim(shadow, [{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
       } else {
         anim(veil, [{ opacity: 0 }, { opacity: 1 }], { duration: 560, easing: 'cubic-bezier(.4,0,.2,1)' });
         if (from) {
-          const t0 = flipT(from, to);
-          anim(frame, [{ transform: t0, opacity: alpha }, { transform: 'none', opacity: 1 }], { duration: 780, easing: EASE_OUT });
-          anim(shadow, [{ transform: t0, opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 780, easing: EASE_OUT });
+          const f = flip(from, to);
+          anim(frame, [
+            { transform: f.transform, borderRadius: f.radius, boxShadow: NO_SHADOW, opacity: edgeAlpha(from) },
+            { transform: 'none', borderRadius: '4px', boxShadow: SHADOW, opacity: 1 }
+          ], { duration: 780, easing: EASE_OUT });
           // O play âmbar do card se dissolve em vez de sumir seco (fora de _vanims: se apaga sozinho).
-          if (pb && pr && typeof pb.animate === 'function') {
+          const pb = card && card.querySelector('.av-reel-play');
+          if (pb && typeof pb.animate === 'function') {
+            const pr = pb.getBoundingClientRect();
             const g = pb.cloneNode(true);
-            g.style.cssText = 'z-index:3;width:' + (pr.width * to.width / from.width) + 'px;background:' + pbBg;
+            g.style.cssText = 'z-index:3;width:' + (pr.width * to.width / from.width) + 'px;background:' + getComputedStyle(pb).backgroundColor;
             mount.appendChild(g);
             g.animate([
               { opacity: 1, transform: 'translate(-50%,-50%)' },
@@ -791,49 +749,43 @@ class Component extends DCLogic {
             ], { duration: 220, easing: 'cubic-bezier(.4,0,1,1)', fill: 'forwards' }).onfinish = () => g.remove();
           }
         } else {
-          anim(frame, [{ opacity: 0, transform: 'translateY(28px) scale(.94)' }, { opacity: 1, transform: 'none' }], { duration: 680, easing: EASE_OUT });
-          anim(shadow, [{ opacity: 0, transform: 'translateY(28px) scale(.94)' }, { opacity: 1, transform: 'none' }], { duration: 680, easing: EASE_OUT });
+          anim(frame, [
+            { opacity: 0, transform: 'translateY(28px) scale(.94)', boxShadow: NO_SHADOW },
+            { opacity: 1, transform: 'none', boxShadow: SHADOW }
+          ], { duration: 680, easing: EASE_OUT });
         }
         anim(poster, [{ transform: 'scale(1.06)' }, { transform: 'scale(1)' }], { duration: 1400, easing: EASE_OUT });
         anim(glow, [{ opacity: 0, transform: 'scale(.82)' }, { opacity: 1, transform: 'none' }], { duration: 1000, delay: 220, easing: EASE_OUT });
         anim(line, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 680, delay: 460, easing: 'cubic-bezier(.7,0,.2,1)' });
-        const L = { duration: 820, delay: 380, easing: EASE_OUT };
-        anim(label, [{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], L);
-        const grow = chars.length * TRACK;
-        chars.forEach((c, k) => anim(c, [{ transform: 'translateX(' + (k * TRACK - grow / 2) + 'px)' }, { transform: 'none' }], L));
-        if (ln) anim(ln, [{ transform: 'translateX(' + (-grow / 2) + 'px)' }, { transform: 'none' }], L);
-        if (num) anim(num, [{ transform: 'translateX(' + (grow / 2) + 'px)' }, { transform: 'none' }], L);
-        anim(close, [{ opacity: 0, transform: 'rotate(-90deg) scale(.6)' }, { opacity: 1, transform: 'none' }], { duration: 620, delay: 520, easing: EASE_OUT });
+        anim(label, [
+          { opacity: 0, transform: 'translateY(10px)', letterSpacing: '.55em' },
+          { opacity: 1, transform: 'none', letterSpacing: '.3em' }
+        ], { duration: 820, delay: 380, easing: EASE_OUT });
+        anim(close, [
+          { opacity: 0, transform: 'rotate(-90deg) scale(.6)' },
+          { opacity: 1, transform: 'none' }
+        ], { duration: 620, delay: 520, easing: EASE_OUT });
       }
-
-      // ---- 4) Trabalho pesado DEPOIS do 1º quadro (render do React, pausar prévias, congelar carrossel).
-      requestAnimationFrame(() => setTimeout(() => {
-        if (this._vpending !== v.id) return;
-        if (reelEl) reelEl.setAttribute('data-paused', '');
-        this._pauseReel();
-        this._vpending = null;
-        this.setState({ video: v.id });
-      }, 0));
+      // O card "sai" do carrossel: a moldura nasce exatamente em cima dele.
+      if (card) { card.style.transition = 'none'; card.style.opacity = '0'; }
+      this.setState({ video: v.id });
     };
 
     this._closeVideo = () => {
       if (!this.state.video || this._vbusy) return;
       this._vbusy = true;
       clearTimeout(this._spinT);
-      const { mod, mount, frame, shadow, veil, glow, line, label, spin, close } = els();
+      const mod = q('[data-av-vmodal]'), mount = q('[data-av-vmount]'), frame = q('[data-av-vframe]');
+      const veil = q('[data-av-vveil]'), glow = q('[data-av-vglow]'), line = q('[data-av-vline]');
+      const label = q('[data-av-vlabel]'), spin = q('[data-av-vspin]'), close = q('[data-av-vclose]');
       const vid = mount && mount.querySelector('video');
       if (vid) { vid.pause(); vid.style.pointerEvents = 'none'; }
       if (spin) spin.removeAttribute('data-on');
       // Se fechar no meio da abertura, cada peça parte do ponto em que a animação está.
-      const sF = snap(frame), sS = snap(shadow), sV = snap(veil), sG = snap(glow), sLn = snap(line), sL = snap(label), sC = snap(close);
+      const sF = snap(frame), sV = snap(veil), sG = snap(glow), sLn = snap(line), sL = snap(label), sC = snap(close);
       const sVid = vid ? getComputedStyle(vid).opacity : '0';
-      const card = this._vcard;
-      const reelEl = q('[data-av-reel]');
-      const motion = !reduced();
       stopAnims();
-      // Leituras de layout antes de animar.
-      const to = frame ? frame.getBoundingClientRect() : null;
-      const back = onScreen(card);
+      const card = this._vcard;
       const finish = () => {
         if (!this._vbusy) return;
         if (card) { card.style.transition = 'none'; card.style.opacity = ''; }
@@ -843,34 +795,32 @@ class Component extends DCLogic {
         if (t && typeof t.focus === 'function') t.focus({ preventScroll: true });
         if (mod) { mod.setAttribute('data-state', 'closed'); mod.setAttribute('aria-hidden', 'true'); }
         stopAnims();
-        if (reelEl) reelEl.removeAttribute('data-paused');
+        const reel = q('[data-av-reel]');
+        if (reel) reel.removeAttribute('data-paused');
         this._vcard = null;
         this._vbusy = false;
         this.setState({ video: null });
       };
-      if (!frame || !motion) {
-        [[veil, sV], [glow, sG], [frame, sF], [shadow, sS], [label, sL], [close, sC]].forEach(([el, s0]) => anim(el, [{ opacity: s0.opacity }, { opacity: 0 }], { duration: 180, easing: 'ease-in' }));
+      if (!frame || reduced()) {
+        [[veil, sV], [glow, sG], [frame, sF], [label, sL], [close, sC]].forEach(([el, s0]) => anim(el, [{ opacity: s0.opacity }, { opacity: 0 }], { duration: 180, easing: 'ease-in' }));
         this._videoTimer = setTimeout(finish, 200);
         return;
       }
+      const to = frame.getBoundingClientRect();
+      const back = onScreen(card);
       const EXIT = 'cubic-bezier(.4,0,1,1)';
       anim(close, [{ opacity: sC.opacity, transform: sC.transform }, { opacity: 0, transform: 'rotate(45deg) scale(.7)' }], { duration: 160, easing: EXIT });
       anim(label, [{ opacity: sL.opacity, transform: sL.transform }, { opacity: 0, transform: 'translateY(8px)' }], { duration: 160, easing: EXIT });
-      // transform-origin fixado no estilo (não no keyframe) para a animação continuar no compositor.
-      if (line) line.style.transformOrigin = '100% 50%';
-      anim(line, [{ transform: sLn.transform }, { transform: 'scaleX(0)' }], { duration: 220, easing: 'cubic-bezier(.7,0,.2,1)' });
+      anim(line, [{ transform: sLn.transform, transformOrigin: '100% 50%' }, { transform: 'scaleX(0)', transformOrigin: '100% 50%' }], { duration: 220, easing: 'cubic-bezier(.7,0,.2,1)' });
       anim(glow, [{ opacity: sG.opacity, transform: sG.transform }, { opacity: 0, transform: sG.transform }], { duration: 200, easing: 'ease-out' });
       if (vid) anim(vid, [{ opacity: sVid }, { opacity: 0 }], { duration: 160, easing: 'ease-out' });
+      const start = { transform: sF.transform, opacity: sF.opacity, borderRadius: '4px', boxShadow: SHADOW };
       let main;
-      if (back && to && to.width) {
-        const t1 = flipT(back, to);
-        const T = { duration: 520, delay: 40, easing: 'cubic-bezier(.2,0,0,1)' };
-        main = anim(frame, [{ transform: sF.transform, opacity: sF.opacity }, { transform: t1, opacity: 1 }], T);
-        anim(shadow, [{ transform: sS.transform, opacity: sS.opacity }, { transform: t1, opacity: 0 }], T);
+      if (back && to.width) {
+        const f = flip(back, to);
+        main = anim(frame, [start, { transform: f.transform, opacity: 1, borderRadius: f.radius, boxShadow: NO_SHADOW }], { duration: 520, delay: 40, easing: 'cubic-bezier(.2,0,0,1)' });
       } else {
-        const T = { duration: 360, delay: 40, easing: EXIT };
-        main = anim(frame, [{ transform: sF.transform, opacity: sF.opacity }, { opacity: 0, transform: 'translateY(18px) scale(.95)' }], T);
-        anim(shadow, [{ transform: sS.transform, opacity: sS.opacity }, { opacity: 0, transform: 'translateY(18px) scale(.95)' }], T);
+        main = anim(frame, [start, { opacity: 0, transform: 'translateY(18px) scale(.95)', boxShadow: NO_SHADOW }], { duration: 360, delay: 40, easing: EXIT });
       }
       const fade = anim(veil, [{ opacity: sV.opacity }, { opacity: 0 }], { duration: 500, delay: back ? 60 : 40, easing: 'cubic-bezier(.4,0,.2,1)' });
       // Pouso: o card (com o play e a máscara de degradê do carrossel) volta por baixo da moldura,
@@ -912,10 +862,6 @@ class Component extends DCLogic {
     };
     this._onKey = (e) => { if (e.key === 'Escape' && this.state.video) this._closeVideo(); };
     document.addEventListener('keydown', this._onKey);
-    // Pré-aquece o popup no toque/clique (pointerdown chega ~100 ms antes do click) e no foco por teclado.
-    this._onPrime = (e) => { const b = e.target && e.target.closest && e.target.closest('.av-reel-hit'); if (b) this._primeVideo(b); };
-    document.addEventListener('pointerdown', this._onPrime, { passive: true, capture: true });
-    document.addEventListener('focusin', this._onPrime, true);
 
     window.addEventListener('resize', this._measure);
     this._measure();
@@ -934,8 +880,6 @@ class Component extends DCLogic {
   componentWillUnmount() {
     this._unmounted = true;
     if (this._onKey) document.removeEventListener('keydown', this._onKey);
-    if (this._onPrime) { document.removeEventListener('pointerdown', this._onPrime, true); document.removeEventListener('focusin', this._onPrime, true); }
-    clearTimeout(this._primeT);
     clearTimeout(this._videoTimer);
     if (this._shownVideo) document.documentElement.style.overflow = '';
     if (this._reelIO) this._reelIO.disconnect();
@@ -952,7 +896,6 @@ class Component extends DCLogic {
     if (!this._reelItems) {
       this._reelItems = REEL.map((v, i) => ({
         id: v.id,
-        n: String(i),
         bg: { backgroundImage: 'url("./media/reel/' + v.id + '.webp")' },
         label: 'Reproducir video ' + (i + 1) + ' de ' + REEL.length,
         open: (e) => this._openVideo && this._openVideo(i, e && e.currentTarget),

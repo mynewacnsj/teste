@@ -93,8 +93,6 @@ O site não terá um único fundo: algumas dobras usam cores complementares, com
 - Mobile: 2 vídeos por linha. Popup 9:16, nunca tela cheia; `play()` dentro do clique (som no iOS).
 - Abertura/fechamento do popup: transição de elemento compartilhado (card → moldura → card) em Web Animations,
   véu, brilho, filete e rótulo em sequência; carrossel congela enquanto aberto. Detalhes em docs/ARQUITETURA.md.
-  **Só animar transform e opacity** (nada de box-shadow, border-radius, letter-spacing, transform-origin em keyframes
-  nem backdrop-filter): é o que mantém o motion liso em celular fraco.
 - Nunca use `src="{{ … }}"` em `<img>`/`<video>` no template: o HTML cru é parseado antes do React e o
   navegador baixa a URL literal. Use `style="{{ objeto }}"` ou crie o elemento via JS.
 

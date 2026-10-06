@@ -175,13 +175,6 @@ abaixo do carrossel, abrindo a parte dos pilares. (O título "TESTIMONIOS" antig
   - Fechar (Esc, véu, ×): controles e filete saem em ~160–220 ms, o vídeo encolhe até o lugar exato do card
     (520 ms, `cubic-bezier(.2,0,0,1)`), o véu clareia e a moldura se dissolve sobre o card. Fechar no meio da
     abertura parte do estado atual de cada peça.
-  - **Desempenho:** todas as animações são só `transform`/`opacity` (rodam no compositor da GPU, sem depender da
-    thread principal). A sombra da moldura é uma camada à parte (`.av-vmodal-shadow`) com o mesmo transform; o
-    "fechar do espaçamento" do rótulo é feito letra a letra com `translateX`; sem `backdrop-filter` (véu `rgba(8,8,9,.93)`).
-    O clique faz todas as leituras de layout antes das escritas; render do React, pausa das prévias e congelamento
-    do carrossel ficam para depois do 1º quadro. No `pointerdown`/foco do card o popup é pré-aquecido
-    (`data-state="prime"`: visível, transparente e sem eventos por até 1,5 s) para as camadas já estarem rasterizadas.
-    Medido com CPU 6× mais lenta (celular fraco): quadros perdidos por abertura+fechamento caíram de 39–50 para 1–2.
   - O carrossel fica congelado (`[data-av-reel][data-paused]`) enquanto o popup está aberto; cliques nos primeiros
     500 ms não fecham (duplo clique); `prefers-reduced-motion` → fade de 200 ms. Foco vai ao × e volta ao card.
 
