@@ -353,7 +353,7 @@ a:hover{color:#f6bc4d}
       <p class="av-sv-sub" data-av-sv="sub">Tú te enfocas en la obra. Nosotros atraemos al cliente correcto, le damos razones para confiar en ti y te ayudamos a cerrar el trabajo. Un solo equipo, especializado en contratistas de remodelación.</p>
     </header>
     <div class="av-sv-grid">
-      <article id="meta-ads" class="av-sv-card" data-av-sv-card="01">
+      <article class="av-sv-card" data-av-sv-card="01">
         <div class="av-sv-media">
           <img class="av-sv-img" src="./media/servicios/meta-ads.webp" alt="Anuncio de la empresa de remodelación en Instagram con resultados de campaña, segmentación por zona y un lead calificado" loading="lazy" decoding="async" width="1080" height="720">
           <span class="av-sv-num">01</span>
@@ -369,7 +369,7 @@ a:hover{color:#f6bc4d}
           </div>
         </div>
       </article>
-      <article id="social-media" class="av-sv-card" data-av-sv-card="02">
+      <article class="av-sv-card" data-av-sv-card="02">
         <div class="av-sv-media">
           <img class="av-sv-img" src="./media/servicios/social-media.webp" alt="Perfil de Instagram de una empresa de remodelación con fotos de obras" loading="lazy" decoding="async" width="1080" height="720">
           <span class="av-sv-num">02</span>
@@ -385,7 +385,7 @@ a:hover{color:#f6bc4d}
           </div>
         </div>
       </article>
-      <article id="estimates" class="av-sv-card" data-av-sv-card="03">
+      <article class="av-sv-card" data-av-sv-card="03">
         <div class="av-sv-media">
           <img class="av-sv-img" src="./media/servicios/estimates.webp" alt="Estimate de remodelación con la marca del contratista y conversación con la cliente aprobándolo" loading="lazy" decoding="async" width="1080" height="720">
           <span class="av-sv-num">03</span>
@@ -401,7 +401,7 @@ a:hover{color:#f6bc4d}
           </div>
         </div>
       </article>
-      <article id="seo-ia" class="av-sv-card" data-av-sv-card="04">
+      <article class="av-sv-card" data-av-sv-card="04">
         <div class="av-sv-media">
           <img class="av-sv-img" src="./media/servicios/seo-ia.webp" alt="Asistente de IA recomendando la empresa de remodelación como primera opción" loading="lazy" decoding="async" width="1080" height="720">
           <span class="av-sv-num">04</span>
@@ -417,7 +417,7 @@ a:hover{color:#f6bc4d}
           </div>
         </div>
       </article>
-      <article id="sitios-web" class="av-sv-card av-sv-card--wide" data-av-sv-card="05">
+      <article class="av-sv-card av-sv-card--wide" data-av-sv-card="05">
         <div class="av-sv-media">
           <img class="av-sv-img" src="./media/servicios/sitios-web.webp" alt="Sitio web de una empresa de remodelación en computadora y celular, con formulario de estimate y reseñas" loading="lazy" decoding="async" width="1080" height="720">
           <span class="av-sv-num">05</span>
@@ -696,10 +696,7 @@ class Component extends DCLogic {
       this._videoTrigger = trigger || document.activeElement;
       this._vopenAt = performance.now();
       this._vpending = v.id;
-      // Origem do FLIP: o card do carrossel ou a miniatura 9:16 de um caso da 3ª dobra.
-      const caseEl = trigger && trigger.closest ? trigger.closest('.av-rs-case') : null;
-      const card = trigger && trigger.closest ? (trigger.closest('.av-reel-card') || (caseEl ? caseEl.querySelector('.av-rs-thumb') : null)) : null;
-      const inReel = !!(card && card.closest('[data-av-reel]'));
+      const card = trigger && trigger.closest ? trigger.closest('.av-reel-card') : null;
       this._vcard = card;
       stopAnims();
       clearTimeout(this._videoTimer);
@@ -711,7 +708,7 @@ class Component extends DCLogic {
       const reelEl = q('[data-av-reel]');
       const from = onScreen(card);
       const to = frame.getBoundingClientRect();
-      const alpha = from && inReel ? edgeAlpha(from, reelEl && reelEl.getBoundingClientRect()) : 1;
+      const alpha = from ? edgeAlpha(from, reelEl && reelEl.getBoundingClientRect()) : 1;
       const pb = from && card.querySelector('.av-reel-play');
       const pr = pb && pb.getBoundingClientRect();
       const pbBg = pb && getComputedStyle(pb).backgroundColor;
@@ -921,7 +918,7 @@ class Component extends DCLogic {
     this._onMenuLink = (e) => { if (this.state.menuOpen && e.target && e.target.closest && e.target.closest('[data-av-menu] a')) { this.setState({ menuOpen: false }); this._repaint(); } };
     document.addEventListener('click', this._onMenuLink);
     // Pré-aquece o popup no toque/clique (pointerdown chega ~100 ms antes do click) e no foco por teclado.
-    this._onPrime = (e) => { const b = e.target && e.target.closest && e.target.closest('.av-reel-hit, [data-av-case-play]'); if (b) this._primeVideo(b); };
+    this._onPrime = (e) => { const b = e.target && e.target.closest && e.target.closest('.av-reel-hit'); if (b) this._primeVideo(b); };
     document.addEventListener('pointerdown', this._onPrime, { passive: true, capture: true });
     document.addEventListener('focusin', this._onPrime, true);
 
