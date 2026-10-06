@@ -177,10 +177,7 @@ Layout modelado na seção "Our services" de marroconstruction.adsconversion.onl
   imagem 3:2 com número em aba escura chanfrada (filete âmbar) e chip; tag âmbar, título, descrição,
   diferencial em caixa alta e CTA "Agendar diagnóstico →".
 - Cards: 01 Meta Ads · 02 Social Media · 03 Estimates personalizados · 04 SEO para IA.
-  Imagens provisórias em `media/servicios/*.webp` (1080×720). Meta Ads, Estimates e SEO: fotos do Unsplash.
-  Social Media: mockup próprio de um perfil de Instagram de remodeladora (celular com grade de obras, post
-  "Antes / Después" e mensagem de cliente pedindo estimate), renderizado em HTML com fotos de obra do Unsplash e
-  recortes do hero.
+  Imagens provisórias em `media/servicios/*.webp` (Unsplash, 1080×720).
 - Textos marcados com `data-av-sv="…"` para facilitar a edição.
 
 ### 4.4 Lógica (`data-dc-script`, linhas 358–552)
