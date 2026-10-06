@@ -64,6 +64,28 @@ a:hover{color:#f6bc4d}
   [data-av-herobody]{align-items:flex-start !important;padding-top:clamp(36px,5.5vh,52px) !important;padding-bottom:16px !important}
 }
 
+/* Setas da segunda dobra — linhas de anotação de planta: ponto de origem (marco), traço fino em
+   curva e ponta aberta. Ao entrar na tela: o marco surge com um "ping", a linha se desenha como
+   caneta de projeto e fecha na ponta; depois, um feixe de luz percorre a linha até a coluna a cada
+   ~3,4s. Comprimentos (--len) são medidos no JS com getTotalLength(). */
+.av-arrow{filter:drop-shadow(0 0 6px rgba(233,162,39,.32))}
+.av-arrow .a-line,.av-arrow .a-head{fill:none;stroke:#e9a227;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len,400px);stroke-dashoffset:var(--len,400px)}
+.av-arrow .a-pulse{fill:none;stroke:#ffd98a;stroke-width:2.4;stroke-linecap:round;opacity:0;stroke-dasharray:var(--seg,40px) var(--len,400px);stroke-dashoffset:var(--seg,40px)}
+.av-arrow .a-node{fill:#e9a227;opacity:0;transform:scale(0);transform-box:fill-box;transform-origin:center}
+.av-arrow .a-ring{fill:none;stroke:#e9a227;stroke-width:1;opacity:0;transform-box:fill-box;transform-origin:center}
+.av-arrow[data-on] .a-node{animation:av-node .5s cubic-bezier(.2,.8,.2,1) var(--d,0s) forwards}
+.av-arrow[data-on] .a-ring{animation:av-ring 1.2s cubic-bezier(.2,.7,.3,1) var(--d,0s) forwards}
+.av-arrow[data-on] .a-line{animation:av-draw 1.15s cubic-bezier(.65,.05,.36,1) calc(var(--d,0s) + .22s) forwards}
+.av-arrow[data-on] .a-head{animation:av-draw .36s cubic-bezier(.3,.7,.3,1) calc(var(--d,0s) + 1.3s) forwards}
+.av-arrow[data-on] .a-pulse{animation:av-pulse 3.4s cubic-bezier(.45,0,.25,1) calc(var(--d,0s) + 2s) infinite}
+.av-arrow[data-static] .a-line,.av-arrow[data-static] .a-head{animation:none;stroke-dashoffset:0}
+.av-arrow[data-static] .a-node{animation:none;opacity:1;transform:none}
+.av-arrow[data-static] .a-ring,.av-arrow[data-static] .a-pulse{animation:none;opacity:0}
+@keyframes av-draw{to{stroke-dashoffset:0}}
+@keyframes av-node{to{opacity:1;transform:scale(1)}}
+@keyframes av-ring{0%{opacity:.7;transform:scale(.6)}100%{opacity:0;transform:scale(3.2)}}
+@keyframes av-pulse{0%{stroke-dashoffset:var(--seg,40px);opacity:0}10%{opacity:.95}44%{opacity:.95}52%{stroke-dashoffset:calc(-1 * var(--len,400px));opacity:0}100%{stroke-dashoffset:calc(-1 * var(--len,400px));opacity:0}}
+
 /* Popup do vídeo — não é tela cheia: moldura 9:16 centrada sobre o véu escuro. */
 .av-vmodal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:clamp(64px,8vh,88px) 16px clamp(24px,5vh,56px);box-sizing:border-box;visibility:hidden;pointer-events:none}
 .av-vmodal[data-state="open"]{visibility:visible;pointer-events:auto}
@@ -279,8 +301,8 @@ a:hover{color:#f6bc4d}
         <div style="position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6.6vw,150px)">
         <sc-if value="{{ arrowsWide }}" hint-placeholder-val="{{ false }}">
           <div data-av-arrows="1" aria-hidden="true" style="position:absolute;inset:0;z-index:4;pointer-events:none">
-            <svg data-av-arrow="1" data-av-clip="inset(0 100% 0 0)" data-av-delay="0s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;left:calc(-12.5% + 6px);top:50%;margin-top:-152px;overflow:visible"><path d="M 6.4 13.1 C 22 14.6, 33.5 17.2, 41.9 21.2 C 54.5 27.2, 65.6 33.4, 73.6 41.2 C 84.2 51.4, 91.4 61.2, 95.2 70.4 C 99.8 79.8, 103.6 87.9, 106.7 94.7 L 117.4 95.2 L 114.6 119.2 L 91.4 108.6 L 101.3 97.4 C 98.1 90.2, 94.2 82.1, 88.8 73.6 C 82.2 63.4, 74.8 54.2, 66.4 46.8 C 57.2 38.9, 46.4 31.4, 38.1 26.8 C 28.3 21.4, 16.2 18.1, 5.4 16.9 C 2.4 16.5, 2.2 13.4, 6.4 13.1 Z" style="fill:#e9a227"></path></svg>
-            <svg data-av-arrow="1" data-av-clip="inset(0 0 0 100%)" data-av-delay=".14s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;right:calc(-12.5% + 6px);top:50%;margin-top:-122px;overflow:visible"><path d="M 144.2 9.2 C 129.4 11.8, 117.6 15.4, 108.4 20.6 C 96.4 28.2, 85.8 36, 77.2 45 C 67.4 55.8, 60.6 65.6, 55.6 74.6 C 51.4 83.4, 47.6 91, 44.8 97.4 L 33.6 97 L 37.4 120.6 L 60.6 108.2 L 49.6 99.4 C 52.6 92.2, 56.2 84.4, 61.4 76.2 C 68.4 65.6, 75.8 56.2, 84.4 48.4 C 94.4 39.8, 105.6 32.2, 114.4 27.2 C 124.6 21.4, 135.2 17.2, 145 15.4 C 148.2 14.8, 148 9.6, 144.2 9.2 Z" style="fill:#e9a227"></path></svg>
+            <svg data-av-arrow="1" class="av-arrow" data-av-delay="0s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;left:calc(-12.5% + 6px);top:50%;margin-top:-152px;overflow:visible"><circle class="a-ring" cx="8" cy="16" r="2.4"></circle><circle class="a-node" cx="8" cy="16" r="2.4"></circle><path class="a-line" data-len="1" d="M 8 16 C 56 14, 100 40, 111 110"></path><path class="a-pulse" data-len="1" d="M 8 16 C 56 14, 100 40, 111 110"></path><path class="a-head" data-len="1" d="M 104.7 102.2 L 111 110 L 114.6 100.7"></path></svg>
+            <svg data-av-arrow="1" class="av-arrow" data-av-delay=".22s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;right:calc(-12.5% + 6px);top:50%;margin-top:-122px;overflow:visible"><circle class="a-ring" cx="142" cy="16" r="2.4"></circle><circle class="a-node" cx="142" cy="16" r="2.4"></circle><path class="a-line" data-len="1" d="M 142 16 C 94 14, 50 40, 39 110"></path><path class="a-pulse" data-len="1" d="M 142 16 C 94 14, 50 40, 39 110"></path><path class="a-head" data-len="1" d="M 45.3 102.2 L 39 110 L 35.4 100.7"></path></svg>
           </div>
         </sc-if>
         <div style="position:relative;min-width:0;padding:clamp(58px,4.2vw,86px) 0;box-sizing:border-box">
@@ -399,8 +421,8 @@ a:hover{color:#f6bc4d}
         </sc-if>
         <sc-if value="{{ showArrows }}" hint-placeholder-val="{{ true }}">
           <div data-av-arrows="1" aria-hidden="true" style="position:absolute;z-index:4;top:-20px;height:240px;left:calc(-1 * clamp(20px, 5vw, 88px));right:calc(-1 * clamp(20px, 5vw, 88px));overflow:hidden;pointer-events:none">
-            <svg data-av-arrow="1" data-av-clip="inset(0 100% 0 0)" data-av-delay="0s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;left:-10px;top:6px;overflow:visible"><path d="M 6.4 13.1 C 22 14.6, 33.5 17.2, 41.9 21.2 C 54.5 27.2, 65.6 33.4, 73.6 41.2 C 84.2 51.4, 91.4 61.2, 95.2 70.4 C 99.8 79.8, 103.6 87.9, 106.7 94.7 L 117.4 95.2 L 114.6 119.2 L 91.4 108.6 L 101.3 97.4 C 98.1 90.2, 94.2 82.1, 88.8 73.6 C 82.2 63.4, 74.8 54.2, 66.4 46.8 C 57.2 38.9, 46.4 31.4, 38.1 26.8 C 28.3 21.4, 16.2 18.1, 5.4 16.9 C 2.4 16.5, 2.2 13.4, 6.4 13.1 Z" style="fill:#e9a227"></path></svg>
-            <svg data-av-arrow="1" data-av-clip="inset(0 0 0 100%)" data-av-delay=".14s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;right:-10px;top:14px;overflow:visible"><path d="M 144.2 9.2 C 129.4 11.8, 117.6 15.4, 108.4 20.6 C 96.4 28.2, 85.8 36, 77.2 45 C 67.4 55.8, 60.6 65.6, 55.6 74.6 C 51.4 83.4, 47.6 91, 44.8 97.4 L 33.6 97 L 37.4 120.6 L 60.6 108.2 L 49.6 99.4 C 52.6 92.2, 56.2 84.4, 61.4 76.2 C 68.4 65.6, 75.8 56.2, 84.4 48.4 C 94.4 39.8, 105.6 32.2, 114.4 27.2 C 124.6 21.4, 135.2 17.2, 145 15.4 C 148.2 14.8, 148 9.6, 144.2 9.2 Z" style="fill:#e9a227"></path></svg>
+            <svg data-av-arrow="1" class="av-arrow" data-av-delay="0s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;left:-10px;top:6px;overflow:visible"><circle class="a-ring" cx="8" cy="16" r="2.4"></circle><circle class="a-node" cx="8" cy="16" r="2.4"></circle><path class="a-line" data-len="1" d="M 8 16 C 56 14, 100 40, 111 110"></path><path class="a-pulse" data-len="1" d="M 8 16 C 56 14, 100 40, 111 110"></path><path class="a-head" data-len="1" d="M 104.7 102.2 L 111 110 L 114.6 100.7"></path></svg>
+            <svg data-av-arrow="1" class="av-arrow" data-av-delay=".22s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;right:-10px;top:14px;overflow:visible"><circle class="a-ring" cx="142" cy="16" r="2.4"></circle><circle class="a-node" cx="142" cy="16" r="2.4"></circle><path class="a-line" data-len="1" d="M 142 16 C 94 14, 50 40, 39 110"></path><path class="a-pulse" data-len="1" d="M 142 16 C 94 14, 50 40, 39 110"></path><path class="a-head" data-len="1" d="M 45.3 102.2 L 39 110 L 35.4 100.7"></path></svg>
           </div>
         </sc-if>
         </div>
@@ -523,19 +545,25 @@ class Component extends DCLogic {
         n.style.opacity = String(Math.min(0.5, Math.round(op * 1.5 * 100) / 100));
       });
 
-      // Hand-drawn arrows: each path draws itself from the screen edge to the tip.
-      const animate = this.props.arrowsAnimated ?? true;
+      // Setas (linhas de anotação): mede cada traço para o desenho por stroke-dash e liga a animação
+      // quando a fileira entra na tela. Sem animação (prop ou reduced-motion) mostra o estado final.
+      let reduce = false;
+      try { reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) {}
+      const animate = (this.props.arrowsAnimated ?? true) && !reduce;
       document.querySelectorAll('[data-av-arrow]').forEach(n => {
-        if (!animate) {
-          n.style.clipPath = 'none';
-          n.style.transition = 'none';
-          n._armed = false;
-          return;
+        if (!n._measured) {
+          n.querySelectorAll('[data-len]').forEach(pth => {
+            try {
+              const L = pth.getTotalLength();
+              if (L) { pth.style.setProperty('--len', L.toFixed(1) + 'px'); pth.style.setProperty('--seg', (L * 0.16).toFixed(1) + 'px'); }
+            } catch (e) {}
+          });
+          n.style.setProperty('--d', n.getAttribute('data-av-delay') || '0s');
+          n._measured = true;
         }
-        if (n._armed) return;
-        n._armed = true;
-        n.style.clipPath = this._arrowsSeen ? 'inset(0 0 0 0)' : (n.getAttribute('data-av-clip') || 'inset(0 100% 0 0)');
-        n.style.transition = 'clip-path .62s cubic-bezier(.33,.8,.4,1) ' + (n.getAttribute('data-av-delay') || '0s');
+        if (!animate) { n.setAttribute('data-static', '1'); n.removeAttribute('data-on'); return; }
+        n.removeAttribute('data-static');
+        if (this._arrowsSeen && !n.hasAttribute('data-on')) n.setAttribute('data-on', '1');
       });
       if (animate && this._checkArrows) this._checkArrows();
       if (this._mountReel) this._mountReel();
@@ -589,7 +617,7 @@ class Component extends DCLogic {
       const vh = window.innerHeight || 800;
       if (r.bottom <= 0 || r.top >= vh * 0.86) return;
       this._arrowsSeen = true;
-      document.querySelectorAll('[data-av-arrow]').forEach(n => { n.style.clipPath = 'inset(0 0 0 0)'; });
+      document.querySelectorAll('[data-av-arrow]').forEach(n => { if (!n.hasAttribute('data-static')) n.setAttribute('data-on', '1'); });
     };
 
     // Some embedding contexts swallow scroll events; this rAF loop stops for good

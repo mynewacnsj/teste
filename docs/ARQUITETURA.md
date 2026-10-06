@@ -177,7 +177,7 @@ Metáfora central: **o negócio é um pórtico sustentado por duas colunas — D
   - **01 — Demanda** · "Que te encuentren primero." · Google, Meta y tu ficha local… leads exclusivos.
   - **02 — Filtro** · "Que hables solo con quien firma." · Presupuesto, fecha y dirección confirmados…
 - Soleira, tagline "Si falta una columna, todo se cae." e CTA âmbar sólido "Ver cómo funciona →".
-- Setas desenhadas que se revelam no scroll (só ≥1360px).
+- Setas de anotação (linha fina que se desenha + feixe de luz), só ≥1360px.
 
 **Mobile (`isNarrow`, <760px)** — corresponde à variante **3b**:
 - Pórtico miniatura 240×200 (opacidade ≈ `pillarOpacity × 1.5`), setas animadas, cartões com filete âmbar à esquerda,
@@ -214,7 +214,10 @@ Metáfora central: **o negócio é um pórtico sustentado por duas colunas — D
   ganha fundo e a barra encolhe de `clamp(72px,9vh,104px)` para `clamp(56px,7vh,74px)`.
 - **Menu mobile:** `toggleMenu` alterna `menuOpen`; `_paint` anima `max-height`, opacidade, translateY e as barras do hambúrguer em X. Fecha sozinho ao passar de 900px.
 - **Textura adaptativa:** `_paint` ajusta grão/hachura (mobile .075/.13, desktop .115/.2).
-- **Setas:** revelam-se uma única vez via `clip-path` (.62s, segunda seta com 0.14s de atraso) quando entram a 86% do viewport.
+- **Setas:** linhas de anotação de planta (marco de origem, traço fino de 1,6px em curva, ponta aberta). Quando a
+  fileira entra a 86% da tela: o marco surge com um "ping", a linha se desenha por `stroke-dashoffset` (1,15s) e fecha
+  na ponta; depois um feixe de luz percorre a linha até a coluna a cada 3,4s. Comprimentos medidos com
+  `getTotalLength()` em px (sem unidade o `calc()` não interpola). `arrowsAnimated=false` ou reduced-motion → estado final.
 - **Robustez:** `_repaint` pinta agora e no próximo frame (um remount de `sc-if` restaura o estilo estático); um poll de 100ms tenta ligar os observers por até 120 tentativas.
 
 ---

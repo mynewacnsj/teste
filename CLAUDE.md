@@ -27,6 +27,12 @@ camada de textura da seção usa `top:-92px`, então compartilham o mesmo espaç
 Texto alinhado ao topo e hero com altura do conteúdo; imagem e véus presos à altura antiga
 (`[data-av-heroimg]`, `[data-av-herolayer]`) para a foto não mudar. Não reduza o hero mexendo na imagem.
 
+## Setas da segunda dobra
+
+Linhas de anotação de planta (traço fino âmbar, marco de origem, ponta aberta), desenhadas por
+stroke-dash + feixe de luz periódico. Nunca setas grossas/preenchidas nem revelação por cortina.
+Comprimentos de dash sempre em `px`.
+
 ## Paleta
 
 - Fundo escuro `#0c0c0d` · Fundo claro `#f4f1ea` · Texto escuro `#16171a`
