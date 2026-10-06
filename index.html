@@ -33,9 +33,9 @@ a:hover{color:#f6bc4d}
 .av-reel-slot{position:absolute;inset:0;z-index:1}
 .av-reel-slot video{display:block;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
 .av-reel-slot[data-on] video{opacity:1}
-.av-reel-play{position:absolute;left:50%;top:50%;z-index:2;width:clamp(64px,46%,124px);aspect-ratio:1.56;border-radius:2px;background:rgba(233,162,39,.55);display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);pointer-events:none;transition:background-color .25s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
+.av-reel-play{position:absolute;left:50%;top:50%;z-index:2;width:clamp(64px,46%,124px);aspect-ratio:1.56;border-radius:2px;background:rgba(233,162,39,.72);display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);pointer-events:none;transition:background-color .25s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
 .av-reel-play svg{width:28%;height:auto;margin-left:6%;display:block}
-.av-reel-card:hover .av-reel-play{background:rgba(246,188,77,.82);transform:translate(-50%,-50%) scale(1.05)}
+.av-reel-card:hover .av-reel-play{background:rgba(246,188,77,.9);transform:translate(-50%,-50%) scale(1.05)}
 .av-reel-hit{position:absolute;inset:0;z-index:3;width:100%;height:100%;margin:0;padding:0;border:0;border-radius:inherit;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .av-reel-hit:focus-visible{outline:2px solid #e9a227;outline-offset:-2px}
 /* Degradê das bordas: os cards se dissolvem no preto da própria seção. É máscara, não
@@ -231,7 +231,7 @@ a:hover{color:#f6bc4d}
     <div data-av-hatch="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
   </div>
 
-  <div class="av-reel-wrap" style="z-index:3;margin-top:clamp(12px,2.2vw,40px)">
+  <div class="av-reel-wrap" style="z-index:3;margin-top:clamp(36px,4vw,72px)">
   <div data-av-reel="1" class="av-reel" role="region" aria-roledescription="carrusel" aria-label="Videos">
     <div class="av-reel-track">
       <sc-for list="{{ reelGroups }}" as="g">

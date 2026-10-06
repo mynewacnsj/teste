@@ -117,7 +117,7 @@ no mobile, hambúrguer âmbar que vira X e abre um menu com os mesmos links e CT
 
 **Mobile (< 760px):** o texto não é centralizado verticalmente: alinha ao topo com
 `padding-top: clamp(36px,5.5vh,52px)` (~46px entre o logo e a headline) e o hero passa a ter a altura do
-conteúdo, deixando o carrossel a ~46px dos números. A imagem e os véus (`[data-av-heroimg]`, `[data-av-herolayer]`)
+conteúdo, deixando o carrossel a ~70px dos números (`margin-top: clamp(36px,4vw,72px)`). A imagem e os véus (`[data-av-heroimg]`, `[data-av-herolayer]`)
 mantêm a altura antiga `min(100svh, calc(72svh + 34vw))`, então a foto fica idêntica (mesma escala,
 enquadramento e escurecimento); `[data-av-herofade]` (120px, abaixo do grão) fecha o rodapé no `#0c0c0d`.
 
@@ -135,7 +135,7 @@ Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`), sem tí
   360p, 5–7s, sem áudio, 135–380 KB) e o poster é o 1º quadro (`media/reel/<id>.webp`, 6–21 KB), então a
   troca poster → vídeo não pisca. O `src` só é ligado quando o card chega perto da tela e só os cards
   visíveis tocam (`IntersectionObserver`); com `prefers-reduced-motion` ou economia de dados fica o poster.
-  Play âmbar translúcido (55%, 82% no hover) no estilo do Wistia (`.av-reel-play`); camada transparente `.av-reel-hit` abre o popup.
+  Play âmbar translúcido (72%, 90% no hover) no estilo do Wistia (`.av-reel-play`); camada transparente `.av-reel-hit` abre o popup.
 - **Popup = `<video controls>` nativo** com o MP4 servido pelo Wistia (`embed-ssl.wistia.com/deliveries/…mp4`;
   540p em telas < 760px, 720p acima). O vídeo é criado e recebe `play()` dentro do próprio clique, para
   tocar com som também no iOS. Enquanto o popup está aberto as prévias pausam.
