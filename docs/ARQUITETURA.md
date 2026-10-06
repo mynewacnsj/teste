@@ -125,8 +125,9 @@ enquadramento e escurecimento); `[data-av-herofade]` (120px, abaixo do grão) fe
 
 ### 4.2 Carrossel de vídeos (topo da segunda dobra)
 
-Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`), sem título acima
-(o título "TESTIMONIOS — Contratistas reales. Resultados reales." foi retirado; está no commit 8084ed3).
+Logo abaixo da headline da segunda dobra (eyebrow "El método" + H2 "Un negocio de remodelación se sostiene
+sobre dos columnas…"), em largura total (`[data-av-reel]`). O parágrafo "Con leads pero sin filtro…" ficou
+abaixo do carrossel, abrindo a parte dos pilares. (O título "TESTIMONIOS" antigo está no commit 8084ed3.)
 
 - **6 vídeos** (lista `REEL` no script): `u3z5opwfg5`, `qtq97pqw42`, `85xxi41ehr`, `myhu1aftp6`, `j9kq9ph7rs`,
   `vwcc31ysmm`. **Sem player do Wistia** (era pesado: ~150 requisições, ~1,4s de CPU em JS e 3,5s até a 1ª prévia).

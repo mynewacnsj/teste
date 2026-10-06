@@ -231,7 +231,15 @@ a:hover{color:#f6bc4d}
     <div data-av-hatch="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
   </div>
 
-  <div class="av-reel-wrap" style="z-index:3;margin-top:clamp(36px,4vw,72px)">
+  <div style="position:relative;z-index:3;padding-top:clamp(40px,4.6vw,88px);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:clamp(20px,2.4vw,28px)">
+      <div style="width:clamp(30px,3vw,56px);height:2px;background:#e9a227"></div>
+      <span style="font-family:Archivo,sans-serif;font-size:clamp(10.5px,.85vw,14px);font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
+    </div>
+    <h2 style="margin:0;max-width:min(100%,1680px);font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(22px,min(2.75vw,4.8vh),54px);line-height:1.12;letter-spacing:-.035em;color:#ffffff;text-wrap:pretty">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
+  </div>
+
+  <div class="av-reel-wrap" style="z-index:3;margin-top:clamp(28px,3.4vw,56px)">
   <div data-av-reel="1" class="av-reel" role="region" aria-roledescription="carrusel" aria-label="Videos">
     <div class="av-reel-track">
       <sc-for list="{{ reelGroups }}" as="g">
@@ -253,12 +261,7 @@ a:hover{color:#f6bc4d}
   <div style="position:relative;z-index:3;padding:clamp(52px,6vw,112px) 0 clamp(60px,5.6vw,116px);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto">
 
     <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:clamp(20px,2.4vw,28px)">
-        <div style="width:clamp(30px,3vw,56px);height:2px;background:#e9a227"></div>
-        <span style="font-family:Archivo,sans-serif;font-size:clamp(10.5px,.85vw,14px);font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">El método</span>
-      </div>
-      <h2 style="margin:0;max-width:min(100%,1680px);font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(22px,min(2.75vw,4.8vh),54px);line-height:1.12;letter-spacing:-.035em;color:#ffffff;text-wrap:pretty">Un negocio de remodelación se sostiene sobre dos columnas.<br>La mayoría de los contratistas <span style="color:#e9a227">solo tiene una</span>.</h2>
-      <p style="margin:clamp(16px,2vw,24px) 0 0;max-width:min(100%,clamp(660px,50vw,900px));font-size:clamp(15px,min(1.25vw,2.2vh),24px);line-height:1.62;color:rgba(244,241,234,.7);text-wrap:pretty">Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo.</p>
+      <p style="margin:0;max-width:min(100%,clamp(660px,50vw,900px));font-size:clamp(15px,min(1.25vw,2.2vh),24px);line-height:1.62;color:rgba(244,241,234,.7);text-wrap:pretty">Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo.</p>
     </div>
 
     <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
