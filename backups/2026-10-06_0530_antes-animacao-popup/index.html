@@ -19,7 +19,6 @@
 @font-face{font-family:Barlow;font-style:normal;font-weight:500;font-display:swap;src:url(./fonts/barlow-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:Barlow;font-style:normal;font-weight:600;font-display:swap;src:url(./fonts/barlow-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 html,body{margin:0;background:#0c0c0d}
-html{scrollbar-gutter:stable}
 x-dc{display:none!important}
 </style>
 <!-- React local (sem CDN) e runtime minificado; defer = não bloqueia o HTML. -->
@@ -116,37 +115,27 @@ a:hover{color:#f6bc4d}
 .av-sv-cta:focus-visible{outline:2px solid #e9a227;outline-offset:3px}
 @media (min-width:760px){.av-sv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-/* Popup do vídeo — moldura 9:16 centrada (nunca tela cheia). A abertura e o fechamento são animados
-   em JS (Web Animations), não aqui: o card clicado cresce da posição dele no carrossel até a moldura
-   (transição de elemento compartilhado), o véu escurece, o brilho âmbar acende, o filete se desenha e
-   rótulo + fechar entram em sequência; ao fechar, o vídeo volta ao lugar exato do card.
-   Este CSS só define o estado final. Com prefers-reduced-motion tudo vira um fade curto. */
-.av-vmodal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:clamp(56px,7vh,80px) 16px clamp(24px,5vh,56px);box-sizing:border-box;visibility:hidden;pointer-events:none}
+/* Popup do vídeo — não é tela cheia: moldura 9:16 centrada sobre o véu escuro. */
+.av-vmodal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:clamp(64px,8vh,88px) 16px clamp(24px,5vh,56px);box-sizing:border-box;visibility:hidden;pointer-events:none}
 .av-vmodal[data-state="open"]{visibility:visible;pointer-events:auto}
-.av-vmodal-veil{position:absolute;inset:0;overflow:hidden;background:rgba(8,8,9,.86);-webkit-backdrop-filter:blur(12px) saturate(.8);backdrop-filter:blur(12px) saturate(.8)}
+.av-vmodal-veil{position:absolute;inset:0;overflow:hidden;background:rgba(8,8,9,.86);-webkit-backdrop-filter:blur(12px) saturate(.8);backdrop-filter:blur(12px) saturate(.8);opacity:0;transition:opacity .34s ease}
+.av-vmodal[data-state="open"] .av-vmodal-veil{opacity:1}
 .av-vmodal-grain{position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.webp);background-size:256px 256px;background-repeat:repeat;pointer-events:none}
 .av-vmodal-hatch{position:absolute;inset:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px);pointer-events:none}
-.av-vmodal-stage{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;pointer-events:none}
-.av-vmodal-label{display:flex;align-items:center;gap:12px;font-family:Archivo,sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227;white-space:nowrap}
-.av-vmodal-label::before{content:"";display:block;width:28px;height:2px;background:#e9a227}
-.av-vmodal-label b{font-weight:600;letter-spacing:.2em;color:rgba(244,241,234,.75)}
-.av-vmodal-wrap{position:relative;width:min(100%,calc(min(100svh - 190px,880px) * .5625))}
-.av-vmodal-glow{position:absolute;left:-40%;right:-40%;top:-18%;bottom:-18%;background:radial-gradient(50% 50% at 50% 50%,rgba(233,162,39,.26) 0%,rgba(233,162,39,.08) 45%,rgba(233,162,39,0) 72%);pointer-events:none}
-.av-vmodal-frame{position:relative;width:100%;aspect-ratio:9/16;border-radius:4px;overflow:hidden;background:#0c0c0d;box-shadow:0 0 0 1px rgba(244,241,234,.1),0 48px 120px -24px rgba(0,0,0,.9);transform-origin:0 0;pointer-events:auto}
-.av-vmodal-line{position:absolute;left:0;right:0;top:0;height:2px;z-index:4;background:#e9a227;box-shadow:0 0 18px rgba(233,162,39,.55);transform-origin:0 50%;pointer-events:none}
-.av-vmodal-mount{position:absolute;inset:0;z-index:2}
-.av-vmodal-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.av-vmodal-mount video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;background:transparent;opacity:0;transition:opacity .5s ease}
-.av-vmodal-mount video[data-on]{opacity:1}
-.av-vmodal-spin{position:absolute;left:50%;top:50%;z-index:3;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:2px solid rgba(244,241,234,.18);border-top-color:#e9a227;opacity:0;transition:opacity .3s ease;animation:av-spin .8s linear infinite;pointer-events:none}
-.av-vmodal-spin[data-on]{opacity:1}
+.av-vmodal-frame{position:relative;z-index:1;width:min(100%,calc(min(100svh - 152px,880px) * .5625));aspect-ratio:9/16;border-radius:4px;overflow:hidden;background:#0c0c0d;box-shadow:0 0 0 1px rgba(244,241,234,.1),0 48px 120px -24px rgba(0,0,0,.9);opacity:0;transform:translateY(18px) scale(.965);transition:opacity .3s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.av-vmodal[data-state="open"] .av-vmodal-frame{opacity:1;transform:none}
+.av-vmodal-frame::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;z-index:4;background:#e9a227;box-shadow:0 0 18px rgba(233,162,39,.55);pointer-events:none}
+.av-vmodal-poster{position:absolute;inset:-12px;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;filter:blur(10px) brightness(.55)}
+.av-vmodal-spin{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:2px solid rgba(244,241,234,.18);border-top-color:#e9a227;animation:av-spin .8s linear infinite}
 @keyframes av-spin{to{transform:rotate(360deg)}}
-.av-vmodal-close{position:absolute;z-index:3;top:clamp(14px,2.4vh,24px);right:clamp(14px,2vw,28px);width:46px;height:46px;padding:0;border-radius:50%;border:1px solid rgba(244,241,234,.24);background:rgba(12,12,13,.55);color:#f4f1ea;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s ease,color .2s ease}
+.av-vmodal-mount{position:absolute;inset:0;z-index:2}
+.av-vmodal-mount video{display:block;width:100%;height:100%;object-fit:contain;background:transparent}
+.av-vmodal-close{position:absolute;z-index:3;top:clamp(14px,2.4vh,24px);right:clamp(14px,2vw,28px);width:46px;height:46px;padding:0;border-radius:50%;border:1px solid rgba(244,241,234,.24);background:rgba(12,12,13,.55);color:#f4f1ea;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:scale(.9);transition:opacity .3s ease,transform .4s cubic-bezier(.2,.8,.2,1),border-color .2s ease,color .2s ease}
+.av-vmodal[data-state="open"] .av-vmodal-close{opacity:1;transform:none}
 .av-vmodal-close:hover{border-color:#e9a227;color:#e9a227}
 .av-vmodal-close:focus-visible{outline:2px solid #e9a227;outline-offset:3px}
 .av-vmodal-close svg{width:16px;height:16px;display:block}
-/* O carrossel congela enquanto o popup está aberto, para o vídeo voltar exatamente ao card. */
-.av-reel[data-paused] .av-reel-group{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.av-vmodal-veil,.av-vmodal-frame,.av-vmodal-close{transition:none}}
 </style>
 </helmet>
 
@@ -405,20 +394,14 @@ a:hover{color:#f6bc4d}
 
 
 <div data-av-vmodal="1" class="av-vmodal" data-state="{{ videoState }}" role="dialog" aria-modal="true" aria-label="Video" aria-hidden="{{ videoHidden }}">
-  <div data-av-vveil="1" class="av-vmodal-veil" onClick="{{ closeVideo }}">
+  <div class="av-vmodal-veil" onClick="{{ closeVideo }}">
     <div class="av-vmodal-grain"></div>
     <div class="av-vmodal-hatch"></div>
   </div>
-  <div class="av-vmodal-stage">
-    <div data-av-vlabel="1" class="av-vmodal-label"></div>
-    <div data-av-vwrap="1" class="av-vmodal-wrap">
-      <div data-av-vglow="1" class="av-vmodal-glow"></div>
-      <div data-av-vframe="1" class="av-vmodal-frame">
-        <div data-av-vmount="1" class="av-vmodal-mount"></div>
-        <div data-av-vspin="1" class="av-vmodal-spin"></div>
-        <div data-av-vline="1" class="av-vmodal-line"></div>
-      </div>
-    </div>
+  <div data-av-vframe="1" class="av-vmodal-frame">
+    <div class="av-vmodal-poster" style="{{ videoPoster }}"></div>
+    <div class="av-vmodal-spin"></div>
+    <div data-av-vmount="1" class="av-vmodal-mount"></div>
   </div>
   <button type="button" data-av-vclose="1" class="av-vmodal-close" onClick="{{ closeVideo }}" aria-label="Cerrar video" tabindex="{{ videoTab }}">
     <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
@@ -587,184 +570,29 @@ class Component extends DCLogic {
 
     // Popup: <video> nativo com o MP4 do Wistia. É criado e recebe play() ainda dentro do
     // clique, para contar como gesto do usuário e tocar com som (inclusive no iOS).
-    // Animação (Web Animations API, só transform/opacity):
-    //  abrir  — o card clicado cresce até a moldura (FLIP), o véu escurece, o brilho âmbar acende,
-    //           o filete se desenha da esquerda e rótulo + fechar entram; o vídeo surge em fade
-    //           quando começa a tocar (até lá fica o quadro atual da prévia do card).
-    //  fechar — controles saem, filete recolhe, o vídeo encolhe de volta ao card e o véu some.
-    // O carrossel fica congelado enquanto isso, então o retorno pousa no lugar exato do card.
-    const EASE_OUT = 'cubic-bezier(.16,1,.3,1)';
-    const EASE_IN_OUT = 'cubic-bezier(.65,0,.35,1)';
-    const reduced = () => { try { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { return false; } };
-    const pad = (n) => (n < 10 ? '0' : '') + n;
-    const q = (sel) => document.querySelector(sel);
-    this._vanims = [];
-    const anim = (el, frames, opts) => {
-      if (!el || typeof el.animate !== 'function') return null;
-      const a = el.animate(frames, Object.assign({ fill: 'both' }, opts));
-      this._vanims.push(a);
-      return a;
-    };
-    const stopAnims = () => { this._vanims.forEach(a => { try { a.cancel(); } catch (e) {} }); this._vanims = []; };
-    const onScreen = (el) => {
-      if (!el) return null;
-      const r = el.getBoundingClientRect();
-      return (r.width > 0 && r.right > 0 && r.left < window.innerWidth && r.bottom > 0 && r.top < window.innerHeight) ? r : null;
-    };
-    // Transform que leva a moldura (retângulo "to") a ocupar o retângulo "from" — origem 0 0.
-    const flip = (from, to) => {
-      const sx = from.width / to.width, sy = from.height / to.height;
-      return { transform: 'translate(' + (from.left - to.left) + 'px,' + (from.top - to.top) + 'px) scale(' + sx + ',' + sy + ')', radius: (4 / ((sx + sy) / 2)).toFixed(2) + 'px' };
-    };
-    const SHADOW = '0 0 0 1px rgba(244,241,234,.1),0 48px 120px -24px rgba(0,0,0,.9)';
-    const NO_SHADOW = '0 0 0 1px rgba(244,241,234,0),0 0 0 0 rgba(0,0,0,0)';
-
     this._openVideo = (i, trigger) => {
-      if (this.state.video || this._vbusy) return;
       const v = REEL[i];
-      const mod = q('[data-av-vmodal]'), mount = q('[data-av-vmount]'), frame = q('[data-av-vframe]');
-      if (!v || !mod || !mount || !frame) return;
-      const veil = q('[data-av-vveil]'), glow = q('[data-av-vglow]'), line = q('[data-av-vline]');
-      const label = q('[data-av-vlabel]'), spin = q('[data-av-vspin]'), close = q('[data-av-vclose]');
+      const mount = document.querySelector('[data-av-vmount]');
+      if (!v || !mount) return;
       this._videoTrigger = trigger || document.activeElement;
-      const card = trigger && trigger.closest ? trigger.closest('.av-reel-card') : null;
-      this._vcard = card;
-      stopAnims();
       clearTimeout(this._videoTimer);
-      clearTimeout(this._spinT);
       mount.textContent = '';
-      frame.style.aspectRatio = String(v.aspect);
-
-      // Pôster = o quadro que o card está mostrando agora (troca invisível); senão, o 1º quadro.
-      let poster = null;
-      const cv = card && card.querySelector('video');
-      if (cv && cv.readyState >= 2 && cv.videoWidth) {
-        try {
-          poster = document.createElement('canvas');
-          poster.width = cv.videoWidth; poster.height = cv.videoHeight;
-          poster.getContext('2d').drawImage(cv, 0, 0, poster.width, poster.height);
-        } catch (e) { poster = null; }
-      }
-      if (!poster) {
-        poster = document.createElement('img');
-        poster.alt = '';
-        poster.src = './media/reel/' + v.id + '.webp';
-      }
-      poster.className = 'av-vmodal-poster';
-      poster.setAttribute('aria-hidden', 'true');
-      mount.appendChild(poster);
-
+      const frame = document.querySelector('[data-av-vframe]');
+      if (frame) frame.style.aspectRatio = String(v.aspect);
       const vid = document.createElement('video');
       vid.setAttribute('src', (this.state.w || window.innerWidth) < 760 ? v.md : v.hd);
+      vid.setAttribute('poster', './media/reel/' + v.id + '.webp');
       vid.setAttribute('controls', '');
       vid.setAttribute('playsinline', '');
       vid.setAttribute('preload', 'auto');
       vid.setAttribute('controlslist', 'nodownload');
-      vid.addEventListener('playing', () => {
-        vid.setAttribute('data-on', '');
-        clearTimeout(this._spinT);
-        if (spin) spin.removeAttribute('data-on');
-      });
       mount.appendChild(vid);
       const r = vid.play();
       if (r && r.catch) r.catch(() => {});
-      this._spinT = setTimeout(() => { if (!vid.hasAttribute('data-on') && spin) spin.setAttribute('data-on', ''); }, 900);
-
-      if (label) label.innerHTML = 'Clientes reales <b>' + pad(i + 1) + ' / ' + pad(REEL.length) + '</b>';
-      const reel = q('[data-av-reel]');
-      if (reel) reel.setAttribute('data-paused', '');
       this._pauseReel();
-
-      const to = frame.getBoundingClientRect();
-      const from = onScreen(card);
-      mod.setAttribute('data-state', 'open');
-      mod.setAttribute('aria-hidden', 'false');
-
-      if (reduced()) {
-        [veil, glow, frame, label, close].forEach(el => anim(el, [{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' }));
-      } else {
-        anim(veil, [{ opacity: 0 }, { opacity: 1 }], { duration: 560, easing: 'cubic-bezier(.4,0,.2,1)' });
-        if (from) {
-          const f = flip(from, to);
-          anim(frame, [
-            { transform: f.transform, borderRadius: f.radius, boxShadow: NO_SHADOW },
-            { transform: 'none', borderRadius: '4px', boxShadow: SHADOW }
-          ], { duration: 780, easing: EASE_OUT });
-        } else {
-          anim(frame, [
-            { opacity: 0, transform: 'translateY(28px) scale(.94)', boxShadow: NO_SHADOW },
-            { opacity: 1, transform: 'none', boxShadow: SHADOW }
-          ], { duration: 680, easing: EASE_OUT });
-        }
-        anim(poster, [{ transform: 'scale(1.06)' }, { transform: 'scale(1)' }], { duration: 1400, easing: EASE_OUT });
-        anim(glow, [{ opacity: 0, transform: 'scale(.82)' }, { opacity: 1, transform: 'none' }], { duration: 1000, delay: 220, easing: EASE_OUT });
-        anim(line, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 680, delay: 460, easing: 'cubic-bezier(.7,0,.2,1)' });
-        anim(label, [
-          { opacity: 0, transform: 'translateY(10px)', letterSpacing: '.55em' },
-          { opacity: 1, transform: 'none', letterSpacing: '.3em' }
-        ], { duration: 820, delay: 380, easing: EASE_OUT });
-        anim(close, [
-          { opacity: 0, transform: 'rotate(-90deg) scale(.6)' },
-          { opacity: 1, transform: 'none' }
-        ], { duration: 620, delay: 520, easing: EASE_OUT });
-      }
-      // O card "sai" do carrossel: a moldura nasce exatamente em cima dele.
-      if (card) { card.style.transition = 'none'; card.style.opacity = '0'; }
       this.setState({ video: v.id });
     };
-
-    this._closeVideo = () => {
-      if (!this.state.video || this._vbusy) return;
-      this._vbusy = true;
-      clearTimeout(this._spinT);
-      const mod = q('[data-av-vmodal]'), mount = q('[data-av-vmount]'), frame = q('[data-av-vframe]');
-      const veil = q('[data-av-vveil]'), glow = q('[data-av-vglow]'), line = q('[data-av-vline]');
-      const label = q('[data-av-vlabel]'), spin = q('[data-av-vspin]'), close = q('[data-av-vclose]');
-      const vid = mount && mount.querySelector('video');
-      if (vid) vid.pause();
-      if (spin) spin.removeAttribute('data-on');
-      // Se fechar no meio da abertura, parte do ponto em que a animação está.
-      const curT = frame ? getComputedStyle(frame).transform : 'none';
-      const curV = veil ? getComputedStyle(veil).opacity : '1';
-      stopAnims();
-      const card = this._vcard;
-      const finish = () => {
-        if (!this._vbusy) return;
-        if (mod) { mod.setAttribute('data-state', 'closed'); mod.setAttribute('aria-hidden', 'true'); }
-        stopAnims();
-        if (card) { card.style.transition = 'none'; card.style.opacity = ''; }
-        const reel = q('[data-av-reel]');
-        if (reel) reel.removeAttribute('data-paused');
-        this._vcard = null;
-        this._vbusy = false;
-        this.setState({ video: null });
-      };
-      if (!frame || reduced()) {
-        [veil, glow, frame, label, close].forEach(el => anim(el, [{ opacity: 1 }, { opacity: 0 }], { duration: 180, easing: 'ease-in' }));
-        this._videoTimer = setTimeout(finish, 200);
-        return;
-      }
-      const to = frame.getBoundingClientRect();
-      const back = onScreen(card);
-      const start = { transform: curT === 'none' ? 'none' : curT, borderRadius: '4px', boxShadow: SHADOW };
-      anim(close, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'rotate(45deg) scale(.7)' }], { duration: 240, easing: 'cubic-bezier(.4,0,1,1)' });
-      anim(label, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(8px)' }], { duration: 240, easing: 'cubic-bezier(.4,0,1,1)' });
-      anim(line, [{ transform: 'scaleX(1)', transformOrigin: '100% 50%' }, { transform: 'scaleX(0)', transformOrigin: '100% 50%' }], { duration: 320, easing: 'cubic-bezier(.7,0,.2,1)' });
-      anim(glow, [{ opacity: 1 }, { opacity: 0 }], { duration: 360, easing: 'ease-out' });
-      if (vid) anim(vid, [{ opacity: getComputedStyle(vid).opacity }, { opacity: 0 }], { duration: 220, easing: 'ease-out' });
-      let main;
-      if (back && to.width) {
-        const f = flip(back, to);
-        main = anim(frame, [start, { transform: f.transform, borderRadius: f.radius, boxShadow: NO_SHADOW }], { duration: 640, delay: 120, easing: EASE_IN_OUT });
-      } else {
-        main = anim(frame, [Object.assign({ opacity: 1 }, start), { opacity: 0, transform: 'translateY(18px) scale(.95)', boxShadow: NO_SHADOW }], { duration: 440, delay: 80, easing: 'cubic-bezier(.4,0,1,1)' });
-      }
-      const fade = anim(veil, [{ opacity: curV }, { opacity: 0 }], { duration: 560, delay: back ? 200 : 120, easing: 'cubic-bezier(.4,0,.2,1)' });
-      Promise.all([main && main.finished, fade && fade.finished]).then(finish, finish);
-      // Rede de segurança caso algum navegador não resolva .finished.
-      this._videoTimer = setTimeout(finish, 1200);
-    };
-
+    this._closeVideo = () => { if (this.state.video) this.setState({ video: null }); };
     this._syncVideo = () => {
       const id = this.state.video;
       if (id === this._shownVideo) return;
@@ -772,16 +600,20 @@ class Component extends DCLogic {
       if (id) {
         this._shownVideo = id;
         root.style.overflow = 'hidden';
-        requestAnimationFrame(() => { const c = q('[data-av-vclose]'); if (c) c.focus({ preventScroll: true }); });
+        requestAnimationFrame(() => { const c = document.querySelector('[data-av-vclose]'); if (c) c.focus({ preventScroll: true }); });
         return;
       }
       this._shownVideo = null;
       root.style.overflow = '';
-      const mount = q('[data-av-vmount]');
-      if (mount) {
-        mount.querySelectorAll('video').forEach(x => { x.pause(); x.removeAttribute('src'); x.load(); });
+      const mount = document.querySelector('[data-av-vmount]');
+      const vid = mount && mount.querySelector('video');
+      if (vid) vid.pause();
+      // Espera o fade-out da moldura antes de soltar o vídeo (removeAttribute + load libera a rede).
+      this._videoTimer = setTimeout(() => {
+        if (this.state.video || !mount) return;
+        mount.querySelectorAll('video').forEach(x => { x.removeAttribute('src'); x.load(); });
         mount.textContent = '';
-      }
+      }, 360);
       const t = this._videoTrigger;
       this._videoTrigger = null;
       if (t && typeof t.focus === 'function') t.focus({ preventScroll: true });
@@ -829,12 +661,15 @@ class Component extends DCLogic {
       }));
     }
     const vid = this.state.video;
+    const cur = vid ? REEL.find(x => x.id === vid) : null;
+    if (cur) this._lastThumb = './media/reel/' + cur.id + '.webp';
     return {
       reelGroups: REEL_GROUPS,
       reelItems: this._reelItems,
       videoState: vid ? 'open' : 'closed',
       videoHidden: vid ? 'false' : 'true',
       videoTab: vid ? 0 : -1,
+      videoPoster: this._lastThumb ? { backgroundImage: 'url("' + this._lastThumb + '")' } : {},
       closeVideo: () => this._closeVideo && this._closeVideo(),
       scrimSoft: s === 'soft',
       scrimMedium: s === 'medium',
