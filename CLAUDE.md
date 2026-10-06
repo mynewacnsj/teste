@@ -69,7 +69,8 @@ Para voltar: copie o arquivo da pasta por cima do atual. Ver `backups/README.md`
 O site não terá um único fundo: algumas dobras usam cores complementares, como o claro `#f4f1ea`
 (com a textura de fundo claro acima), alternando com o escuro `#0c0c0d`. Mesma identidade visual.
 
-- 2ª dobra (escura, com as lavagens de luz âmbar): headline "El método" + carrossel + **Serviços** (`#servicios`).
+- 2ª dobra (escura, com as lavagens de luz âmbar): headline de depoimentos ("Clientes reales" / "Estuvieron donde
+  tú estás hoy. Escúchalos." + linha de apoio) + carrossel + **Serviços** (`#servicios`).
   Os serviços ficam dentro da mesma `<section>`, logo após o carrossel (o cliente recusou fundo claro e âmbar
   para eles). Grão e hachura da seção cobrem a altura toda (`bottom:0`); a máscara das lavagens usa paradas
   em px (0/72/180/380px) para o topo não mudar quando a seção cresce.

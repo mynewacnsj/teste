@@ -135,8 +135,9 @@ enquadramento e escurecimento); `[data-av-herofade]` (120px, abaixo do grão) fe
 
 ### 4.2 Carrossel de vídeos (topo da segunda dobra)
 
-Logo abaixo da headline da segunda dobra (eyebrow "El método" + H2 "Un negocio de remodelación se sostiene
-sobre dos columnas…"), em largura total (`[data-av-reel]`). O parágrafo "Con leads pero sin filtro…" ficou
+Logo abaixo da headline de depoimentos (eyebrow "Clientes reales" + H2 "Estuvieron donde tú estás hoy.
+*Escúchalos.*" + linha "Con el celular, desde la obra o la camioneta, cuentan qué cambió en su negocio.
+Dale play."), em largura total (`[data-av-reel]`). O parágrafo "Con leads pero sin filtro…" ficou
 abaixo do carrossel, abrindo a parte dos pilares. (O título "TESTIMONIOS" antigo está no commit 8084ed3.)
 
 - **6 vídeos** (lista `REEL` no script): `u3z5opwfg5`, `qtq97pqw42`, `85xxi41ehr`, `myhu1aftp6`, `j9kq9ph7rs`,
