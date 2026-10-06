@@ -42,7 +42,8 @@ python3 -m http.server 8000   # ou qualquer servidor estático
 - **Precisa de servidor HTTP.** Em `file://` o reparse do template (`fetch(location.href)`, `support.js:159`) falha.
 - **Precisa de rede:** React e ReactDOM 18.3.1 vêm do unpkg com SRI (`support.js:1143-1146`) e as fontes do
   Google Fonts. Se o CDN falhar, a página fica **em branco**, porque o `<x-dc>` já foi escondido (`support.js:1906-1909`).
-- Funciona em qualquer hospedagem estática (GitHub Pages, Netlify, Vercel, S3).
+- Funciona em qualquer hospedagem estática. **Publicado em GitHub Pages:** https://mynewacnsj.github.io/teste/
+  (branch `gh-pages`, espelho do branch de desenvolvimento; `.nojekyll` evita o processamento Jekyll dos `{{ }}`).
 - Se houver CSP, libere `'unsafe-eval'` (o runtime usa `new Function`), `https://unpkg.com` e estilos inline.
 
 ---
@@ -117,7 +118,31 @@ no mobile, hambúrguer âmbar que vira X e abre um menu com os mesmos links e CT
 
 **Rodapé do hero** (144–157): "Desliza" (scroll cue, ≥760px) e "NÚMERO 1 EN ESTADO UNIDOS" (≥640px).
 
-### 4.2 Segunda dobra "El Método" (linhas 161–355)
+### 4.2 Carrossel de vídeos (topo da segunda dobra)
+
+Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`).
+
+- **6 vídeos Wistia** (lista `REEL` no script): `u3z5opwfg5`, `qtq97pqw42`, `85xxi41ehr`, `myhu1aftp6`,
+  `j9kq9ph7rs`, `vwcc31ysmm`. Os posters vêm do próprio Wistia (`embed-ssl.wistia.com/deliveries/…?image_crop_resized=540x960`).
+- **Loop infinito sem pausa:** 3 grupos idênticos de 6 cards; cada grupo anima `translateX(0 → -100%)` da
+  própria largura (`@keyframes av-reel`), então a emenda é exata em pixel. Velocidade moderada:
+  30s por volta no mobile (~36 px/s), 40s no desktop (~40 px/s). Não pausa no hover.
+- **Tamanho:** mobile = 2 vídeos por linha (`(100vw - 52px) / 2`, 169px em 390px); desktop = `clamp(200px,17vw,300px)`
+  com fade nas bordas. Cards 9:16, raio 4px, play âmbar centralizado.
+- **Acessibilidade:** só o 1º grupo é focável (`tabindex` 0 e `aria-label "Reproducir video N de 6"`);
+  as cópias têm `aria-hidden` e `tabindex=-1`. Com `prefers-reduced-motion` a faixa para e vira rolagem manual.
+- **Popup** (`[data-av-vmodal]`, fora da `<section>`): moldura 9:16 centrada (não é tela cheia),
+  altura máx. `min(100svh - 152px, 880px)`, filete âmbar de 2px no topo, véu escuro com blur + grão + hachura,
+  poster desfocado e spinner enquanto o player carrega.
+  - Abrir: `_openVideo(i)` → `state.video` → `_syncVideo()` cria `<wistia-player media-id autoplay player-color="e9a227">`
+    no `[data-av-vmount]`, trava o scroll do `<html>` e foca o botão "Cerrar video".
+  - Fechar: Esc, clique no véu ou no ×. Pausa, destrói o player após o fade (360ms), destrava o scroll e devolve o foco ao card.
+  - O template usa `data-state="{{ videoState }}"` (atributo inteiro é reativo) e `style="{{ objeto }}"` para os posters:
+    nunca `src="{{ … }}"` em `<img>`, porque o navegador baixaria o texto literal do template cru.
+- Scripts do Wistia (`player.js` + 6 `embed/<id>.js`) entram pelo `<helmet>`, assíncronos.
+- Autoplay com som funciona após o clique no Chrome; se um navegador bloquear, o Wistia mostra o botão de play.
+
+### 4.3 Segunda dobra "El Método"
 
 Metáfora central: **o negócio é um pórtico sustentado por duas colunas — Demanda e Filtro**.
 
@@ -136,7 +161,7 @@ Metáfora central: **o negócio é um pórtico sustentado por duas colunas — D
 - Pórtico miniatura 240×200 (opacidade ≈ `pillarOpacity × 1.5`), setas animadas, cartões com filete âmbar à esquerda,
   os três benefícios empilhados, tagline e CTA em **contorno** largura total.
 
-### 4.3 Lógica (`data-dc-script`, linhas 358–552)
+### 4.4 Lógica (`data-dc-script`, linhas 358–552)
 
 **Props editáveis (`data-props`):**
 

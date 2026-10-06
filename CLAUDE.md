@@ -47,6 +47,24 @@ O compilador reescreve nomes camelCase dentro de atributos. Percent-codifique as
 `view%42ox` e `preserve%41spect%52atio`. Sem isso o SVG perde o viewBox e a máscara quebra.
 Não use `;` no data URI (`data:image/svg+xml,` sem `utf8`) — o parser de estilo divide em `;`.
 
+## Fundos por dobra
+
+O site não terá um único fundo: algumas dobras usam cores complementares, como o claro `#f4f1ea`
+(com a textura de fundo claro acima), alternando com o escuro `#0c0c0d`. Mesma identidade visual.
+
+## Carrossel de vídeos (Wistia)
+
+- Fica no topo da segunda dobra; 6 vídeos em `REEL` no script do `index.html`.
+- Loop: 3 grupos iguais, cada um anima `translateX(-100%)` da própria largura. Não pausa.
+- Mobile: 2 vídeos por linha. Popup 9:16 (nunca tela cheia) com o `<wistia-player>` criado/destruído via JS.
+- Nunca use `src="{{ … }}"` em `<img>` no template: o HTML cru é parseado antes do React e o navegador
+  baixa a URL literal. Use `style="{{ objeto }}"` com `backgroundImage`.
+
+## Publicação
+
+GitHub Pages em https://mynewacnsj.github.io/teste/ a partir do branch `gh-pages`
+(espelho do branch de desenvolvimento). `.nojekyll` na raiz é obrigatório.
+
 ## Idioma
 
 Copy em **espanhol** (público: contratistas de remodelação nos EUA).
