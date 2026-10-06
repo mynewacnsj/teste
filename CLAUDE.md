@@ -22,6 +22,11 @@ Já aplicada em: hero, menu mobile (camada de chrome do header), faixa de transi
 a costura, ancore a origem de repetição no mesmo ponto. A faixa de transição tem 92px e a
 camada de textura da seção usa `top:-92px`, então compartilham o mesmo espaço de repetição.
 
+## Hero no mobile
+
+Texto alinhado ao topo e hero com altura do conteúdo; imagem e véus presos à altura antiga
+(`[data-av-heroimg]`, `[data-av-herolayer]`) para a foto não mudar. Não reduza o hero mexendo na imagem.
+
 ## Paleta
 
 - Fundo escuro `#0c0c0d` · Fundo claro `#f4f1ea` · Texto escuro `#16171a`
