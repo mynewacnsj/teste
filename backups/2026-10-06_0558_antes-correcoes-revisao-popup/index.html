@@ -587,13 +587,14 @@ class Component extends DCLogic {
 
     // Popup: <video> nativo com o MP4 do Wistia. É criado e recebe play() ainda dentro do
     // clique, para contar como gesto do usuário e tocar com som (inclusive no iOS).
-    // Animação (Web Animations API; a moldura também anima sombra e raio, e o rótulo, o espaçamento):
+    // Animação (Web Animations API, só transform/opacity):
     //  abrir  — o card clicado cresce até a moldura (FLIP), o véu escurece, o brilho âmbar acende,
     //           o filete se desenha da esquerda e rótulo + fechar entram; o vídeo surge em fade
     //           quando começa a tocar (até lá fica o quadro atual da prévia do card).
     //  fechar — controles saem, filete recolhe, o vídeo encolhe de volta ao card e o véu some.
     // O carrossel fica congelado enquanto isso, então o retorno pousa no lugar exato do card.
     const EASE_OUT = 'cubic-bezier(.16,1,.3,1)';
+    const EASE_IN_OUT = 'cubic-bezier(.65,0,.35,1)';
     const reduced = () => { try { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { return false; } };
     const pad = (n) => (n < 10 ? '0' : '') + n;
     const q = (sel) => document.querySelector(sel);
@@ -618,23 +619,6 @@ class Component extends DCLogic {
     const SHADOW = '0 0 0 1px rgba(244,241,234,.1),0 48px 120px -24px rgba(0,0,0,.9)';
     const NO_SHADOW = '0 0 0 1px rgba(244,241,234,0),0 0 0 0 rgba(0,0,0,0)';
 
-    // Opacidade aparente do card no degradê das bordas do carrossel (mask-image do .av-reel),
-    // para a moldura nascer/pousar com a mesma transparência e não "acender" na borda.
-    const edgeAlpha = (r) => {
-      const re = q('[data-av-reel]');
-      if (!re || !r) return 1;
-      const rr = re.getBoundingClientRect();
-      const fade = Math.min(260, Math.max(44, window.innerWidth * .13));
-      const cx = r.left + r.width / 2;
-      const t = Math.max(0, Math.min(1, Math.min(cx - rr.left, rr.right - cx) / fade));
-      return t * t * (3 - 2 * t);
-    };
-    const snap = (el) => {
-      if (!el) return { opacity: '1', transform: 'none' };
-      const cs = getComputedStyle(el);
-      return { opacity: cs.opacity, transform: cs.transform === 'none' ? 'none' : cs.transform };
-    };
-
     this._openVideo = (i, trigger) => {
       if (this.state.video || this._vbusy) return;
       const v = REEL[i];
@@ -643,7 +627,6 @@ class Component extends DCLogic {
       const veil = q('[data-av-vveil]'), glow = q('[data-av-vglow]'), line = q('[data-av-vline]');
       const label = q('[data-av-vlabel]'), spin = q('[data-av-vspin]'), close = q('[data-av-vclose]');
       this._videoTrigger = trigger || document.activeElement;
-      this._vopenAt = performance.now();
       const card = trigger && trigger.closest ? trigger.closest('.av-reel-card') : null;
       this._vcard = card;
       stopAnims();
@@ -677,19 +660,15 @@ class Component extends DCLogic {
       vid.setAttribute('playsinline', '');
       vid.setAttribute('preload', 'auto');
       vid.setAttribute('controlslist', 'nodownload');
-      // O 2º clique de um duplo clique não pode pausar o vídeo ainda invisível.
-      vid.style.pointerEvents = 'none';
-      // Mostra o vídeo (e os controles nativos) quando começa a tocar — e também se falhar ou for
-      // pausado antes de começar; senão o spinner giraria para sempre sobre o pôster.
-      const reveal = () => { vid.setAttribute('data-on', ''); clearTimeout(this._spinT); if (spin) spin.removeAttribute('data-on'); };
-      vid.addEventListener('playing', reveal);
-      vid.addEventListener('pause', () => { if (!this._vbusy) reveal(); });
-      vid.addEventListener('error', () => { if (!this._vbusy) reveal(); });
+      vid.addEventListener('playing', () => {
+        vid.setAttribute('data-on', '');
+        clearTimeout(this._spinT);
+        if (spin) spin.removeAttribute('data-on');
+      });
       mount.appendChild(vid);
       const r = vid.play();
-      if (r && r.catch) r.catch(() => { if (!this._vbusy && vid.isConnected) reveal(); });
+      if (r && r.catch) r.catch(() => {});
       this._spinT = setTimeout(() => { if (!vid.hasAttribute('data-on') && spin) spin.setAttribute('data-on', ''); }, 900);
-      setTimeout(() => { vid.style.pointerEvents = ''; }, reduced() ? 220 : 800);
 
       if (label) label.innerHTML = 'Clientes reales <b>' + pad(i + 1) + ' / ' + pad(REEL.length) + '</b>';
       const reel = q('[data-av-reel]');
@@ -708,21 +687,9 @@ class Component extends DCLogic {
         if (from) {
           const f = flip(from, to);
           anim(frame, [
-            { transform: f.transform, borderRadius: f.radius, boxShadow: NO_SHADOW, opacity: edgeAlpha(from) },
-            { transform: 'none', borderRadius: '4px', boxShadow: SHADOW, opacity: 1 }
+            { transform: f.transform, borderRadius: f.radius, boxShadow: NO_SHADOW },
+            { transform: 'none', borderRadius: '4px', boxShadow: SHADOW }
           ], { duration: 780, easing: EASE_OUT });
-          // O play âmbar do card se dissolve em vez de sumir seco (fora de _vanims: se apaga sozinho).
-          const pb = card && card.querySelector('.av-reel-play');
-          if (pb && typeof pb.animate === 'function') {
-            const pr = pb.getBoundingClientRect();
-            const g = pb.cloneNode(true);
-            g.style.cssText = 'z-index:3;width:' + (pr.width * to.width / from.width) + 'px;background:' + getComputedStyle(pb).backgroundColor;
-            mount.appendChild(g);
-            g.animate([
-              { opacity: 1, transform: 'translate(-50%,-50%)' },
-              { opacity: 0, transform: 'translate(-50%,-50%) scale(.9)' }
-            ], { duration: 220, easing: 'cubic-bezier(.4,0,1,1)', fill: 'forwards' }).onfinish = () => g.remove();
-          }
         } else {
           anim(frame, [
             { opacity: 0, transform: 'translateY(28px) scale(.94)', boxShadow: NO_SHADOW },
@@ -754,22 +721,18 @@ class Component extends DCLogic {
       const veil = q('[data-av-vveil]'), glow = q('[data-av-vglow]'), line = q('[data-av-vline]');
       const label = q('[data-av-vlabel]'), spin = q('[data-av-vspin]'), close = q('[data-av-vclose]');
       const vid = mount && mount.querySelector('video');
-      if (vid) { vid.pause(); vid.style.pointerEvents = 'none'; }
+      if (vid) vid.pause();
       if (spin) spin.removeAttribute('data-on');
-      // Se fechar no meio da abertura, cada peça parte do ponto em que a animação está.
-      const sF = snap(frame), sV = snap(veil), sG = snap(glow), sLn = snap(line), sL = snap(label), sC = snap(close);
-      const sVid = vid ? getComputedStyle(vid).opacity : '0';
+      // Se fechar no meio da abertura, parte do ponto em que a animação está.
+      const curT = frame ? getComputedStyle(frame).transform : 'none';
+      const curV = veil ? getComputedStyle(veil).opacity : '1';
       stopAnims();
       const card = this._vcard;
       const finish = () => {
         if (!this._vbusy) return;
-        if (card) { card.style.transition = 'none'; card.style.opacity = ''; }
-        // Devolve o foco ANTES de esconder o popup (o × não pode ficar focado num trecho oculto).
-        const t = this._videoTrigger;
-        this._videoTrigger = null;
-        if (t && typeof t.focus === 'function') t.focus({ preventScroll: true });
         if (mod) { mod.setAttribute('data-state', 'closed'); mod.setAttribute('aria-hidden', 'true'); }
         stopAnims();
+        if (card) { card.style.transition = 'none'; card.style.opacity = ''; }
         const reel = q('[data-av-reel]');
         if (reel) reel.removeAttribute('data-paused');
         this._vcard = null;
@@ -777,40 +740,29 @@ class Component extends DCLogic {
         this.setState({ video: null });
       };
       if (!frame || reduced()) {
-        [[veil, sV], [glow, sG], [frame, sF], [label, sL], [close, sC]].forEach(([el, s0]) => anim(el, [{ opacity: s0.opacity }, { opacity: 0 }], { duration: 180, easing: 'ease-in' }));
+        [veil, glow, frame, label, close].forEach(el => anim(el, [{ opacity: 1 }, { opacity: 0 }], { duration: 180, easing: 'ease-in' }));
         this._videoTimer = setTimeout(finish, 200);
         return;
       }
       const to = frame.getBoundingClientRect();
       const back = onScreen(card);
-      const EXIT = 'cubic-bezier(.4,0,1,1)';
-      anim(close, [{ opacity: sC.opacity, transform: sC.transform }, { opacity: 0, transform: 'rotate(45deg) scale(.7)' }], { duration: 160, easing: EXIT });
-      anim(label, [{ opacity: sL.opacity, transform: sL.transform }, { opacity: 0, transform: 'translateY(8px)' }], { duration: 160, easing: EXIT });
-      anim(line, [{ transform: sLn.transform, transformOrigin: '100% 50%' }, { transform: 'scaleX(0)', transformOrigin: '100% 50%' }], { duration: 220, easing: 'cubic-bezier(.7,0,.2,1)' });
-      anim(glow, [{ opacity: sG.opacity, transform: sG.transform }, { opacity: 0, transform: sG.transform }], { duration: 200, easing: 'ease-out' });
-      if (vid) anim(vid, [{ opacity: sVid }, { opacity: 0 }], { duration: 160, easing: 'ease-out' });
-      const start = { transform: sF.transform, opacity: sF.opacity, borderRadius: '4px', boxShadow: SHADOW };
+      const start = { transform: curT === 'none' ? 'none' : curT, borderRadius: '4px', boxShadow: SHADOW };
+      anim(close, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'rotate(45deg) scale(.7)' }], { duration: 240, easing: 'cubic-bezier(.4,0,1,1)' });
+      anim(label, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(8px)' }], { duration: 240, easing: 'cubic-bezier(.4,0,1,1)' });
+      anim(line, [{ transform: 'scaleX(1)', transformOrigin: '100% 50%' }, { transform: 'scaleX(0)', transformOrigin: '100% 50%' }], { duration: 320, easing: 'cubic-bezier(.7,0,.2,1)' });
+      anim(glow, [{ opacity: 1 }, { opacity: 0 }], { duration: 360, easing: 'ease-out' });
+      if (vid) anim(vid, [{ opacity: getComputedStyle(vid).opacity }, { opacity: 0 }], { duration: 220, easing: 'ease-out' });
       let main;
       if (back && to.width) {
         const f = flip(back, to);
-        main = anim(frame, [start, { transform: f.transform, opacity: 1, borderRadius: f.radius, boxShadow: NO_SHADOW }], { duration: 520, delay: 40, easing: 'cubic-bezier(.2,0,0,1)' });
+        main = anim(frame, [start, { transform: f.transform, borderRadius: f.radius, boxShadow: NO_SHADOW }], { duration: 640, delay: 120, easing: EASE_IN_OUT });
       } else {
-        main = anim(frame, [start, { opacity: 0, transform: 'translateY(18px) scale(.95)', boxShadow: NO_SHADOW }], { duration: 360, delay: 40, easing: EXIT });
+        main = anim(frame, [Object.assign({ opacity: 1 }, start), { opacity: 0, transform: 'translateY(18px) scale(.95)', boxShadow: NO_SHADOW }], { duration: 440, delay: 80, easing: 'cubic-bezier(.4,0,1,1)' });
       }
-      const fade = anim(veil, [{ opacity: sV.opacity }, { opacity: 0 }], { duration: 500, delay: back ? 60 : 40, easing: 'cubic-bezier(.4,0,.2,1)' });
-      // Pouso: o card (com o play e a máscara de degradê do carrossel) volta por baixo da moldura,
-      // que cobre exatamente o retângulo dele, e a moldura se dissolve nele.
-      const land = () => {
-        if (!this._vbusy) return;
-        if (!back || !card) { finish(); return; }
-        card.style.transition = 'none';
-        card.style.opacity = '';
-        const out = anim(frame, [{ opacity: 1 }, { opacity: 0 }], { duration: 200, easing: 'ease-out' });
-        if (out) out.finished.then(finish, finish); else finish();
-      };
-      Promise.all([main && main.finished, fade && fade.finished]).then(land, land);
+      const fade = anim(veil, [{ opacity: curV }, { opacity: 0 }], { duration: 560, delay: back ? 200 : 120, easing: 'cubic-bezier(.4,0,.2,1)' });
+      Promise.all([main && main.finished, fade && fade.finished]).then(finish, finish);
       // Rede de segurança caso algum navegador não resolva .finished.
-      this._videoTimer = setTimeout(finish, 1100);
+      this._videoTimer = setTimeout(finish, 1200);
     };
 
     this._syncVideo = () => {
@@ -883,8 +835,7 @@ class Component extends DCLogic {
       videoState: vid ? 'open' : 'closed',
       videoHidden: vid ? 'false' : 'true',
       videoTab: vid ? 0 : -1,
-      // Cliques logo após abrir (2º clique de um duplo clique) não fecham; Esc não passa por aqui.
-      closeVideo: (e) => { if (e && e.type === 'click' && performance.now() - (this._vopenAt || 0) < 500) return; this._closeVideo && this._closeVideo(); },
+      closeVideo: () => this._closeVideo && this._closeVideo(),
       scrimSoft: s === 'soft',
       scrimMedium: s === 'medium',
       scrimHeavy: s === 'heavy',

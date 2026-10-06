@@ -165,18 +165,15 @@ abaixo do carrossel, abrindo a parte dos pilares. (O título "TESTIMONIOS" antig
   se dissolvem no próprio fundo da seção (grão, hachura e brilho âmbar), sem emenda de cor.
 - **Acessibilidade:** só o 1º grupo é focável (botões com `aria-label "Reproducir video N de 6"`);
   a cópia tem `aria-hidden` e `tabindex=-1`. Com `prefers-reduced-motion` a faixa para e vira rolagem manual.
-- **Popup** (`[data-av-vmodal]`, fora da `<section>`): moldura 9:16 centrada (nunca tela cheia) com rótulo
-  "Clientes reales 0N / 06", filete âmbar no topo, brilho âmbar atrás, véu escuro com blur + grão + hachura e botão ×.
-  **Animação** (Web Animations API, em `_openVideo`/`_closeVideo`):
-  - Abrir: o card clicado cresce da posição dele até a moldura (transição de elemento compartilhado / FLIP,
-    780 ms, `cubic-bezier(.16,1,.3,1)`), com o quadro atual da prévia como pôster (troca invisível) e o play âmbar
-    se dissolvendo; véu escurece (560 ms); brilho acende (+220 ms); rótulo entra com tracking (+380 ms); filete se
-    desenha (+460 ms); × gira e entra (+520 ms). O vídeo surge em fade quando começa a tocar (ou se falhar).
-  - Fechar (Esc, véu, ×): controles e filete saem em ~160–220 ms, o vídeo encolhe até o lugar exato do card
-    (520 ms, `cubic-bezier(.2,0,0,1)`), o véu clareia e a moldura se dissolve sobre o card. Fechar no meio da
-    abertura parte do estado atual de cada peça.
-  - O carrossel fica congelado (`[data-av-reel][data-paused]`) enquanto o popup está aberto; cliques nos primeiros
-    500 ms não fecham (duplo clique); `prefers-reduced-motion` → fade de 200 ms. Foco vai ao × e volta ao card.
+- **Popup** (`[data-av-vmodal]`, fora da `<section>`): moldura 9:16 centrada (não é tela cheia),
+  altura máx. `min(100svh - 152px, 880px)`, filete âmbar de 2px no topo, véu escuro com blur + grão + hachura,
+  poster desfocado e spinner enquanto o player carrega.
+  - Abrir: `_openVideo(i)` cria o `<video>` no `[data-av-vmount]`, chama `play()` e marca `state.video`;
+    `_syncVideo()` trava o scroll do `<html>` e foca o botão "Cerrar video".
+  - Fechar: Esc, clique no véu ou no ×. Pausa, solta o vídeo após o fade (360ms), destrava o scroll, devolve o
+    foco ao card e retoma as prévias visíveis.
+  - O template usa `data-state="{{ videoState }}"` (atributo inteiro é reativo) e `style="{{ objeto }}"` para os posters:
+    nunca `src="{{ … }}"` em `<img>`, porque o navegador baixaria o texto literal do template cru.
 
 ### 4.3 Serviços (`#servicios`, dentro da segunda dobra)
 

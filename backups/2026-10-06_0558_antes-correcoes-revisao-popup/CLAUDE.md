@@ -91,8 +91,6 @@ O site não terá um único fundo: algumas dobras usam cores complementares, com
 - Cards sem sombra. Bordas: degradê por `mask-image` no `.av-reel` (nunca camada opaca por cima — o
   fundo da seção tem brilho âmbar e uma camada pintada cria emenda).
 - Mobile: 2 vídeos por linha. Popup 9:16, nunca tela cheia; `play()` dentro do clique (som no iOS).
-- Abertura/fechamento do popup: transição de elemento compartilhado (card → moldura → card) em Web Animations,
-  véu, brilho, filete e rótulo em sequência; carrossel congela enquanto aberto. Detalhes em docs/ARQUITETURA.md.
 - Nunca use `src="{{ … }}"` em `<img>`/`<video>` no template: o HTML cru é parseado antes do React e o
   navegador baixa a URL literal. Use `style="{{ objeto }}"` ou crie o elemento via JS.
 
