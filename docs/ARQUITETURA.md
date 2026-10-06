@@ -110,17 +110,18 @@ no mobile, hambúrguer âmbar que vira X e abre um menu com os mesmos links e CT
 
 **Conteúdo** (97–142):
 - Rail vertical "Est. 2016" (≥1180px).
-- Eyebrow: traço âmbar + "AGENCIA DE MARKETING" + bandeira dos EUA em CSS.
+- Eyebrow: só a bandeira dos EUA desenhada em CSS.
 - **H1:** "Nº 1 en Marketing para / Remodeling/Construction / *en Estados Unidos.*" (destaque âmbar), Archivo 800, `min(6.9vw,6.6vh,84px)`.
 - Subtítulo: "Generamos y calificamos prospectos de remodelación de alto ticket, para que tu equipo solo hable con quien ya está listo para firmar."
-- CTA primário "Agendar diagnóstico gratis →" (âmbar sólido) e secundário "Ver casos de éxito".
+- CTA único "Agendar diagnóstico gratis →" (âmbar sólido).
 - Trust bar: **+180** Contratistas · **$42M** En contratos cerrados · **24 h** Tiempo de respuesta.
 
 **Rodapé do hero** (144–157): "Desliza" (scroll cue, ≥760px) e "NÚMERO 1 EN ESTADO UNIDOS" (≥640px).
 
 ### 4.2 Carrossel de vídeos (topo da segunda dobra)
 
-Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`).
+Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`), abaixo do título
+"TESTIMONIOS — Contratistas reales. *Resultados reales.*" (mesmo padrão eyebrow + H2 de "El Método").
 
 - **6 vídeos** (lista `REEL` no script): `u3z5opwfg5`, `qtq97pqw42`, `85xxi41ehr`, `myhu1aftp6`, `j9kq9ph7rs`,
   `vwcc31ysmm`. **Sem player do Wistia** (era pesado: ~150 requisições, ~1,4s de CPU em JS e 3,5s até a 1ª prévia).
@@ -129,7 +130,7 @@ Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`).
   360p, 5–7s, sem áudio, 135–380 KB) e o poster é o 1º quadro (`media/reel/<id>.webp`, 6–21 KB), então a
   troca poster → vídeo não pisca. O `src` só é ligado quando o card chega perto da tela e só os cards
   visíveis tocam (`IntersectionObserver`); com `prefers-reduced-motion` ou economia de dados fica o poster.
-  Play âmbar no estilo do Wistia (`.av-reel-play`); camada transparente `.av-reel-hit` abre o popup.
+  Play âmbar translúcido (55%, 82% no hover) no estilo do Wistia (`.av-reel-play`); camada transparente `.av-reel-hit` abre o popup.
 - **Popup = `<video controls>` nativo** com o MP4 servido pelo Wistia (`embed-ssl.wistia.com/deliveries/…mp4`;
   540p em telas < 760px, 720p acima). O vídeo é criado e recebe `play()` dentro do próprio clique, para
   tocar com som também no iOS. Enquanto o popup está aberto as prévias pausam.
