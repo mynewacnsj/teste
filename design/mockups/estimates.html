@@ -1,0 +1,149 @@
+<!doctype html>
+<!-- Mockup do card "Estimates personalizados" (1080×720). Renderizar: ver design/mockups/README.md -->
+<html lang="es"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:720px;overflow:hidden;background:#0c0c0d}
+body{position:relative;font-family:Inter,system-ui,sans-serif;color:#f5f5f5;-webkit-font-smoothing:antialiased}
+.bg{position:absolute;inset:0;background:
+  radial-gradient(55% 70% at 34% 50%,rgba(233,162,39,.20) 0%,rgba(233,162,39,0) 62%),
+  radial-gradient(40% 50% at 84% 24%,rgba(233,162,39,.12) 0%,rgba(233,162,39,0) 70%),
+  linear-gradient(72deg,rgba(233,162,39,0) 30%,rgba(233,162,39,.05) 50%,rgba(233,162,39,0) 70%),#0c0c0d}
+.grain{position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background:url(../../grain.png);background-size:256px}
+.hatch{position:absolute;inset:0;opacity:.22;background:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0 1px,transparent 1px 4px)}
+
+/* ---------- documento ---------- */
+.doc{position:absolute;left:96px;top:30px;width:440px;height:690px;border-radius:6px;background:#fbfaf6;color:#16171a;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(255,255,255,.06),0 50px 90px -30px rgba(0,0,0,.95),0 0 110px -30px rgba(233,162,39,.4);transform:rotate(-3.5deg)}
+.doc:before{content:"";position:absolute;inset:0;opacity:.06;mix-blend-mode:multiply;background:url(../../grain.png);background-size:256px;pointer-events:none}
+.dh{display:flex;justify-content:space-between;align-items:flex-start;padding:22px 28px 16px;background:#0c0c0d;color:#f4f1ea;position:relative}
+.dh:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:#e9a227}
+.brand{display:flex;gap:11px;align-items:center}
+.logo{width:38px;height:38px;border-radius:3px;background:#e9a227;display:flex;align-items:center;justify-content:center}
+.logo span{display:block;width:13px;height:13px;background:#0c0c0d;transform:rotate(45deg)}
+.brand b{display:block;font-family:Archivo,sans-serif;font-weight:800;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase}
+.brand small{display:block;font-size:9.5px;color:rgba(244,241,234,.6);margin-top:3px;letter-spacing:.02em}
+.dn{text-align:right}
+.dn b{display:block;font-family:Archivo,sans-serif;font-weight:800;font-size:23px;letter-spacing:.06em;color:#e9a227}
+.dn small{display:block;font-size:9.5px;color:rgba(244,241,234,.7);margin-top:4px}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:14px 28px 10px}
+.meta label{display:block;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a07012;margin-bottom:4px}
+.meta p{font-size:10.5px;line-height:1.45;color:#3a3b40}
+.meta p b{color:#16171a;font-size:11px}
+.proj{display:flex;gap:12px;align-items:center;margin:2px 28px 12px;padding:10px;border:1px solid rgba(22,23,26,.1);border-radius:4px;background:#fff}
+.proj i{flex:0 0 auto;width:92px;height:62px;border-radius:3px;background:url(img/1541123437800-1bb1317badc2.jpg) center/cover}
+.proj b{display:block;font-family:Archivo,sans-serif;font-weight:800;font-size:14px;letter-spacing:-.01em}
+.proj small{display:block;font-size:9.5px;color:#6b6c70;margin-top:3px;line-height:1.4}
+table{width:calc(100% - 56px);margin:0 28px;border-collapse:collapse;font-size:10.5px}
+th{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a8b90;text-align:left;padding:0 0 6px;border-bottom:1.5px solid #16171a}
+th:last-child,td:last-child{text-align:right}
+td{padding:5.5px 0;border-bottom:1px solid rgba(22,23,26,.08);color:#2a2b30}
+td small{display:block;font-size:9px;color:#8a8b90;margin-top:1px}
+td:last-child{font-weight:600;color:#16171a;white-space:nowrap;padding-left:10px}
+.tot{display:flex;justify-content:space-between;align-items:center;margin:12px 28px 0;padding:12px 14px;border-radius:4px;background:#0c0c0d;color:#f4f1ea}
+.tot span{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,241,234,.7)}
+.tot b{font-family:Archivo,sans-serif;font-weight:800;font-size:22px;color:#e9a227;letter-spacing:-.01em}
+.pay{display:flex;gap:6px;margin:10px 28px 0}
+.pay div{flex:1;padding:7px 8px;border-radius:3px;background:#f0ede4;font-size:8.5px;color:#55565b;line-height:1.35}
+.pay b{display:block;font-size:11px;color:#16171a}
+.sign{display:flex;justify-content:space-between;align-items:center;margin:14px 28px 0}
+.sign > div:first-child{width:46%}
+.sign svg{display:block;width:150px;height:34px}
+.sign p{border-top:1px solid #16171a;padding-top:5px;font-size:8.5px;color:#6b6c70;letter-spacing:.06em;text-transform:uppercase}
+.stamp{position:relative;margin-left:auto;padding:8px 13px;border:2.5px solid #c98a12;border-radius:5px;color:#c98a12;font-family:Archivo,sans-serif;font-weight:800;font-size:15px;letter-spacing:.14em;transform:rotate(-12deg);opacity:.85}
+.stamp small{display:block;font-size:8px;letter-spacing:.1em;text-align:center;margin-top:2px}
+
+/* ---------- conversa ---------- */
+.phone{position:absolute;left:640px;top:40px;width:310px;height:690px;border-radius:44px;background:#1b1c1f;padding:10px;
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.14),0 0 0 7px #0e0f11,0 40px 80px -20px rgba(0,0,0,.9),0 0 90px -24px rgba(233,162,39,.35);transform:rotate(3deg)}
+.screen{position:relative;width:100%;height:100%;border-radius:35px;overflow:hidden;background:#0b0b0c}
+.screen:before{content:"";position:absolute;inset:0;opacity:.5;background:radial-gradient(circle at 20% 30%,rgba(255,255,255,.035) 0 2px,transparent 3px) 0 0/26px 26px}
+.island{position:absolute;top:9px;left:50%;width:88px;height:25px;margin-left:-44px;border-radius:20px;background:#000;z-index:5}
+.status{position:relative;display:flex;justify-content:space-between;align-items:center;height:42px;padding:0 22px 0 26px;font-size:12.5px;font-weight:600}
+.ch{position:relative;display:flex;align-items:center;gap:10px;padding:6px 14px 10px;border-bottom:1px solid #1f2023;background:#111214}
+.ch svg.back{width:18px;height:18px}
+.ch .a{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#5b5f68,#2c2e33);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.ch b{display:block;font-size:13.5px}
+.ch small{display:block;font-size:10.5px;color:#58c27d}
+.msgs{position:relative;display:flex;flex-direction:column;gap:7px;padding:14px 12px}
+.day{align-self:center;font-size:10px;color:#8b8c91;background:#17181b;padding:3px 9px;border-radius:8px;margin-bottom:2px}
+.m{max-width:80%;padding:8px 11px 7px;border-radius:14px;font-size:12.3px;line-height:1.38}
+.m small{display:block;text-align:right;font-size:9px;opacity:.6;margin-top:3px}
+.in{align-self:flex-start;background:#1e1f23;border-bottom-left-radius:4px}
+.out{align-self:flex-end;background:#e9a227;color:#0c0c0d;border-bottom-right-radius:4px}
+.out small{opacity:.7}
+.file{align-self:flex-end;width:80%;padding:7px;border-radius:14px;border-bottom-right-radius:4px;background:#e9a227;color:#0c0c0d}
+.file .pv{height:96px;border-radius:9px;background:#fbfaf6;position:relative;overflow:hidden}
+.file .pv:before{content:"";position:absolute;left:0;right:0;top:0;height:22px;background:#0c0c0d;border-bottom:2px solid #e9a227}
+.file .pv i{position:absolute;left:10px;right:10px;height:4px;border-radius:2px;background:#dcd8cd}
+.file .row{display:flex;gap:8px;align-items:center;padding:7px 3px 2px}
+.file .pdf{flex:0 0 auto;width:30px;height:34px;border-radius:4px;background:#0c0c0d;color:#e9a227;font-size:8.5px;font-weight:800;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px}
+.file b{display:block;font-size:11.5px}
+.file small{display:block;font-size:9.5px;opacity:.75}
+.ticks{display:inline-block;margin-left:3px;color:#1d63d8;font-weight:700;letter-spacing:-2px}
+.typing{align-self:flex-start;display:flex;gap:4px;padding:11px 13px;border-radius:14px;border-bottom-left-radius:4px;background:#1e1f23}
+.typing i{display:block;width:6px;height:6px;border-radius:50%;background:#8b8c91}
+.typing i:nth-child(2){opacity:.7}.typing i:nth-child(3){opacity:.45}
+
+/* ---------- selos flutuantes ---------- */
+.badge{position:absolute;left:446px;top:640px;display:flex;align-items:center;gap:10px;padding:11px 16px 11px 12px;border-radius:14px;background:#e9a227;color:#0c0c0d;
+  box-shadow:0 22px 44px -18px rgba(233,162,39,.75);transform:rotate(-4deg)}
+.badge .ok{width:30px;height:30px;border-radius:50%;background:#0c0c0d;display:flex;align-items:center;justify-content:center}
+.badge .ok svg{width:16px;height:16px}
+.badge b{display:block;font-family:Archivo,sans-serif;font-weight:800;font-size:15px}
+.badge small{display:block;font-size:11px;font-weight:600;opacity:.75}
+</style></head>
+<body>
+<div class="bg"></div><div class="grain"></div><div class="hatch"></div>
+
+<div class="doc">
+  <div class="dh">
+    <div class="brand"><div class="logo"><span></span></div><div><b>Tu Empresa</b><small>Remodeling · Licencia TX-48213</small></div></div>
+    <div class="dn"><b>ESTIMATE</b><small>N.º 2026-0148 · 6 oct 2026</small></div>
+  </div>
+  <div class="meta">
+    <div><label>Preparado para</label><p><b>María González</b><br>1847 Oak Hollow Dr<br>Katy, TX 77494</p></div>
+    <div><label>Proyecto</label><p><b>Remodelación de cocina</b><br>Inicio estimado: 14 oct<br>Duración: 3 semanas</p></div>
+  </div>
+  <div class="proj"><i></i><div><b>Diseño propuesto</b><small>Gabinetes shaker blancos, cuarzo Calacatta y backsplash hexagonal. Incluye render y fotos de referencia.</small></div></div>
+  <table>
+    <tr><th>Descripción</th><th>Importe</th></tr>
+    <tr><td>Demolición y retiro de escombros<small>Gabinetes, cubierta y piso existentes</small></td><td>$2,400</td></tr>
+    <tr><td>Gabinetes a medida<small>Estilo shaker, cierre suave</small></td><td>$9,850</td></tr>
+    <tr><td>Cubierta de cuarzo Calacatta<small>Isla y perímetro, 3 cm</small></td><td>$5,600</td></tr>
+    <tr><td>Backsplash de azulejo hexagonal</td><td>$1,950</td></tr>
+    <tr><td>Plomería y eléctrico<small>Con permisos municipales</small></td><td>$3,200</td></tr>
+    <tr><td>Instalación, pintura y acabados</td><td>$4,100</td></tr>
+  </table>
+  <div class="tot"><span>Total del proyecto</span><b>$27,100</b></div>
+  <div class="pay"><div><b>30%</b>al iniciar</div><div><b>40%</b>a mitad de obra</div><div><b>30%</b>al entregar</div></div>
+  <div class="sign">
+    <div><svg viewBox="0 0 150 34"><path d="M4 26c8-14 14-20 18-18s-6 18 0 16 10-14 16-12-2 12 4 10 8-8 14-8 4 6 10 4 12-10 18-8 6 4 12 2 14-6 22-4" fill="none" stroke="#1d3f8f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Firma del cliente</p></div>
+    <div class="stamp">APROBADO<small>6 · OCT · 2026</small></div>
+  </div>
+</div>
+
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span style="display:flex;gap:5px;align-items:center"><svg width="17" height="11" viewBox="0 0 17 11"><rect x="0" y="7" width="3" height="4" rx="1" fill="#fff"/><rect x="4.5" y="5" width="3" height="6" rx="1" fill="#fff"/><rect x="9" y="2.5" width="3" height="8.5" rx="1" fill="#fff"/><rect x="13.5" y="0" width="3" height="11" rx="1" fill="#fff"/></svg><svg width="25" height="12" viewBox="0 0 25 12"><rect x=".6" y=".6" width="21" height="10.8" rx="3.2" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="1.2"/><rect x="2.4" y="2.4" width="15" height="7.2" rx="1.8" fill="#fff"/></svg></span></div>
+  <div class="ch">
+    <svg class="back" viewBox="0 0 18 18"><path d="M11 3L5 9l6 6" fill="none" stroke="#e9a227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="a">M</div><div><b>María González</b><small>en línea</small></div>
+  </div>
+  <div class="msgs">
+    <div class="day">Hoy</div>
+    <div class="m in">Hola, ¿ya tienen listo el estimate de la cocina?<small>10:02</small></div>
+    <div class="m out">¡Listo, María! Aquí va con todo el detalle, materiales y el diseño propuesto.<small>10:05 <span class="ticks">✓✓</span></small></div>
+    <div class="file">
+      <div class="pv"><i style="top:34px;width:58%"></i><i style="top:46px"></i><i style="top:58px"></i><i style="top:70px;width:70%"></i><i style="top:82px;width:40%;background:#e9a227"></i></div>
+      <div class="row"><div class="pdf">PDF</div><div><b>Estimate_Gonzalez.pdf</b><small>3 páginas · 1,2 MB</small></div></div>
+    </div>
+    <div class="m in">Se ve súper profesional. Me encanta que incluye las fotos del diseño 😍<small>10:11</small></div>
+    <div class="m in">Ya lo firmé. ¿Cuándo pueden empezar?<small>10:12</small></div>
+    <div class="m out">¡Gracias! Empezamos el lunes 14. Te envío el calendario de obra.<small>10:13 <span class="ticks">✓✓</span></small></div>
+    <div class="typing"><i></i><i></i><i></i></div>
+  </div>
+</div></div>
+
+</body></html>

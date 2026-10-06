@@ -76,8 +76,7 @@ O site não terá um único fundo: algumas dobras usam cores complementares, com
   Layout dos serviços modelado na seção "Our services" de marroconstruction.adsconversion.online: eyebrow, H2 com
   destaque âmbar, barra âmbar, subheadline e grid 2×2 (1 coluna no mobile) de cards cinza-escuro `#16171a`
   (textura escura) com imagem 3:2, número em aba chanfrada, chip, tag, título, descrição, diferencial e CTA.
-  Imagens em `media/servicios/`: Meta Ads é foto do Unsplash; Social Media, Estimates e SEO para IA são mockups
-  próprios (`design/mockups/*.html` → `scripts/render-mockup.js` → WebP), editáveis.
+  Imagens provisórias em `media/servicios/` (Unsplash), para o cliente trocar.
 
 ## Carrossel de vídeos
 
