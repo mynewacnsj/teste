@@ -110,15 +110,14 @@ no mobile, hambúrguer âmbar que vira X e abre um menu com os mesmos links e CT
 
 **Conteúdo** (97–142):
 - Rail vertical "Est. 2016" (≥1180px).
-- Eyebrow: só a bandeira dos EUA desenhada em CSS.
 - **H1:** "Nº 1 en Marketing para / Remodeling/Construction / *en Estados Unidos.*" (destaque âmbar), Archivo 800, `min(6.9vw,6.6vh,84px)`.
 - Subtítulo: "Generamos y calificamos prospectos de remodelación de alto ticket, para que tu equipo solo hable con quien ya está listo para firmar."
 - CTA único "Agendar diagnóstico gratis →" (âmbar sólido).
 - Trust bar: **+180** Contratistas · **$42M** En contratos cerrados · **24 h** Tiempo de respuesta.
 
 **Mobile (< 760px):** o texto não é centralizado verticalmente: alinha ao topo com
-`padding-top: clamp(36px,5.5vh,52px)` (~46px abaixo do logo) e o hero passa a ter a altura do conteúdo,
-deixando "TESTIMONIOS" a ~64px dos números. A imagem e os véus (`[data-av-heroimg]`, `[data-av-herolayer]`)
+`padding-top: clamp(36px,5.5vh,52px)` (~46px entre o logo e a headline) e o hero passa a ter a altura do
+conteúdo, deixando o carrossel a ~46px dos números. A imagem e os véus (`[data-av-heroimg]`, `[data-av-herolayer]`)
 mantêm a altura antiga `min(100svh, calc(72svh + 34vw))`, então a foto fica idêntica (mesma escala,
 enquadramento e escurecimento); `[data-av-herofade]` (120px, abaixo do grão) fecha o rodapé no `#0c0c0d`.
 
@@ -126,8 +125,8 @@ enquadramento e escurecimento); `[data-av-herofade]` (120px, abaixo do grão) fe
 
 ### 4.2 Carrossel de vídeos (topo da segunda dobra)
 
-Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`), abaixo do título
-"TESTIMONIOS — Contratistas reales. *Resultados reales.*" (mesmo padrão eyebrow + H2 de "El Método").
+Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`), sem título acima
+(o título "TESTIMONIOS — Contratistas reales. Resultados reales." foi retirado; está no commit 8084ed3).
 
 - **6 vídeos** (lista `REEL` no script): `u3z5opwfg5`, `qtq97pqw42`, `85xxi41ehr`, `myhu1aftp6`, `j9kq9ph7rs`,
   `vwcc31ysmm`. **Sem player do Wistia** (era pesado: ~150 requisições, ~1,4s de CPU em JS e 3,5s até a 1ª prévia).

@@ -62,7 +62,6 @@ a:hover{color:#f6bc4d}
   [data-av-heroimg],[data-av-herolayer]{bottom:auto !important;height:max(100%, min(100svh, calc(72svh + 34vw)))}
   [data-av-herofade]{display:block !important;position:absolute;left:0;right:0;bottom:0;height:120px;pointer-events:none;background:linear-gradient(180deg,rgba(12,12,13,0) 0%,rgba(12,12,13,.55) 45%,rgba(12,12,13,.9) 78%,#0c0c0d 100%)}
   [data-av-herobody]{align-items:flex-start !important;padding-top:clamp(36px,5.5vh,52px) !important;padding-bottom:16px !important}
-  [data-av-testi]{padding-top:30px !important}
 }
 
 /* Popup do vídeo — não é tela cheia: moldura 9:16 centrada sobre o véu escuro. */
@@ -176,12 +175,6 @@ a:hover{color:#f6bc4d}
     </sc-if>
 
     <main style="flex:1 1 auto;min-width:0;max-width:min(100%,1060px)">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:clamp(20px,3vh,34px)">
-        <span aria-label="Estados Unidos" role="img" style="position:relative;display:block;flex:0 0 auto;width:clamp(22px,min(2vw,3.4vh),27px);aspect-ratio:19 / 10;border-radius:1.5px;overflow:hidden;box-shadow:0 0 0 1px rgba(244,241,234,.22),0 2px 8px -3px rgba(0,0,0,.8);background-image:repeating-linear-gradient(180deg,#b22234 0 15.3846%,#f4f1ea 15.3846% 30.7692%)">
-          <span style="position:absolute;top:0;left:0;width:40%;height:53.85%;background-color:#3c3b6e;background-image:radial-gradient(circle,rgba(255,255,255,.92) 0.7px,rgba(255,255,255,0) 0.8px),radial-gradient(circle,rgba(255,255,255,.92) 0.7px,rgba(255,255,255,0) 0.8px);background-size:2.6px 2.6px,2.6px 2.6px;background-position:0 0,1.3px 1.3px"></span>
-        </span>
-      </div>
-
       <h1 style="margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:min(6.9vw,6.6vh,84px);line-height:1.04;letter-spacing:-.035em;color:#f4f1ea;white-space:nowrap">Nº 1 en Marketing para<br>Remodeling/Construction<br><span style="color: rgb(233, 162, 39);">en Estados Unidos.</span></h1>
 
       <p style="margin:clamp(20px,3vh,34px) 0 0;max-width:min(100%,660px);font-size:clamp(15.5px,min(1.3vw,2.3vh),23px);line-height:1.55;font-weight:400;color:rgba(244,241,234,.74);text-wrap:pretty">Generamos y calificamos prospectos de remodelación de alto ticket, para que tu equipo solo hable con quien ya está listo para firmar.</p>
@@ -238,15 +231,7 @@ a:hover{color:#f6bc4d}
     <div data-av-hatch="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
   </div>
 
-  <div data-av-testi="1" style="position:relative;z-index:3;padding-top:clamp(44px,5.2vw,100px);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center">
-    <div style="display:flex;align-items:center;gap:14px;margin-bottom:clamp(16px,2vw,24px)">
-      <div style="width:clamp(30px,3vw,56px);height:2px;background:#e9a227"></div>
-      <span style="font-family:Archivo,sans-serif;font-size:clamp(10.5px,.85vw,14px);font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227">Testimonios</span>
-    </div>
-    <h2 style="margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(22px,min(2.75vw,4.8vh),54px);line-height:1.12;letter-spacing:-.035em;color:#ffffff;text-wrap:balance">Contratistas reales. <span style="color:#e9a227">Resultados reales.</span></h2>
-  </div>
-
-  <div class="av-reel-wrap" style="z-index:3;margin-top:clamp(26px,3.2vw,52px)">
+  <div class="av-reel-wrap" style="z-index:3;margin-top:clamp(12px,2.2vw,40px)">
   <div data-av-reel="1" class="av-reel" role="region" aria-roledescription="carrusel" aria-label="Videos">
     <div class="av-reel-track">
       <sc-for list="{{ reelGroups }}" as="g">
