@@ -57,25 +57,10 @@ O compilador reescreve nomes camelCase dentro de atributos. Percent-codifique as
 `view%42ox` e `preserve%41spect%52atio`. Sem isso o SVG perde o viewBox e a máscara quebra.
 Não use `;` no data URI (`data:image/svg+xml,` sem `utf8`) — o parser de estilo divide em `;`.
 
-## Backups (obrigatório)
-
-**Antes de cada alteração**, rode `scripts/backup.sh "descricao curta"`: copia `index.html`,
-`CLAUDE.md`, `README.md` e `docs/ARQUITETURA.md` para `backups/AAAA-MM-DD_HHMM_<descricao>/`.
-Para voltar: copie o arquivo da pasta por cima do atual. Ver `backups/README.md`.
-
 ## Fundos por dobra
 
 O site não terá um único fundo: algumas dobras usam cores complementares, como o claro `#f4f1ea`
 (com a textura de fundo claro acima), alternando com o escuro `#0c0c0d`. Mesma identidade visual.
-
-- 2ª dobra (escura): headline "El método" + carrossel. Termina na **metade da altura dos vídeos**.
-- 3ª dobra (`#servicios`, clara `#f4f1ea`): começa nesse corte com `margin-top: calc(-1 * var(--av-reel-split))`
-  (`--av-reel-split` = 6px + meia altura do card, em `:root` junto com as demais variáveis do carrossel);
-  o carrossel (z-index 3) fica por cima, então a metade de baixo dos vídeos já está sobre o claro.
-  Layout modelado na seção "Our services" de marroconstruction.adsconversion.online: eyebrow, H2 com
-  destaque âmbar, barra âmbar, subheadline e grid 2×2 (1 coluna no mobile) de cards brancos com imagem 3:2,
-  número em aba chanfrada, chip sobre a imagem, tag, título, descrição, diferencial e CTA.
-  Imagens provisórias em `media/servicios/` (Unsplash), para o cliente trocar. Âmbar sobre claro: `#c98a12`.
 
 ## Carrossel de vídeos
 

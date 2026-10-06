@@ -164,21 +164,23 @@ abaixo do carrossel, abrindo a parte dos pilares. (O título "TESTIMONIOS" antig
   - O template usa `data-state="{{ videoState }}"` (atributo inteiro é reativo) e `style="{{ objeto }}"` para os posters:
     nunca `src="{{ … }}"` em `<img>`, porque o navegador baixaria o texto literal do template cru.
 
-### 4.3 Terceira dobra — Serviços (`#servicios`, fundo claro)
+### 4.3 Segunda dobra "El Método"
 
-Começa na metade da altura dos vídeos do carrossel: a seção tem `margin-top: calc(-1 * var(--av-reel-split))`
-e o carrossel fica por cima (z-index 3), então cada vídeo tem a metade de cima sobre o escuro e a de baixo
-sobre o claro `#f4f1ea` (textura clara: grão multiply .085 + hachura `rgba(22,23,26,.021)`).
-O conteúdo começa abaixo do carrossel (`padding-top: --av-reel-split + clamp(56px,6.4vw,120px)`).
+Metáfora central: **o negócio é um pórtico sustentado por duas colunas — Demanda e Filtro**.
 
-Layout modelado na seção "Our services" de marroconstruction.adsconversion.online:
-- Eyebrow "Servicios" + H2 "Desde que te encuentran hasta que *firman tu estimate*." + barra âmbar + subheadline.
-- Grid 2×2 (≥760px) / 1 coluna (mobile) de cards brancos (borda `rgba(22,23,26,.09)`, raio 4px, sem sombra):
-  imagem 3:2 com número em aba escura chanfrada (filete âmbar) e chip; tag âmbar, título, descrição,
-  diferencial em caixa alta e CTA "Agendar diagnóstico →".
-- Cards: 01 Meta Ads · 02 Social Media · 03 Estimates personalizados · 04 SEO para IA.
-  Imagens provisórias em `media/servicios/*.webp` (Unsplash, 1080×720).
-- Textos marcados com `data-av-sv="…"` para facilitar a edição.
+- **H2:** "Un negocio de remodelación se sostiene sobre dos columnas. La mayoría de los contratistas *solo tiene una*."
+- Texto: "Con leads pero sin filtro, pierdes el día cotizando a quien nunca iba a firmar. Con filtro pero sin leads, el teléfono no suena en marzo."
+
+**Desktop (`isWide`, ≥760px)** — corresponde à variante **3a** do canvas:
+- Viga/lintel escura com friso âmbar de 3px: "Agenda llena · Trabajos de alto ticket · Sin pelear por precio".
+- Grid de 2 colunas, cada uma com um **pilar de concreto** desenhado em CSS atrás do texto (opacidade `pillarOpacity`):
+  - **01 — Demanda** · "Que te encuentren primero." · Google, Meta y tu ficha local… leads exclusivos.
+  - **02 — Filtro** · "Que hables solo con quien firma." · Presupuesto, fecha y dirección confirmados…
+- Soleira, tagline "Si falta una columna, todo se cae." e CTA âmbar sólido "Ver cómo funciona →".
+
+**Mobile (`isNarrow`, <760px)** — corresponde à variante **3b**:
+- Pórtico miniatura 240×200 (opacidade ≈ `pillarOpacity × 1.5`), cartões com filete âmbar à esquerda,
+  os três benefícios empilhados, tagline e CTA em **contorno** largura total.
 
 ### 4.4 Lógica (`data-dc-script`, linhas 358–552)
 
@@ -190,6 +192,9 @@ Layout modelado na seção "Our services" de marroconstruction.adsconversion.onl
 | `showTrustBar` | `true` | Mostra a faixa de números |
 | `showScrollCue` | `true` | Mostra "Desliza" (só ≥760px) |
 | `showNavCta` | `true` | Mostra o CTA da nav |
+| `showPillars` | `true` | Pilares desktop e pórtico mobile |
+| `pillarOpacity` | `0.28` (0.08–0.45) | Opacidade dos pilares |
+| `showTagline` | `true` | "Si falta una columna, todo se cae." |
 
 **Breakpoints** (medidos na largura do próprio `[data-av-root]` via `ResizeObserver`, nunca `window.innerWidth`):
 

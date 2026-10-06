@@ -26,6 +26,5 @@ Precisa de servidor HTTP e de internet (React vem do unpkg e as fontes do Google
 - `Segunda Dobra - Dos Columnas.dc.html` — canvas com as variantes da segunda dobra
 - `snippets/transicao-hero.html` — faixa de transição guardada para reuso
 - `CLAUDE.md` — regras de design (textura, paleta, tipografia, layout)
-- `backups/` — cópia do código antes de cada alteração (`scripts/backup.sh "descrição"`)
 
 Documentação completa de lógica, design e pontos de atenção: **[docs/ARQUITETURA.md](docs/ARQUITETURA.md)**.
