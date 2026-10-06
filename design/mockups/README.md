@@ -6,6 +6,7 @@ Para mudar textos, números, @, cidade ou fotos, edite o HTML e renderize de nov
 | Arquivo | Imagem gerada |
 |---|---|
 | `meta-ads.html` | `media/servicios/meta-ads.webp` — anúncio patrocinado no Instagram + desempenho da campanha, segmentação por CEP/raio e lead calificado |
+| `sitios-web.html` | `media/servicios/sitios-web.webp` — site da remodeladora no notebook e no celular, formulário de estimate, reseñas, velocidade, ES/EN e novo pedido |
 | `social-media.html` | `media/servicios/social-media.webp` — perfil de Instagram de remodeladora, post Antes/Después e DM |
 | `estimates.html` | `media/servicios/estimates.webp` — estimate com marca, itens, total e assinatura + conversa de aprovação |
 | `seo-ia.html` | `media/servicios/seo-ia.webp` — assistente de IA recomendando a empresa como nº 1, com fontes e mapa |

@@ -190,7 +190,9 @@ Layout modelado na seção "Our services" de marroconstruction.adsconversion.onl
   borda `rgba(244,241,234,.09)`, raio 4px, sem sombra; tag e CTA em âmbar, título creme):
   imagem 3:2 com número em aba escura chanfrada (filete âmbar) e chip; tag âmbar, título, descrição,
   diferencial em caixa alta e CTA "Agendar diagnóstico →".
-- Cards: 01 Meta Ads · 02 Social Media · 03 Estimates personalizados · 04 SEO para IA.
+- Cards: 01 Meta Ads · 02 Social Media · 03 Estimates personalizados · 04 SEO para IA · 05 Sitios web.
+  O card 05 (`.av-sv-card--wide`) ocupa a largura total a partir de 760px e fica em linha (imagem 56% à esquerda,
+  texto à direita) a partir de 900px; no celular é empilhado como os outros.
   Imagens em `media/servicios/*.webp` (1080×720), todas mockups próprios em HTML (`design/mockups/*.html`, ver o README de lá), renderizados no Chrome:
   anúncio no Instagram com métricas, segmentação e lead (Meta Ads); perfil de Instagram de remodeladora; estimate com marca + conversa de aprovação; assistente de IA recomendando
   a empresa como nº 1 com fontes e mapa. Dados fictícios.
