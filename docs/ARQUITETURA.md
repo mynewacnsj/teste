@@ -179,7 +179,7 @@ Metáfora central: **o negócio é um pórtico sustentado por duas colunas — D
 - Soleira, tagline "Si falta una columna, todo se cae." e CTA âmbar sólido "Ver cómo funciona →".
 
 **Mobile (`isNarrow`, <760px)** — corresponde à variante **3b**:
-- Pórtico miniatura 240×200 (opacidade ≈ `pillarOpacity × 1.5`), setas animadas, cartões com filete âmbar à esquerda,
+- Pórtico miniatura 240×200 (opacidade ≈ `pillarOpacity × 1.5`), cartões com filete âmbar à esquerda,
   os três benefícios empilhados, tagline e CTA em **contorno** largura total.
 
 ### 4.4 Lógica (`data-dc-script`, linhas 358–552)
