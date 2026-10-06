@@ -167,312 +167,6 @@ a:hover{color:#f6bc4d}
 .av-vmodal-close svg{width:16px;height:16px;display:block}
 /* O carrossel congela enquanto o popup está aberto, para o vídeo voltar exatamente ao card. */
 .av-reel[data-paused] .av-reel-group{animation-play-state:paused}
-
-/* ===== Base das dobras 3 e 4, footer e barra mobile ===== */
-:root{--av-c:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));--av-g:clamp(16px,2vw,32px);--av-hh:clamp(56px,7vh,74px);--av-ink:#16171a;--av-ink-2:rgba(22,23,26,.72);--av-ink-3:rgba(22,23,26,.62);--av-amber:#e9a227;--av-amber-h:#f6bc4d;--av-amber-p:#c98a12;--av-amber-ink:#8f5d07;--av-rule-p:rgba(22,23,26,.14);--av-rule-d:rgba(244,241,234,.1);--av-cream-2:rgba(244,241,234,.74);--av-cream-3:rgba(244,241,234,.6);--av-err:#b3261e;--av-ease:cubic-bezier(.16,1,.3,1);--av-exit:cubic-bezier(.4,0,1,1)}
-.sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-#resultados{scroll-margin-top:var(--av-hh)}
-#proceso,#nosotros,#preguntas,#agendar,#caso-01,#caso-02,#caso-03{scroll-margin-top:calc(var(--av-hh) + 24px)}
-
-/* Textura da casa por CLASSE (superfícies claras, cards e âmbar). Nunca data-av-grain/data-av-hatch aqui:
-   o _paint repinta todos eles com os valores do fundo escuro. O span vai como 1º filho da superfície (que tem
-   isolation:isolate) e não tem z-index: assim o grão faz o blend com o fundo dela; o conteúdo vem por cima. */
-.av-tex-l,.av-tex-d,.av-tex-a{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:inherit}
-.av-tex-l::before,.av-tex-d::before,.av-tex-a::before,.av-tex-l::after,.av-tex-d::after,.av-tex-a::after{content:"";position:absolute;inset:0}
-.av-tex-l::before,.av-tex-d::before,.av-tex-a::before{background:url(./grain.webp) 0 0/256px 256px repeat}
-.av-tex-l::before{opacity:.085;mix-blend-mode:multiply}
-.av-tex-l::after{background-image:repeating-linear-gradient(135deg,rgba(22,23,26,.021) 0px,rgba(22,23,26,.021) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)}
-.av-tex-d::before{opacity:.13;mix-blend-mode:screen}
-.av-tex-d::after{opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)}
-.av-tex-a::before{opacity:.12;mix-blend-mode:multiply}
-.av-tex-a::after{background-image:repeating-linear-gradient(135deg,rgba(12,12,13,.045) 0px,rgba(12,12,13,.045) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)}
-:where(.av-tex-l,.av-tex-d,.av-tex-a) ~ :where(*){position:relative;z-index:1}
-
-/* Revelação no scroll: um único IntersectionObserver marca [data-in]. Sem IO ou com reduced-motion a classe
-   av-js não entra e tudo nasce visível. Atraso por atributo (vira --rv-d), nunca por style inline. */
-[data-av-rv]{--rv-d:0ms;transition:opacity .7s var(--av-ease) var(--rv-d),transform .7s var(--av-ease) var(--rv-d)}
-[data-av-rv="none"]{transition:none}
-[data-av-rv-d="1"]{--rv-d:90ms}
-[data-av-rv-d="2"]{--rv-d:180ms}
-[data-av-rv-d="3"]{--rv-d:270ms}
-[data-av-rv-d="4"]{--rv-d:360ms}
-[data-av-rv-d="5"]{--rv-d:450ms}
-[data-av-rv-d="6"]{--rv-d:540ms}
-html.av-js [data-av-rv]:not([data-in]):not([data-av-rv="none"]){opacity:0;transform:translate3d(0,18px,0)}
-html.av-js [data-av-rv="fade"]:not([data-in]){transform:none}
-/* ?prov: contorna todo dado provisório. */
-html.av-prov [data-av-tbd]{outline:1px dashed #c98a12;outline-offset:2px}
-
-/* Eyebrow (escuro por padrão; --l = sobre o claro) */
-.av-eb{display:flex;align-items:center;gap:14px;margin:0 0 clamp(16px,1.8vw,22px);font-family:Archivo,sans-serif;font-size:clamp(10.5px,.85vw,14px);font-weight:600;letter-spacing:.3em;line-height:1.2;text-transform:uppercase;color:#e9a227}
-.av-eb-line{display:block;flex:0 0 auto;width:clamp(30px,3vw,56px);height:2px;background:#e9a227;transform-origin:0 50%;transition:transform .6s var(--av-ease) calc(var(--rv-d) + 120ms)}
-.av-eb--l{color:var(--av-amber-ink)}
-.av-eb--l .av-eb-line{background:var(--av-amber-p)}
-html.av-js .av-eb[data-av-rv]:not([data-in]) .av-eb-line{transform:scaleX(0)}
-/* Marca-texto âmbar atrás das palavras-chave dos títulos claros */
-.av-hl{position:relative;isolation:isolate;white-space:nowrap}
-.av-hl::before{content:"";position:absolute;left:-.06em;right:-.06em;bottom:.06em;height:.4em;z-index:-1;background:#e9a227;opacity:.5;transform-origin:0 50%;transition:transform .75s var(--av-ease) .35s}
-html.av-js [data-av-rv]:not([data-in]) .av-hl::before{transform:scaleX(0)}
-/* Carimbo (dados provisórios / autorizados) */
-.av-stamp{display:inline-block;border:2px solid var(--av-amber-ink);border-radius:3px;padding:6px 10px;font-family:Archivo,sans-serif;font-weight:800;font-size:10.5px;letter-spacing:.16em;line-height:1.25;text-transform:uppercase;text-align:center;white-space:nowrap;color:var(--av-amber-ink);mix-blend-mode:multiply;opacity:.92;pointer-events:none}
-@keyframes av-stamp6{0%{opacity:0;transform:rotate(-6deg) scale(1.5)}70%{opacity:.92;transform:rotate(-6deg) scale(.96)}100%{opacity:.92;transform:rotate(-6deg) scale(1)}}
-@keyframes av-stamp9{0%{opacity:0;transform:rotate(-9deg) scale(1.5)}70%{opacity:.92;transform:rotate(-9deg) scale(.96)}100%{opacity:.92;transform:rotate(-9deg) scale(1)}}
-/* Seta e botão escuro */
-.av-arw{display:block;flex:0 0 auto;width:14px;height:14px}
-.av-btn-dark{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:0 28px;box-sizing:border-box;background:#16171a;color:#f4f1ea;border-radius:2px;font-family:Archivo,sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.08em;line-height:1.25;text-transform:uppercase;text-align:center;transition:background-color .2s ease,transform .2s ease}
-.av-btn-dark .av-arw{color:#e9a227;transition:transform .3s var(--av-ease)}
-.av-btn-dark:hover{background:#23252a;color:#f4f1ea}
-.av-btn-dark:hover .av-arw{transform:translateX(4px)}
-.av-btn-dark:focus-visible{outline:2px solid var(--av-amber-p);outline-offset:3px}
-.av-btn-dark:active{transform:scale(.98)}
-
-/* ===== 3ª dobra — Resultados + Proceso: a «folha» clara que pousa sobre a mesa escura ===== */
-.av-rs{position:relative;isolation:isolate;display:flow-root;background:#f4f1ea;color:var(--av-ink);font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding:clamp(88px,9vw,152px) 0 clamp(112px,10vw,176px)}
-.av-rs-in{position:relative;z-index:1;width:var(--av-c);margin:0 auto}
-/* Régua na borda superior: 4000 é múltiplo de 8, 40 e 200, então um tick grande cai na margem do container. */
-.av-rs-ruler{position:absolute;top:0;left:0;right:0;height:18px;overflow:hidden;z-index:1;pointer-events:none}
-.av-rs-ruler i{position:absolute;top:0;height:18px;left:calc(50% - var(--av-c) / 2 - 4000px);width:calc(100% + 8000px);background-image:linear-gradient(90deg,rgba(22,23,26,.5) 1px,rgba(0,0,0,0) 1px),linear-gradient(90deg,rgba(22,23,26,.34) 1px,rgba(0,0,0,0) 1px),linear-gradient(90deg,rgba(22,23,26,.22) 1px,rgba(0,0,0,0) 1px);background-size:200px 16px,40px 10px,8px 6px;background-repeat:repeat-x;background-position:0 0}
-
-/* A) Abertura */
-.av-rs-head{margin-bottom:clamp(40px,4.6vw,72px)}
-.av-rs-head-side{margin-top:18px}
-@media (min-width:900px){
-  .av-rs-head,.av-pr-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--av-g)}
-  .av-rs-head-main{grid-column:1 / 8}
-  .av-rs-head-side{grid-column:9 / 13;align-self:end;margin-top:0}
-}
-.av-rs-h2{margin:0;max-width:820px;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(28px,8.2vw,38px);line-height:1.02;letter-spacing:-.04em;color:#16171a;text-wrap:balance}
-@media (min-width:760px){.av-rs-h2{font-size:clamp(28px,min(4vw,6.4vh),64px)}}
-.av-rs-lede{margin:0;max-width:620px;font-size:clamp(16px,1.2vw,19px);line-height:1.6;color:var(--av-ink-2);text-wrap:pretty}
-@media (min-width:900px){.av-rs-lede{max-width:420px}}
-.av-rs-bridge{display:inline-flex;align-items:center;gap:14px;margin-top:22px;min-height:44px;font-family:Barlow,sans-serif;font-weight:600;font-size:14.5px;line-height:1.35;color:var(--av-ink)}
-.av-rs-bridge:hover{color:var(--av-ink)}
-.av-rs-bridge:focus-visible{outline:2px solid #16171a;outline-offset:3px}
-.av-rs-bridge-ts{display:flex;flex:0 0 auto;gap:4px}
-.av-rs-bridge-t{display:block;box-sizing:border-box;width:30px;height:53px;border:1px solid var(--av-rule-p);border-radius:2px;overflow:hidden;background:#16171a}
-.av-rs-bridge-t img{display:block;width:100%;height:100%;object-fit:cover}
-.av-rs-bridge-x{text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:rgba(22,23,26,.3);text-underline-offset:4px;transition:text-decoration-color .2s ease}
-.av-rs-bridge:hover .av-rs-bridge-x{text-decoration-color:var(--av-amber-p)}
-.av-rs-bridge .av-arw{color:var(--av-amber-ink);transition:transform .3s var(--av-ease)}
-.av-rs-bridge:hover .av-arw{transform:translateX(3px)}
-
-/* B) Quadro de métricas */
-.av-rs-cap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;margin:0 0 12px;font-family:Archivo,sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.22em;line-height:1.4;text-transform:uppercase;color:var(--av-ink-3)}
-.av-rs-kpiwrap{position:relative;container-type:inline-size}
-.av-rs-kpibox{position:relative}
-.av-rs-kpis-line{position:absolute;left:0;right:0;top:0;height:2px;background:#16171a;transform-origin:0 50%;transition:transform .9s var(--av-ease)}
-html.av-js .av-rs-kpiwrap:not([data-in]) .av-rs-kpis-line{transform:scaleX(0)}
-.av-rs-kpis{margin:0;padding-top:2px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:1px solid var(--av-rule-p)}
-.av-rs-kpi{min-width:0;padding:clamp(20px,2.2vw,32px) clamp(14px,1.8vw,28px);border-left:1px solid var(--av-rule-p)}
-.av-rs-kpi:nth-child(odd){border-left:0;padding-left:0}
-.av-rs-kpi:nth-child(n+3){border-top:1px solid var(--av-rule-p)}
-@supports (grid-template-rows:subgrid){
-  .av-rs-kpi{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0}
-}
-@container (min-width:860px){
-  .av-rs-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .av-rs-kpi:nth-child(odd){border-left:1px solid var(--av-rule-p);padding-left:clamp(14px,1.8vw,28px)}
-  .av-rs-kpi:first-child{border-left:0;padding-left:0}
-  .av-rs-kpi:nth-child(n+3){border-top:0}
-}
-.av-rs-kpi dt{margin:0;font-family:Archivo,sans-serif;font-weight:600;font-size:11.5px;letter-spacing:.16em;line-height:1.3;text-transform:uppercase;color:rgba(22,23,26,.72)}
-.av-rs-kidx{display:block;margin-bottom:10px;font-weight:700;font-size:11px;letter-spacing:.16em;color:var(--av-ink-3);font-variant-numeric:tabular-nums}
-.av-rs-klabel{display:block;min-height:2.6em}
-.av-rs-kpi dd{margin:0;padding-top:14px}
-.av-rs-mask{display:block;overflow:hidden;padding-bottom:.06em}
-.av-rs-num{display:inline-flex;align-items:baseline;white-space:nowrap;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(30px,8.6vw,40px);line-height:.95;letter-spacing:-.045em;color:#16171a;font-variant-numeric:tabular-nums;transition:transform .65s var(--av-ease) var(--nd,150ms)}
-@media (min-width:760px){.av-rs-num{font-size:clamp(34px,3.6vw,56px)}}
-.av-rs-kpi:nth-child(2) .av-rs-num{--nd:240ms}
-.av-rs-kpi:nth-child(3) .av-rs-num{--nd:330ms}
-.av-rs-kpi:nth-child(4) .av-rs-num{--nd:420ms}
-html.av-js .av-rs-kpiwrap:not([data-in]) .av-rs-num{transform:translateY(105%)}
-.av-rs-pre{align-self:flex-start;margin:.12em .04em 0 0;font-size:.5em;font-weight:700}
-.av-rs-suf{margin-left:.03em;font-size:.55em;font-weight:700}
-.av-rs-from{font-size:.5em;font-weight:700;color:var(--av-ink-3)}
-.av-rs-arw{display:block;flex:0 0 auto;align-self:center;width:.5em;height:.5em;margin:0 .14em;color:var(--av-amber-p)}
-.av-rs-knote{margin:12px 0 0;max-width:28ch;font-size:13.5px;line-height:1.45;color:var(--av-ink-3)}
-.av-stamp--kpi{position:absolute;bottom:-20px;right:0;z-index:2;transform:rotate(-6deg)}
-@media (min-width:760px){.av-stamp--kpi{right:8px}}
-html.av-js .av-rs-kpiwrap:not([data-in]) .av-stamp--kpi{opacity:0}
-html.av-js .av-rs-kpiwrap[data-in] .av-stamp--kpi{animation:av-stamp6 .42s cubic-bezier(.3,1.4,.5,1) .7s both}
-
-/* C) Casos — 3 estimates */
-.av-rs-caseswrap{container-type:inline-size;margin-top:clamp(56px,6vw,96px)}
-.av-rs-cases{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(16px,1.8vw,24px)}
-.av-rs-case{position:relative;isolation:isolate;display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid rgba(22,23,26,.09);border-radius:4px;overflow:hidden;transition:opacity .7s var(--av-ease) var(--rv-d),transform .7s var(--av-ease) var(--rv-d),border-color .3s ease}
-.av-rs-case:hover{border-color:rgba(22,23,26,.2)}
-html.av-js .av-rs-case[data-av-rv]:not([data-in]){transform:translate3d(0,28px,0)}
-.av-rs-strip{display:flex;align-items:center;justify-content:space-between;gap:12px;height:40px;padding:0 20px;background:#16171a;border-bottom:3px solid #e9a227;font-family:Archivo,sans-serif;font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;color:#f4f1ea}
-.av-rs-strip > span:last-child{color:#e9a227}
-.av-rs-id{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:start;padding:20px 22px 18px}
-@container (min-width:600px){.av-rs-id{grid-template-columns:84px minmax(0,1fr)}}
-.av-rs-thumb{position:relative;display:block;width:100%;aspect-ratio:9 / 16;margin:0;padding:0;border:0;border-radius:2px;overflow:hidden;background:#16171a;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.av-rs-thumb-img{position:absolute;inset:0;background-color:#16171a;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;transition:transform .6s var(--av-ease)}
-.av-rs-thumb .av-reel-play{width:50%}
-.av-rs-thumb:hover .av-rs-thumb-img,.av-rs-thumb:focus-visible .av-rs-thumb-img{transform:scale(1.05)}
-.av-rs-thumb:hover .av-reel-play,.av-rs-thumb:focus-visible .av-reel-play{background:rgba(246,188,77,.9);transform:translate(-50%,-50%) scale(1.06)}
-.av-rs-thumb:focus-visible{outline:2px solid #16171a;outline-offset:3px}
-.av-rs-meta{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
-.av-rs-meta h3{margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(19px,1.6vw,22px);line-height:1.1;letter-spacing:-.02em;color:#16171a}
-.av-rs-city{display:flex;align-items:center;margin:0;font-weight:600;font-size:15px;line-height:1.35;color:var(--av-ink-2)}
-.av-rs-city svg{display:block;flex:0 0 auto;width:12px;height:12px;margin-right:6px;color:var(--av-amber-p)}
-.av-rs-size{margin:0;font-family:Archivo,sans-serif;font-weight:600;font-size:11px;letter-spacing:.12em;line-height:1.45;text-transform:uppercase;color:var(--av-ink-3)}
-.av-rs-vlink{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin:0;padding:0;background:none;border:0;cursor:pointer;font-family:Archivo,sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#16171a;-webkit-tap-highlight-color:transparent}
-.av-rs-vlink svg{display:block;flex:0 0 auto;width:10px;height:10px;transition:transform .3s var(--av-ease)}
-.av-rs-vlink-t{text-decoration:underline;text-decoration-thickness:2px;text-decoration-color:#e9a227;text-underline-offset:5px;transition:text-decoration-color .2s ease}
-.av-rs-vlink:hover .av-rs-vlink-t{text-decoration-color:var(--av-amber-p)}
-.av-rs-vlink:hover svg{transform:translateX(2px)}
-.av-rs-vlink:focus-visible{outline:2px solid #16171a;outline-offset:3px}
-.av-rs-antes,.av-rs-hicimos{margin:0 22px;padding:16px 0;border-top:1.5px dotted rgba(22,23,26,.3)}
-.av-rs-lbl{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-bottom:8px;font-family:Archivo,sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.2em;line-height:1.3;text-transform:uppercase;color:var(--av-ink-3)}
-.av-rs-tag{padding:4px 8px;border:1px dashed rgba(22,23,26,.45);border-radius:2px;font-weight:700;font-size:10px;letter-spacing:.12em;color:#16171a}
-.av-rs-antes p{margin:0;font-size:15.5px;line-height:1.5;color:var(--av-ink-2)}
-.av-rs-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.av-rs-chip{display:inline-flex;align-items:center;gap:8px;height:30px;box-sizing:border-box;padding-right:10px;border:1px solid var(--av-rule-p);border-radius:2px;overflow:hidden;font-weight:600;font-size:13.5px;white-space:nowrap;color:#16171a}
-.av-rs-chip-n{display:flex;align-items:center;height:100%;box-sizing:border-box;padding:0 12px 0 8px;background:#16171a;color:#f4f1ea;border-top:2px solid #e9a227;font-family:Archivo,sans-serif;font-weight:700;font-size:11px;clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
-.av-rs-rows{position:relative;margin:0 22px;padding:0 0 14px;border-top:1.5px dotted rgba(22,23,26,.3)}
-.av-rs-rows .av-rs-lbl{padding-top:16px}
-.av-rs-rows dl{margin:0}
-.av-rs-row{display:grid;grid-template-columns:auto minmax(16px,1fr) auto;align-items:baseline;column-gap:8px;min-height:34px;transition:opacity .36s ease,transform .36s var(--av-ease)}
-.av-rs-row::after{content:"";grid-column:2;grid-row:1;border-bottom:1.5px dotted rgba(22,23,26,.32);transform:translateY(-4px)}
-.av-rs-row dt{grid-column:1;grid-row:1;font-size:15px;color:var(--av-ink-2)}
-.av-rs-row dd{grid-column:3;grid-row:1;margin:0;font-family:Archivo,sans-serif;font-weight:700;font-size:16px;color:#16171a;font-variant-numeric:tabular-nums}
-.av-rs-row:nth-child(1){transition-delay:.3s}
-.av-rs-row:nth-child(2){transition-delay:.36s}
-.av-rs-row:nth-child(3){transition-delay:.42s}
-html.av-js .av-rs-case:not([data-in]) .av-rs-row{opacity:0;transform:translateX(-8px)}
-.av-rs-extra{display:flex;align-items:baseline;gap:8px;margin:10px 0 0;font-size:14px;line-height:1.45;color:var(--av-ink-3)}
-.av-rs-extra::before{content:"";flex:0 0 auto;width:7px;height:7px;background:var(--av-amber-p);transform:translateY(-1px)}
-.av-stamp--9{position:absolute;top:-12px;right:0;z-index:2;transform:rotate(-9deg)}
-html.av-js .av-rs-case:not([data-in]) .av-stamp--9{opacity:0}
-html.av-js .av-rs-case[data-in] .av-stamp--9{animation:av-stamp9 .42s cubic-bezier(.3,1.4,.5,1) .65s both}
-.av-rs-total{position:relative;isolation:isolate;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-top:auto;padding:16px 22px;background:#16171a}
-.av-rs-total-k{display:block;font-family:Archivo,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.7)}
-.av-rs-ratio{display:block;margin-top:6px;font-size:13px;line-height:1.35;color:rgba(244,241,234,.6)}
-.av-rs-total .av-rs-mask{flex:0 0 auto}
-.av-rs-total-v{display:block;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(26px,2.4vw,34px);line-height:1;letter-spacing:-.03em;color:#e9a227;font-variant-numeric:tabular-nums;transition:transform .6s var(--av-ease) .48s}
-html.av-js .av-rs-case:not([data-in]) .av-rs-total-v{transform:translateY(105%)}
-/* 600–959: «ficha deitada» — identificação e números lado a lado; antes e serviços na linha de baixo. */
-@container (min-width:600px) and (max-width:959.98px){
-  .av-rs-case{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:"strip strip" "id rows" "antes hicimos" "total total";align-items:stretch}
-  .av-rs-strip{grid-area:strip}
-  .av-rs-id{grid-area:id}
-  .av-rs-rows{grid-area:rows;margin:0 22px 0 0;padding:20px 0 72px 22px;border-top:0;border-left:1.5px dotted rgba(22,23,26,.3)}
-  .av-rs-rows .av-rs-lbl{padding-top:0}
-  .av-rs-antes{grid-area:antes;padding-bottom:20px}
-  .av-rs-hicimos{grid-area:hicimos;margin:0 22px 0 0;padding:16px 0 20px 22px;border-left:1.5px dotted rgba(22,23,26,.3)}
-  .av-rs-total{grid-area:total}
-  .av-stamp--9{top:auto;bottom:18px}
-}
-/* ≥960: 3 colunas; com subgrid as 6 faixas ficam alinhadas entre as fichas. */
-@container (min-width:960px){
-  .av-rs-cases{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
-@supports (grid-template-rows:subgrid){
-  @container (min-width:960px){
-    .av-rs-cases{grid-template-rows:repeat(6,auto);row-gap:0}
-    .av-rs-case{display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:0}
-  }
-}
-.av-rs-note{display:flex;align-items:flex-start;gap:10px;margin:18px 0 0;font-size:13.5px;line-height:1.5;color:var(--av-ink-3)}
-.av-rs-note svg{display:block;flex:0 0 auto;width:16px;height:16px;margin-top:1px}
-
-/* D) Proceso */
-.av-pr{--pr-g:clamp(20px,2.4vw,40px);container-type:inline-size;margin-top:clamp(96px,10vw,168px);padding-top:clamp(56px,6vw,96px);border-top:1px solid var(--av-rule-p)}
-.av-pr-head{margin-bottom:clamp(40px,4vw,64px)}
-.av-pr-h2{margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(26px,7.4vw,34px);line-height:1.04;letter-spacing:-.035em;color:#16171a;text-wrap:balance}
-@media (min-width:760px){.av-pr-h2{font-size:clamp(28px,min(3.4vw,5.6vh),54px)}}
-.av-pr-dims,.av-pr-tapewrap{display:none}
-.av-pr-steps{margin:0;padding:0;list-style:none}
-/* <960: linha do tempo vertical; a fita âmbar é feita de um segmento por etapa. */
-.av-pr-step{position:relative;padding:0 0 36px 52px}
-.av-pr-step:last-child{padding-bottom:0}
-.av-pr-seg{position:absolute;left:0;top:0;bottom:0;width:28px;overflow:hidden}
-.av-pr-seg i{position:absolute;inset:0;display:block;isolation:isolate;background:#e9a227;transition:transform .7s var(--av-ease) .1s}
-.av-pr-seg i::after{content:"";position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(22,23,26,.5) 1px,rgba(0,0,0,0) 1px),linear-gradient(180deg,rgba(22,23,26,.3) 1px,rgba(0,0,0,0) 1px);background-size:13px 30px,7px 6px;background-repeat:repeat-y}
-html.av-js .av-pr-step:not([data-in]) .av-pr-seg i{transform:translateY(-101%)}
-.av-pr-tab{position:absolute;left:0;top:0;z-index:2;display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:28px;height:28px;padding:0;background:#16171a;color:#f4f1ea;border-top:3px solid #e9a227;font-family:Archivo,sans-serif;font-weight:700;font-size:12px;line-height:1}
-.av-pr-when{display:inline-block;margin-bottom:10px;padding:5px 8px;border-radius:2px;background:#e9a227;color:#16171a;font-family:Archivo,sans-serif;font-weight:800;font-size:11px;letter-spacing:.12em;line-height:1.2;text-transform:uppercase}
-.av-pr-title{margin:0 0 6px;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(20px,1.7vw,24px);line-height:1.12;letter-spacing:-.02em;color:#16171a}
-.av-pr-desc{margin:0 0 18px;font-weight:600;font-size:13px;letter-spacing:.06em;line-height:1.45;text-transform:uppercase;color:var(--av-ink-3)}
-.av-pr-part{padding:14px 0;border-top:1.5px dotted rgba(22,23,26,.3)}
-.av-pr-plbl{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.av-pr-k{font-family:Archivo,sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--av-ink-3)}
-.av-pr-time{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border:1px solid #16171a;border-radius:2px;font-family:Archivo,sans-serif;font-weight:800;font-size:12px;line-height:1.3;color:#16171a}
-.av-pr-time::before{content:"";flex:0 0 auto;width:7px;height:7px;background:var(--av-amber-p)}
-.av-pr-part p{margin:8px 0 0;font-size:15.5px;line-height:1.55;color:var(--av-ink-2)}
-.av-pr-part .av-pr-quote{margin:12px 0 0;padding-left:12px;border-left:3px solid #e9a227;font-family:Archivo,sans-serif;font-weight:700;font-size:16px;line-height:1.35;color:#16171a}
-.av-pr-note{position:relative;isolation:isolate;margin-top:32px;padding:18px 20px;background:#fff;border:1px solid rgba(22,23,26,.09);border-left:3px solid var(--av-amber-p);border-radius:4px}
-.av-pr-note-k{display:block;font-family:Archivo,sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--av-ink-3)}
-.av-pr-note p{margin:6px 0 0;font-size:15.5px;line-height:1.55;color:#16171a}
-@container (min-width:600px){
-  .av-pr-step{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:24px;grid-template-areas:"when when" "title title" "desc desc" "tu nos"}
-  .av-pr-when{grid-area:when;justify-self:start}
-  .av-pr-title{grid-area:title}
-  .av-pr-desc{grid-area:desc}
-  .av-pr-part--tu{grid-area:tu}
-  .av-pr-part--nos{grid-area:nos}
-}
-/* ≥960: prancha horizontal — cotas, fita métrica e 4 colunas. */
-@container (min-width:960px){
-  .av-pr-dims{display:block;position:relative;height:76px}
-  .av-pr-tapewrap{display:block;position:relative;height:54px;overflow:hidden}
-  .av-pr-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--pr-g)}
-  .av-pr-step{display:flex;flex-direction:column;grid-template-columns:none;grid-template-areas:none;padding:28px 0 0}
-  .av-pr-step::before{content:"";position:absolute;left:0;top:0;width:1px;height:28px;background:rgba(22,23,26,.3)}
-  .av-pr-title,.av-pr-desc,.av-pr-part--tu,.av-pr-part--nos{grid-area:auto}
-  .av-pr-seg{display:none}
-  .av-pr-when{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .av-pr-tab{position:relative;left:auto;top:auto;align-self:flex-start;justify-self:start;width:auto;height:auto;margin-bottom:14px;padding:7px 18px 7px 12px;font-size:15px;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
-  .av-pr-note{display:none}
-  .av-pr-step:nth-child(1){--rv-d:250ms}
-  .av-pr-step:nth-child(2){--rv-d:450ms}
-  .av-pr-step:nth-child(3){--rv-d:650ms}
-  .av-pr-step:nth-child(4){--rv-d:850ms}
-}
-@supports (grid-template-rows:subgrid){
-  @container (min-width:960px){
-    .av-pr-steps{grid-template-rows:repeat(5,auto)}
-    .av-pr-step{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0}
-  }
-}
-.av-pr-tape{position:absolute;left:0;right:0;top:7px;height:40px;isolation:isolate;background:#e9a227;border-radius:2px;transition:transform 1.1s cubic-bezier(.22,.61,.36,1)}
-html.av-js .av-pr-board:not([data-in]) .av-pr-tape{transform:translateX(-101%)}
-.av-pr-ticks{position:absolute;top:0;left:0;right:0;height:13px;background-image:linear-gradient(90deg,rgba(22,23,26,.55) 1px,rgba(0,0,0,0) 1px),linear-gradient(90deg,rgba(22,23,26,.35) 1px,rgba(0,0,0,0) 1px);background-size:30px 13px,6px 7px;background-repeat:repeat-x}
-.av-pr-marks{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--pr-g)}
-.av-pr-mark{position:relative;display:flex;align-items:center;padding:8px 0 0 14px;font-family:Archivo,sans-serif;font-weight:800;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;color:#16171a}
-.av-pr-mark::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:#16171a}
-.av-pr-hook{position:absolute;right:0;top:-7px;width:12px;height:54px;box-sizing:border-box;background:#16171a;border-top:1px solid #f6bc4d;border-radius:1px}
-/* Cotas: as linhas de chamada param na fita; rótulos posicionados no espaço livre de cada cota. */
-.av-pr-dim{position:absolute;left:0;height:26px;--dd:.9s}
-.av-pr-dim--a{top:6px;width:calc(50% + var(--pr-g) / 2)}
-.av-pr-dim--b{top:40px;width:calc(87.5% + var(--pr-g) * .375);--dd:1s}
-.av-pr-dim-line{position:absolute;left:0;right:0;bottom:6px;height:1px;background:rgba(22,23,26,.55);transform-origin:0 50%;transition:transform .8s var(--av-ease) var(--dd)}
-.av-pr-dim-t{position:absolute;bottom:2px;left:-1px;width:2px;height:10px;background:var(--av-amber-p);transform:rotate(45deg)}
-.av-pr-dim-t--r{left:auto;right:-1px}
-.av-pr-dim-x,.av-pr-x0{position:absolute;width:1px;background:repeating-linear-gradient(180deg,rgba(22,23,26,.4) 0 3px,rgba(0,0,0,0) 3px 6px)}
-.av-pr-dim-x{right:0;top:14px}
-.av-pr-dim--a .av-pr-dim-x{height:63px}
-.av-pr-dim--b .av-pr-dim-x{height:29px}
-.av-pr-x0{left:0;top:20px;height:63px}
-.av-pr-dim-l{position:absolute;transform:translateX(-50%);white-space:nowrap;font-family:Archivo,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;line-height:1;text-transform:uppercase;color:#16171a}
-.av-pr-dim-l--a{top:10px;left:calc(25% + var(--pr-g) / 4);--dd:.9s}
-.av-pr-dim-l--b{top:44px;left:calc(68.75% + var(--pr-g) * .4375);--dd:1s}
-.av-pr-dim-t,.av-pr-dim-x,.av-pr-x0,.av-pr-dim-l{transition:opacity .4s ease calc(var(--dd,.9s) + .2s)}
-html.av-js .av-pr-board:not([data-in]) .av-pr-dim-line{transform:scaleX(0)}
-html.av-js .av-pr-board:not([data-in]) :is(.av-pr-dim-t,.av-pr-dim-x,.av-pr-x0,.av-pr-dim-l){opacity:0}
-
-/* E) Fecho da folha + picote de saída */
-.av-rs-close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 40px;margin-top:clamp(56px,6vw,96px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--av-rule-p)}
-.av-rs-close p{margin:0}
-.av-rs-close strong{display:block;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(20px,1.8vw,26px);line-height:1.15;color:#16171a}
-.av-rs-close p span{display:block;margin-top:6px;font-size:15.5px;line-height:1.5;color:var(--av-ink-2)}
-@media (max-width:759px){.av-rs-close .av-btn-dark{width:100%;padding:0 18px;font-size:12.5px;letter-spacing:.06em}}
-.av-rs-perf{position:absolute;left:0;right:0;bottom:30px;height:0;border-top:1.5px dotted rgba(22,23,26,.28)}
-.av-rs-bite{position:absolute;left:0;right:0;bottom:0;height:6px;background:radial-gradient(circle at 9px 6px,#0c0c0d 5px,rgba(12,12,13,0) 5.5px) 50% 0 / 18px 6px repeat-x}
-@media (prefers-reduced-motion:reduce){
-  .av-stamp,.av-rs-row,.av-rs-num,.av-rs-total-v,.av-pr-tape,.av-pr-dim-line,.av-pr-seg i,.av-hl::before,.av-eb-line{animation:none!important;transition:none!important}
-}
 </style>
 </helmet>
 
@@ -744,166 +438,7 @@ html.av-js .av-pr-board:not([data-in]) :is(.av-pr-dim-t,.av-pr-dim-x,.av-pr-x0,.
 
 </section>
 
-<section id="resultados" class="av-rs" aria-labelledby="rs-h">
-  <span class="av-tex-l" aria-hidden="true"></span>
-  <div class="av-rs-ruler" aria-hidden="true"><i></i></div>
-  <div class="av-rs-in">
 
-    <header class="av-rs-head">
-      <div class="av-rs-head-main">
-        <div class="av-eb av-eb--l" data-av-rv=""><span class="av-eb-line"></span><span>Resultados</span></div>
-        <h2 id="rs-h" class="av-rs-h2" data-av-rv="" data-av-rv-d="1">Los de los videos, <span class="av-hl">ahora en números.</span></h2>
-      </div>
-      <div class="av-rs-head-side">
-        <p class="av-rs-lede" data-av-rv="" data-av-rv-d="2">Mismos contratistas, antes y después de trabajar con nosotros: cuánto invirtieron, cuántas citas llegaron y cuánto firmaron.</p>
-        <a href="#caso-01" class="av-rs-bridge" data-av-rv="" data-av-rv-d="3"><span class="av-rs-bridge-ts" aria-hidden="true"><span class="av-rs-bridge-t"><img src="./media/reel/qtq97pqw42.webp" alt="" width="30" height="53" loading="lazy" decoding="async"></span><span class="av-rs-bridge-t"><img src="./media/reel/85xxi41ehr.webp" alt="" width="30" height="53" loading="lazy" decoding="async"></span><span class="av-rs-bridge-t"><img src="./media/reel/j9kq9ph7rs.webp" alt="" width="30" height="53" loading="lazy" decoding="async"></span></span><span class="av-rs-bridge-x">3 de los 6 clientes del video, con sus números</span><svg class="av-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
-      </div>
-    </header>
-
-    <div class="av-rs-kpiwrap" data-av-rv="none">
-      <p class="av-rs-cap"><span>Detrás de los $42M</span><span data-av-tbd="Base y período de las métricas">Promedio de clientes activos · ene–sep 2026</span><sc-if value="{{ ejemplo }}" hint-placeholder-val="{{ true }}"><span class="sr">Cifras de ejemplo, por confirmar.</span></sc-if></p>
-      <div class="av-rs-kpibox">
-        <span class="av-rs-kpis-line" aria-hidden="true"></span>
-        <dl class="av-rs-kpis">
-          <sc-for list="{{ metrics }}" as="m">
-            <div class="av-rs-kpi" data-av-rv="fade" data-av-rv-d="{{ m.d }}" data-av-tbd="{{ m.tbd }}">
-              <dt><span class="av-rs-kidx" aria-hidden="true">{{ m.n }}</span><span class="av-rs-klabel">{{ m.label }}</span></dt>
-              <dd>
-                <span class="av-rs-mask"><span class="av-rs-num" aria-hidden="true"><sc-if value="{{ m.pre }}"><span class="av-rs-pre">{{ m.pre }}</span></sc-if><sc-if value="{{ m.num }}"><span>{{ m.num }}</span></sc-if><sc-if value="{{ m.suf }}"><span class="av-rs-suf">{{ m.suf }}</span></sc-if><sc-if value="{{ m.arrow }}"><span class="av-rs-from">{{ m.from }}</span><svg class="av-rs-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>{{ m.to }}</span></sc-if></span></span>
-                <span class="sr">{{ m.sr }}</span>
-                <p class="av-rs-knote">{{ m.nota }}</p>
-              </dd>
-            </div>
-          </sc-for>
-        </dl>
-        <sc-if value="{{ ejemplo }}" hint-placeholder-val="{{ true }}"><span class="av-stamp av-stamp--kpi" aria-hidden="true">Cifras de ejemplo<br>por confirmar</span></sc-if>
-      </div>
-    </div>
-
-    <div class="av-rs-caseswrap">
-      <p class="av-rs-cap"><span>Tres de los clientes del video</span><span>Resultados a 90 días</span></p>
-      <div class="av-rs-cases">
-        <sc-for list="{{ cases }}" as="c">
-          <article id="{{ c.anchor }}" class="av-rs-case" aria-labelledby="{{ c.hid }}" data-av-rv="" data-av-rv-d="{{ c.d }}" data-av-tbd="{{ c.tbd }}">
-            <span class="av-tex-l" aria-hidden="true"></span>
-            <div class="av-rs-strip"><span>Caso {{ c.n }} / 03</span><span>{{ c.periodo }}</span></div>
-            <div class="av-rs-id">
-              <button type="button" class="av-rs-thumb" data-av-case-play="" data-av-i="{{ c.i }}" aria-label="{{ c.aria }}"><span class="av-rs-thumb-img" style="{{ c.bg }}"></span><span class="av-reel-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 2.6v18.8c0 .9 1 1.4 1.7.9l14.1-9.4c.6-.4.6-1.3 0-1.8L6.7 1.7C6 1.2 5 1.7 5 2.6z" fill="#0c0c0d" fill-opacity=".85"></path></svg></span></button>
-              <div class="av-rs-meta">
-                <h3 id="{{ c.hid }}">{{ c.nicho }}</h3>
-                <p class="av-rs-city"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 11.2s3.7-3.5 3.7-6.3a3.7 3.7 0 0 0-7.4 0c0 2.8 3.7 6.3 3.7 6.3z" fill="none" stroke="currentColor" stroke-width="1.3"></path><circle cx="6" cy="4.9" r="1.3" fill="currentColor"></circle></svg>{{ c.ciudad }}</p>
-                <p class="av-rs-size">{{ c.porte }}</p>
-                <button type="button" class="av-rs-vlink" data-av-case-play="" data-av-i="{{ c.i }}" aria-label="{{ c.aria }}"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.7.9.5l5.6-3.8c.3-.2.3-.7 0-.9L2.9.7C2.5.5 2 .7 2 1.2z" fill="currentColor"></path></svg><span class="av-rs-vlink-t">Ver su video</span></button>
-              </div>
-            </div>
-            <div class="av-rs-antes">
-              <div class="av-rs-lbl"><span>Antes</span><sc-if value="{{ c.hasTag }}"><span class="av-rs-tag">{{ c.tag }}</span></sc-if></div>
-              <p>{{ c.antes }}</p>
-            </div>
-            <div class="av-rs-hicimos">
-              <div class="av-rs-lbl"><span>Qué hicimos</span></div>
-              <ul class="av-rs-chips">
-                <sc-for list="{{ c.hicimos }}" as="h"><li class="av-rs-chip"><span class="av-rs-chip-n">{{ h.n }}</span><span>{{ h.t }}</span></li></sc-for>
-              </ul>
-            </div>
-            <div class="av-rs-rows">
-              <div class="av-rs-lbl"><span>A los 90 días</span></div>
-              <dl>
-                <sc-for list="{{ c.filas }}" as="r"><div class="av-rs-row"><dt>{{ r.k }}</dt><dd>{{ r.v }}</dd></div></sc-for>
-              </dl>
-              <sc-if value="{{ c.hasExtra }}"><p class="av-rs-extra">{{ c.extra }}</p></sc-if>
-              <sc-if value="{{ ejemplo }}" hint-placeholder-val="{{ true }}"><span class="av-stamp av-stamp--9" aria-hidden="true">Cifras de ejemplo<br>por confirmar</span></sc-if>
-              <sc-if value="{{ !ejemplo }}" hint-placeholder-val="{{ false }}"><span class="av-stamp av-stamp--9" aria-hidden="true">Con autorización<br>del cliente</span></sc-if>
-            </div>
-            <div class="av-rs-total">
-              <span class="av-tex-d" aria-hidden="true"></span>
-              <span><span class="av-rs-total-k">Valor firmado</span><span class="av-rs-ratio">{{ c.ratio }}</span></span>
-              <span class="av-rs-mask"><span class="av-rs-total-v">{{ c.total }}</span></span>
-            </div>
-          </article>
-        </sc-for>
-      </div>
-      <p class="av-rs-note"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.2"></circle><path d="M8 7.2v4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path><circle cx="8" cy="4.9" r=".9" fill="currentColor"></circle></svg><sc-if value="{{ ejemplo }}" hint-placeholder-val="{{ true }}"><span>Cifras de ejemplo mientras confirmamos los datos con cada cliente.</span></sc-if><sc-if value="{{ !ejemplo }}" hint-placeholder-val="{{ false }}"><span>Resultados reales de clientes, con autorización. Varían según zona, ticket e inversión.</span></sc-if></p>
-    </div>
-
-    <section id="proceso" class="av-pr" aria-labelledby="pr-h">
-      <header class="av-pr-head">
-        <div class="av-rs-head-main">
-          <div class="av-eb av-eb--l" data-av-rv=""><span class="av-eb-line"></span><span>Proceso</span></div>
-          <h2 id="pr-h" class="av-pr-h2" data-av-rv="" data-av-rv-d="1">De la primera llamada a tu agenda llena, <span class="av-hl">con fechas.</span></h2>
-        </div>
-        <div class="av-rs-head-side">
-          <p class="av-rs-lede" data-av-rv="" data-av-rv-d="2">Cuatro etapas: cuándo pasa, qué haces tú y qué hacemos nosotros.</p>
-        </div>
-      </header>
-
-      <div class="av-pr-board" data-av-rv="none">
-        <div class="av-pr-dims">
-          <span class="av-pr-x0" aria-hidden="true"></span>
-          <span class="av-pr-dim av-pr-dim--a" aria-hidden="true"><span class="av-pr-dim-line"></span><span class="av-pr-dim-t"></span><span class="av-pr-dim-t av-pr-dim-t--r"></span><span class="av-pr-dim-x"></span></span>
-          <span class="av-pr-dim av-pr-dim--b" aria-hidden="true"><span class="av-pr-dim-line"></span><span class="av-pr-dim-t"></span><span class="av-pr-dim-t av-pr-dim-t--r"></span><span class="av-pr-dim-x"></span></span>
-          <span class="av-pr-dim-l av-pr-dim-l--a" data-av-tbd="Plazo de primeras citas">Primeras citas: 2 a 3 semanas</span>
-          <span class="av-pr-dim-l av-pr-dim-l--b" data-av-tbd="Plazo de números estables">Números estables: 60 a 90 días</span>
-        </div>
-        <div class="av-pr-tapewrap" aria-hidden="true">
-          <div class="av-pr-tape">
-            <span class="av-tex-a"></span>
-            <span class="av-pr-ticks"></span>
-            <span class="av-pr-marks"><span class="av-pr-mark">Día 0</span><span class="av-pr-mark">Días 1–14</span><span class="av-pr-mark">Días 15–45</span><span class="av-pr-mark">Mes 2+</span></span>
-            <span class="av-pr-hook"></span>
-          </div>
-        </div>
-        <ol class="av-pr-steps">
-          <li class="av-pr-step" data-av-rv="">
-            <span class="av-pr-seg" aria-hidden="true"><i><span class="av-tex-a"></span></i></span>
-            <span class="av-pr-tab" aria-hidden="true">01</span>
-            <span class="av-pr-when">Día 0</span>
-            <h3 class="av-pr-title">Diagnóstico gratis</h3>
-            <p class="av-pr-desc">30 min · por videollamada o teléfono · en español</p>
-            <div class="av-pr-part av-pr-part--tu"><div class="av-pr-plbl"><span class="av-pr-k">Tu parte</span><span class="av-pr-time">30 min</span></div><p>Contarnos tu zona, tu ticket y cuánta obra más puedes tomar.</p></div>
-            <div class="av-pr-part av-pr-part--nos"><div class="av-pr-plbl"><span class="av-pr-k">Nuestra parte</span></div><p>Te mostramos cuánto cuesta una cita en tu zona, qué hace tu competencia y un plan de 90 días. Si no te conviene, te lo decimos.</p></div>
-          </li>
-          <li class="av-pr-step" data-av-rv="">
-            <span class="av-pr-seg" aria-hidden="true"><i><span class="av-tex-a"></span></i></span>
-            <span class="av-pr-tab" aria-hidden="true">02</span>
-            <span class="av-pr-when">Días 1–14</span>
-            <h3 class="av-pr-title">Montaje</h3>
-            <p class="av-pr-desc">Campañas, sitio y guion de calificación</p>
-            <div class="av-pr-part av-pr-part--tu"><div class="av-pr-plbl"><span class="av-pr-k">Tu parte</span><span class="av-pr-time">~1 h + fotos</span></div><p>Aprobar cada anuncio y mandarnos fotos de tus obras.</p></div>
-            <div class="av-pr-part av-pr-part--nos"><div class="av-pr-plbl"><span class="av-pr-k">Nuestra parte</span></div><p>Armamos las campañas, el sitio, el guion de calificación y la conexión a tu WhatsApp o CRM.</p></div>
-          </li>
-          <li class="av-pr-step" data-av-rv="">
-            <span class="av-pr-seg" aria-hidden="true"><i><span class="av-tex-a"></span></i></span>
-            <span class="av-pr-tab" aria-hidden="true">03</span>
-            <span class="av-pr-when">Días 15–45</span>
-            <h3 class="av-pr-title">Primeras citas</h3>
-            <p class="av-pr-desc">Prospectos calificados en menos de 24 h</p>
-            <div class="av-pr-part av-pr-part--tu"><div class="av-pr-plbl"><span class="av-pr-k">Tu parte</span><span class="av-pr-time">Solo llamadas calificadas</span></div><p>Llamar solo a quien tiene presupuesto y fecha.</p></div>
-            <div class="av-pr-part av-pr-part--nos"><div class="av-pr-plbl"><span class="av-pr-k">Nuestra parte</span></div><p>Nuestro equipo bilingüe califica cada prospecto en menos de 24 h.</p></div>
-          </li>
-          <li class="av-pr-step" data-av-rv="">
-            <span class="av-pr-seg" aria-hidden="true"><i><span class="av-tex-a"></span></i></span>
-            <span class="av-pr-tab" aria-hidden="true">04</span>
-            <span class="av-pr-when">Mes 2+</span>
-            <h3 class="av-pr-title">Escala y temporada baja</h3>
-            <p class="av-pr-desc">Optimizamos por contrato firmado</p>
-            <div class="av-pr-part av-pr-part--tu"><div class="av-pr-plbl"><span class="av-pr-k">Tu parte</span><span class="av-pr-time" data-av-tbd="Tiempo mensual del cliente">20 min al mes</span></div><p>Decirnos cuánta obra puedes tomar.</p></div>
-            <div class="av-pr-part av-pr-part--nos"><div class="av-pr-plbl"><span class="av-pr-k">Nuestra parte</span></div><p>Optimizamos por costo por contrato firmado y escalamos o pausamos según tu capacidad.</p><p class="av-pr-quote">No te reportamos likes. Te reportamos contratos.</p></div>
-          </li>
-        </ol>
-        <div class="av-pr-note"><span class="av-tex-l" aria-hidden="true"></span><span class="av-pr-note-k">Nota</span><p>Primeras citas en 2 a 3 semanas. Números estables entre 60 y 90 días.</p></div>
-      </div>
-    </section>
-
-    <div class="av-rs-close" data-av-rv="">
-      <p><strong>El plano está listo. Falta tu zona.</strong><span>Trabajamos con un solo contratista por especialidad en cada zona.</span></p>
-      <a href="#agendar" class="av-btn-dark">Ver si mi zona está disponible<svg class="av-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
-    </div>
-
-  </div>
-  <div class="av-rs-perf" aria-hidden="true"></div>
-  <div class="av-rs-bite" aria-hidden="true"></div>
-</section>
 
 <div data-av-vmodal="1" class="av-vmodal" data-state="{{ videoState }}" role="dialog" aria-modal="true" aria-label="Video" aria-hidden="{{ videoHidden }}">
   <div data-av-vveil="1" class="av-vmodal-veil" onClick="{{ closeVideo }}">
@@ -928,7 +463,7 @@ html.av-js .av-pr-board:not([data-in]) :is(.av-pr-dim-t,.av-pr-dim-x,.av-pr-x0,.
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;scrimIntensity&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;soft&quot;,&quot;medium&quot;,&quot;heavy&quot;],&quot;default&quot;:&quot;medium&quot;,&quot;tsType&quot;:&quot;'soft'|'medium'|'heavy'&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showScrollCue&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showNavCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Nav&quot;},&quot;datosDeEjemplo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;fotoEquipo&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;fotoEstratega&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;showSeals&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;showTrust&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;scrimIntensity&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;soft&quot;,&quot;medium&quot;,&quot;heavy&quot;],&quot;default&quot;:&quot;medium&quot;,&quot;tsType&quot;:&quot;'soft'|'medium'|'heavy'&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showScrollCue&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showNavCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Nav&quot;}}">
 // Vídeos do carrossel. Prévia (5–7s, 360p, muda) e poster ficam em media/reel/<id>.mp4|.webp;
 // o vídeo completo do popup vem direto do Wistia em MP4 (md = 540p p/ telas estreitas, hd = 720p).
 const REEL = [
@@ -941,42 +476,6 @@ const REEL = [
 ];
 // Duas cópias da faixa: só a primeira é acessível; a segunda existe para o loop.
 const REEL_GROUPS = [{ hidden: 'false', tab: 0 }, { hidden: 'true', tab: -1 }];
-
-// Antes do 1º render: av-js liga a revelação no scroll (sem IO ou com reduced-motion tudo nasce visível);
-// ?prov contorna todo dado provisório ([data-av-tbd]) para revisão antes de publicar.
-try {
-  const de = document.documentElement;
-  const rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (typeof IntersectionObserver !== 'undefined' && !rm) de.classList.add('av-js');
-  if (/[?&]prov\b/.test(location.search)) de.classList.add('av-prov');
-} catch (e) {}
-
-// 3ª dobra — fonte única dos números. TODOS são de exemplo até o cliente confirmar (prop datosDeEjemplo).
-// Calibrados entre si: o retorno médio (M-04) não pode ficar acima do de todos os casos.
-const METRICS = [
-  { n: '01', label: 'Costo por cita calificada', pre: '$', num: '142', nota: 'Inversión en anuncios ÷ citas que pasaron el filtro de presupuesto y fecha.', sr: '$142' },
-  { n: '02', label: 'De las citas llegan a estimate', num: '61', suf: '%', nota: 'Citas con visita hecha y estimate entregado.', sr: '61%' },
-  { n: '03', label: 'Ticket promedio cerrado', pre: '$', num: '23,800', nota: 'Valor firmado ÷ contratos, según lo que reporta cada cliente.', sr: '$23,800' },
-  { n: '04', label: 'Retorno por dólar invertido', arrow: true, from: '$1', to: '$9', nota: 'Valor firmado a 90 días ÷ (anuncios + fee).', sr: 'De cada $1 invertido salen $9 en contratos.' },
-];
-// i = posição do vídeo em REEL (o popup é o mesmo do carrossel). Nunca usar u3z5opwfg5 (mostra uma empresa real).
-const CASES = [
-  { n: '01', i: 1, id: 'qtq97pqw42', nicho: 'Cocinas y baños', ciudad: 'Houston, TX', porte: 'Equipo de 6 · ticket promedio $22,000', periodo: '90 días', tag: 'Ya había probado otra agencia',
-    antes: 'Contrato de 12 meses con otra agencia, reportes de clics y la cuenta de anuncios a nombre de ellos.',
-    hicimos: [{ n: '01', t: 'Meta Ads' }, { n: '03', t: 'Estimates' }, { n: '05', t: 'Sitio web' }],
-    filas: [{ k: 'Inversión total', v: '$10,800' }, { k: 'Citas calificadas', v: '44' }, { k: 'Contratos firmados', v: '6' }],
-    total: '$128,400', ratio: '$12 por cada $1 invertido (anuncios + fee)', extra: '' },
-  { n: '02', i: 2, id: '85xxi41ehr', nicho: 'Exteriores y patios', ciudad: 'Tampa, FL', porte: 'Equipo de 4 · ticket promedio $17,000', periodo: '90 días', tag: '',
-    antes: 'Vivía de referidos: 2 o 3 estimates al mes y semanas sin llamadas.',
-    hicimos: [{ n: '01', t: 'Meta Ads' }, { n: '02', t: 'Social Media' }, { n: '05', t: 'Sitio web' }],
-    filas: [{ k: 'Inversión total', v: '$8,700' }, { k: 'Citas calificadas', v: '30' }, { k: 'Contratos firmados', v: '5' }],
-    total: '$86,500', ratio: '$10 por cada $1 invertido (anuncios + fee)', extra: '' },
-  { n: '03', i: 4, id: 'j9kq9ph7rs', nicho: 'Remodelación completa', ciudad: 'Naperville, IL', porte: 'Equipo de 5 · ticket promedio $38,000', periodo: '90 días · dic–feb', tag: 'Empezó en temporada baja',
-    antes: 'El invierno le paraba la agenda de diciembre a marzo.',
-    hicimos: [{ n: '01', t: 'Meta Ads' }, { n: '03', t: 'Estimates' }, { n: '04', t: 'SEO para IA' }],
-    filas: [{ k: 'Inversión total', v: '$10,500' }, { k: 'Citas calificadas', v: '24' }, { k: 'Contratos firmados', v: '2' }],
-    total: '$76,000', ratio: '$7 por cada $1 invertido (anuncios + fee)', extra: 'Primer contrato en la semana 6.' },
-];
 
 class Component extends DCLogic {
   state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, menuOpen: false, stuck: false, video: null };
@@ -1030,7 +529,6 @@ class Component extends DCLogic {
 
 
       if (this._mountReel) this._mountReel();
-      if (this._mountReveal) this._mountReveal();
     };
 
     // A re-render can remount an sc-if branch and restore its static style,
@@ -1122,28 +620,6 @@ class Component extends DCLogic {
         slot.appendChild(vid);
         if (this._reelIO) this._reelIO.observe(vid); else this._reelPlay(vid);
       });
-    };
-
-    // Revelação no scroll: um único IntersectionObserver para todo [data-av-rv]. Marca [data-in] uma vez e
-    // deixa de observar. Vários limiares para que blocos mais altos que a tela também sejam revelados.
-    this._mountReveal = () => {
-      const de = document.documentElement;
-      if (!de.classList.contains('av-js')) return;
-      if (!this._rvIO) {
-        try {
-          this._rvIO = new IntersectionObserver(entries => {
-            entries.forEach(en => {
-              if (!en.isIntersecting) return;
-              const rh = en.rootBounds ? en.rootBounds.height : window.innerHeight;
-              if (en.intersectionRatio >= 0.15 || en.intersectionRect.height >= rh * 0.2) {
-                en.target.setAttribute('data-in', '');
-                this._rvIO.unobserve(en.target);
-              }
-            });
-          }, { threshold: [0, 0.02, 0.05, 0.1, 0.15], rootMargin: '0px 0px -8% 0px' });
-        } catch (e) { de.classList.remove('av-js'); return; }
-      }
-      document.querySelectorAll('[data-av-rv]:not([data-av-rvo])').forEach(el => { el.setAttribute('data-av-rvo', ''); this._rvIO.observe(el); });
     };
 
     // Popup: <video> nativo com o MP4 do Wistia. É criado e recebe play() ainda dentro do
@@ -1444,14 +920,6 @@ class Component extends DCLogic {
     // Menu mobile: tocar num link fecha o menu (a rolagem até a âncora segue normal).
     this._onMenuLink = (e) => { if (this.state.menuOpen && e.target && e.target.closest && e.target.closest('[data-av-menu] a')) { this.setState({ menuOpen: false }); this._repaint(); } };
     document.addEventListener('click', this._onMenuLink);
-    // Cliques delegados das dobras novas (os nós são do React; o handler resolve tudo no clique).
-    this._onDocClick = (e) => {
-      const t = e.target && e.target.closest ? e.target : null;
-      if (!t) return;
-      const play = t.closest('[data-av-case-play]');
-      if (play) { e.preventDefault(); this._openVideo(+play.getAttribute('data-av-i'), play); return; }
-    };
-    document.addEventListener('click', this._onDocClick);
     // Pré-aquece o popup no toque/clique (pointerdown chega ~100 ms antes do click) e no foco por teclado.
     this._onPrime = (e) => { const b = e.target && e.target.closest && e.target.closest('.av-reel-hit, [data-av-case-play]'); if (b) this._primeVideo(b); };
     document.addEventListener('pointerdown', this._onPrime, { passive: true, capture: true });
@@ -1475,13 +943,11 @@ class Component extends DCLogic {
     this._unmounted = true;
     if (this._onKey) document.removeEventListener('keydown', this._onKey);
     if (this._onMenuLink) document.removeEventListener('click', this._onMenuLink);
-    if (this._onDocClick) document.removeEventListener('click', this._onDocClick);
     if (this._onPrime) { document.removeEventListener('pointerdown', this._onPrime, true); document.removeEventListener('focusin', this._onPrime, true); }
     clearTimeout(this._primeT);
     clearTimeout(this._videoTimer);
     if (this._shownVideo) document.documentElement.style.overflow = '';
     if (this._reelIO) this._reelIO.disconnect();
-    if (this._rvIO) this._rvIO.disconnect();
     if (this._measure) window.removeEventListener('resize', this._measure);
     if (this._poll) clearInterval(this._poll);
     if (this._io) this._io.disconnect();
@@ -1501,24 +967,8 @@ class Component extends DCLogic {
         open: (e) => this._openVideo && this._openVideo(i, e && e.currentTarget),
       }));
     }
-    if (!this._metrics) this._metrics = METRICS.map((m, k) => Object.assign({ d: String(k + 1), tbd: 'Métrica ' + m.n }, m));
-    if (!this._cases) {
-      this._cases = CASES.map((c, k) => Object.assign({}, c, {
-        anchor: 'caso-' + c.n,
-        hid: 'caso-' + c.n + '-h',
-        bg: { backgroundImage: 'url("./media/reel/' + c.id + '.webp")' },
-        aria: 'Ver el video del caso ' + c.n + ': ' + c.nicho.toLowerCase() + ' en ' + c.ciudad,
-        hasTag: !!c.tag,
-        hasExtra: !!c.extra,
-        d: String(k + 1),
-        tbd: 'Caso ' + c.n + ': autorización y datos del cliente',
-      }));
-    }
     const vid = this.state.video;
     return {
-      ejemplo: this.props.datosDeEjemplo ?? true,
-      metrics: this._metrics,
-      cases: this._cases,
       reelGroups: REEL_GROUPS,
       reelItems: this._reelItems,
       videoState: vid ? 'open' : 'closed',
