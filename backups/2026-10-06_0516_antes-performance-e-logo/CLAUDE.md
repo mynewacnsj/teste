@@ -93,14 +93,6 @@ O site não terá um único fundo: algumas dobras usam cores complementares, com
 - Nunca use `src="{{ … }}"` em `<img>`/`<video>` no template: o HTML cru é parseado antes do React e o
   navegador baixa a URL literal. Use `style="{{ objeto }}"` ou crie o elemento via JS.
 
-## Desempenho (obrigatório manter)
-
-- Sem CDN: React em `vendor/`, `support.min.js` (regerar com esbuild ao alterar `support.js`), fontes em `fonts/`
-  com `@font-face` inline. Nunca voltar a usar Google Fonts nem unpkg.
-- Hero: `<picture>` AVIF/WebP em `media/hero/` + `<link rel="preload" as="image" fetchpriority="high">` com o mesmo
-  `media`/`srcset`. Se mudar um, mude o outro (senão a imagem baixa duas vezes).
-- Logo: texto "Contractor Society" (Archivo 800 creme + "Society" âmbar espaçado), sem ícone.
-
 ## Publicação
 
 GitHub Pages em https://mynewacnsj.github.io/teste/ a partir do branch `gh-pages`

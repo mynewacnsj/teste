@@ -20,7 +20,7 @@ estático comum: o template fica dentro de `<x-dc>` e é montado no navegador po
 | `Segunda Dobra - Dos Columnas.dc.html` | Canvas de exploração com as variantes da segunda dobra (rodadas t1–t5) | Rascunho/design |
 | `snippets/transicao-hero.html` | Faixa de transição mascarada (92px) entre hero e segunda dobra, removida em 28/07/2026 e guardada para reuso | Guardado |
 | `support.js` | Runtime dc (gerado de `dc-runtime/src/*.ts`, não editar) | **Produção** |
-| `image-slot.js` | Web component `<image-slot>` do editor; não é mais carregado pelo index | Sobra |
+| `image-slot.js` | Web component `<image-slot>` do editor; é carregado no index mas **não é usado** | Sobra |
 | `grain.png` | Tile de ruído 256×256 da textura da casa | **Produção** |
 | `uploads/Gemini_Generated_Image_….png` | Colagem do hero (2752×1536, 7,1 MB) | **Produção** |
 | `uploads/pasted-1785214114686-0.png` | Mockup mobile com setas desenhadas sobre as colunas (feedback) | Referência |
@@ -39,23 +39,14 @@ python3 -m http.server 8000   # ou qualquer servidor estático
 # abrir http://localhost:8000/
 ```
 
-- **Precisa de servidor HTTP.** Em `file://` o reparse do template (`fetch(location.href)`) falha.
-- **Tudo é local, sem CDN:** React/ReactDOM 18.3.1 em `vendor/`, runtime minificado `support.min.js`
-  (gerado de `support.js` com esbuild: `esbuild support.js --minify --target=es2019 --outfile=support.min.js`)
-  e fontes em `fonts/` (Archivo variável 500–800 + Barlow 400/500/600, subconjunto latin, woff2, 102 KB).
-  O único host externo é o do Wistia, e só quando um vídeo é aberto no popup.
-- Publicado em GitHub Pages: https://mynewacnsj.github.io/teste/ (branch `gh-pages`; `.nojekyll` obrigatório).
+- **Precisa de servidor HTTP.** Em `file://` o reparse do template (`fetch(location.href)`, `support.js:159`) falha.
+- **Precisa de rede:** React e ReactDOM 18.3.1 vêm do unpkg com SRI (`support.js:1143-1146`) e as fontes do
+  Google Fonts. Se o CDN falhar, a página fica **em branco**, porque o `<x-dc>` já foi escondido (`support.js:1906-1909`).
+- Funciona em qualquer hospedagem estática. **Publicado em GitHub Pages:** https://mynewacnsj.github.io/teste/
+  (branch `gh-pages`, espelho do branch de desenvolvimento; `.nojekyll` evita o processamento Jekyll dos `{{ }}`).
+- Se houver CSP, libere `'unsafe-eval'` (o runtime usa `new Function`), `https://unpkg.com` e estilos inline.
 
-### Desempenho (primeira dobra)
-
-- `<head>` faz **preload** da imagem do hero (`fetchpriority="high"`, mesmo `media`/`srcset` do `<picture>`, então
-  não há download duplo) e das fontes Archivo e Barlow 400. `@font-face` inline com `font-display:swap`.
-- Scripts com `defer`: o HTML e a imagem começam a baixar antes do JavaScript.
-- Imagem do hero em `media/hero/`: AVIF com WebP de reserva. Celular em retrato recebe um recorte vertical
-  (`hero-m-650/1300`, ~29–95 KB) com o mesmo enquadramento do `object-position:68%`; telas largas recebem
-  `hero-1280/1920/2752` (~35–131 KB). O PNG original de 6,9 MB fica só em `uploads/` como fonte.
-- Para trocar a imagem do hero: gerar as variantes a partir do original (ver `scripts/` no histórico do commit
-  de desempenho) mantendo os mesmos nomes.
+---
 
 ## 3. Runtime dc (`support.js`)
 
