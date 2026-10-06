@@ -1,0 +1,174 @@
+<!doctype html>
+<!-- Mockup do card "Meta Ads" (1080×720). Renderizar: ver design/mockups/README.md -->
+<html lang="es"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:720px;overflow:hidden;background:#0c0c0d}
+body{position:relative;font-family:Inter,system-ui,sans-serif;color:#f3f3f3;-webkit-font-smoothing:antialiased}
+.bg{position:absolute;inset:0;background:
+  radial-gradient(52% 70% at 26% 52%,rgba(233,162,39,.20) 0%,rgba(233,162,39,0) 62%),
+  radial-gradient(42% 50% at 80% 30%,rgba(233,162,39,.12) 0%,rgba(233,162,39,0) 70%),
+  linear-gradient(72deg,rgba(233,162,39,0) 30%,rgba(233,162,39,.05) 50%,rgba(233,162,39,0) 70%),#0c0c0d}
+.grain{position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background:url(../../grain.png);background-size:256px}
+.hatch{position:absolute;inset:0;opacity:.22;background:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0 1px,transparent 1px 4px)}
+.card{position:absolute;border-radius:16px;background:rgba(24,25,28,.96);box-shadow:0 0 0 1px rgba(255,255,255,.1),0 34px 70px -24px rgba(0,0,0,.95)}
+.lab{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8e8f95}
+
+/* ---------- telefone com o anúncio ---------- */
+.phone{position:absolute;left:96px;top:34px;width:320px;height:700px;border-radius:46px;background:#1b1c1f;padding:10px;
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.14),0 0 0 7px #0e0f11,0 40px 80px -20px rgba(0,0,0,.9),0 0 100px -20px rgba(233,162,39,.4);transform:rotate(-4deg)}
+.screen{position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:#000}
+.island{position:absolute;top:9px;left:50%;width:90px;height:25px;margin-left:-45px;border-radius:20px;background:#000;z-index:5}
+.status{display:flex;justify-content:space-between;align-items:center;height:42px;padding:0 22px 0 26px;font-size:12.5px;font-weight:600}
+.igtop{display:flex;justify-content:space-between;align-items:center;padding:0 14px 8px}
+.igtop b{font-family:Archivo,sans-serif;font-weight:800;font-size:19px;letter-spacing:-.02em}
+.igtop .ic{display:flex;gap:16px}
+.igtop svg{width:21px;height:21px}
+.stories{display:flex;gap:11px;padding:2px 12px 10px;border-bottom:1px solid #1d1d1f}
+.stories div{text-align:center;font-size:9.5px;color:#cfcfcf}
+.stories i{display:block;width:50px;height:50px;border-radius:50%;padding:2px;margin-bottom:4px;background:conic-gradient(#e9a227,#f6bc4d,#c98a12,#e9a227)}
+.stories i b{display:block;width:100%;height:100%;border-radius:50%;border:2px solid #000;background:#2a2b30 center/cover}
+.ph{display:flex;align-items:center;gap:9px;padding:9px 12px}
+.ph .av{width:32px;height:32px;border-radius:50%;padding:2px;background:conic-gradient(#e9a227,#f6bc4d,#c98a12,#e9a227)}
+.ph .av div{width:100%;height:100%;border-radius:50%;border:2px solid #000;background:#e9a227;display:flex;align-items:center;justify-content:center}
+.ph .av span{display:block;width:8px;height:8px;background:#0c0c0d;transform:rotate(45deg)}
+.ph b{display:block;font-size:12.5px}
+.ph small{display:block;font-size:10.5px;color:#a8a8a8}
+.ph .more{margin-left:auto;font-weight:700;letter-spacing:1px;color:#ddd}
+.creative{position:relative;height:375px;background:url(img/kitchen-ad.jpg) center/cover}
+.creative:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,13,.0) 35%,rgba(12,12,13,.85) 100%)}
+.creative .loc{position:absolute;top:12px;left:12px;padding:5px 9px;border-radius:4px;background:#e9a227;color:#0c0c0d;font-size:10px;font-weight:800;letter-spacing:.12em}
+.creative .txt{position:absolute;left:14px;right:14px;bottom:14px}
+.creative h3{font-family:Archivo,sans-serif;font-weight:800;font-size:25px;line-height:1.02;letter-spacing:-.03em;color:#fff}
+.creative h3 span{color:#e9a227}
+.creative p{margin-top:7px;font-size:11.5px;color:#e7e7e7}
+.cta{display:flex;justify-content:space-between;align-items:center;height:40px;padding:0 13px;background:#e9a227;color:#0c0c0d;font-size:13px;font-weight:700}
+.cta svg{width:14px;height:14px}
+.pa{display:flex;justify-content:space-between;padding:9px 12px 4px}
+.pa .l{display:flex;gap:14px}
+.pa svg{width:22px;height:22px}
+.likes{padding:0 12px;font-size:12.5px;font-weight:700}
+.cap{padding:3px 12px;font-size:12px;line-height:1.4;color:#e5e5e5}
+.cap b{color:#fff}
+
+/* ---------- desempenho ---------- */
+.perf{left:556px;top:40px;width:470px;padding:18px 20px;transform:rotate(1.5deg)}
+.perf .hd{display:flex;justify-content:space-between;align-items:center}
+.perf .hd b{display:block;font-size:14px;margin-top:4px}
+.live{display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:20px;background:rgba(88,194,125,.14);color:#6fd394;font-size:11px;font-weight:700}
+.live i{display:block;width:7px;height:7px;border-radius:50%;background:#58c27d;box-shadow:0 0 0 3px rgba(88,194,125,.25)}
+.kpis{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:10px;margin-top:14px}
+.kpis div{padding:10px 12px;border-radius:10px;background:#202126}
+.kpis b{display:block;font-family:Archivo,sans-serif;font-weight:800;font-size:24px;letter-spacing:-.02em;margin-top:5px}
+.kpis .hi b{color:#e9a227;font-size:30px}
+.kpis small{display:block;font-size:10.5px;color:#6fd394;font-weight:600;margin-top:2px}
+.chart{margin-top:14px}
+.chart .t{display:flex;justify-content:space-between;align-items:baseline}
+.chart .t span{font-size:12px;font-weight:600;color:#d9d9d9}
+.bars{position:relative;display:flex;align-items:flex-end;gap:2px;height:84px;margin-top:26px;padding:0 2px;border-bottom:1px solid #34353b}
+.bars:before,.bars:after{content:"";position:absolute;left:0;right:0;height:1px;background:#26272c;z-index:0}
+.bars:before{top:0}.bars:after{top:50%}
+.bar{position:relative;z-index:1;flex:1;margin:0 9px;border-radius:4px 4px 0 0;background:rgba(233,162,39,.55)}
+.bar.now{background:#e9a227}
+.bar.now em{position:absolute;top:-21px;left:50%;transform:translateX(-50%);font-style:normal;font-size:11px;font-weight:700;color:#f3f3f3;white-space:nowrap}
+.days{display:flex;padding:5px 2px 0}
+.days span{flex:1;text-align:center;font-size:10px;color:#8e8f95}
+
+/* ---------- segmentação ---------- */
+.target{left:470px;top:378px;width:300px;padding:14px 16px;transform:rotate(-2.5deg)}
+.map{position:relative;height:118px;margin-top:10px;border-radius:10px;overflow:hidden;background:#16171a}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.chips span{padding:4px 8px;border-radius:6px;background:#26272c;font-size:10.5px;color:#e2e2e2}
+.chips span.a{background:rgba(233,162,39,.16);color:#f2bd57;box-shadow:inset 0 0 0 1px rgba(233,162,39,.4)}
+
+/* ---------- lead ---------- */
+.lead{left:762px;top:408px;width:276px;padding:14px 16px 16px;transform:rotate(2.5deg);box-shadow:0 0 0 1.5px rgba(233,162,39,.75),0 34px 70px -24px rgba(0,0,0,.95),0 0 60px -18px rgba(233,162,39,.5)}
+.lead .top{display:flex;justify-content:space-between;align-items:center}
+.lead .new{display:flex;align-items:center;gap:6px;color:#e9a227;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.lead .new i{display:block;width:8px;height:8px;border-radius:50%;background:#e9a227;box-shadow:0 0 0 4px rgba(233,162,39,.2)}
+.lead .ago{font-size:10.5px;color:#8e8f95}
+.who{display:flex;gap:10px;align-items:center;margin-top:11px}
+.who .a{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#5b5f68,#2c2e33);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.who b{display:block;font-size:14px}
+.who small{display:block;font-size:11px;color:#a9aaae}
+.fields{margin-top:10px;border-top:1px solid #2a2b30}
+.fields div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #2a2b30;font-size:11.5px}
+.fields span{color:#8e8f95}
+.fields b{font-weight:600;color:#f1f1f1}
+.call{display:flex;align-items:center;justify-content:center;gap:7px;height:34px;margin-top:11px;border-radius:9px;background:#e9a227;color:#0c0c0d;font-size:12.5px;font-weight:700}
+.call svg{width:13px;height:13px}
+</style></head>
+<body>
+<div class="bg"></div><div class="grain"></div><div class="hatch"></div>
+
+<div class="phone"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span style="display:flex;gap:5px;align-items:center"><svg width="17" height="11" viewBox="0 0 17 11"><rect x="0" y="7" width="3" height="4" rx="1" fill="#fff"/><rect x="4.5" y="5" width="3" height="6" rx="1" fill="#fff"/><rect x="9" y="2.5" width="3" height="8.5" rx="1" fill="#fff"/><rect x="13.5" y="0" width="3" height="11" rx="1" fill="#fff"/></svg><svg width="25" height="12" viewBox="0 0 25 12"><rect x=".6" y=".6" width="21" height="10.8" rx="3.2" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="1.2"/><rect x="2.4" y="2.4" width="15" height="7.2" rx="1.8" fill="#fff"/></svg></span></div>
+  <div class="igtop"><b>Inicio</b><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.1A4.2 4.2 0 0112 7.8a4.2 4.2 0 017.5 2.6c0 5.5-7.5 10.1-7.5 10.1z" fill="none" stroke="#fff" stroke-width="1.8"/></svg><svg viewBox="0 0 24 24"><path d="M21 4L3 11l7 2.5L12.5 21z M10 13.5L21 4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></div></div>
+  <div class="stories">
+    <div><i><b style="background-image:url(img/hero-worker.jpg)"></b></i>Tu historia</div>
+    <div><i><b style="background-image:url(img/1584622650111-993a426fbf0a.jpg)"></b></i>casa.diaz</div>
+    <div><i><b style="background-image:url(img/1600585154340-be6161a56a0c.jpg)"></b></i>katy.home</div>
+    <div><i><b style="background-image:url(img/hero-house.jpg)"></b></i>jsanchez</div>
+    <div><i><b style="background-image:url(img/1574359411659-15573a27fd0c.jpg)"></b></i>la.reina</div>
+  </div>
+  <div class="ph"><div class="av"><div><span></span></div></div><div><b>tuempresa.remodeling</b><small>Publicidad</small></div><div class="more">···</div></div>
+  <div class="creative">
+    <div class="loc">KATY · TX</div>
+    <div class="txt"><h3>Tu cocina nueva<br><span>en 3 semanas.</span></h3><p>Estimate gratis en 48 h · Precio cerrado</p></div>
+  </div>
+  <div class="cta">Solicitar presupuesto<svg viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" fill="none" stroke="#0c0c0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="pa"><div class="l">
+    <svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.1A4.2 4.2 0 0112 7.8a4.2 4.2 0 017.5 2.6c0 5.5-7.5 10.1-7.5 10.1z" fill="#e9a227"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 01-11.6 7.1L4 20l1.4-4.2A8 8 0 1120 11.5z" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M21 4L3 11l7 2.5L12.5 21z M10 13.5L21 4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+  </div><svg viewBox="0 0 24 24"><path d="M6 3.5h12v17l-6-4.5-6 4.5z" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+  <div class="likes">1.204 Me gusta</div>
+  <div class="cap"><b>tuempresa.remodeling</b> Remodelaciones completas con precio cerrado. Pide tu estimate sin compromiso.</div>
+</div></div>
+
+<div class="card perf">
+  <div class="hd"><div><div class="lab">Campaña · Meta Ads</div><b>Remodelación de cocinas · Katy, TX</b></div><div class="live"><i></i>Activa</div></div>
+  <div class="kpis">
+    <div class="hi"><div class="lab">Leads</div><b>47</b><small>▲ 32% vs. mes anterior</small></div>
+    <div><div class="lab">Costo/lead</div><b>$18,40</b><small>▼ 21%</small></div>
+    <div><div class="lab">Alcance</div><b>38,2 mil</b><small>personas en tu zona</small></div>
+  </div>
+  <div class="chart">
+    <div class="t"><span>Leads por día</span><span class="lab">Últimos 7 días</span></div>
+    <div class="bars">
+      <div class="bar" style="height:42%"></div><div class="bar" style="height:58%"></div><div class="bar" style="height:50%"></div>
+      <div class="bar" style="height:71%"></div><div class="bar" style="height:63%"></div><div class="bar" style="height:79%"></div>
+      <div class="bar now" style="height:92%"><em>9 hoy</em></div>
+    </div>
+    <div class="days"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+  </div>
+</div>
+
+<div class="card target">
+  <div class="lab">Segmentación</div>
+  <div class="map"><svg viewBox="0 0 268 118">
+    <rect width="268" height="118" fill="#16171a"/>
+    <path d="M0 30h268M0 88h268M60 0v118M200 0v118" stroke="#222327" stroke-width="7"/>
+    <path d="M-10 110L280 6" stroke="#26272c" stroke-width="11"/>
+    <path d="M0 58h268M130 0v118M20 0v118M240 0v118" stroke="#1d1e22" stroke-width="4"/>
+    <circle cx="134" cy="59" r="50" fill="rgba(233,162,39,.12)" stroke="#e9a227" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <circle cx="134" cy="59" r="7" fill="#e9a227" stroke="#16171a" stroke-width="2.5"/>
+    <text x="190" y="22" fill="#f2bd57" font-family="Inter" font-size="10" font-weight="700">15 mi</text>
+  </svg></div>
+  <div class="chips"><span class="a">77494</span><span class="a">77450</span><span class="a">77493</span><span>Propietarios</span><span>30–65 años</span><span>Interés: remodelación</span></div>
+</div>
+
+<div class="card lead">
+  <div class="top"><div class="new"><i></i>Nuevo lead calificado</div><div class="ago">hace 2 min</div></div>
+  <div class="who"><div class="a">C</div><div><b>Carlos Méndez</b><small>Katy, TX 77494 · Propietario</small></div></div>
+  <div class="fields">
+    <div><span>Proyecto</span><b>Baño principal</b></div>
+    <div><span>Presupuesto</span><b>$15k – $25k</b></div>
+    <div><span>¿Cuándo?</span><b>Próximos 30 días</b></div>
+  </div>
+  <div class="call"><svg viewBox="0 0 16 16"><path d="M4.5 1.8l2 3-1.3 1.3a8 8 0 004.7 4.7l1.3-1.3 3 2-.9 2.1c-.3.6-1 .9-1.6.7A12 12 0 012 4.3c-.2-.6.1-1.3.7-1.6z" fill="#0c0c0d"/></svg>Llamar ahora</div>
+</div>
+</body></html>
