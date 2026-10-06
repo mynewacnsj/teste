@@ -122,14 +122,21 @@ no mobile, hambúrguer âmbar que vira X e abre um menu com os mesmos links e CT
 
 Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`).
 
-- **6 vídeos Wistia** (lista `REEL` no script): `u3z5opwfg5`, `qtq97pqw42`, `85xxi41ehr`, `myhu1aftp6`,
-  `j9kq9ph7rs`, `vwcc31ysmm`. Os posters vêm do próprio Wistia (`embed-ssl.wistia.com/deliveries/…?image_crop_resized=540x960`).
-- **Cards = players Wistia reais.** Cada card tem um `<wistia-player>` criado por `_mountReel()` dentro de
-  `[data-av-reel-slot]` (fora do React; o template cru não pode ter `<wistia-player>`). Sem atributos extras:
-  a aparência vem da configuração no Wistia — plugin *video thumbnail* (prévia silenciosa em loop dos primeiros
-  5–7s), *click for sound*, play grande e cor `#e9a227`, sem barra/volume/tela cheia.
-  Uma camada transparente `.av-reel-hit` por cima captura o clique e abre o popup; o poster do Wistia
-  (`style="{{ it.bg }}"`) fica por baixo enquanto o player carrega.
+- **6 vídeos** (lista `REEL` no script): `u3z5opwfg5`, `qtq97pqw42`, `85xxi41ehr`, `myhu1aftp6`, `j9kq9ph7rs`,
+  `vwcc31ysmm`. **Sem player do Wistia** (era pesado: ~150 requisições, ~1,4s de CPU em JS e 3,5s até a 1ª prévia).
+- **Cards = `<video>` nativo.** `_mountReel()` cria um vídeo mudo, em loop e `playsinline` em cada
+  `[data-av-reel-slot]` (fora do React). A prévia é um MP4 curto hospedado no site (`media/reel/<id>.mp4`,
+  360p, 5–7s, sem áudio, 135–380 KB) e o poster é o 1º quadro (`media/reel/<id>.webp`, 6–21 KB), então a
+  troca poster → vídeo não pisca. O `src` só é ligado quando o card chega perto da tela e só os cards
+  visíveis tocam (`IntersectionObserver`); com `prefers-reduced-motion` ou economia de dados fica o poster.
+  Play âmbar no estilo do Wistia (`.av-reel-play`); camada transparente `.av-reel-hit` abre o popup.
+- **Popup = `<video controls>` nativo** com o MP4 servido pelo Wistia (`embed-ssl.wistia.com/deliveries/…mp4`;
+  540p em telas < 760px, 720p acima). O vídeo é criado e recebe `play()` dentro do próprio clique, para
+  tocar com som também no iOS. Enquanto o popup está aberto as prévias pausam.
+- **Regerar as prévias** (se um vídeo mudar no Wistia, as URLs `deliveries/…` também mudam e precisam ser
+  atualizadas em `REEL`): baixar o MP4 720p e rodar
+  `ffmpeg -ss 0 -to <fim> -i in.mp4 -an -vf "scale=360:-2:flags=lanczos,format=yuv420p" -c:v libx264 -profile:v main -level 3.1 -preset veryslow -crf 27 -r 30 -g 60 -movflags +faststart media/reel/<id>.mp4`
+  e `ffmpeg -i media/reel/<id>.mp4 -frames:v 1 -c:v libwebp -quality 72 media/reel/<id>.webp`.
 - **Loop infinito sem pausa:** 2 grupos idênticos de 6 cards; cada grupo anima `translateX(0 → -100%)` da
   própria largura (`@keyframes av-reel`), então a emenda é exata em pixel. Velocidade moderada:
   30s por volta no mobile (~36 px/s), 40s no desktop (~40 px/s). Não pausa no hover.
@@ -143,13 +150,12 @@ Primeiro elemento da segunda dobra, em largura total (`[data-av-reel]`).
 - **Popup** (`[data-av-vmodal]`, fora da `<section>`): moldura 9:16 centrada (não é tela cheia),
   altura máx. `min(100svh - 152px, 880px)`, filete âmbar de 2px no topo, véu escuro com blur + grão + hachura,
   poster desfocado e spinner enquanto o player carrega.
-  - Abrir: `_openVideo(i)` → `state.video` → `_syncVideo()` cria `<wistia-player media-id autoplay player-color="e9a227">`
-    no `[data-av-vmount]`, trava o scroll do `<html>` e foca o botão "Cerrar video".
-  - Fechar: Esc, clique no véu ou no ×. Pausa, destrói o player após o fade (360ms), destrava o scroll e devolve o foco ao card.
+  - Abrir: `_openVideo(i)` cria o `<video>` no `[data-av-vmount]`, chama `play()` e marca `state.video`;
+    `_syncVideo()` trava o scroll do `<html>` e foca o botão "Cerrar video".
+  - Fechar: Esc, clique no véu ou no ×. Pausa, solta o vídeo após o fade (360ms), destrava o scroll, devolve o
+    foco ao card e retoma as prévias visíveis.
   - O template usa `data-state="{{ videoState }}"` (atributo inteiro é reativo) e `style="{{ objeto }}"` para os posters:
     nunca `src="{{ … }}"` em `<img>`, porque o navegador baixaria o texto literal do template cru.
-- Scripts do Wistia (`player.js` + 6 `embed/<id>.js`) entram pelo `<helmet>`, assíncronos.
-- Autoplay com som funciona após o clique no Chrome; se um navegador bloquear, o Wistia mostra o botão de play.
 
 ### 4.3 Segunda dobra "El Método"
 

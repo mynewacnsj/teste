@@ -52,17 +52,19 @@ Não use `;` no data URI (`data:image/svg+xml,` sem `utf8`) — o parser de esti
 O site não terá um único fundo: algumas dobras usam cores complementares, como o claro `#f4f1ea`
 (com a textura de fundo claro acima), alternando com o escuro `#0c0c0d`. Mesma identidade visual.
 
-## Carrossel de vídeos (Wistia)
+## Carrossel de vídeos
 
 - Fica no topo da segunda dobra; 6 vídeos em `REEL` no script do `index.html`.
+- **Não usar o player do Wistia** (decisão do cliente: travava a página e atrasava as thumbs).
+  Cards: `<video>` nativo mudo em loop com prévia curta local (`media/reel/<id>.mp4`) + poster WebP do 1º
+  quadro; só toca o que está visível. Popup: `<video controls>` com o MP4 de `embed-ssl.wistia.com/deliveries`.
 - Loop: 2 grupos iguais, cada um anima `translateX(-100%)` da própria largura. Não pausa.
-- Cards são `<wistia-player>` reais com a configuração do Wistia (prévia silenciosa + play padrão);
-  não force atributos nem desenhe play próprio. Clique (camada transparente) abre o popup.
+- Play âmbar no estilo do Wistia, desenhado em CSS. Clique (camada transparente) abre o popup.
 - Cards sem sombra. Bordas: degradê por `mask-image` no `.av-reel` (nunca camada opaca por cima — o
   fundo da seção tem brilho âmbar e uma camada pintada cria emenda).
-- Mobile: 2 vídeos por linha. Popup 9:16 (nunca tela cheia) com o `<wistia-player>` criado/destruído via JS.
-- Nunca use `src="{{ … }}"` em `<img>` no template: o HTML cru é parseado antes do React e o navegador
-  baixa a URL literal. Use `style="{{ objeto }}"` com `backgroundImage`.
+- Mobile: 2 vídeos por linha. Popup 9:16, nunca tela cheia; `play()` dentro do clique (som no iOS).
+- Nunca use `src="{{ … }}"` em `<img>`/`<video>` no template: o HTML cru é parseado antes do React e o
+  navegador baixa a URL literal. Use `style="{{ objeto }}"` ou crie o elemento via JS.
 
 ## Publicação
 

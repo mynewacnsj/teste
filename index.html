@@ -12,13 +12,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
-<script src="https://fast.wistia.com/player.js" async=""></script>
-<script src="https://fast.wistia.com/embed/u3z5opwfg5.js" async="" type="module"></script>
-<script src="https://fast.wistia.com/embed/qtq97pqw42.js" async="" type="module"></script>
-<script src="https://fast.wistia.com/embed/85xxi41ehr.js" async="" type="module"></script>
-<script src="https://fast.wistia.com/embed/myhu1aftp6.js" async="" type="module"></script>
-<script src="https://fast.wistia.com/embed/j9kq9ph7rs.js" async="" type="module"></script>
-<script src="https://fast.wistia.com/embed/vwcc31ysmm.js" async="" type="module"></script>
 <style>
 html,body{margin:0;padding:0;background:#0c0c0d}
 a{color:#e9a227;text-decoration:none}
@@ -27,9 +20,9 @@ a:hover{color:#f6bc4d}
 /* Carrossel de vídeos — faixa infinita, rolamento contínuo para a esquerda.
    Cada grupo traz os 6 vídeos e anda -100% da PRÓPRIA largura: com 2 grupos
    a emenda é exata em pixel desde que 1 grupo >= largura da tela (garantido
-   pelo max() da largura do card no desktop). Cada card é um <wistia-player>
-   real (prévia silenciosa + play padrão configurados no Wistia); uma camada
-   transparente por cima captura o clique e abre o popup. */
+   pelo max() da largura do card no desktop). Cada card: poster WebP local, um
+   <video> nativo mudo em loop com a prévia curta (media/reel/) e o play; uma
+   camada transparente por cima captura o clique e abre o popup. */
 @keyframes av-reel{from{transform:translate3d(0,0,0)}to{transform:translate3d(-100%,0,0)}}
 .av-reel-wrap{position:relative;--av-reel-gap:12px;--av-reel-card:calc((100vw - 52px) / 2);--av-reel-dur:30s;--av-reel-fade:clamp(44px,13vw,260px)}
 .av-reel{position:relative;width:100%;overflow:hidden;padding:6px 0}
@@ -38,8 +31,12 @@ a:hover{color:#f6bc4d}
 .av-reel-card{position:relative;flex:0 0 auto;width:var(--av-reel-card);aspect-ratio:9/16;margin:0 var(--av-reel-gap) 0 0;border-radius:4px;overflow:hidden;background:#16171a}
 .av-reel-img{position:absolute;inset:0;display:block;background-color:#16171a;background-size:cover;background-position:50% 50%;background-repeat:no-repeat}
 .av-reel-slot{position:absolute;inset:0;z-index:1}
-.av-reel-slot wistia-player{display:block;width:100%;height:100%}
-.av-reel-hit{position:absolute;inset:0;z-index:2;width:100%;height:100%;margin:0;padding:0;border:0;border-radius:inherit;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.av-reel-slot video{display:block;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
+.av-reel-slot[data-on] video{opacity:1}
+.av-reel-play{position:absolute;left:50%;top:50%;z-index:2;width:clamp(64px,46%,124px);aspect-ratio:1.56;border-radius:2px;background:rgba(233,162,39,.9);display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);pointer-events:none;transition:background-color .25s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
+.av-reel-play svg{width:28%;height:auto;margin-left:6%;display:block}
+.av-reel-card:hover .av-reel-play{background:#f6bc4d;transform:translate(-50%,-50%) scale(1.05)}
+.av-reel-hit{position:absolute;inset:0;z-index:3;width:100%;height:100%;margin:0;padding:0;border:0;border-radius:inherit;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .av-reel-hit:focus-visible{outline:2px solid #e9a227;outline-offset:-2px}
 /* Degradê das bordas: os cards se dissolvem no preto da própria seção. É máscara, não
    camada pintada por cima, para a borda herdar exatamente o fundo (grão, hachura e o brilho
@@ -69,7 +66,7 @@ a:hover{color:#f6bc4d}
 .av-vmodal-spin{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:2px solid rgba(244,241,234,.18);border-top-color:#e9a227;animation:av-spin .8s linear infinite}
 @keyframes av-spin{to{transform:rotate(360deg)}}
 .av-vmodal-mount{position:absolute;inset:0;z-index:2}
-.av-vmodal-mount wistia-player{display:block;width:100%;height:100%}
+.av-vmodal-mount video{display:block;width:100%;height:100%;object-fit:contain;background:transparent}
 .av-vmodal-close{position:absolute;z-index:3;top:clamp(14px,2.4vh,24px);right:clamp(14px,2vw,28px);width:46px;height:46px;padding:0;border-radius:50%;border:1px solid rgba(244,241,234,.24);background:rgba(12,12,13,.55);color:#f4f1ea;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:scale(.9);transition:opacity .3s ease,transform .4s cubic-bezier(.2,.8,.2,1),border-color .2s ease,color .2s ease}
 .av-vmodal[data-state="open"] .av-vmodal-close{opacity:1;transform:none}
 .av-vmodal-close:hover{border-color:#e9a227;color:#e9a227}
@@ -239,6 +236,7 @@ a:hover{color:#f6bc4d}
             <div class="av-reel-card">
               <span class="av-reel-img" style="{{ it.bg }}"></span>
               <div class="av-reel-slot" data-av-reel-slot="{{ it.id }}"></div>
+              <span class="av-reel-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 2.6v18.8c0 .9 1 1.4 1.7.9l14.1-9.4c.6-.4.6-1.3 0-1.8L6.7 1.7C6 1.2 5 1.7 5 2.6z" fill="#0c0c0d" fill-opacity=".85"></path></svg></span>
               <button type="button" class="av-reel-hit" onClick="{{ it.open }}" aria-label="{{ it.label }}" tabindex="{{ g.tab }}"></button>
             </div>
           </sc-for>
@@ -449,14 +447,15 @@ a:hover{color:#f6bc4d}
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;scrimIntensity&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;soft&quot;,&quot;medium&quot;,&quot;heavy&quot;],&quot;default&quot;:&quot;medium&quot;,&quot;tsType&quot;:&quot;'soft'|'medium'|'heavy'&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showScrollCue&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showNavCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Nav&quot;},&quot;showPillars&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;pillarOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.28,&quot;min&quot;:0.08,&quot;max&quot;:0.45,&quot;step&quot;:0.01,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;showTagline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;showArrows&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Setas (móvil)&quot;},&quot;arrowsAnimated&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Setas (móvil)&quot;}}">
-// Vídeos do carrossel (Wistia). thumb = poster servido pelo próprio Wistia.
+// Vídeos do carrossel. Prévia (5–7s, 360p, muda) e poster ficam em media/reel/<id>.mp4|.webp;
+// o vídeo completo do popup vem direto do Wistia em MP4 (md = 540p p/ telas estreitas, hd = 720p).
 const REEL = [
-  { id: 'u3z5opwfg5', aspect: 0.5625, thumb: 'https://embed-ssl.wistia.com/deliveries/0537222f450f0bd0a8c1dbcec3304dcb.jpg?image_crop_resized=540x960' },
-  { id: 'qtq97pqw42', aspect: 0.5625, thumb: 'https://embed-ssl.wistia.com/deliveries/d0a469ea679b4181d23afdd94df9477b.jpg?image_crop_resized=540x960' },
-  { id: '85xxi41ehr', aspect: 0.5625, thumb: 'https://embed-ssl.wistia.com/deliveries/07e0638728c87699f23628a26534e37f.jpg?image_crop_resized=540x960' },
-  { id: 'myhu1aftp6', aspect: 0.5625, thumb: 'https://embed-ssl.wistia.com/deliveries/6ff941b627bead919239b9cc1dd8bd88.jpg?image_crop_resized=540x960' },
-  { id: 'j9kq9ph7rs', aspect: 0.5660377358490566, thumb: 'https://embed-ssl.wistia.com/deliveries/f5192de67eb37874de95aaff64052ae6.jpg?image_crop_resized=540x954' },
-  { id: 'vwcc31ysmm', aspect: 0.5625, thumb: 'https://embed-ssl.wistia.com/deliveries/e4f2232c381f97655b404cfe2d4b96ea.jpg?image_crop_resized=540x960' },
+  { id: 'u3z5opwfg5', aspect: 0.5625, md: 'https://embed-ssl.wistia.com/deliveries/9fc95563e8cd5c94adc0e7974b76b5bb3c918e0c.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/1e37a691fb256ee3614d6a14d27dc3992d16c078.mp4' },
+  { id: 'qtq97pqw42', aspect: 0.5625, md: 'https://embed-ssl.wistia.com/deliveries/dd69fb9f0689ea8d2064b72616b0b62736d44000.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/dbe16f8ad5d32dc59768cea37cb4801b5d1f49a0.mp4' },
+  { id: '85xxi41ehr', aspect: 0.5625, md: 'https://embed-ssl.wistia.com/deliveries/ed7586b56a0815003f05f6222649050dbd35a7f7.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/55d20cb2e5408efab459a65bd94ee7c2f9ce33be.mp4' },
+  { id: 'myhu1aftp6', aspect: 0.5625, md: 'https://embed-ssl.wistia.com/deliveries/42a5b20b26fd14cbdc881517cddb1d62fac087d1.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/65a510672334ef7e89102e88d0fe9c349dac1b40.mp4' },
+  { id: 'j9kq9ph7rs', aspect: 0.566038, md: 'https://embed-ssl.wistia.com/deliveries/53ac99b170f65aed2cb3d2ab76f8bb61d5617bb9.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/6ffcc117ba6af6dc092753b9d897f64ee5176c89.mp4' },
+  { id: 'vwcc31ysmm', aspect: 0.5625, md: 'https://embed-ssl.wistia.com/deliveries/b75ad03b1594faac47813be103c04f16d052a3c7.mp4', hd: 'https://embed-ssl.wistia.com/deliveries/8804365e85095a3d9884a84492685a561df94bfa.mp4' },
 ];
 // Duas cópias da faixa: só a primeira é acessível; a segunda existe para o loop.
 const REEL_GROUPS = [{ hidden: 'false', tab: 0 }, { hidden: 'true', tab: -1 }];
@@ -600,66 +599,108 @@ class Component extends DCLogic {
       this._checkArrows();
     }, 180);
 
-    // Cards do carrossel: um <wistia-player> por slot, criado fora do React (o template cru
-    // não pode conter <wistia-player>, senão o player tentaria carregar "{{ it.id }}").
-    // Sem atributos extras: prévia silenciosa, play e cor vêm da configuração no Wistia.
+    // Cards do carrossel: <video> nativo, mudo e em loop, com a prévia curta hospedada no site.
+    // Criado fora do React (o template cru não pode ter <video src="{{ }}">). O src só é ligado
+    // quando o card chega perto da tela e só os cards visíveis tocam; com reduced-motion ou
+    // economia de dados fica só o poster.
+    const calm = () => {
+      try { if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return true; } catch (e) {}
+      const c = navigator.connection;
+      return !!(c && c.saveData);
+    };
+    this._reelSeen = new Set();
+    this._reelPlay = (vid) => {
+      if (this.state.video || calm()) return;
+      if (!vid.getAttribute('src')) vid.setAttribute('src', vid.getAttribute('data-src'));
+      const r = vid.play();
+      if (r && r.catch) r.catch(() => {});
+    };
+    this._pauseReel = () => { document.querySelectorAll('[data-av-reel-slot] video').forEach(x => x.pause()); };
+    this._resumeReel = () => { this._reelSeen.forEach(x => this._reelPlay(x)); };
     this._mountReel = () => {
+      if (!this._reelIO && typeof IntersectionObserver !== 'undefined') {
+        this._reelIO = new IntersectionObserver(entries => {
+          entries.forEach(en => {
+            const vid = en.target;
+            if (en.isIntersecting) { this._reelSeen.add(vid); this._reelPlay(vid); }
+            else { this._reelSeen.delete(vid); vid.pause(); }
+          });
+        }, { rootMargin: '0px 160px' });
+      }
       document.querySelectorAll('[data-av-reel-slot]').forEach(slot => {
         const id = slot.getAttribute('data-av-reel-slot');
         if (!id || id.indexOf('{') !== -1) return;
         const cur = slot.firstElementChild;
-        if (cur && cur.getAttribute('media-id') === id) return;
-        const v = REEL.find(x => x.id === id);
-        if (!v) return;
+        if (cur && cur.getAttribute('data-id') === id) return;
         slot.textContent = '';
-        const p = document.createElement('wistia-player');
-        p.setAttribute('media-id', id);
-        p.setAttribute('aspect', String(v.aspect));
-        slot.appendChild(p);
+        const vid = document.createElement('video');
+        vid.setAttribute('data-id', id);
+        vid.setAttribute('data-src', './media/reel/' + id + '.mp4');
+        vid.muted = true;
+        vid.defaultMuted = true;
+        vid.setAttribute('muted', '');
+        vid.loop = true;
+        vid.setAttribute('playsinline', '');
+        vid.setAttribute('preload', 'none');
+        vid.setAttribute('disablepictureinpicture', '');
+        vid.setAttribute('aria-hidden', 'true');
+        vid.tabIndex = -1;
+        vid.addEventListener('playing', () => slot.setAttribute('data-on', '1'));
+        slot.appendChild(vid);
+        if (this._reelIO) this._reelIO.observe(vid); else this._reelPlay(vid);
       });
     };
 
-    // Popup de vídeo: o <wistia-player> é criado na abertura e destruído no fechamento,
-    // fora do React, para o player nunca ser reaproveitado entre vídeos.
+    // Popup: <video> nativo com o MP4 do Wistia. É criado e recebe play() ainda dentro do
+    // clique, para contar como gesto do usuário e tocar com som (inclusive no iOS).
     this._openVideo = (i, trigger) => {
       const v = REEL[i];
-      if (!v) return;
+      const mount = document.querySelector('[data-av-vmount]');
+      if (!v || !mount) return;
       this._videoTrigger = trigger || document.activeElement;
+      clearTimeout(this._videoTimer);
+      mount.textContent = '';
+      const frame = document.querySelector('[data-av-vframe]');
+      if (frame) frame.style.aspectRatio = String(v.aspect);
+      const vid = document.createElement('video');
+      vid.setAttribute('src', (this.state.w || window.innerWidth) < 760 ? v.md : v.hd);
+      vid.setAttribute('poster', './media/reel/' + v.id + '.webp');
+      vid.setAttribute('controls', '');
+      vid.setAttribute('playsinline', '');
+      vid.setAttribute('preload', 'auto');
+      vid.setAttribute('controlslist', 'nodownload');
+      mount.appendChild(vid);
+      const r = vid.play();
+      if (r && r.catch) r.catch(() => {});
+      this._pauseReel();
       this.setState({ video: v.id });
     };
     this._closeVideo = () => { if (this.state.video) this.setState({ video: null }); };
     this._syncVideo = () => {
       const id = this.state.video;
-      if (id === this._mountedVideo) return;
-      const mount = document.querySelector('[data-av-vmount]');
-      if (!mount) return;
+      if (id === this._shownVideo) return;
       const root = document.documentElement;
-      clearTimeout(this._videoTimer);
       if (id) {
-        const v = REEL.find(x => x.id === id);
-        mount.textContent = '';
-        const frame = document.querySelector('[data-av-vframe]');
-        if (frame) frame.style.aspectRatio = String(v.aspect);
-        const p = document.createElement('wistia-player');
-        p.setAttribute('media-id', id);
-        p.setAttribute('aspect', String(v.aspect));
-        p.setAttribute('autoplay', '');
-        p.setAttribute('player-color', 'e9a227');
-        mount.appendChild(p);
-        this._mountedVideo = id;
+        this._shownVideo = id;
         root.style.overflow = 'hidden';
         requestAnimationFrame(() => { const c = document.querySelector('[data-av-vclose]'); if (c) c.focus({ preventScroll: true }); });
-      } else {
-        const p = mount.querySelector('wistia-player');
-        if (p && typeof p.pause === 'function') { try { const r = p.pause(); if (r && r.catch) r.catch(() => {}); } catch (e) {} }
-        // Espera o fade-out da moldura antes de destruir o player.
-        this._videoTimer = setTimeout(() => { if (!this.state.video) mount.textContent = ''; }, 360);
-        this._mountedVideo = null;
-        root.style.overflow = '';
-        const t = this._videoTrigger;
-        this._videoTrigger = null;
-        if (t && typeof t.focus === 'function') t.focus({ preventScroll: true });
+        return;
       }
+      this._shownVideo = null;
+      root.style.overflow = '';
+      const mount = document.querySelector('[data-av-vmount]');
+      const vid = mount && mount.querySelector('video');
+      if (vid) vid.pause();
+      // Espera o fade-out da moldura antes de soltar o vídeo (removeAttribute + load libera a rede).
+      this._videoTimer = setTimeout(() => {
+        if (this.state.video || !mount) return;
+        mount.querySelectorAll('video').forEach(x => { x.removeAttribute('src'); x.load(); });
+        mount.textContent = '';
+      }, 360);
+      const t = this._videoTrigger;
+      this._videoTrigger = null;
+      if (t && typeof t.focus === 'function') t.focus({ preventScroll: true });
+      this._resumeReel();
     };
     this._onKey = (e) => { if (e.key === 'Escape' && this.state.video) this._closeVideo(); };
     document.addEventListener('keydown', this._onKey);
@@ -685,7 +726,8 @@ class Component extends DCLogic {
     this._unmounted = true;
     if (this._onKey) document.removeEventListener('keydown', this._onKey);
     clearTimeout(this._videoTimer);
-    if (this._mountedVideo) document.documentElement.style.overflow = '';
+    if (this._shownVideo) document.documentElement.style.overflow = '';
+    if (this._reelIO) this._reelIO.disconnect();
     if (this._armPoll) clearInterval(this._armPoll);
     if (this._checkArrows) {
       window.removeEventListener('scroll', this._checkArrows);
@@ -705,14 +747,14 @@ class Component extends DCLogic {
     if (!this._reelItems) {
       this._reelItems = REEL.map((v, i) => ({
         id: v.id,
-        bg: { backgroundImage: 'url("' + v.thumb + '")' },
+        bg: { backgroundImage: 'url("./media/reel/' + v.id + '.webp")' },
         label: 'Reproducir video ' + (i + 1) + ' de ' + REEL.length,
         open: (e) => this._openVideo && this._openVideo(i, e && e.currentTarget),
       }));
     }
     const vid = this.state.video;
     const cur = vid ? REEL.find(x => x.id === vid) : null;
-    if (cur) this._lastThumb = cur.thumb;
+    if (cur) this._lastThumb = './media/reel/' + cur.id + '.webp';
     return {
       reelGroups: REEL_GROUPS,
       reelItems: this._reelItems,
