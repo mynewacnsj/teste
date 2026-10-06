@@ -64,28 +64,6 @@ a:hover{color:#f6bc4d}
   [data-av-herobody]{align-items:flex-start !important;padding-top:clamp(36px,5.5vh,52px) !important;padding-bottom:16px !important}
 }
 
-/* Setas da segunda dobra — linhas de anotação de planta: ponto de origem (marco), traço fino em
-   curva e ponta aberta. Ao entrar na tela: o marco surge com um "ping", a linha se desenha como
-   caneta de projeto e fecha na ponta; depois, um feixe de luz percorre a linha até a coluna a cada
-   ~3,4s. Comprimentos (--len) são medidos no JS com getTotalLength(). */
-.av-arrow{filter:drop-shadow(0 0 6px rgba(233,162,39,.32))}
-.av-arrow .a-line,.av-arrow .a-head{fill:none;stroke:#e9a227;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len,400px);stroke-dashoffset:var(--len,400px)}
-.av-arrow .a-pulse{fill:none;stroke:#ffd98a;stroke-width:2.4;stroke-linecap:round;opacity:0;stroke-dasharray:var(--seg,40px) var(--len,400px);stroke-dashoffset:var(--seg,40px)}
-.av-arrow .a-node{fill:#e9a227;opacity:0;transform:scale(0);transform-box:fill-box;transform-origin:center}
-.av-arrow .a-ring{fill:none;stroke:#e9a227;stroke-width:1;opacity:0;transform-box:fill-box;transform-origin:center}
-.av-arrow[data-on] .a-node{animation:av-node .5s cubic-bezier(.2,.8,.2,1) var(--d,0s) forwards}
-.av-arrow[data-on] .a-ring{animation:av-ring 1.2s cubic-bezier(.2,.7,.3,1) var(--d,0s) forwards}
-.av-arrow[data-on] .a-line{animation:av-draw 1.15s cubic-bezier(.65,.05,.36,1) calc(var(--d,0s) + .22s) forwards}
-.av-arrow[data-on] .a-head{animation:av-draw .36s cubic-bezier(.3,.7,.3,1) calc(var(--d,0s) + 1.3s) forwards}
-.av-arrow[data-on] .a-pulse{animation:av-pulse 3.4s cubic-bezier(.45,0,.25,1) calc(var(--d,0s) + 2s) infinite}
-.av-arrow[data-static] .a-line,.av-arrow[data-static] .a-head{animation:none;stroke-dashoffset:0}
-.av-arrow[data-static] .a-node{animation:none;opacity:1;transform:none}
-.av-arrow[data-static] .a-ring,.av-arrow[data-static] .a-pulse{animation:none;opacity:0}
-@keyframes av-draw{to{stroke-dashoffset:0}}
-@keyframes av-node{to{opacity:1;transform:scale(1)}}
-@keyframes av-ring{0%{opacity:.7;transform:scale(.6)}100%{opacity:0;transform:scale(3.2)}}
-@keyframes av-pulse{0%{stroke-dashoffset:var(--seg,40px);opacity:0}10%{opacity:.95}44%{opacity:.95}52%{stroke-dashoffset:calc(-1 * var(--len,400px));opacity:0}100%{stroke-dashoffset:calc(-1 * var(--len,400px));opacity:0}}
-
 /* Popup do vídeo — não é tela cheia: moldura 9:16 centrada sobre o véu escuro. */
 .av-vmodal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:clamp(64px,8vh,88px) 16px clamp(24px,5vh,56px);box-sizing:border-box;visibility:hidden;pointer-events:none}
 .av-vmodal[data-state="open"]{visibility:visible;pointer-events:auto}
@@ -299,12 +277,6 @@ a:hover{color:#f6bc4d}
         </div>
 
         <div style="position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6.6vw,150px)">
-        <sc-if value="{{ arrowsWide }}" hint-placeholder-val="{{ false }}">
-          <div data-av-arrows="1" aria-hidden="true" style="position:absolute;inset:0;z-index:4;pointer-events:none">
-            <svg data-av-arrow="1" class="av-arrow" data-av-delay="0s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;left:calc(-12.5% + 6px);top:50%;margin-top:-152px;overflow:visible"><circle class="a-ring" cx="8" cy="16" r="2.4"></circle><circle class="a-node" cx="8" cy="16" r="2.4"></circle><path class="a-line" data-len="1" d="M 8 16 C 56 14, 100 40, 111 110"></path><path class="a-pulse" data-len="1" d="M 8 16 C 56 14, 100 40, 111 110"></path><path class="a-head" data-len="1" d="M 104.7 102.2 L 111 110 L 114.6 100.7"></path></svg>
-            <svg data-av-arrow="1" class="av-arrow" data-av-delay=".22s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;right:calc(-12.5% + 6px);top:50%;margin-top:-122px;overflow:visible"><circle class="a-ring" cx="142" cy="16" r="2.4"></circle><circle class="a-node" cx="142" cy="16" r="2.4"></circle><path class="a-line" data-len="1" d="M 142 16 C 94 14, 50 40, 39 110"></path><path class="a-pulse" data-len="1" d="M 142 16 C 94 14, 50 40, 39 110"></path><path class="a-head" data-len="1" d="M 45.3 102.2 L 39 110 L 35.4 100.7"></path></svg>
-          </div>
-        </sc-if>
         <div style="position:relative;min-width:0;padding:clamp(58px,4.2vw,86px) 0;box-sizing:border-box">
           <sc-if value="{{ showPillars }}" hint-placeholder-val="{{ true }}">
           <div data-av-pillar="1" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:clamp(120px,12.5vw,250px);opacity:.28;pointer-events:none">
@@ -419,12 +391,6 @@ a:hover{color:#f6bc4d}
             <div style="position:absolute;bottom:0;left:0;width:240px;height:1px;background:rgba(244,241,234,.18)"></div>
           </div>
         </sc-if>
-        <sc-if value="{{ showArrows }}" hint-placeholder-val="{{ true }}">
-          <div data-av-arrows="1" aria-hidden="true" style="position:absolute;z-index:4;top:-20px;height:240px;left:calc(-1 * clamp(20px, 5vw, 88px));right:calc(-1 * clamp(20px, 5vw, 88px));overflow:hidden;pointer-events:none">
-            <svg data-av-arrow="1" class="av-arrow" data-av-delay="0s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;left:-10px;top:6px;overflow:visible"><circle class="a-ring" cx="8" cy="16" r="2.4"></circle><circle class="a-node" cx="8" cy="16" r="2.4"></circle><path class="a-line" data-len="1" d="M 8 16 C 56 14, 100 40, 111 110"></path><path class="a-pulse" data-len="1" d="M 8 16 C 56 14, 100 40, 111 110"></path><path class="a-head" data-len="1" d="M 104.7 102.2 L 111 110 L 114.6 100.7"></path></svg>
-            <svg data-av-arrow="1" class="av-arrow" data-av-delay=".22s" width="150" height="130" viewBox="0 0 150 130" preserveAspectRatio="xMidYMid meet" style="position:absolute;right:-10px;top:14px;overflow:visible"><circle class="a-ring" cx="142" cy="16" r="2.4"></circle><circle class="a-node" cx="142" cy="16" r="2.4"></circle><path class="a-line" data-len="1" d="M 142 16 C 94 14, 50 40, 39 110"></path><path class="a-pulse" data-len="1" d="M 142 16 C 94 14, 50 40, 39 110"></path><path class="a-head" data-len="1" d="M 45.3 102.2 L 39 110 L 35.4 100.7"></path></svg>
-          </div>
-        </sc-if>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:32px">
@@ -475,7 +441,7 @@ a:hover{color:#f6bc4d}
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;scrimIntensity&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;soft&quot;,&quot;medium&quot;,&quot;heavy&quot;],&quot;default&quot;:&quot;medium&quot;,&quot;tsType&quot;:&quot;'soft'|'medium'|'heavy'&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showScrollCue&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showNavCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Nav&quot;},&quot;showPillars&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;pillarOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.28,&quot;min&quot;:0.08,&quot;max&quot;:0.45,&quot;step&quot;:0.01,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;showTagline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;showArrows&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Setas (móvil)&quot;},&quot;arrowsAnimated&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Setas (móvil)&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;scrimIntensity&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;soft&quot;,&quot;medium&quot;,&quot;heavy&quot;],&quot;default&quot;:&quot;medium&quot;,&quot;tsType&quot;:&quot;'soft'|'medium'|'heavy'&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showScrollCue&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showNavCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Nav&quot;},&quot;showPillars&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;pillarOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.28,&quot;min&quot;:0.08,&quot;max&quot;:0.45,&quot;step&quot;:0.01,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;showTagline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;}}">
 // Vídeos do carrossel. Prévia (5–7s, 360p, muda) e poster ficam em media/reel/<id>.mp4|.webp;
 // o vídeo completo do popup vem direto do Wistia em MP4 (md = 540p p/ telas estreitas, hd = 720p).
 const REEL = [
@@ -545,27 +511,6 @@ class Component extends DCLogic {
         n.style.opacity = String(Math.min(0.5, Math.round(op * 1.5 * 100) / 100));
       });
 
-      // Setas (linhas de anotação): mede cada traço para o desenho por stroke-dash e liga a animação
-      // quando a fileira entra na tela. Sem animação (prop ou reduced-motion) mostra o estado final.
-      let reduce = false;
-      try { reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) {}
-      const animate = (this.props.arrowsAnimated ?? true) && !reduce;
-      document.querySelectorAll('[data-av-arrow]').forEach(n => {
-        if (!n._measured) {
-          n.querySelectorAll('[data-len]').forEach(pth => {
-            try {
-              const L = pth.getTotalLength();
-              if (L) { pth.style.setProperty('--len', L.toFixed(1) + 'px'); pth.style.setProperty('--seg', (L * 0.16).toFixed(1) + 'px'); }
-            } catch (e) {}
-          });
-          n.style.setProperty('--d', n.getAttribute('data-av-delay') || '0s');
-          n._measured = true;
-        }
-        if (!animate) { n.setAttribute('data-static', '1'); n.removeAttribute('data-on'); return; }
-        n.removeAttribute('data-static');
-        if (this._arrowsSeen && !n.hasAttribute('data-on')) n.setAttribute('data-on', '1');
-      });
-      if (animate && this._checkArrows) this._checkArrows();
       if (this._mountReel) this._mountReel();
     };
 
@@ -607,32 +552,6 @@ class Component extends DCLogic {
         this._poll = null;
       }
     };
-
-    // Arrow draw-in: fires the first time the portico row reaches the lower viewport.
-    this._checkArrows = () => {
-      if (this._arrowsSeen) return;
-      const layer = document.querySelector('[data-av-arrows]');
-      if (!layer) return;
-      const r = layer.getBoundingClientRect();
-      const vh = window.innerHeight || 800;
-      if (r.bottom <= 0 || r.top >= vh * 0.86) return;
-      this._arrowsSeen = true;
-      document.querySelectorAll('[data-av-arrow]').forEach(n => { if (!n.hasAttribute('data-static')) n.setAttribute('data-on', '1'); });
-    };
-
-    // Some embedding contexts swallow scroll events; this rAF loop stops for good
-    // the moment the arrows are revealed, so it costs nothing after that.
-    const armTick = () => {
-      if (this._arrowsSeen || this._unmounted) return;
-      this._checkArrows();
-      requestAnimationFrame(armTick);
-    };
-    requestAnimationFrame(armTick);
-    // rAF is throttled in some embeddings — same interval fallback the header uses.
-    this._armPoll = setInterval(() => {
-      if (this._arrowsSeen || this._unmounted) { clearInterval(this._armPoll); this._armPoll = null; return; }
-      this._checkArrows();
-    }, 180);
 
     // Cards do carrossel: <video> nativo, mudo e em loop, com a prévia curta hospedada no site.
     // Criado fora do React (o template cru não pode ter <video src="{{ }}">). O src só é ligado
@@ -740,9 +659,6 @@ class Component extends DCLogic {
     this._onKey = (e) => { if (e.key === 'Escape' && this.state.video) this._closeVideo(); };
     document.addEventListener('keydown', this._onKey);
 
-    window.addEventListener('scroll', this._checkArrows, { passive: true });
-    document.addEventListener('scroll', this._checkArrows, { passive: true, capture: true });
-    window.addEventListener('resize', this._checkArrows, { passive: true });
     window.addEventListener('resize', this._measure);
     this._measure();
     this._tryAttach();
@@ -763,12 +679,6 @@ class Component extends DCLogic {
     clearTimeout(this._videoTimer);
     if (this._shownVideo) document.documentElement.style.overflow = '';
     if (this._reelIO) this._reelIO.disconnect();
-    if (this._armPoll) clearInterval(this._armPoll);
-    if (this._checkArrows) {
-      window.removeEventListener('scroll', this._checkArrows);
-      document.removeEventListener('scroll', this._checkArrows, true);
-      window.removeEventListener('resize', this._checkArrows);
-    }
     if (this._measure) window.removeEventListener('resize', this._measure);
     if (this._poll) clearInterval(this._poll);
     if (this._io) this._io.disconnect();
@@ -807,8 +717,6 @@ class Component extends DCLogic {
       showBurger: w < 900,
       showRail: w >= 1180,
       showPillars: this.props.showPillars ?? true,
-      showArrows: (this.props.showArrows ?? true) && w < 760,
-      arrowsWide: (this.props.showArrows ?? true) && w >= 1360,
       showTagline: this.props.showTagline ?? true,
       showRegionNote: w >= 640,
       menuOpen: this.state.menuOpen,

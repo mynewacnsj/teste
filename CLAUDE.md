@@ -29,9 +29,8 @@ Texto alinhado ao topo e hero com altura do conteúdo; imagem e véus presos à 
 
 ## Setas da segunda dobra
 
-Linhas de anotação de planta (traço fino âmbar, marco de origem, ponta aberta), desenhadas por
-stroke-dash + feixe de luz periódico. Nunca setas grossas/preenchidas nem revelação por cortina.
-Comprimentos de dash sempre em `px`.
+Removidas a pedido do cliente (sem setas na seção dos pilares). A última versão (linhas de
+anotação animadas) está no commit 3f9caa8.
 
 ## Paleta
 
