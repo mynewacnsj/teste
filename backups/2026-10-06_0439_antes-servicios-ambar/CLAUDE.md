@@ -14,7 +14,6 @@ Ajuste por luminosidade do fundo:
 |---|---|---|
 | Escuro (`#0c0c0d`) | `opacity:.13` + `mix-blend-mode:screen` | linha `rgba(255,255,255,.055)` a `opacity:.22` |
 | Claro (`#f4f1ea`) | `opacity:.085` + `mix-blend-mode:multiply` | linha `rgba(22,23,26,.021)`, sem opacity extra |
-| Âmbar (`#e9a227`) | `opacity:.12` + `mix-blend-mode:multiply` | linha `rgba(12,12,13,.045)`, sem opacity extra |
 
 Já aplicada em: hero, menu mobile (camada de chrome do header), faixa de transição
 (desktop e mobile) e segunda dobra.
@@ -70,14 +69,13 @@ O site não terá um único fundo: algumas dobras usam cores complementares, com
 (com a textura de fundo claro acima), alternando com o escuro `#0c0c0d`. Mesma identidade visual.
 
 - 2ª dobra (escura): headline "El método" + carrossel. Termina na **metade da altura dos vídeos**.
-- 3ª dobra (`#servicios`, **âmbar `#e9a227`**; cards no escuro da 1ª dobra `#0c0c0d` com textura escura,
-  textos da seção em `#0c0c0d`, destaque do H2 com marca-texto creme): começa nesse corte com `margin-top: calc(-1 * var(--av-reel-split))`
+- 3ª dobra (`#servicios`, clara `#f4f1ea`): começa nesse corte com `margin-top: calc(-1 * var(--av-reel-split))`
   (`--av-reel-split` = 6px + meia altura do card, em `:root` junto com as demais variáveis do carrossel);
   o carrossel (z-index 3) fica por cima, então a metade de baixo dos vídeos já está sobre o claro.
   Layout modelado na seção "Our services" de marroconstruction.adsconversion.online: eyebrow, H2 com
   destaque âmbar, barra âmbar, subheadline e grid 2×2 (1 coluna no mobile) de cards brancos com imagem 3:2,
   número em aba chanfrada, chip sobre a imagem, tag, título, descrição, diferencial e CTA.
-  Imagens provisórias em `media/servicios/` (Unsplash), para o cliente trocar. O fundo claro foi recusado pelo cliente.
+  Imagens provisórias em `media/servicios/` (Unsplash), para o cliente trocar. Âmbar sobre claro: `#c98a12`.
 
 ## Carrossel de vídeos
 
