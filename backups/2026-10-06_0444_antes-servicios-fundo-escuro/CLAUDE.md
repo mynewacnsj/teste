@@ -69,14 +69,15 @@ Para voltar: copie o arquivo da pasta por cima do atual. Ver `backups/README.md`
 O site não terá um único fundo: algumas dobras usam cores complementares, como o claro `#f4f1ea`
 (com a textura de fundo claro acima), alternando com o escuro `#0c0c0d`. Mesma identidade visual.
 
-- 2ª dobra (escura, com as lavagens de luz âmbar): headline "El método" + carrossel + **Serviços** (`#servicios`).
-  Os serviços ficam dentro da mesma `<section>`, logo após o carrossel (o cliente recusou fundo claro e âmbar
-  para eles). Grão e hachura da seção cobrem a altura toda (`bottom:0`); a máscara das lavagens usa paradas
-  em px (0/72/180/380px) para o topo não mudar quando a seção cresce.
-  Layout dos serviços modelado na seção "Our services" de marroconstruction.adsconversion.online: eyebrow, H2 com
-  destaque âmbar, barra âmbar, subheadline e grid 2×2 (1 coluna no mobile) de cards cinza-escuro `#16171a`
-  (textura escura) com imagem 3:2, número em aba chanfrada, chip, tag, título, descrição, diferencial e CTA.
-  Imagens provisórias em `media/servicios/` (Unsplash), para o cliente trocar.
+- 2ª dobra (escura): headline "El método" + carrossel. Termina na **metade da altura dos vídeos**.
+- 3ª dobra (`#servicios`, **âmbar `#e9a227`**; cards no escuro da 1ª dobra `#0c0c0d` com textura escura,
+  textos da seção em `#0c0c0d`, destaque do H2 com marca-texto creme): começa nesse corte com `margin-top: calc(-1 * var(--av-reel-split))`
+  (`--av-reel-split` = 6px + meia altura do card, em `:root` junto com as demais variáveis do carrossel);
+  o carrossel (z-index 3) fica por cima, então a metade de baixo dos vídeos já está sobre o claro.
+  Layout modelado na seção "Our services" de marroconstruction.adsconversion.online: eyebrow, H2 com
+  destaque âmbar, barra âmbar, subheadline e grid 2×2 (1 coluna no mobile) de cards brancos com imagem 3:2,
+  número em aba chanfrada, chip sobre a imagem, tag, título, descrição, diferencial e CTA.
+  Imagens provisórias em `media/servicios/` (Unsplash), para o cliente trocar. O fundo claro foi recusado pelo cliente.
 
 ## Carrossel de vídeos
 

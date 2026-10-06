@@ -24,7 +24,7 @@ a:hover{color:#f6bc4d}
    <video> nativo mudo em loop com a prévia curta (media/reel/) e o play; uma
    camada transparente por cima captura o clique e abre o popup. */
 @keyframes av-reel{from{transform:translate3d(0,0,0)}to{transform:translate3d(-100%,0,0)}}
-:root{--av-reel-gap:12px;--av-reel-card:calc((100vw - 52px) / 2);--av-reel-dur:30s;--av-reel-fade:clamp(44px,13vw,260px)}
+:root{--av-reel-gap:12px;--av-reel-card:calc((100vw - 52px) / 2);--av-reel-dur:30s;--av-reel-fade:clamp(44px,13vw,260px);--av-reel-split:calc(6px + var(--av-reel-card) * .888889)}
 .av-reel-wrap{position:relative}
 .av-reel{position:relative;width:100%;overflow:hidden;padding:6px 0}
 .av-reel-track{display:flex;width:max-content}
@@ -65,21 +65,28 @@ a:hover{color:#f6bc4d}
   [data-av-herobody]{align-items:flex-start !important;padding-top:clamp(36px,5.5vh,52px) !important;padding-bottom:16px !important}
 }
 
-/* Serviços — bloco dentro da segunda dobra (mesmo fundo escuro e efeitos de luz âmbar), logo após o
-   carrossel. Cards em cinza escuro #16171a com a textura escura (grão screen .13 + hachura .22). */
-.av-sv-inner{position:relative;z-index:3;box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;padding:clamp(64px,7vw,128px) 0 clamp(72px,8vw,150px);color:#f4f1ea}
+/* Terceira dobra — Serviços (fundo âmbar #e9a227). Começa na METADE da altura dos vídeos do carrossel:
+   margin-top negativo = --av-reel-split (padding 6px do .av-reel + meia altura do card 9:16).
+   O carrossel (z-index 3) fica por cima; a metade de baixo dos cards já está sobre o âmbar.
+   Textura sobre âmbar: grão multiply .12 + hachura rgba(12,12,13,.045). Cards no escuro da 1ª dobra
+   (#0c0c0d + grão screen .13 + hachura .22, como o hero). Textos da seção em #0c0c0d. */
+.av-sv{position:relative;z-index:0;display:flow-root;width:100%;margin-top:calc(-1 * var(--av-reel-split));background:#e9a227;color:#0c0c0d;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.av-sv-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.av-sv-grain{position:absolute;inset:0;opacity:.12;mix-blend-mode:multiply;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat}
+.av-sv-hatch{position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(12,12,13,.045) 0px,rgba(12,12,13,.045) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)}
+.av-sv-inner{position:relative;z-index:1;box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;padding:calc(var(--av-reel-split) + clamp(56px,6.4vw,120px)) 0 clamp(72px,8vw,150px)}
 .av-sv-head{max-width:760px}
-.av-sv-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:clamp(16px,1.8vw,22px);font-family:Archivo,sans-serif;font-size:clamp(10.5px,.85vw,14px);font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#e9a227}
-.av-sv-eyebrow-line{display:block;width:clamp(30px,3vw,56px);height:2px;background:#e9a227}
-.av-sv-h2{margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(26px,min(3.1vw,5.4vh),54px);line-height:1.08;letter-spacing:-.035em;color:#ffffff;text-wrap:balance}
-.av-sv-accent{color:#e9a227}
-.av-sv-bar{width:64px;height:3px;margin:clamp(18px,2vw,26px) 0;background:#e9a227}
-.av-sv-sub{margin:0;max-width:660px;font-size:clamp(15.5px,min(1.2vw,2.1vh),19px);line-height:1.62;color:rgba(244,241,234,.7);text-wrap:pretty}
+.av-sv-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:clamp(16px,1.8vw,22px);font-family:Archivo,sans-serif;font-size:clamp(10.5px,.85vw,14px);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#0c0c0d}
+.av-sv-eyebrow-line{display:block;width:clamp(30px,3vw,56px);height:2px;background:#0c0c0d}
+.av-sv-h2{margin:0;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(26px,min(3.1vw,5.4vh),54px);line-height:1.08;letter-spacing:-.035em;color:#0c0c0d;text-wrap:balance}
+.av-sv-accent{color:#0c0c0d;background-image:linear-gradient(180deg,rgba(255,255,255,0) 62%,rgba(255,244,214,.55) 62%,rgba(255,244,214,.55) 92%,rgba(255,255,255,0) 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.av-sv-bar{width:64px;height:3px;margin:clamp(18px,2vw,26px) 0;background:#0c0c0d}
+.av-sv-sub{margin:0;max-width:660px;font-size:clamp(15.5px,min(1.2vw,2.1vh),19px);line-height:1.62;color:rgba(12,12,13,.8);text-wrap:pretty}
 .av-sv-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(16px,1.8vw,24px);margin-top:clamp(36px,4.2vw,68px)}
-.av-sv-card{position:relative;display:flex;flex-direction:column;min-width:0;background:#16171a;border:1px solid rgba(244,241,234,.09);border-radius:4px;overflow:hidden;isolation:isolate;transition:border-color .3s ease}
+.av-sv-card{position:relative;display:flex;flex-direction:column;min-width:0;background:#0c0c0d;border:1px solid rgba(12,12,13,.5);border-radius:4px;overflow:hidden;isolation:isolate;transition:border-color .3s ease}
 .av-sv-card::before{content:"";position:absolute;inset:0;z-index:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat;pointer-events:none}
 .av-sv-card::after{content:"";position:absolute;inset:0;z-index:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px);pointer-events:none}
-.av-sv-card:hover{border-color:rgba(233,162,39,.45)}
+.av-sv-card:hover{border-color:rgba(12,12,13,.9)}
 .av-sv-media{position:relative;z-index:1;aspect-ratio:3 / 2;background:#0c0c0d;overflow:hidden}
 .av-sv-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
 .av-sv-card:hover .av-sv-img{transform:scale(1.04)}
@@ -256,14 +263,13 @@ a:hover{color:#f6bc4d}
 <section style="position:relative;display:flow-root;width:100%;background:#0c0c0d;font-family:Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
 
   <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
-    <div style="position:absolute;inset:0;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0px,rgba(0,0,0,.12) 72px,rgba(0,0,0,.45) 180px,rgba(0,0,0,1) 380px);mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0px,rgba(0,0,0,.12) 72px,rgba(0,0,0,.45) 180px,rgba(0,0,0,1) 380px)">
-      <div style="position:absolute;top:0;left:0;right:0;height:max(3000px,100%);background:linear-gradient(72deg,rgba(233,162,39,0) 28%,rgba(233,162,39,.03) 41%,rgba(233,162,39,.085) 51%,rgba(233,162,39,.022) 62%,rgba(233,162,39,0) 74%)"></div>
-      <div style="position:absolute;top:0;left:0;right:0;height:max(3000px,100%);background:radial-gradient(56% 34% at 84% 6%,rgba(233,162,39,.15) 0%,rgba(233,162,39,0) 64%)"></div>
-      <div style="position:absolute;top:0;left:0;right:0;height:max(3000px,100%);background:linear-gradient(180deg,rgba(233,162,39,.04) 0%,rgba(233,162,39,.015) 14%,rgba(233,162,39,0) 28%)"></div>
-      <div style="position:absolute;left:0;right:0;bottom:0;height:62%;background:radial-gradient(48% 42% at 8% 58%,rgba(233,162,39,.075) 0%,rgba(233,162,39,0) 70%)"></div>
+    <div style="position:absolute;inset:0;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.12) 8%,rgba(0,0,0,.45) 20%,rgba(0,0,0,1) 42%);mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.12) 8%,rgba(0,0,0,.45) 20%,rgba(0,0,0,1) 42%)">
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:linear-gradient(72deg,rgba(233,162,39,0) 28%,rgba(233,162,39,.03) 41%,rgba(233,162,39,.085) 51%,rgba(233,162,39,.022) 62%,rgba(233,162,39,0) 74%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:radial-gradient(56% 34% at 84% 6%,rgba(233,162,39,.15) 0%,rgba(233,162,39,0) 64%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3000px;background:linear-gradient(180deg,rgba(233,162,39,.04) 0%,rgba(233,162,39,.015) 14%,rgba(233,162,39,0) 28%)"></div>
     </div>
-    <div data-av-grain="1" style="position:absolute;top:0;left:0;right:0;bottom:0;opacity:.1;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
-    <div data-av-hatch="1" style="position:absolute;top:0;left:0;right:0;bottom:0;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
+    <div data-av-grain="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.1;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat"></div>
+    <div data-av-hatch="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
   </div>
 
   <div style="position:relative;z-index:3;padding-top:clamp(40px,4.6vw,88px);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center">
@@ -293,7 +299,14 @@ a:hover{color:#f6bc4d}
   </div>
   </div>
 
-  <div id="servicios" data-av-servicios="1" class="av-sv-inner">
+</section>
+
+<section id="servicios" data-av-servicios="1" class="av-sv">
+  <div class="av-sv-bg" aria-hidden="true">
+    <div class="av-sv-grain"></div>
+    <div class="av-sv-hatch"></div>
+  </div>
+  <div class="av-sv-inner">
     <header class="av-sv-head">
       <div class="av-sv-eyebrow"><span class="av-sv-eyebrow-line"></span><span data-av-sv="eyebrow">Servicios</span></div>
       <h2 class="av-sv-h2"><span data-av-sv="headline">Desde que te encuentran hasta que </span><span class="av-sv-accent" data-av-sv="accent">firman tu estimate.</span></h2>
@@ -367,9 +380,7 @@ a:hover{color:#f6bc4d}
       </article>
     </div>
   </div>
-
 </section>
-
 
 
 <div data-av-vmodal="1" class="av-vmodal" data-state="{{ videoState }}" role="dialog" aria-modal="true" aria-label="Video" aria-hidden="{{ videoHidden }}">

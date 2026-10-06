@@ -164,16 +164,17 @@ abaixo do carrossel, abrindo a parte dos pilares. (O título "TESTIMONIOS" antig
   - O template usa `data-state="{{ videoState }}"` (atributo inteiro é reativo) e `style="{{ objeto }}"` para os posters:
     nunca `src="{{ … }}"` em `<img>`, porque o navegador baixaria o texto literal do template cru.
 
-### 4.3 Serviços (`#servicios`, dentro da segunda dobra)
+### 4.3 Terceira dobra — Serviços (`#servicios`, fundo âmbar)
 
-Bloco logo após o carrossel, na mesma `<section>` escura da segunda dobra (mesmo fundo `#0c0c0d`, lavagens de
-luz âmbar, grão e hachura cobrindo a altura toda, mais um brilho âmbar discreto no canto inferior esquerdo).
-Versões anteriores com fundo claro e âmbar cortando o carrossel ao meio estão em `backups/`.
+Começa na metade da altura dos vídeos do carrossel: a seção tem `margin-top: calc(-1 * var(--av-reel-split))`
+e o carrossel fica por cima (z-index 3), então cada vídeo tem a metade de cima sobre o escuro e a de baixo
+sobre o âmbar `#e9a227` (textura: grão multiply .12 + hachura `rgba(12,12,13,.045)`). Textos da seção em `#0c0c0d`.
+O conteúdo começa abaixo do carrossel (`padding-top: --av-reel-split + clamp(56px,6.4vw,120px)`).
 
 Layout modelado na seção "Our services" de marroconstruction.adsconversion.online:
 - Eyebrow "Servicios" + H2 "Desde que te encuentran hasta que *firman tu estimate*." + barra âmbar + subheadline.
-- Grid 2×2 (≥760px) / 1 coluna (mobile) de cards cinza-escuro `#16171a` (grão screen .13 + hachura .22,
-  borda `rgba(244,241,234,.09)`, raio 4px, sem sombra; tag e CTA em âmbar, título creme):
+- Grid 2×2 (≥760px) / 1 coluna (mobile) de cards escuros como a 1ª dobra (`#0c0c0d` + grão screen .13 + hachura .22,
+  raio 4px, sem sombra; tag e CTA em âmbar, título creme):
   imagem 3:2 com número em aba escura chanfrada (filete âmbar) e chip; tag âmbar, título, descrição,
   diferencial em caixa alta e CTA "Agendar diagnóstico →".
 - Cards: 01 Meta Ads · 02 Social Media · 03 Estimates personalizados · 04 SEO para IA.
