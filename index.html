@@ -12,10 +12,64 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=Barlow:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
+<script src="https://fast.wistia.com/player.js" async=""></script>
+<script src="https://fast.wistia.com/embed/u3z5opwfg5.js" async="" type="module"></script>
+<script src="https://fast.wistia.com/embed/qtq97pqw42.js" async="" type="module"></script>
+<script src="https://fast.wistia.com/embed/85xxi41ehr.js" async="" type="module"></script>
+<script src="https://fast.wistia.com/embed/myhu1aftp6.js" async="" type="module"></script>
+<script src="https://fast.wistia.com/embed/j9kq9ph7rs.js" async="" type="module"></script>
+<script src="https://fast.wistia.com/embed/vwcc31ysmm.js" async="" type="module"></script>
 <style>
 html,body{margin:0;padding:0;background:#0c0c0d}
 a{color:#e9a227;text-decoration:none}
 a:hover{color:#f6bc4d}
+
+/* Carrossel de vídeos — faixa infinita, rolamento contínuo para a esquerda.
+   Cada grupo traz os 6 vídeos e anda -100% da PRÓPRIA largura: com 3 grupos
+   a emenda é exata em pixel e a faixa cobre telas de até 2 grupos de largura. */
+@keyframes av-reel{from{transform:translate3d(0,0,0)}to{transform:translate3d(-100%,0,0)}}
+.av-reel{position:relative;width:100%;overflow:hidden;padding:6px 0;--av-reel-gap:12px;--av-reel-card:calc((100vw - 52px) / 2);--av-reel-dur:30s}
+.av-reel-track{display:flex;width:max-content}
+.av-reel-group{display:flex;flex:0 0 auto;animation:av-reel var(--av-reel-dur) linear infinite;will-change:transform}
+.av-reel-card{position:relative;flex:0 0 auto;display:block;width:var(--av-reel-card);aspect-ratio:9/16;margin:0 var(--av-reel-gap) 0 0;padding:0;border:0;border-radius:4px;overflow:hidden;background:#16171a;cursor:pointer;font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;box-shadow:0 22px 44px -22px rgba(0,0,0,.85)}
+.av-reel-card:focus-visible{outline:2px solid #e9a227;outline-offset:-2px}
+.av-reel-img{position:absolute;inset:0;display:block;background-color:#16171a;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.av-reel-card:hover .av-reel-img{transform:scale(1.045)}
+.av-reel-shade{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,rgba(12,12,13,0) 46%,rgba(12,12,13,.6) 100%);box-shadow:inset 0 0 0 1px rgba(244,241,234,.08)}
+.av-reel-play{position:absolute;left:50%;top:50%;width:clamp(46px,3.4vw,58px);height:clamp(46px,3.4vw,58px);border-radius:50%;background:#e9a227;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);box-shadow:0 0 0 7px rgba(233,162,39,.18),0 12px 30px rgba(0,0,0,.45);transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .25s ease,box-shadow .35s ease}
+.av-reel-play svg{width:34%;height:34%;margin-left:8%;display:block}
+.av-reel-card:hover .av-reel-play{background:#f6bc4d;transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 0 10px rgba(233,162,39,.22),0 14px 34px rgba(0,0,0,.5)}
+@media (min-width:760px){
+  .av-reel{--av-reel-gap:20px;--av-reel-card:clamp(200px,17vw,300px);--av-reel-dur:40s;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0%,#000 7%,#000 93%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0%,#000 7%,#000 93%,rgba(0,0,0,0) 100%)}
+}
+@media (prefers-reduced-motion:reduce){
+  .av-reel{overflow-x:auto;scroll-snap-type:x mandatory}
+  .av-reel-group{animation:none}
+  .av-reel-group[aria-hidden="true"]{display:none}
+  .av-reel-card{scroll-snap-align:start}
+}
+
+/* Popup do vídeo — não é tela cheia: moldura 9:16 centrada sobre o véu escuro. */
+.av-vmodal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:clamp(64px,8vh,88px) 16px clamp(24px,5vh,56px);box-sizing:border-box;visibility:hidden;pointer-events:none}
+.av-vmodal[data-state="open"]{visibility:visible;pointer-events:auto}
+.av-vmodal-veil{position:absolute;inset:0;overflow:hidden;background:rgba(8,8,9,.86);-webkit-backdrop-filter:blur(12px) saturate(.8);backdrop-filter:blur(12px) saturate(.8);opacity:0;transition:opacity .34s ease}
+.av-vmodal[data-state="open"] .av-vmodal-veil{opacity:1}
+.av-vmodal-grain{position:absolute;inset:0;opacity:.13;mix-blend-mode:screen;background-image:url(./grain.png);background-size:256px 256px;background-repeat:repeat;pointer-events:none}
+.av-vmodal-hatch{position:absolute;inset:0;opacity:.22;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px);pointer-events:none}
+.av-vmodal-frame{position:relative;z-index:1;width:min(100%,calc(min(100svh - 152px,880px) * .5625));aspect-ratio:9/16;border-radius:4px;overflow:hidden;background:#0c0c0d;box-shadow:0 0 0 1px rgba(244,241,234,.1),0 48px 120px -24px rgba(0,0,0,.9);opacity:0;transform:translateY(18px) scale(.965);transition:opacity .3s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.av-vmodal[data-state="open"] .av-vmodal-frame{opacity:1;transform:none}
+.av-vmodal-frame::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;z-index:4;background:#e9a227;box-shadow:0 0 18px rgba(233,162,39,.55);pointer-events:none}
+.av-vmodal-poster{position:absolute;inset:-12px;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;filter:blur(10px) brightness(.55)}
+.av-vmodal-spin{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:2px solid rgba(244,241,234,.18);border-top-color:#e9a227;animation:av-spin .8s linear infinite}
+@keyframes av-spin{to{transform:rotate(360deg)}}
+.av-vmodal-mount{position:absolute;inset:0;z-index:2}
+.av-vmodal-mount wistia-player{display:block;width:100%;height:100%}
+.av-vmodal-close{position:absolute;z-index:3;top:clamp(14px,2.4vh,24px);right:clamp(14px,2vw,28px);width:46px;height:46px;padding:0;border-radius:50%;border:1px solid rgba(244,241,234,.24);background:rgba(12,12,13,.55);color:#f4f1ea;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:scale(.9);transition:opacity .3s ease,transform .4s cubic-bezier(.2,.8,.2,1),border-color .2s ease,color .2s ease}
+.av-vmodal[data-state="open"] .av-vmodal-close{opacity:1;transform:none}
+.av-vmodal-close:hover{border-color:#e9a227;color:#e9a227}
+.av-vmodal-close:focus-visible{outline:2px solid #e9a227;outline-offset:3px}
+.av-vmodal-close svg{width:16px;height:16px;display:block}
+@media (prefers-reduced-motion:reduce){.av-vmodal-veil,.av-vmodal-frame,.av-vmodal-close{transition:none}}
 </style>
 </helmet>
 
@@ -170,7 +224,23 @@ a:hover{color:#f6bc4d}
     <div data-av-hatch="1" style="position:absolute;top:0;left:0;right:0;height:3000px;opacity:.18;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.055) 0px,rgba(255,255,255,.055) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 4px)"></div>
   </div>
 
-  <div style="position:relative;z-index:3;padding:clamp(28px,4vw,92px) 0 clamp(60px,5.6vw,116px);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto">
+  <div data-av-reel="1" class="av-reel" role="region" aria-roledescription="carrusel" aria-label="Videos" style="z-index:3;margin-top:clamp(12px,2.2vw,40px)">
+    <div class="av-reel-track">
+      <sc-for list="{{ reelGroups }}" as="g">
+        <div class="av-reel-group" aria-hidden="{{ g.hidden }}">
+          <sc-for list="{{ reelItems }}" as="it">
+            <button type="button" class="av-reel-card" onClick="{{ it.open }}" aria-label="{{ it.label }}" tabindex="{{ g.tab }}">
+              <span class="av-reel-img" style="{{ it.bg }}"></span>
+              <span class="av-reel-shade"></span>
+              <span class="av-reel-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.8v16.4c0 .8.9 1.3 1.6.8l12.3-8.2c.6-.4.6-1.2 0-1.6L7.6 3c-.7-.5-1.6 0-1.6.8z" fill="#0c0c0d"></path></svg></span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:relative;z-index:3;padding:clamp(52px,6vw,112px) 0 clamp(60px,5.6vw,116px);box-sizing:border-box;width:max(80%, min(100% - 2 * clamp(20px, 5vw, 88px), 1100px));margin:0 auto">
 
     <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:clamp(20px,2.4vw,28px)">
@@ -354,10 +424,37 @@ a:hover{color:#f6bc4d}
   </div>
 </section>
 
+<div data-av-vmodal="1" class="av-vmodal" data-state="{{ videoState }}" role="dialog" aria-modal="true" aria-label="Video" aria-hidden="{{ videoHidden }}">
+  <div class="av-vmodal-veil" onClick="{{ closeVideo }}">
+    <div class="av-vmodal-grain"></div>
+    <div class="av-vmodal-hatch"></div>
+  </div>
+  <div data-av-vframe="1" class="av-vmodal-frame">
+    <div class="av-vmodal-poster" style="{{ videoPoster }}"></div>
+    <div class="av-vmodal-spin"></div>
+    <div data-av-vmount="1" class="av-vmodal-mount"></div>
+  </div>
+  <button type="button" data-av-vclose="1" class="av-vmodal-close" onClick="{{ closeVideo }}" aria-label="Cerrar video" tabindex="{{ videoTab }}">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+  </button>
+</div>
+
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;scrimIntensity&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;soft&quot;,&quot;medium&quot;,&quot;heavy&quot;],&quot;default&quot;:&quot;medium&quot;,&quot;tsType&quot;:&quot;'soft'|'medium'|'heavy'&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showScrollCue&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showNavCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Nav&quot;},&quot;showPillars&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;pillarOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.28,&quot;min&quot;:0.08,&quot;max&quot;:0.45,&quot;step&quot;:0.01,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;showTagline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Segunda dobra&quot;},&quot;showArrows&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Setas (móvil)&quot;},&quot;arrowsAnimated&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Setas (móvil)&quot;}}">
+// Vídeos do carrossel (Wistia). thumb = poster servido pelo próprio Wistia.
+const REEL = [
+  { id: 'u3z5opwfg5', aspect: 0.5625, thumb: 'https://embed-ssl.wistia.com/deliveries/0537222f450f0bd0a8c1dbcec3304dcb.jpg?image_crop_resized=540x960' },
+  { id: 'qtq97pqw42', aspect: 0.5625, thumb: 'https://embed-ssl.wistia.com/deliveries/d0a469ea679b4181d23afdd94df9477b.jpg?image_crop_resized=540x960' },
+  { id: '85xxi41ehr', aspect: 0.5625, thumb: 'https://embed-ssl.wistia.com/deliveries/07e0638728c87699f23628a26534e37f.jpg?image_crop_resized=540x960' },
+  { id: 'myhu1aftp6', aspect: 0.5625, thumb: 'https://embed-ssl.wistia.com/deliveries/6ff941b627bead919239b9cc1dd8bd88.jpg?image_crop_resized=540x960' },
+  { id: 'j9kq9ph7rs', aspect: 0.5660377358490566, thumb: 'https://embed-ssl.wistia.com/deliveries/f5192de67eb37874de95aaff64052ae6.jpg?image_crop_resized=540x954' },
+  { id: 'vwcc31ysmm', aspect: 0.5625, thumb: 'https://embed-ssl.wistia.com/deliveries/e4f2232c381f97655b404cfe2d4b96ea.jpg?image_crop_resized=540x960' },
+];
+// Três cópias da faixa: só a primeira é acessível; as outras existem para o loop.
+const REEL_GROUPS = [{ hidden: 'false', tab: 0 }, { hidden: 'true', tab: -1 }, { hidden: 'true', tab: -1 }];
+
 class Component extends DCLogic {
-  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, menuOpen: false, stuck: false };
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, menuOpen: false, stuck: false, video: null };
 
   componentDidMount() {
     // Defined here, not as class fields: the DC transpiler does not initialize
@@ -494,6 +591,51 @@ class Component extends DCLogic {
       this._checkArrows();
     }, 180);
 
+    // Popup de vídeo: o <wistia-player> é criado na abertura e destruído no fechamento,
+    // fora do React, para o player nunca ser reaproveitado entre vídeos.
+    this._openVideo = (i, trigger) => {
+      const v = REEL[i];
+      if (!v) return;
+      this._videoTrigger = trigger || document.activeElement;
+      this.setState({ video: v.id });
+    };
+    this._closeVideo = () => { if (this.state.video) this.setState({ video: null }); };
+    this._syncVideo = () => {
+      const id = this.state.video;
+      if (id === this._mountedVideo) return;
+      const mount = document.querySelector('[data-av-vmount]');
+      if (!mount) return;
+      const root = document.documentElement;
+      clearTimeout(this._videoTimer);
+      if (id) {
+        const v = REEL.find(x => x.id === id);
+        mount.textContent = '';
+        const frame = document.querySelector('[data-av-vframe]');
+        if (frame) frame.style.aspectRatio = String(v.aspect);
+        const p = document.createElement('wistia-player');
+        p.setAttribute('media-id', id);
+        p.setAttribute('aspect', String(v.aspect));
+        p.setAttribute('autoplay', '');
+        p.setAttribute('player-color', 'e9a227');
+        mount.appendChild(p);
+        this._mountedVideo = id;
+        root.style.overflow = 'hidden';
+        requestAnimationFrame(() => { const c = document.querySelector('[data-av-vclose]'); if (c) c.focus({ preventScroll: true }); });
+      } else {
+        const p = mount.querySelector('wistia-player');
+        if (p && typeof p.pause === 'function') { try { const r = p.pause(); if (r && r.catch) r.catch(() => {}); } catch (e) {} }
+        // Espera o fade-out da moldura antes de destruir o player.
+        this._videoTimer = setTimeout(() => { if (!this.state.video) mount.textContent = ''; }, 360);
+        this._mountedVideo = null;
+        root.style.overflow = '';
+        const t = this._videoTrigger;
+        this._videoTrigger = null;
+        if (t && typeof t.focus === 'function') t.focus({ preventScroll: true });
+      }
+    };
+    this._onKey = (e) => { if (e.key === 'Escape' && this.state.video) this._closeVideo(); };
+    document.addEventListener('keydown', this._onKey);
+
     window.addEventListener('scroll', this._checkArrows, { passive: true });
     document.addEventListener('scroll', this._checkArrows, { passive: true, capture: true });
     window.addEventListener('resize', this._checkArrows, { passive: true });
@@ -508,10 +650,14 @@ class Component extends DCLogic {
     // An sc-if remount hands back fresh nodes with their static styles restored.
     if (this._repaint) this._repaint();
     if (this._tryAttach) this._tryAttach();
+    if (this._syncVideo) this._syncVideo();
   }
 
   componentWillUnmount() {
     this._unmounted = true;
+    if (this._onKey) document.removeEventListener('keydown', this._onKey);
+    clearTimeout(this._videoTimer);
+    if (this._mountedVideo) document.documentElement.style.overflow = '';
     if (this._armPoll) clearInterval(this._armPoll);
     if (this._checkArrows) {
       window.removeEventListener('scroll', this._checkArrows);
@@ -527,7 +673,25 @@ class Component extends DCLogic {
   renderVals() {
     const s = this.props.scrimIntensity ?? 'medium';
     const w = this.state.w;
+    // Lista estável entre renders (os handlers resolvem _openVideo só no clique).
+    if (!this._reelItems) {
+      this._reelItems = REEL.map((v, i) => ({
+        bg: { backgroundImage: 'url("' + v.thumb + '")' },
+        label: 'Reproducir video ' + (i + 1) + ' de ' + REEL.length,
+        open: (e) => this._openVideo && this._openVideo(i, e && e.currentTarget),
+      }));
+    }
+    const vid = this.state.video;
+    const cur = vid ? REEL.find(x => x.id === vid) : null;
+    if (cur) this._lastThumb = cur.thumb;
     return {
+      reelGroups: REEL_GROUPS,
+      reelItems: this._reelItems,
+      videoState: vid ? 'open' : 'closed',
+      videoHidden: vid ? 'false' : 'true',
+      videoTab: vid ? 0 : -1,
+      videoPoster: this._lastThumb ? { backgroundImage: 'url("' + this._lastThumb + '")' } : {},
+      closeVideo: () => this._closeVideo && this._closeVideo(),
       scrimSoft: s === 'soft',
       scrimMedium: s === 'medium',
       scrimHeavy: s === 'heavy',
